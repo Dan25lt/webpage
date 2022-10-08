@@ -1,0 +1,104 @@
+.ul-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.li-menu {
+    float: left;
+}
+
+.li-menu a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    padding: 16px;
+    padding-right: 76px;
+    padding-left: 75px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #87807F;
+}
+
+.li_menu {
+    margin-bottom: 10px;
+}
+
+table,
+th,
+td {
+    border: solid 1px;
+    text-align: left;
+    border-collapse: collapse;
+    background-color: #F2F2F2;
+}
+
+.fila {
+    padding-bottom: 10px;
+}
+
+.info_box {
+    border: solid;
+    border-width: 2px;
+    border-color: #222;
+    background-color: #E7E9EB;
+    width: 100%;
+    height: 150px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+    ;
+}
+
+#Bueno {
+    accent-color: green;
+}
+
+#Medio {
+    accent-color: yellow;
+}
+
+#Malo {
+    accent-color: red;
+}
+
+#NA {
+    accent-color: blue;
+}
+
+input {
+    float: right;
+}
+
+th {
+    text-align: right;
+    color: #fff;
+    background: black;
+}
+
+tfoot {
+    text-align: center;
+    color: #fff;
+    background: black;
+}
+
+textarea {
+    resize: none;
+}
+
+body {
+    background-color: #DBEBF9;
+    font-family: "Roboto", sans-serif;
+}
+
+.backgroundopacity {
+    opacity: 0.5;
+
+}

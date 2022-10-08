@@ -1,0 +1,340 @@
+<html>
+
+<head>
+    <title>Altamotriz</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+    <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
+    <style type="text/css">
+        .ul-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .li-menu {
+            float: left;
+        }
+
+        .li-menu a {
+            display: block;
+            color: white;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 1.1rem;
+            padding: 16px;
+            padding-right: 76px;
+            padding-left: 75px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #87807F;
+        }
+
+        .li_menu {
+            margin-bottom: 10px;
+        }
+
+        table,
+        th,
+        td {
+
+            text-align: left;
+            border-collapse: collapse;
+        }
+
+        .fila {
+            padding-bottom: 10px;
+        }
+
+        .info_box {
+            border: solid;
+            border-width: 2px;
+            border-color: #222;
+            background-color: #E7E9EB;
+            width: 100%;
+            height: 150px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+            ;
+        }
+
+        #Bueno {
+            accent-color: green;
+        }
+
+        #Medio {
+            accent-color: yellow;
+        }
+
+        #Malo {
+            accent-color: red;
+        }
+
+        #NA {
+            accent-color: blue;
+        }
+
+        input {
+            float: right;
+        }
+
+        th {
+            text-align: right;
+            color: #fff;
+            background: black;
+        }
+
+        tfoot {
+            text-align: center;
+            color: #fff;
+            background: black;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        body {
+            background-color: #DBEBF9;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .backgroundopacity {
+            opacity: 0.5;
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <div style="background-color:#6283C1 ; display: block; height: 22px;
+            min-width: 950px; ">
+        <li style="color: #6283C1;">barra de color</li>
+    </div>
+    <header style="background-color: #CCE3F6;">
+        <img src="./img/logo.png" alt="logo_Altamotriz" class="centrar" ;>
+    </header>
+    <nav>
+        <!--------------------------------- Menu ------------------------------------->
+        <div class="li_menu">
+            <ul style="border-radius: 8px;" class="ul-menu">
+                <li class="li-menu"><a href="./admin.html">Administrador</a></li>
+                <li class="li-menu"><a href="./gerente.html">Gerente</a></li>
+                <li class="li-menu"><a href="./asesor.html">Asesor</a></li>
+                <li class="li-menu"><a href="./tecnico.html">Tecnico</a></li>
+                <li class="li-menu"><a href="./lavado.html">Lavador</a></li>
+                <li class="li-menu"><a href="./calidad.html">Calidad</a></li>
+                <li class="li-menu"><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir"
+                            style="width: 25px;height:22px;"></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div style="background-color:#6283C1 ; display: block; height: 22px;
+            min-width: 950px; color: white; margin-bottom:5px; padding-top:
+            5px;">
+        Tabla de Ordenes de Servicio activas
+    </div>
+    <div class="contenido">
+        <div class="fila">
+            <div id="tabla_asesor"></div>
+        </div>
+        <!-------------------------------------------- Informacion de Orden Seleccionada ------------------------------------------------->
+        <div style="background-color:#6283C1 ; display: block; height: 22px;
+                min-width: 950px; color: white; margin-bottom:5px; padding-top:
+                5px;">
+            Informacion de Orden Seleccionada
+        </div>
+        <div class="fila">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr class="info_box">
+                    <td style="text-align: left; width: 21%;">
+                        <legend>Orden:</legend>
+                        <ul>
+                            <li>Folio: <strong><span id="order_info_folio"></span></strong></li>
+                            <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li>
+                            <li>Placas: <strong><span id="order_info_placas"></span></strong></li>
+                            <li>Vin: <strong><span id="order_info_vin"></span></strong></li>
+                        </ul>
+                    </td>
+                    <td style="text-align: left; width: 21%;">
+
+                        <legend>Cliente:</legend>
+                        <ul>
+                            <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li>
+                            <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li>
+                            <li>RFC: <strong><span id="cliente_rfc"></span></strong></li>
+                        </ul>
+
+                    </td>
+                    <td style="text-align: center; width: 29%;">
+
+                        <legend style="text-align: left; ">Notas:</legend>
+                        <textarea id="notas_asesor" rows="6" cols="55" style="border-radius: 5px;">
+
+                            </textarea>
+                    </td>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <table>
+        <div id="table-titles">
+        </div>
+        <div id="table-body">
+        </div>
+    </table>
+    <div style="background-color:#6283C1 ; display: block; height: 22px;
+        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+        Resumen
+    </div>
+    <!-------------------------------------------- Resumen ------------------------------------------------->
+    
+    
+    <!---------------------- Comentarios  ---------------------->
+
+    <table cellpadding="0" cellspacing="0" width="49%" align="left" style="margin-top: 10px; border-color: #CCE3F6;">
+        <tbody>
+            <tr>
+                <td>
+                    <legend>Comentarios del Tecnico</legend>
+                    <textarea id="NotasTecnicos" rows="8" cols="95" style="border-radius: 5px; margin: 5px;" readonly>
+                    </textarea>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <div style="background-color:#6283C1 ; display: block; height: 22px;
+    min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+                    Fotos
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-top: 10px;">
+                    <div>
+
+                    </div>
+            </td>
+        </tr>
+
+    </table>
+
+
+    <!---------------------- Script para la lectura de los datos de la base de datos ---------------------->
+    <script>
+
+        window.addEventListener("load", function (e) { // cuando carga la pagina
+            fetch('./backend/getOrders.php', {
+                method: 'POST',
+                body: {
+                    info: ''
+                }
+            })
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (return_data) {
+                    console.log(return_data);
+                    if (return_data == "no hay ordenes de servicio") {
+                        console.log("TODO: implementa algo");
+                        return;
+                    }
+
+                    var data = JSON.parse(return_data);
+
+                    var columnNames = ["idordenDeServicio",
+                        "vin",
+                        "modelo",
+                        "placas",
+                        "fechaEntrada",
+                        "fechaSalida",
+                        "estatus",
+                        "alertas",
+                        "opciones"];
+
+                    var table = document.createElement('table');
+
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    var text = document.createTextNode('Orden De Servicio');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Vin');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Tipo de vehiculo');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Placas');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Fecha entrada');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Fecha salida');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Estatus');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Atencion');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    text = document.createTextNode('Opciones');
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    table.appendChild(tr);
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        var tr = document.createElement('tr');
+                        for (var j = 0; j < columnNames.length; j++) {
+                            var td = document.createElement('td');
+                            if (columnNames[j] === 'opciones') {
+                                var btn = document.createElement('input');
+                                btn.type = "button";
+                                btn.className = "";
+                                btn.value = data[i]['idordenDeServicio'];
+                                var text = btn; // text va a tener adentro un boton
+                            } else {
+                                var text = document.createTextNode(data[i][columnNames[j]]);
+                            }
+                            td.appendChild(text);
+                            tr.appendChild(td);
+                        }
+                        table.appendChild(tr);
+                    }
+                    document.getElementById("tabla_asesor").appendChild(table);
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+       
+        });
+
+    </script>
+</body>
+
+</html>

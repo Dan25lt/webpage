@@ -1,0 +1,191 @@
+<html>
+
+<head>
+    <title>Altamotriz</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+    <link rel="stylesheet" href="css/mi_hoja_de_estilos.css" type="text/css" />
+    <link rel="stylesheet" href="css/index.css" type="text/css" />
+</head>
+
+<body>
+    <img src="./img/logo.png" width="250" height="100" alt="" class="centrar" ;>
+    <h1 style="color: black;">Bienvenido</h1>
+    <h2 style="color: black;">Seleccione la opcion deseada!!!!!</h2>
+
+    <button class="button btn:hover espaciador" onclick="redireccionalCliente()" style="width:auto;"> Soy cliente</button>
+    <button class="button btn:hover espaciador" onclick="document.getElementById('id01').style.display='block'"
+        style="width:auto;">Iniciar Sesion</button>
+
+    <p class="notas">(Solamente usuarios registrados)</p>
+
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" onsubmit="validateCaptcha()" id="loginForm">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+                <img src="./img/logo.png" alt="Logo" class="logo">
+            </div>
+
+            <div class="container">
+                <div class="form-group">
+                    <label for="usuario"><b>Usuario</b></label>
+                    <input type="text" placeholder="Escribe tu Usuario" name="username" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="contraseña"><b>Contrasena</b></label>
+                    <input type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="captcha" id="captcha_msj" class="text-info"><b>Captcha</b></label>
+                    <div id="captcha">
+                    </div>
+                    <input type="text" name="securityCode" id="cpatchaTextBox" class="form-control"
+                        placeholder="Captcha">
+                </div>
+                <div class="form-group">
+                    <p id="loginResult">
+
+                    </p>
+                </div>
+                <button type="submit" name="iniciar" id="iniciar">Iniciar Sesion</button>
+                <label>
+                    <!-- Recordarme<input style="float: left;" type="checkbox" checked="checked" name="remember"> -->
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancelar</button>
+                <span class="psw">Olvidaste tu <a href="#">Contrasena?</a></span>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        /*
+        * CAPTCHA
+        */
+        var code; // variable para comparar el captcha
+        function createCaptcha() {
+            //Se borra el capcha anterior almacenado
+            document.getElementById('captcha').innerHTML = "";
+            var charsArray =
+                "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var lengthOtp = 6;
+            var captcha = [];
+            for (var i = 0; i < lengthOtp; i++) {
+                //no se aceptara que se repitan caracteres en el capcha
+                var index = Math.floor(Math.random() * charsArray.length + 1); //Se selleciona la siguiente letra del array
+                if (captcha.indexOf(charsArray[index]) == -1)
+                    captcha.push(charsArray[index]);
+                else i--;
+            }
+            var canv = document.createElement("canvas");
+            canv.id = "captcha";
+            canv.width = 100;
+            canv.height = 50;
+            var ctx = canv.getContext("2d");
+            ctx.font = "25px Georgia";
+            ctx.strokeText(captcha.join(""), 0, 30);
+            //Se alamacena capcha parap oder validarlo mas adelante
+            code = captcha.join("");
+            document.getElementById("captcha").appendChild(canv); // agrega el canvas al cuerpo 
+        }
+
+        /*
+        * VALIDAR CAPTCHA
+        */
+        function validateCaptcha() {
+            event.preventDefault();
+            if (document.getElementById("cpatchaTextBox").value == code) {
+                console.log("Exito validando el captcha");
+                login()
+
+            } else {
+                alert("Captcha Invalido. Vuelve a intentarlo.");
+                createCaptcha();
+            }
+        }
+
+        /*
+        * Login de Usuario 
+        */
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            let loginForm = new FormData(document.getElementById("loginForm"))
+
+            fetch('./backend/login.php', {
+                method: 'POST',
+                body: loginForm
+            })
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    var response = JSON.parse(data);
+
+                    if (response.statusCode === 200) {
+                        document.getElementById("loginResult").innerHTML = response.msj + " Puesto: " + response.puesto;
+
+                        // codigo para redireccionar,
+
+                        if (response.puesto == 'Administrador') {
+                            location.replace("./menu.html");
+                        } else if (response.puesto == 'Asesor') {
+                            location.replace("./asesor.html");
+                        }
+                        else if (response.puesto == 'Tecnico') {
+                            location.replace("./tecnico.html");
+                        }
+                        else if (response.puesto == 'Lavador') {
+                            location.replace("./lavado.html");
+                        }
+                        else if (response.puesto == 'Calidad') {
+                            location.replace("./calidad.html");
+                        }
+                        else if (response.puesto == 'Gerente') {
+                            location.replace("./gerente.html");
+                        }
+
+                    } else if (response.statusCode === 403) {
+                        document.getElementById("loginResult").innerHTML = response.msj;
+                    }
+                });
+        }
+
+        /*
+        * Todo lo referente a la UI
+        * Se mete todo en una sola funcion y se corre
+        */
+        function userInterfaseInit() {
+            
+            function redireccionCliente() {
+                location.replace("./index.html");   
+            }
+
+            // crear el modal
+            var modal = document.getElementById('id01'); 
+
+            // se cierra si se hace click fuera de la ventana
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+
+        // Inicializar las funciones aqui despues del codigo
+        createCaptcha(); // Inicializar el captcha
+        userInterfaseInit();
+    </script>
+    <script>function redireccionalCliente() {
+        location.replace("./cliente.html");
+    }</script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+
+.button {
+    background-color: DodgerBlue; 
+    border: none; 
+    color: white;
+    padding: 20px 25px; 
+    font-size: 16px;
+    cursor: pointer; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+  .notas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+  }
+.button:hover {
+  background-color: RoyalBlue;
+}
+  .espaciador{
+    margin: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+h2 {
+    color: rgb(255, 255, 255);
+    text-align: center; 
+}
+.centrar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: 30px;
+}
+.centrar_input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 112px;
+    
+}
+.centrar_nota{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 10%;
+    color: #222;
+}
+.mt-10 {
+  margin-top: 10px;
+  ;
+}
+.ul-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .li-menu {
+            float: left;
+        }
+
+        .li-menu a {
+            display: block;
+            color: white;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 1.1rem;
+            padding: 16px;
+            padding-right: 76px;
+            padding-left: 75px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #87807F;
+        }
+
+        .li_menu {
+            margin-bottom: 10px;
+        }
+
+        table,
+        th,
+        td {
+
+            text-align: left;
+            border-collapse: collapse;
+        }
+
+        .fila {
+            padding-bottom: 10px;
+        }
+
+        .info_box {
+            border: solid;
+            border-width: 2px;
+            border-color: #222;
+            background-color: #E7E9EB;
+            width: 100%;
+            height: 150px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+            ;
+        }
+
+        #Bueno {
+            accent-color: green;
+        }
+
+        #Medio {
+            accent-color: yellow;
+        }
+
+        #Malo {
+            accent-color: red;
+        }
+
+        #NA {
+            accent-color: blue;
+        }
+
+        input {
+            float: right;
+        }
+
+        th {
+            text-align: right;
+            color: #fff;
+            background: black;
+        }
+
+        tfoot {
+            text-align: center;
+            color: #fff;
+            background: black;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        body {
+            background-color: #DBEBF9;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .backgroundopacity {
+            opacity: 0.5;
+
+        }
