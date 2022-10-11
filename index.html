@@ -115,7 +115,7 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
-            let loginForm = new FormData(document.getElementById("loginForm"))
+            let loginForm = new FormData(document.getElementById("loginForm"));
 
             fetch('./backend/login.php', {
                 method: 'POST',
