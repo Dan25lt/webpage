@@ -112,322 +112,334 @@
     <!-------------------------------------------- Resumen ------------------------------------------------->
 
     <!-------------------------------------------- Checklist Tecnico ------------------------------------------------->
-    <table border="1" cellpadding="0" cellspacing="0" width="49%" align="left" style="border: 3px solid black;">
-        <caption><strong>CheckList Tecnico</strong></caption>
+    <form onsubmit="guardarCheckListTecnico()" id="checkListTecnicoForm">
 
-        <tbody>
-            <tr>
-                <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                        <tbody>
-                            <!---------------------- Parte trasera ---------------------->
-                            <th><strong>Parte trasera&nbsp &nbsp &nbsp N
-                                    &nbsp X &nbsp &nbsp/ &nbsp &nbspB</strong></th>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Pastillas
-                                        de freno traseras der.: <input type="radio"
-                                            id="pastillas_freno_traseras_der_bueno" name="pastillas_freno_traseras_der"
-                                            value="Bueno">
-                                        <input type="radio" id="pastillas_freno_traseras_der_medio"
-                                            name="pastillas_freno_traseras_der" value="Medio">
-                                        <input type="radio" id="pastillas_freno_traseras_der_malo"
-                                            name="pastillas_freno_traseras_der" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Pastillas
-                                        de freno traseras izq.: <input type="radio"
-                                            id="pastillas_freno_traseras_izq_bueno" name="pastillas_freno_traseras_izq"
-                                            value="Bueno">
-                                        <input type="radio" id="pastillas_freno_traseras_izq_medio"
-                                            name="pastillas_freno_traseras_izq" value="Medio">
-                                        <input type="radio" id="pastillas_freno_traseras_izq_malo"
-                                            name="pastillas_freno_traseras_izq" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Limpiador
-                                        de medallon trasero: <input type="radio" id="limpiador_medallon_trasero_bueno"
-                                            name="limpiador_medallon_trasero" value="Bueno">
-                                        <input type="radio" id="limpiador_medallon_trasero_medio"
-                                            name="limpiador_medallon_trasero" value="Medio">
-                                        <input type="radio" id="limpiador_medallon_trasero_malo"
-                                            name="limpiador_medallon_trasero" value="Malo"><input type="radio"
-                                            id="limpiador_medallon_trasero_na" name="limpiador_medallon_trasero"
-                                            value="NA">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Luces
-                                        traseras: <input type="radio" id="luces_traseras_bueno" name="luces_traseras"
-                                            value="Bueno">
-                                        <input type="radio" id="luces_traseras_medio" name="luces_traseras"
-                                            value="Medio">
-                                        <input type="radio" id="luces_traseras_malo" name="luces_traseras" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <!---------------------- Direccion suspension ---------------------->
-                            <tr>
-                                <td bgcolor="black" style="color:#fff" align="center"><Strong>Direccion
-                                        Suspension</Strong></td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Amortiguador
-                                        delantero der.: <input type="radio" id="amortiguador_delantero_der_bueno"
-                                            name="amortiguador_delantero_der" value="Bueno">
-                                        <input type="radio" id="amortiguador_delantero_der_medio"
-                                            name="amortiguador_delantero_der" value="Medio">
-                                        <input type="radio" id="amortiguador_delantero_der_malo"
-                                            name="amortiguador_delantero_der" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Amortiguador
-                                        delantero izq.: <input type="radio" id="amortiguador_delantero_izq_bueno"
-                                            name="amortiguador_delantero_izq" value="Bueno">
-                                        <input type="radio" id="amortiguador_delantero_izq_medio"
-                                            name="amortiguador_delantero_izq" value="Medio">
-                                        <input type="radio" id="amortiguador_delantero_izq_malo"
-                                            name="amortiguador_delantero_izq" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Amortiguador
-                                        trasero der.: <input type="radio" id="amortiguador_trasero_der_bueno"
-                                            name="amortiguador_trasero_der" value="Bueno">
-                                        <input type="radio" id="amortiguador_trasero_der_medio"
-                                            name="amortiguador_trasero_der" value="Medio">
-                                        <input type="radio" id="amortiguador_trasero_der_malo"
-                                            name="amortiguador_trasero_der" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Amortiguador
-                                        trasero izq.: <input type="radio" id="amortiguador_trasero_izq_bueno"
-                                            name="amortiguador_trasero_izq" value="Bueno">
-                                        <input type="radio" id="amortiguador_trasero_izq_medio"
-                                            name="amortiguador_trasero_izq" value="Medio">
-                                        <input type="radio" id="amortiguador_trasero_izq_malo"
-                                            name="amortiguador_trasero_izq" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Direccion:
-                                        <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
-                                        <input type="radio" id="direccion_medio" name="direccion" value="Medio">
-                                        <input type="radio" id="direccion_malo" name="direccion" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <!---------------------- General ---------------------->
-                            <tr>
-                                <td bgcolor="black" style="color:#fff" align="center"><Strong>General</Strong></td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Reset
-                                        indicador cambio aceite: <input type="radio"
-                                            id="reset_indicador_cambio_aceite_bueno"
-                                            name="reset_indicador_cambio_aceite" value="Bueno">
-                                        <input type="radio" id="reset_indicador_cambio_aceite_medio"
-                                            name="reset_indicador_cambio_aceite" value="Medio">
-                                        <input type="radio" id="reset_indicador_cambio_aceite_malo"
-                                            name="reset_indicador_cambio_aceite" value="Malo"><input type="radio"
-                                            id="reset_indicador_cambio_aceite_na" name="reset_indicador_cambio_aceite"
-                                            value="NA">
-                                    </legend>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                        <tbody>
-                            <!---------------------- Parte delantera ---------------------->
-                            <th><strong>Parte delantera&nbsp &nbsp &nbsp N
-                                    &nbsp X &nbsp &nbsp/&nbsp &nbsp B </strong></th>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Filtro
-                                        de aire de motor: <input type="radio" id="filtro_aire_motor_bueno"
-                                            name="filtro_aire_motor" value="Bueno">
-                                        <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor"
-                                            value="Medio">
-                                        <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor"
-                                            value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <legend style="border-style: 0px;">Filtro
-                                        de Cabina: <input type="radio" id="filtro_cabina_bueno" name="filtro_cabina"
-                                            value="Bueno">
-                                        <input type="radio" id="filtro_cabina_medio" name="filtro_cabina" value="Medio">
-                                        <input type="radio" id="filtro_cabina_malo" name="filtro_cabina"
-                                            value="Malo"><input type="radio" id="filtro_cabina_na" name="filtro_cabina"
-                                            value="NA">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Pastillas
-                                        de freno delanteras der.: <input type="radio"
-                                            id="pastillas_freno_delanteras_der_bueno"
-                                            name="pastillas_freno_delanteras_der" value="Bueno">
-                                        <input type="radio" id="pastillas_freno_delanteras_der_medio"
-                                            name="pastillas_freno_delanteras_der" value="Medio">
-                                        <input type="radio" id="pastillas_freno_delanteras_der_malo"
-                                            name="pastillas_freno_delanteras_der" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Pastillas
-                                        de freno delanteras izq.: <input type="radio"
-                                            id="pastillas_freno_delanteras_izq_bueno"
-                                            name="pastillas_freno_delanteras_izq" value="Bueno">
-                                        <input type="radio" id="pastillas_freno_delanteras_izq_medio"
-                                            name="pastillas_freno_delanteras_izq" value="Medio">
-                                        <input type="radio" id="pastillas_freno_delanteras_izq_malo"
-                                            name="pastillas_freno_delanteras_izq" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Limpiaparabrisas
-                                        derecho: <input type="radio" id="limpiaparabrisas_derecho_bueno"
-                                            name="limpiaparabrisas_derecho" value="Bueno">
-                                        <input type="radio" id="limpiaparabrisas_derecho_medio"
-                                            name="limpiaparabrisas_derecho" value="Medio">
-                                        <input type="radio" id="limpiaparabrisas_derecho_malo"
-                                            name="limpiaparabrisas_derecho" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Limpiaparabrisas
-                                        izquierdo: <input type="radio" id="limpiaparabrisas_izquierdo_bueno"
-                                            name="limpiaparabrisas_izquierdo" value="Bueno">
-                                        <input type="radio" id="limpiaparabrisas_izquierdo_medio"
-                                            name="limpiaparabrisas_izquierdo" value="Medio">
-                                        <input type="radio" id="limpiaparabrisas_izquierdo_malo"
-                                            name="limpiaparabrisas_izquierdo" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Faro
-                                        derecho y luces: <input type="radio" id="faro_derecho_luces_bueno"
-                                            name="faro_derecho_luces" value="Bueno">
-                                        <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces"
-                                            value="Medio">
-                                        <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces"
-                                            value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Faro
-                                        izquiero y luces: <input type="radio" id="faro_izquiero_luces_bueno"
-                                            name="faro_izquiero_luces" value="Bueno">
-                                        <input type="radio" id="faro_izquiero_luces_medio" name="faro_izquiero_luces"
-                                            value="Medio">
-                                        <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces"
-                                            value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Anticongelante:
-                                        <input type="radio" id="anticongelante_bueno" name="anticongelante"
-                                            value="Bueno">
-                                        <input type="radio" id="anticongelante_medio" name="anticongelante"
-                                            value="Medio">
-                                        <input type="radio" id="anticongelante_malo" name="anticongelante" value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Liquido
-                                        direccion hidraulica: <input type="radio"
-                                            id="liquido_direccion_hidraulica_bueno" name="liquido_direccion_hidraulica"
-                                            value="Bueno">
-                                        <input type="radio" id="liquido_direccion_hidraulica_medio"
-                                            name="liquido_direccion_hidraulica" value="Medio">
-                                        <input type="radio" id="liquido_direccion_hidraulica_malo"
-                                            name="liquido_direccion_hidraulica" value="Malo"><input type="radio"
-                                            id="liquido_direccion_hidraulica_na" name="liquido_direccion_hidraulica"
-                                            value="NA">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Banda
-                                        de accesorios: <input type="radio" id="banda_accesorios_bueno"
-                                            name="banda_accesorios" value="Bueno">
-                                        <input type="radio" id="banda_accesorios_medio" name="banda_accesorios"
-                                            value="Medio">
-                                        <input type="radio" id="banda_accesorios_malo" name="banda_accesorios"
-                                            value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3">
-                                    <legend style="border-style: 0px;">Revision
-                                        de bateria: <input type="radio" id="revision_bateria_bueno"
-                                            name="revision_bateria" value="Bueno">
-                                        <input type="radio" id="revision_bateria_medio" name="revision_bateria"
-                                            value="Medio">
-                                        <input type="radio" id="revision_bateria_malo" name="revision_bateria"
-                                            value="Malo">
-                                    </legend>
-                                </td>
-                            </tr>
+        <table border="1" cellpadding="0" cellspacing="0" width="49%" align="left" style="border: 3px solid black;">
+            <caption><strong>CheckList Tecnico</strong></caption>
 
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
-                    &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
-                    B:Bueno &nbsp &nbsp</th>
+            <tbody>
+                <tr>
+                    <td valign="Top" width="50%">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                                <!---------------------- Parte trasera ---------------------->
+                                <th><strong>Parte trasera&nbsp &nbsp &nbsp N
+                                        &nbsp X &nbsp &nbsp/ &nbsp &nbspB</strong></th>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Pastillas
+                                            de freno traseras der.: <input type="radio"
+                                                id="pastillas_freno_traseras_der_bueno"
+                                                name="pastillas_freno_traseras_der" value="Bueno">
+                                            <input type="radio" id="pastillas_freno_traseras_der_medio"
+                                                name="pastillas_freno_traseras_der" value="Medio">
+                                            <input type="radio" id="pastillas_freno_traseras_der_malo"
+                                                name="pastillas_freno_traseras_der" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Pastillas
+                                            de freno traseras izq.: <input type="radio"
+                                                id="pastillas_freno_traseras_izq_bueno"
+                                                name="pastillas_freno_traseras_izq" value="Bueno">
+                                            <input type="radio" id="pastillas_freno_traseras_izq_medio"
+                                                name="pastillas_freno_traseras_izq" value="Medio">
+                                            <input type="radio" id="pastillas_freno_traseras_izq_malo"
+                                                name="pastillas_freno_traseras_izq" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Limpiador
+                                            de medallon trasero: <input type="radio"
+                                                id="limpiador_medallon_trasero_bueno" name="limpiador_medallon_trasero"
+                                                value="Bueno">
+                                            <input type="radio" id="limpiador_medallon_trasero_medio"
+                                                name="limpiador_medallon_trasero" value="Medio">
+                                            <input type="radio" id="limpiador_medallon_trasero_malo"
+                                                name="limpiador_medallon_trasero" value="Malo"><input type="radio"
+                                                id="limpiador_medallon_trasero_na" name="limpiador_medallon_trasero"
+                                                value="NA">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Luces
+                                            traseras: <input type="radio" id="luces_traseras_bueno"
+                                                name="luces_traseras" value="Bueno">
+                                            <input type="radio" id="luces_traseras_medio" name="luces_traseras"
+                                                value="Medio">
+                                            <input type="radio" id="luces_traseras_malo" name="luces_traseras"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <!---------------------- Direccion suspension ---------------------->
+                                <tr>
+                                    <td bgcolor="black" style="color:#fff" align="center"><Strong>Direccion
+                                            Suspension</Strong></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Amortiguador
+                                            delantero der.: <input type="radio" id="amortiguador_delantero_der_bueno"
+                                                name="amortiguador_delantero_der" value="Bueno">
+                                            <input type="radio" id="amortiguador_delantero_der_medio"
+                                                name="amortiguador_delantero_der" value="Medio">
+                                            <input type="radio" id="amortiguador_delantero_der_malo"
+                                                name="amortiguador_delantero_der" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Amortiguador
+                                            delantero izq.: <input type="radio" id="amortiguador_delantero_izq_bueno"
+                                                name="amortiguador_delantero_izq" value="Bueno">
+                                            <input type="radio" id="amortiguador_delantero_izq_medio"
+                                                name="amortiguador_delantero_izq" value="Medio">
+                                            <input type="radio" id="amortiguador_delantero_izq_malo"
+                                                name="amortiguador_delantero_izq" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Amortiguador
+                                            trasero der.: <input type="radio" id="amortiguador_trasero_der_bueno"
+                                                name="amortiguador_trasero_der" value="Bueno">
+                                            <input type="radio" id="amortiguador_trasero_der_medio"
+                                                name="amortiguador_trasero_der" value="Medio">
+                                            <input type="radio" id="amortiguador_trasero_der_malo"
+                                                name="amortiguador_trasero_der" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Amortiguador
+                                            trasero izq.: <input type="radio" id="amortiguador_trasero_izq_bueno"
+                                                name="amortiguador_trasero_izq" value="Bueno">
+                                            <input type="radio" id="amortiguador_trasero_izq_medio"
+                                                name="amortiguador_trasero_izq" value="Medio">
+                                            <input type="radio" id="amortiguador_trasero_izq_malo"
+                                                name="amortiguador_trasero_izq" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Direccion:
+                                            <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
+                                            <input type="radio" id="direccion_medio" name="direccion" value="Medio">
+                                            <input type="radio" id="direccion_malo" name="direccion" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <!---------------------- General ---------------------->
+                                <tr>
+                                    <td bgcolor="black" style="color:#fff" align="center"><Strong>General</Strong></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Reset
+                                            indicador cambio aceite: <input type="radio"
+                                                id="reset_indicador_cambio_aceite_bueno"
+                                                name="reset_indicador_cambio_aceite" value="Bueno">
+                                            <input type="radio" id="reset_indicador_cambio_aceite_medio"
+                                                name="reset_indicador_cambio_aceite" value="Medio">
+                                            <input type="radio" id="reset_indicador_cambio_aceite_malo"
+                                                name="reset_indicador_cambio_aceite" value="Malo"><input type="radio"
+                                                id="reset_indicador_cambio_aceite_na"
+                                                name="reset_indicador_cambio_aceite" value="NA">
+                                        </legend>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td valign="Top" width="50%">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                                <!---------------------- Parte delantera ---------------------->
+                                <th><strong>Parte delantera&nbsp &nbsp &nbsp N
+                                        &nbsp X &nbsp &nbsp/&nbsp &nbsp B </strong></th>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Filtro
+                                            de aire de motor: <input type="radio" id="filtro_aire_motor_bueno"
+                                                name="filtro_aire_motor" value="Bueno">
+                                            <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor"
+                                                value="Medio">
+                                            <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <legend style="border-style: 0px;">Filtro
+                                            de Cabina: <input type="radio" id="filtro_cabina_bueno" name="filtro_cabina"
+                                                value="Bueno">
+                                            <input type="radio" id="filtro_cabina_medio" name="filtro_cabina"
+                                                value="Medio">
+                                            <input type="radio" id="filtro_cabina_malo" name="filtro_cabina"
+                                                value="Malo"><input type="radio" id="filtro_cabina_na"
+                                                name="filtro_cabina" value="NA">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Pastillas
+                                            de freno delanteras der.: <input type="radio"
+                                                id="pastillas_freno_delanteras_der_bueno"
+                                                name="pastillas_freno_delanteras_der" value="Bueno">
+                                            <input type="radio" id="pastillas_freno_delanteras_der_medio"
+                                                name="pastillas_freno_delanteras_der" value="Medio">
+                                            <input type="radio" id="pastillas_freno_delanteras_der_malo"
+                                                name="pastillas_freno_delanteras_der" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Pastillas
+                                            de freno delanteras izq.: <input type="radio"
+                                                id="pastillas_freno_delanteras_izq_bueno"
+                                                name="pastillas_freno_delanteras_izq" value="Bueno">
+                                            <input type="radio" id="pastillas_freno_delanteras_izq_medio"
+                                                name="pastillas_freno_delanteras_izq" value="Medio">
+                                            <input type="radio" id="pastillas_freno_delanteras_izq_malo"
+                                                name="pastillas_freno_delanteras_izq" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
 
-            </tr>
-        </tfoot>
-    </table>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Limpiaparabrisas
+                                            derecho: <input type="radio" id="limpiaparabrisas_derecho_bueno"
+                                                name="limpiaparabrisas_derecho" value="Bueno">
+                                            <input type="radio" id="limpiaparabrisas_derecho_medio"
+                                                name="limpiaparabrisas_derecho" value="Medio">
+                                            <input type="radio" id="limpiaparabrisas_derecho_malo"
+                                                name="limpiaparabrisas_derecho" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Limpiaparabrisas
+                                            izquierdo: <input type="radio" id="limpiaparabrisas_izquierdo_bueno"
+                                                name="limpiaparabrisas_izquierdo" value="Bueno">
+                                            <input type="radio" id="limpiaparabrisas_izquierdo_medio"
+                                                name="limpiaparabrisas_izquierdo" value="Medio">
+                                            <input type="radio" id="limpiaparabrisas_izquierdo_malo"
+                                                name="limpiaparabrisas_izquierdo" value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Faro
+                                            derecho y luces: <input type="radio" id="faro_derecho_luces_bueno"
+                                                name="faro_derecho_luces" value="Bueno">
+                                            <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces"
+                                                value="Medio">
+                                            <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Faro
+                                            izquiero y luces: <input type="radio" id="faro_izquiero_luces_bueno"
+                                                name="faro_izquiero_luces" value="Bueno">
+                                            <input type="radio" id="faro_izquiero_luces_medio"
+                                                name="faro_izquiero_luces" value="Medio">
+                                            <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Anticongelante:
+                                            <input type="radio" id="anticongelante_bueno" name="anticongelante"
+                                                value="Bueno">
+                                            <input type="radio" id="anticongelante_medio" name="anticongelante"
+                                                value="Medio">
+                                            <input type="radio" id="anticongelante_malo" name="anticongelante"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Liquido
+                                            direccion hidraulica: <input type="radio"
+                                                id="liquido_direccion_hidraulica_bueno"
+                                                name="liquido_direccion_hidraulica" value="Bueno">
+                                            <input type="radio" id="liquido_direccion_hidraulica_medio"
+                                                name="liquido_direccion_hidraulica" value="Medio">
+                                            <input type="radio" id="liquido_direccion_hidraulica_malo"
+                                                name="liquido_direccion_hidraulica" value="Malo"><input type="radio"
+                                                id="liquido_direccion_hidraulica_na" name="liquido_direccion_hidraulica"
+                                                value="NA">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Banda
+                                            de accesorios: <input type="radio" id="banda_accesorios_bueno"
+                                                name="banda_accesorios" value="Bueno">
+                                            <input type="radio" id="banda_accesorios_medio" name="banda_accesorios"
+                                                value="Medio">
+                                            <input type="radio" id="banda_accesorios_malo" name="banda_accesorios"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3">
+                                        <legend style="border-style: 0px;">Revision
+                                            de bateria: <input type="radio" id="revision_bateria_bueno"
+                                                name="revision_bateria" value="Bueno">
+                                            <input type="radio" id="revision_bateria_medio" name="revision_bateria"
+                                                value="Medio">
+                                            <input type="radio" id="revision_bateria_malo" name="revision_bateria"
+                                                value="Malo">
+                                        </legend>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
+                        &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
+                        B:Bueno &nbsp &nbsp</th>
+
+                </tr>
+                <tr>
+                    <th> <button type="submit" class="button ">Guardar cambios</button></th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </form>
     <!-------------------------------------- Checklist calidad ------------------------------------------>
     <table border="1" cellpadding="0" cellspacing="0" width="50%" align="right" style="border: 3px solid black;">
         <caption><strong>CheckList Control de Calidad</strong></caption>
@@ -1146,7 +1158,6 @@
 
         }
 
-        
 
         // Inicializar las funciones aqui despues del codigo
         cargarOrdenes();
