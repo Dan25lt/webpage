@@ -4,7 +4,7 @@
 *
 */
 
-function guardarComentariosTecnicos(orderNo) {
+function guardarComentariosTecnicos() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
   
   // Obtiene todos los datos de la forma
@@ -16,7 +16,7 @@ function guardarComentariosTecnicos(orderNo) {
   fetch('./backend/postComentariosTecnicos.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: orderNo,
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
       data: comentarios_tecnicos
     }),
     headers: {
@@ -72,7 +72,7 @@ function getComentariosTecnicos(orderNo) {
 *
 */
 
-function guardarComentariosLavado(orderNo) {
+function guardarComentariosLavado() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
   
   // Obtiene todos los datos de la forma
@@ -84,7 +84,7 @@ function guardarComentariosLavado(orderNo) {
   fetch('./backend/postComentariosLavado.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: orderNo,
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
       data: comentarios_lavado
     }),
     headers: {
@@ -140,7 +140,7 @@ function getComentariosLavado(orderNo) {
 *
 */
 
-function guardarComentariosCalidad(orderNo) {
+function guardarComentariosCalidad() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
   
   // Obtiene todos los datos de la forma
@@ -152,7 +152,7 @@ function guardarComentariosCalidad(orderNo) {
   fetch('./backend/postComentariosCalidad.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: orderNo,
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
       data: comentarios_calidad
     }),
     headers: {
@@ -208,7 +208,7 @@ function getComentariosCalidad(orderNo) {
 *
 */
 
-function guardarComentariosAsesor(orderNo) {
+function guardarComentariosAsesor() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
   
   // Obtiene todos los datos de la forma
@@ -218,7 +218,7 @@ function guardarComentariosAsesor(orderNo) {
   fetch('./backend/postComentariosAsesor.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: orderNo,
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
       data: comentarios_asesor
     }),
     headers: {
