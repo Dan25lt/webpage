@@ -75,13 +75,13 @@
                 </div>
                 <div class="container_padding">
                   <label><b>Colonia</b></label><br>
-                  <input type="text"  placeholder="" name="colonia" id="colonia">
+                  <input type="text" placeholder="" name="colonia" id="colonia">
                 </div>
                 <div class="container_padding">
                   <label><b>C.P.</b></label><br>
                   <input type="number" placeholder="" name="idarea_postal" id="idarea_postal" required>
                 </div>
-                <button type="submit" name="iniciar" id="iniciar">Guardar</button>
+                <button type="submit" name="" id="">Guardar</button>
 
                 <div class="container" style="background-color:#f1f1f1">
                   <button type="button" onclick="document.getElementById('id01').style.display='none'"
@@ -270,7 +270,7 @@
             document.getElementById('id01').style.display = 'block';
 
 
-            fetch('./backend/getClientsById.php', {
+            fetch('./backend/administrador/getClientsById.php', {
               method: 'POST',
               body: JSON.stringify({
                 id: id,
@@ -284,6 +284,9 @@
                 return response.text();
               })
               .then(function (respuesta) {
+
+                console.log(respuesta);
+
                 respuesta = JSON.parse(respuesta);
 
                 console.log(respuesta);
@@ -310,7 +313,7 @@
             event.preventDefault();
             let editModalForm = new FormData(document.getElementById("editModalForm"));
 
-            fetch('./backend/getClientsById.php', {
+            fetch('./backend/administrador/updateClientsById.php', {
               method: 'POST',
               body: editModalForm
             })
@@ -327,6 +330,7 @@
                 }
               });
           }
+          
           function userInterfaseInit() {
 
             function redireccionCliente() {
@@ -343,6 +347,43 @@
               }
             }
           }
+          function verById(id) {
+            document.getElementById('modalVer').style.display = 'block';
+
+
+            fetch('./backend/getStudentInscritosById.php', {
+              method: 'POST',
+              body: JSON.stringify({
+                id: id,
+              }),
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            })
+              .then(function (response) {
+                return response.text();
+              })
+              .then(function (respuesta) {
+                respuesta = JSON.parse(respuesta);
+                console.log(respuesta)
+                
+                document.getElementById("idcliente").innerHTML = respuesta[0]['idcliente'];
+                document.getElementById("nombre").innerHTML = respuesta[0]['nombre'];
+                document.getElementById("apellido").innerHTML = respuesta[0]['apellido'];
+                document.getElementById("rfc").innerHTML = respuesta[0]['rfc'];
+                document.getElementById("telefono").innerHTML = respuesta[0]['telefono'];
+                document.getElementById("email").innerHTML = respuesta[0]['email'];
+                document.getElementById("calle").innerHTML = respuesta[0]['calle'];
+                document.getElementById("numeroint").innerHTML = respuesta[0]['numeroint'];
+                document.getElementById("numeroext").innerHTML = respuesta[0]['numeroext'];
+                document.getElementById("colonia").innerHTML = respuesta[0]['colonia'];
+                document.getElementById("idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
+
+              });
+          }
+
+
           userInterfaseInit();
           cargarTodos();
         </script>
