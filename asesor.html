@@ -89,7 +89,7 @@
             <td style="text-align: center; width: 29%;">
 
               <legend style="text-align: left;">Operaciones:</legend>
-              <textarea id="operaciones" rows="8" cols="55" style="border-radius: 5px; margin-bottom: 5px;"></textarea>
+              <span id="operaciones"></span>
 
             </td>
 
@@ -1163,6 +1163,27 @@
         .then(function (return_data) {
            console.log(return_data);
 
+          if (return_data === "la orden de servicio no tiene operaciones") {
+            alert("la orden de servicio no tiene operaciones");
+            return;
+          }
+
+          document.getElementById('operaciones').innerHTML = "";
+
+          let data = JSON.parse(return_data);
+          var ul = document.createElement('ul');
+
+          for (let i = 0; i < data.length; i++) {
+            const operacion = data[i];
+            var li = document.createElement('li');
+            var text = document.createTextNode(operacion['descripcion']);
+            li.appendChild(text);
+            ul.appendChild(li);
+          }
+
+          console.log(ul);
+          
+          document.getElementById('operaciones').appendChild(ul);
 
         })
         .catch(function (err) {
