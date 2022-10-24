@@ -1176,6 +1176,7 @@
           return response.text();
         })
         .then(function (return_data) {
+
           // console.log(return_data);
 
           if (return_data === "la orden de servicio no tiene operaciones") {
@@ -1191,7 +1192,7 @@
           for (let i = 0; i < data.length; i++) {
             const operacion = data[i];
             var li = document.createElement('li');
-            var text = document.createTextNode(operacion['descripcion']);
+            var text = document.createTextNode( "-" + operacion['descripcion']);
             li.appendChild(text);
             ul.appendChild(li);
           }

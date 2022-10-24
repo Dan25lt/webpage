@@ -1,5 +1,5 @@
 <?php
-    include '../config/database_config.php'; 
+    include '../../config/database_config.php';
 
     $return_data = array();
     
@@ -13,6 +13,7 @@
                     o.apellido,
                     o.rfc,
                     o.telefono,
+                    o.email,
                     d.calle,
                     d.numeroint,
                     d.numeroext,
