@@ -1139,6 +1139,8 @@
         getComentariosCalidad(orden_id);
         getComentariosLavado(orden_id);
         getComentariosTecnicos(orden_id);
+        cargarCheckListTecnico(orden_id);
+        cargarCheckListCalidad(orden_id);
 
         document.getElementById("order_info_folio").innerHTML = this.getAttribute("order_id");
         document.getElementById("order_info_vehiculo").innerHTML = this.getAttribute("vehiculo");
@@ -1161,7 +1163,7 @@
           return response.text();
         })
         .then(function (return_data) {
-           console.log(return_data);
+          // console.log(return_data);
 
           if (return_data === "la orden de servicio no tiene operaciones") {
             alert("la orden de servicio no tiene operaciones");
@@ -1181,8 +1183,6 @@
             ul.appendChild(li);
           }
 
-          console.log(ul);
-          
           document.getElementById('operaciones').appendChild(ul);
 
         })

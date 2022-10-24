@@ -15,7 +15,7 @@ function guardarCheckListCalidad() {
   fetch('./backend/postCheckListCalidad.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: 1,
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
       data: JSON.stringify(formDataObj)
     }),
     headers: {
@@ -42,10 +42,10 @@ function guardarCheckListCalidad() {
 
 
 
-function cargarCheckListCalidad() {
+function cargarCheckListCalidad(orderNo) {
   fetch('./backend/getCheckListCalidad.php', {
     method: 'POST',
-    body: JSON.stringify({ orderNo: 1 }),
+    body: JSON.stringify({ orderNo: orderNo }),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -491,6 +491,3 @@ function cargarCheckListCalidad() {
       console.log(err);
     });
 }
-
-// Aqui se manda a llamar toda la funcion anterior.
-cargarCheckListCalidad();

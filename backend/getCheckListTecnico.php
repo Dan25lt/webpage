@@ -25,7 +25,7 @@
         echo json_encode($return_data);
 
     } else {
-        echo 'la orden de servicio ' + $orderNo + ' no tiene filas'; 
+        echo 'la orden de servicio no tiene filas'; 
     }
 
 ?>

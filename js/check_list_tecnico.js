@@ -15,7 +15,7 @@ function guardarCheckListTecnico() {
     fetch('./backend/postCheckListTecnico.php', {
         method: 'POST',
         body: JSON.stringify({
-            orderNo: 1,
+            orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
             data: JSON.stringify(formDataObj)
         }),
         headers: {
@@ -42,10 +42,13 @@ function guardarCheckListTecnico() {
 
 
 
-function cargarCheckListTecnico() {
+function cargarCheckListTecnico(orderNo) {
+
+    console.log(orderNo);
+    
     fetch('./backend/getCheckListTecnico.php', {
         method: 'POST',
-        body: JSON.stringify({ orderNo: 1 }),
+        body: JSON.stringify({ orderNo: orderNo }),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -295,5 +298,3 @@ function cargarCheckListTecnico() {
         });
 }
 
-// Aqui se manda a llamar toda la funcion anterior.
-cargarCheckListTecnico();
