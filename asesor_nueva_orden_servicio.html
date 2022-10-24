@@ -1,0 +1,246 @@
+<html>
+
+<head>
+  <title>Altamotriz</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="./css/asesor.css" type="text/css" /> -->
+  <style>
+    .columna-3 {
+      max-width: 25%;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="background-color:#6283C1 ; display: block; height: 22px;
+            min-width: 950px; ">
+    <li style="color: #6283C1;">barra de color</li>
+  </div>
+  <header style="background-color: #CCE3F6;">
+    <img src="./img/logo.png" alt="logo_Altamotriz" class="centrar" ;>
+  </header>
+  <nav>
+    <!--------------------------------- Menu ------------------------------------->
+    <div class="li_menu">
+      <ul style="border-radius: 8px;" class="ul-menu">
+        <li class="li-menu"><a href="./admin.html">Administrador</a></li>
+        <li class="li-menu"><a href="./gerente.html">Gerente</a></li>
+        <li class="li-menu"><a href="./asesor.html">Asesor</a></li>
+        <li class="li-menu"><a href="./tecnico.html">Tecnico</a></li>
+        <li class="li-menu"><a href="./lavado.html">Lavador</a></li>
+        <li class="li-menu"><a href="./calidad.html">Calidad</a></li>
+        <li class="li-menu"><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir"
+              style="width: 25px;height:22px;"></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="welcome">
+    <!-- Bienvenido <span id="username"> nombre de usuario </span> -->
+  </div>
+
+  <div style="background-color:#6283C1 ; display: block; height: 22px;
+                min-width: 950px; color: white; margin-bottom:5px; padding-top:
+                5px;">
+    Crear orden de servicio:
+  </div>
+  <div class="contenido">
+    <div class="fila">
+      <table>
+        <td>
+          <label for="placas">Placas:</label><br>
+        </td>
+        <td>
+          <input id="placas" name="placas" style="border-radius: 5px;"></input>
+        </td>
+        <td>
+          <button id="btn_buscar_placas" class="button ">Buscar y seleccionar</button>
+        </td>
+      </table>
+      <table>
+        <td>
+          <label for="fname">id operacion:</label><br>
+        </td>
+        <td>
+          <input id="operacion" name="operacion" style="border-radius: 5px;"></input>
+        </td>
+        <td>
+          <button id="btn_buscar_operacion" class="button ">Buscar y seleccionar</button>
+        </td>
+      </table>
+    </div>
+    <div style="background-color:#6283C1 ; display: block; height: 22px;
+        min-width: 950px; color: white; margin-bottom:5px; padding-top:
+        5px;">
+      Detalles de la orden:
+    </div>
+    <div class="fila">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr class="info_box">
+          <td style="text-align: left; width: 33.33333%;">
+            <legend>Vehiculo:</legend>
+            <table>
+              <tr>
+                <td>Ano: </td>
+                <td><strong><span id="vehiculo_ano"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Vin: </td>
+                <td><strong><span id="vehiculo_vin"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Placas: </td>
+                <td><strong><span id="vehiculo_placas"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Modelo: </td>
+                <td><strong><span id="vehiculo_modelo"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Marca: </td>
+                <td><strong><span id="vehiculo_marca"></span></strong></td>
+              </tr>
+            </table>
+          </td>
+          <td style="text-align: left; width: 33.33333%;">
+            <legend>Cliente:</legend>
+            <table>
+              <tr>
+                <td>Nombre: </td>
+                <td><strong><span id="cliente_nombre"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Telefono: </td>
+                <td><strong><span id="cliente_telefono"></span></strong></td>
+              </tr>
+              <tr>
+                <td>RFC: </td>
+                <td><strong><span id="cliente_rfc"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><strong><span id="cliente_email"></span></strong></td>
+              </tr>
+              <tr>
+                <td>Direccion: </td>
+                <td><strong><span id="cliente_direccion"></span></strong></td>
+              </tr>
+              <tr>
+                <td>C.P.:</td>
+                <td><strong><span id="cliente_cp"></span></strong></td>
+              </tr>
+            </table>
+          </td>
+          <td style="text-align: center; width: 33.33333%;">
+            <legend style="text-align: left;">Operaciones:</legend>
+            <span id="operaciones"></span>
+            <button id="btn_guardar_orden" class="button ">Guardar cambios</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+  <script>
+
+    let vehiculo_seleccionado = false;
+    let minimo_una_numero_operacion = false;
+
+    document.getElementById('btn_buscar_placas').onclick = function () {
+      let placas = document.getElementById('placas').value;
+      console.log(placas);
+      if (placas === '') {
+        alert("introduce un numero de placas");
+        return;
+      }
+
+      fetch('./backend/asesor/getVehiculoByPlacas.php', {
+        method: 'POST',
+        body: JSON.stringify({ placas: placas })
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+          console.log(return_data);
+
+          if (return_data === "No existe un vehiculo con esas placas") {
+            alert("No existe un vehiculo con esas placas");
+            return;
+          }
+
+          // document.getElementById('operaciones').innerHTML = "";
+
+          let data = JSON.parse(return_data);
+
+          console.log(data[0].placas);
+
+          document.getElementById('vehiculo_placas').innerHTML = data[0].placas || "NA";
+          document.getElementById('vehiculo_ano').innerHTML = data[0].ano || "NA";
+          document.getElementById('vehiculo_vin').innerHTML = data[0].vin || "NA";
+          document.getElementById('vehiculo_modelo').innerHTML = data[0].modelo || "NA";
+          document.getElementById('vehiculo_marca').innerHTML = data[0].marca || "NA";
+          document.getElementById('cliente_nombre').innerHTML = data[0].nombre + " " + data[0].apellido ;
+          document.getElementById('cliente_telefono').innerHTML = data[0].telefono || "NA";
+          document.getElementById('cliente_rfc').innerHTML = data[0].rfc || "NA";
+          document.getElementById('cliente_email').innerHTML = data[0].email || "NA";
+          document.getElementById('cliente_direccion').innerHTML = data[0].calle + " " + data[0].numeroext + " " + data[0].numeroint;
+          document.getElementById('cliente_cp').innerHTML = data[0].idarea_postal || "NA";
+
+          vehiculo_seleccionado = true;
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+
+    };
+
+    document.getElementById('btn_buscar_operacion').onclick = function () {
+      let operacion = document.getElementById('operacion').value;
+      console.log(operacion);
+      if (operacion === '') {
+        alert("introduce un numero de operacion");
+        return;
+      }
+
+      fetch('./backend/asesor/getOperacionesById.php', {
+        method: 'POST',
+        body: JSON.stringify({ id_operacion: operacion })
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+          console.log(return_data);
+
+          if (return_data === "No existe una operacion con ese id") {
+            alert("No existe una operacion con ese id");
+            return;
+          }
+
+          let data = JSON.parse(return_data);
+
+          console.log(data[0].placas);
+
+          // document.getElementById('vehiculo_placas').innerHTML = data[0].placas || "NA";
+
+          minimo_una_numero_operacion = true;
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    };
+
+    document.getElementById('btn_guardar_orden').onclick = function () {
+      if (!vehiculo_seleccionado && !minimo_una_numero_operacion) {
+        alert("Porfavor selecciona un vehiculo y un numero de operacion");
+        return;
+      }
+      alert("se armo");
+
+    };
+  </script>
+</body>
+
+</html>
