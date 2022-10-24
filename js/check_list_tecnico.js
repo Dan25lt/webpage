@@ -7,10 +7,12 @@ function guardarCheckListTecnico() {
     // Convierte todos los datos del formulario a formato json
     let formDataObj = {};
     checkListTecnicoForm.forEach((value, key) => (formDataObj[key] = value));
-    console.log(JSON.stringify(formDataObj));
+    
+    // console.log("==== POST check_list_tecnico ====");
+    // console.log(JSON.stringify(formDataObj));
 
     // Manda los datos al backend para ser guardados ahi 
-    fetch('./backend/postOrderDetailsById.php', {
+    fetch('./backend/postCheckListTecnico.php', {
         method: 'POST',
         body: JSON.stringify({
             orderNo: 1,
@@ -41,7 +43,7 @@ function guardarCheckListTecnico() {
 
 
 function cargarCheckListTecnico() {
-    fetch('./backend/getOrderDetailsById.php', {
+    fetch('./backend/getCheckListTecnico.php', {
         method: 'POST',
         body: JSON.stringify({ orderNo: 1 }),
         headers: {
@@ -57,8 +59,8 @@ function cargarCheckListTecnico() {
             var todas_las_filas = JSON.parse(return_data);
             var check_list_tecnico = JSON.parse(todas_las_filas[0].check_list_tecnico);
 
-            console.log("==== GET check_list_tecnico ====");
-            console.log(check_list_tecnico);
+            // console.log("==== GET check_list_tecnico ====");
+            // console.log(check_list_tecnico);
 
             // pastillas_freno_traseras_der_bueno
 

@@ -112,9 +112,6 @@
         * Login de Usuario 
         */
         function login() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
             let loginForm = new FormData(document.getElementById("loginForm"));
 
             fetch('./backend/login.php', {
@@ -125,6 +122,7 @@
                     return response.text();
                 })
                 .then(function (data) {
+                    console.log(" ========================= ")
                     console.log(data);
                     var response = JSON.parse(data);
 
