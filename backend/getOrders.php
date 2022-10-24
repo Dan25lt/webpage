@@ -21,7 +21,8 @@
           o.alertas,
           c.telefono,
           c.rfc,
-          c.nombre
+          c.nombre,
+          c.apellido
       FROM odendeservicio o
       LEFT JOIN vehiculos v
       ON o.idvehiculos = v.idvehiculos
@@ -49,6 +50,7 @@
             $rowObj->telefono = $row['telefono'];
             $rowObj->rfc = $row['rfc'];
             $rowObj->nombre = $row['nombre'];
+            $rowObj->apellido = $row['apellido'];
 
             array_push($return_data, $rowObj);
         }

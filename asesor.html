@@ -59,20 +59,20 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr class="info_box">
             <td style="text-align: left; width: 20%;">
-              <legend>Orden:</legend>
-              <ul>
-                <li>Folio: <strong><span id="order_info_folio"></span></strong></li>
-                <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li>
-                <li>Placas: <strong><span id="order_info_placas"></span></strong></li>
-                <li>Vin: <strong><span id="order_info_vin"></span></strong></li>
+              <legend style="font-size: 150%; margin-bottom: 30px;"><strong >Orden:</strong></legend>
+              <ul style="background-color:#F2F2F2 ;">
+                <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
+                <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
+                <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
+                <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
               </ul>
             </td>
             <td style="text-align: left; width: 20%;">
-              <legend>Cliente:</legend>
-              <ul>
-                <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li>
-                <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li>
-                <li>RFC: <strong><span id="cliente_rfc"></span></strong></li>
+              <legend style="font-size: 150%; margin-bottom: 30px"><strong >Cliente:</strong></legend>
+              <ul style="background-color:#F2F2F2 ;">
+                <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
+                <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
+                <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
               </ul>
             </td>
             <td style="text-align: center; width: 20%;">
@@ -92,7 +92,8 @@
                   <label for="cars">Cambiar el Estatus:</label>
                 </div>
                 <div>
-                  <select name="estatus_combobox" id="estatus_combobox">
+                  <select name="estatus_combobox" id="estatus_combobox" style="margin-bottom: 30px;
+                  margin-top: 20px;">
                     <option value="nuevo">nuevo</option>
                     <option value="En servicio tecnico">En servicio tecnico</option>
                     <option value="En servicio de lavador">En servicio de lavador</option>
@@ -418,7 +419,7 @@
 
             </tr>
             <tr>
-              <th> <button type="submit" class="button ">Guardar cambios</button></th>
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar cambios</button></th>
             </tr>
           </tfoot>
         </table>
@@ -928,15 +929,15 @@
                 </table>
               </td>
             </tr>
-            <tr>
-              <th> <button type="submit" class="button ">Guardar cambios</button></th>
-            </tr>
+           
           </tbody>
           <tfoot>
             <tr>
               <th colspan="2">X:Mal &nbsp &nbsp B:Bien &nbsp
                 &nbsp</th>
-
+            </tr>
+            <tr>
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar cambios</button></th>
             </tr>
           </tfoot>
         </table>
@@ -1081,12 +1082,12 @@
                 btn.setAttribute("vehiculo", data[i]['modelo'] + " " + data[i]['ano']);
                 btn.setAttribute("placas", data[i]['placas']);
                 btn.setAttribute("vin", data[i]['vin']);
-                btn.setAttribute("nombre_cliente", data[i]['nombre']);
+                btn.setAttribute("nombre_cliente", data[i]['nombre'] + " " + data[i]['apellido']);
                 btn.setAttribute("telefono", data[i]['telefono'] || "NA");
                 btn.setAttribute("rfc", data[i]['rfc'] || "NA");
                 btn.setAttribute("estatus", data[i]['estatus'] || "NA");
 
-                btn.value = "Ver";
+                btn.value = "     Ver     ";
                 var text = btn; // text va a tener adentro un boton
 
                 btn.addEventListener('click', mostrarOrdenServicioEspecifica, false);

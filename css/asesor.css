@@ -74,7 +74,7 @@ td {
 }
 
 input {
-    float: right;
+    float: auto;
 }
 
 th {

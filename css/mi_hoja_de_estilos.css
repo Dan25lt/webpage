@@ -1,4 +1,7 @@
-.button {
+.html{
+  min-width:900px;
+}
+.btnsindex {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -10,6 +13,24 @@
   margin-right: auto;
   margin-top: 30px;
 }
+.button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 1px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float: right;
+  border-radius: 10px;
+}
+.button:hover {
+  background-color: #b9f1bb;
+}
 .notas {
   display: block;
   margin-left: auto;
@@ -18,7 +39,7 @@
   color: white;
   text-align: center;
 }
-.button:hover {
+.btnsindex:hover {
   background-color: RoyalBlue;
 }
 .espaciador {
