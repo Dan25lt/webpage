@@ -20,7 +20,9 @@
             $rowObj->idcliente = $row['idcliente'];
             $rowObj->nombre = $row['nombre'];
             $rowObj->apellido = $row['apellido'];
-            $rowObj->iddireccion = $row['iddireccion'];
+            $rowObj->rfc = $row['rfc'];
+            $rowObj->telefono = $row['telefono'];
+            $rowObj->email = $row['email'];
             array_push($return_data, $rowObj);
         }
 

@@ -6,6 +6,7 @@
     $calle = $_POST['calle'];
     $numeroint = $_POST['numeroint'];
     $numeroext = $_POST['numeroext'];
+    $colonia = $_POST['colonia'];
     $idarea_postal = $_POST['idarea_postal'];
 
     $query = "INSERT INTO direccion  (
@@ -13,11 +14,13 @@
         calle, 
         numeroint, 
         numeroext, 
+        colonia,
         idarea_postal)
          values (null,
             '$calle',
             '$numeroint',
             '$numeroext',
+            '$colonia',
             '$idarea_postal',
             NOW())";
 
@@ -39,16 +42,19 @@
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $rfc = $_POST['rfc'];
+    $telefono = $_POST['telefono'];
     $query = "INSERT INTO cliente  (
         idcliente, 
         nombre, 
         apellido, 
         rfc, 
+        telefono,
         iddireccion,)
          values (null,
             '$nombre',
-            '$apellido_paterno',
-            '$apellido_materno',
+            '$apellido',
+            '$rfc',
+            '$telefono',
             '$iddireccion',
             NOW())";
 
