@@ -88,21 +88,21 @@
             </td>
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarEstatus()">
-              <div>
-                <label for="cars">Cambiar el Estatus:</label>
-              </div>
-              <div>
-                <select name="status" id="status">
-                  <option value="nuevo">nuevo</option>
-                  <option value="En servicio tecnico">En servicio tecnico</option>
-                  <option value="En servicio de lavador">En servicio de lavador</option>
-                  <option value="En inspeccion de calidad">En inspeccion de calidad</option>
-                </select>
-              </div>
-              <div>
-                <button type="submit" class="button ">Guardar cambios</button>
-              </div>
-            </form>
+                <div>
+                  <label for="cars">Cambiar el Estatus:</label>
+                </div>
+                <div>
+                  <select name="estatus_combobox" id="estatus_combobox">
+                    <option value="nuevo">nuevo</option>
+                    <option value="En servicio tecnico">En servicio tecnico</option>
+                    <option value="En servicio de lavador">En servicio de lavador</option>
+                    <option value="En inspeccion de calidad">En inspeccion de calidad</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="submit" class="button ">Guardar cambios</button>
+                </div>
+              </form>
             </td>
           </tr>
 
@@ -1084,6 +1084,7 @@
                 btn.setAttribute("nombre_cliente", data[i]['nombre']);
                 btn.setAttribute("telefono", data[i]['telefono'] || "NA");
                 btn.setAttribute("rfc", data[i]['rfc'] || "NA");
+                btn.setAttribute("estatus", data[i]['estatus'] || "NA");
 
                 btn.value = "Ver";
                 var text = btn; // text va a tener adentro un boton
@@ -1160,6 +1161,8 @@
       document.getElementById("cliente_telefono").innerHTML = this.getAttribute("telefono");
       document.getElementById("cliente_rfc").innerHTML = this.getAttribute("rfc");
 
+      document.getElementById("estatus_combobox").value = this.getAttribute("estatus");
+
       getOperacionesList(orden_id);
     };
 
@@ -1194,6 +1197,41 @@
 
           document.getElementById('operaciones').appendChild(ul);
 
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+
+    function guardarEstatus() {
+      event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+
+      // Obtiene todos los datos de la forma
+      let selected_status = document.getElementById("estatus_combobox").value;
+
+      // Manda los datos al backend para ser guardados ahi 
+      fetch('./backend/postEstatus.php', {
+        method: 'POST',
+        body: JSON.stringify({
+          orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
+          data: selected_status
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+
+          if (return_data === "Registro actualizado") {
+            alert("Registro actualizado.");
+          } else {
+            console.log(return_data);
+            alert("Error no se pudo guardar la informacion.");
+          }
         })
         .catch(function (err) {
           console.log(err);

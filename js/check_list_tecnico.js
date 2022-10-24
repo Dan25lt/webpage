@@ -43,9 +43,6 @@ function guardarCheckListTecnico() {
 
 
 function cargarCheckListTecnico(orderNo) {
-
-    console.log(orderNo);
-    
     fetch('./backend/getCheckListTecnico.php', {
         method: 'POST',
         body: JSON.stringify({ orderNo: orderNo }),
