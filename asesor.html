@@ -59,32 +59,38 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr class="info_box">
             <td style="text-align: left; width: 20%;">
-              <legend style="font-size: 150%; margin-bottom: 30px;"><strong >Orden:</strong></legend>
+              <fieldset style="background-color: #fff;">
+              <legend style="font-size: 120%; margin-bottom: 30px;"><strong >Orden:</strong></legend>
               <ul style="background-color:#F2F2F2 ;">
                 <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
                 <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
                 <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
                 <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
               </ul>
+              </fieldset>
             </td>
             <td style="text-align: left; width: 20%;">
-              <legend style="font-size: 150%; margin-bottom: 30px"><strong >Cliente:</strong></legend>
+              <fieldset style="background-color: #fff;">
+              <legend style="font-size: 120%; margin-bottom: 30px"><strong >Cliente:</strong></legend>
               <ul style="background-color:#F2F2F2 ;">
                 <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
                 <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
                 <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
               </ul>
+            </fieldset>
             </td>
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarComentariosAsesor()">
-                <legend style="text-align: left; ">Notas:</legend>
+                <legend style="text-align: left; "><strong style="font-size:120% ;">Notas</strong>:</legend>
                 <textarea id="comentarios_asesor" rows="6" cols="55" style="border-radius: 5px;"></textarea>
                 <button type="submit" class="button ">Guardar cambios</button>
               </form>
             </td>
             <td style="text-align: center; width: 20%;">
-              <legend style="text-align: left;">Operaciones:</legend>
+              <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
+              <legend  style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
               <span id="operaciones"></span>
+            </fieldset>
             </td>
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarEstatus()">
@@ -1187,17 +1193,19 @@
           document.getElementById('operaciones').innerHTML = "";
 
           let data = JSON.parse(return_data);
-          var ul = document.createElement('ul');
+          var div = document.createElement('div');
 
           for (let i = 0; i < data.length; i++) {
             const operacion = data[i];
-            var li = document.createElement('li');
+            var span = document.createElement('span');
             var text = document.createTextNode( "-" + operacion['descripcion']);
-            li.appendChild(text);
-            ul.appendChild(li);
+            span.appendChild(text);
+            div.appendChild(span);
+            var br = document.createElement('br');
+            div.appendChild(br);
           }
-
-          document.getElementById('operaciones').appendChild(ul);
+          div.setAttribute("style","background-color:#F2F2F2 ;");
+          document.getElementById('operaciones').appendChild(div);
 
         })
         .catch(function (err) {

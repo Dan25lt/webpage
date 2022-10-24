@@ -4,9 +4,8 @@
   <title>Altamotriz</title>
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
   <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
+
   <link rel="stylesheet" href="./css/index.css" type="text/css" />
-
-
 </head>
 <img src="./img/logo.png" width="250" height="100" alt="" class="centrar" ;>
 
@@ -29,66 +28,90 @@
         </div>
 
 
-        <div id="modalEditar" class="modal">
-          <form class="modal-content animate" id="editModalForm">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('modalEditar').style.display='none'" class="close"
-                title="Close Modal">&times;</span>
-            </div>
+        <div id="id01" class="modal">
+          <div class="modal-content" style="width:40%">
+            <form id="editModalForm">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
 
-            <div class="container">
-              <div class="form-group">
-                <input type="hidden" placeholder="" name="idcliente" id="idcliente" required>
-              </div>
-              <div class="form-group">
-                <label for="contraseña"><b>Nombre</b></label>
-                <input type="text" placeholder="" name="nombre" id="nombre" required>
-              </div>
-              <div class="form-group">
-                <label for="contraseña"><b>Apellidos</b></label>
-                <input type="text" placeholder="" name="apellido" id="apellido" required>
-              </div>
-              <div class="form-group">
-                <label><b>RFC</b></label>
-                <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" required>
-              </div>
-              <div class="form-group">
-                <label><b>Telefono</b></label>
-                <input type="number" maxlength="10" placeholder="" name="telefono" id="telefono" required>
-              </div>
-              <div class="form-group">
-                <label><b>Email</b></label>
-                <input type="number" maxlength="10" placeholder="" name="email" id="email" required>
-              </div>
-              <div class="form-group">
-                <label><b>Calle</b></label>
-                <input type="text" maxlength="18" placeholder="" name="calle" id="calle" required>
-              </div>
-              <div class="form-group">
-                <label><b>Numero interior</b></label>
-                <input type="number" maxlength="6" placeholder="" name="numeroint" id="numeroint">
-              </div>
-              <div class="container_padding">
-                <label><b>Numero exterior</b></label>
-                <input type="number" maxlength="6" placeholder="" name="numeroext" id="numeroext">
-              </div>
-              <div class="container_padding">
-                <label><b>Colonia</b></label>
-                <input type="number" maxlength="6" placeholder="" name="colonia" id="colonia">
-              </div>
-              <div class="container_padding">
-                <label><b>C.P.</b></label>
-                <input type="number" maxlength="5" placeholder="" name="idarea_postal" id="idarea_postal" required>
               </div>
 
-              <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('modalEditar').style.display='none'"
-                  class="cancelbtn">Cancelar</button>
-              </div>
-          </form>
+              <div class="container">
+                <div class="form-group">
+                  <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
+                </div>
+                <div class="form-group">
+                  <label for="contraseña"><b>Nombre</b></label><br>
+                  <input type="text" placeholder="" name="nombre" id="nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="contraseña"><b>Apellidos</b></label><br>
+                  <input type="text" placeholder="" name="apellido" id="apellido" required>
+                </div>
+                <div class="form-group">
+                  <label><b>RFC</b></label><br>
+                  <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" required>
+                </div>
+                <div class="form-group">
+                  <label><b>Telefono</b></label><br>
+                  <input type="number" placeholder="" name="telefono" id="telefono" required>
+                </div>
+                <div class="form-group">
+                  <label><b>Email</b></label><br>
+                  <input type="email" placeholder="" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                  <label><b>Calle</b></label><br>
+                  <input type="text" placeholder="" name="calle" id="calle" required>
+                </div>
+                <div class="form-group">
+                  <label><b>Numero interior</b></label><br>
+                  <input type="number" t placeholder="" name="numeroint" id="numeroint">
+                </div>
+                <div class="container_padding">
+                  <label><b>Numero exterior</b></label><br>
+                  <input type="number" t placeholder="" name="numeroext" id="numeroext">
+                </div>
+                <div class="container_padding">
+                  <label><b>Colonia</b></label><br>
+                  <input type="text"  placeholder="" name="colonia" id="colonia">
+                </div>
+                <div class="container_padding">
+                  <label><b>C.P.</b></label><br>
+                  <input type="number" placeholder="" name="idarea_postal" id="idarea_postal" required>
+                </div>
+                <button type="submit" name="iniciar" id="iniciar">Guardar</button>
+
+                <div class="container" style="background-color:#f1f1f1">
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancelar</button>
+                </div>
+            </form>
+          </div>
         </div>
 
         <script>
+          document.getElementById('telefono').oninput = function () {
+            if (this.value.length > 10) {
+              this.value = this.value.slice(0, 10);
+            }
+          }
+          document.getElementById('numeroint').oninput = function () {
+            if (this.value.length > 6) {
+              this.value = this.value.slice(0, 6);
+            }
+          }
+          document.getElementById('numeroext').oninput = function () {
+            if (this.value.length > 6) {
+              this.value = this.value.slice(0, 6);
+            }
+          }
+          document.getElementById('idarea_postal').oninput = function () {
+            if (this.value.length > 5) {
+              this.value = this.value.slice(0, 5);
+            }
+          }
           function cargarTodos() {
 
             fetch('./backend/administrador/getclientes.php', {
@@ -118,7 +141,8 @@
                   "numeroint",
                   "numeroext",
                   "colonia",
-                  "idarea_postal"
+                  "idarea_postal",
+                  "opciones"
                 ];
 
                 var table = document.createElement('table');
@@ -166,6 +190,10 @@
                 var text = document.createTextNode('Colonia');
                 td.appendChild(text);
                 tr.appendChild(td);
+                var td = document.createElement('td');
+                var text = document.createTextNode('Codigo postal');
+                td.appendChild(text);
+                tr.appendChild(td);
                 td = document.createElement('td');
                 text = document.createTextNode('Opciones');
                 td.appendChild(text);
@@ -179,12 +207,10 @@
                   for (var j = 0; j < columnNames.length; j++) {
                     var td = document.createElement('td');
                     if (columnNames[j] === 'opciones') {
-
-
                       var btn = document.createElement('input');
                       btn.type = "button";
                       btn.className = "btnEdit";
-                      btn.value = "editar";
+                      btn.value = "Editar";
                       btn.name = data[i]['idcliente'];
 
                       tr.appendChild(btn);
@@ -192,20 +218,22 @@
                       var btn = document.createElement('input');
                       btn.type = "button";
                       btn.className = "btnVer";
-                      btn.value = "ver";
+                      btn.value = "Ver";
                       btn.name = data[i]['idcliente'];
 
                       tr.appendChild(btn);
-
-                    } else {
+                    }
+                    else {
                       var text = document.createTextNode(data[i][columnNames[j]]);
 
                       td.appendChild(text);
                       tr.appendChild(td);
                     }
                   }
+
                   table.appendChild(tr);
                 }
+
 
                 document.getElementById("tabla_cliente").appendChild(table);
 
@@ -239,7 +267,7 @@
 
           function editById(id) {
 
-            document.getElementById('modalEditar').style.display = 'block';
+            document.getElementById('id01').style.display = 'block';
 
 
             fetch('./backend/getClientsById.php', {
@@ -299,7 +327,23 @@
                 }
               });
           }
+          function userInterfaseInit() {
 
+            function redireccionCliente() {
+              location.replace("./index.html");
+            }
+
+            // crear el modal
+            var modal = document.getElementById('id01');
+
+            // se cierra si se hace click fuera de la ventana
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+          }
+          userInterfaseInit();
           cargarTodos();
         </script>
 

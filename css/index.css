@@ -15,7 +15,10 @@ body {
 
  /* Full-width input fields */
  input[type=text],
- input[type=password] {
+ input[type=password],
+ input[type=number],
+ input[type=email]
+  {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -23,6 +26,7 @@ body {
     border: 1px solid #ccc;
     box-sizing: border-box;
  }
+
 
  /* Set a style for all buttons */
  button {
@@ -66,7 +70,7 @@ body {
     padding-top: 16px;
  }
 
- /* The Modal (background) */
+
  .modal {
     display: none;
     position: fixed;
@@ -85,10 +89,9 @@ body {
  .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto;
-    /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
+ 
  }
 
  /* The Close Button (x) */
