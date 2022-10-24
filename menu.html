@@ -4,40 +4,8 @@
     <title>Altamotriz</title>
     <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
     <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-    <style type="text/css">
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: black;
-    }
-
-    li {
-        float: left;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        font-family: "Roboto", sans-serif;
-        font-size: 1.1rem;
-        padding: 16px;
-        padding-right: 76px;
-        padding-left: 75px;
-        text-decoration: none;
-    }
-
-    li a:hover {
-        background-color: #87807F;
-    }
-
-    .li_menu {
-        margin-button: 10px;
-    }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
 </head>
 
 
@@ -47,7 +15,17 @@
 
     <div class="li_menu">
         <ul style="border-radius: 8px;">
-            <li><a href="./admin.html">Administrador</a></li>
+            <li> <div class="dropdown">
+                <button class="dropbtn" onclick="dropdownclick()">Administrador
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="./admin_usuarios.html">Aministrar Usuarios</a>
+                    <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
+                    <a href="./admin_clientes.html">Aministrar Clientes</a>
+                </div>
+                </div> 
+            </li>
             <li><a href="./gerente.html">Gerente</a></li>
             <li><a href="./asesor.html">Asesor</a></li>
             <li><a href="./tecnico.html">Tecnico</a></li>
@@ -61,7 +39,8 @@
 
 </div>
     <div align="left"> 
-      <img src="./img/brand-chrysler.png" alt="Logo Chrysler"><img src="./img/brand-dodge.png" alt="Logo Dodge">
+      <img src="./img/brand-chrysler.png" alt="Logo Chrysler">
+      <img src="./img/brand-dodge.png" alt="Logo Dodge">
     </div>
     <div align="center">
       <img src="./img/brand-fiat.png" alt="Logo Fiat">
@@ -70,7 +49,22 @@
       <img src="./img/brand-jeep.png" alt="Logo Jeep">
       <img src="./img/brand-ram.png" alt="Logo Ram">
     </div>
-    
+    <script>
+        
+        function dropdownclick() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+        </script>
 </body>
+
 
 </html>

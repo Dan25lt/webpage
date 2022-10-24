@@ -1,166 +1,260 @@
-
 .button {
-    background-color: DodgerBlue; 
-    border: none; 
-    color: white;
-    padding: 20px 25px; 
-    font-size: 16px;
-    cursor: pointer; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-  }
-  .notas{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-  }
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 20px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+.notas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
 .button:hover {
   background-color: RoyalBlue;
 }
-  .espaciador{
-    margin: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.espaciador {
+  margin: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 h1 {
-    color: rgb(255, 255, 255);
-    text-align: center;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 h2 {
-    color: rgb(255, 255, 255);
-    text-align: center; 
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 .centrar {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  margin-top: 30px;
 }
-.centrar_input{
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-    width: 112px;
-    
+.centrar_input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 112px;
 }
-.centrar_nota{
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-    width: 10%;
-    color: #222;
+.centrar_nota {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  color: #222;
 }
 .mt-10 {
   margin-top: 10px;
-  ;
 }
 .ul-menu {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: black;
-        }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
 
-        .li-menu {
-            float: left;
-        }
+.li-menu {
+  float: left;
+}
 
-        .li-menu a {
-            display: block;
-            color: white;
-            text-align: center;
-            font-family: "Roboto", sans-serif;
-            font-size: 1.1rem;
-            padding: 16px;
-            padding-right: 76px;
-            padding-left: 75px;
-            text-decoration: none;
-        }
+.li-menu a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  padding: 16px;
+  padding-right: 76px;
+  padding-left: 75px;
+  text-decoration: none;
+}
 
-        li a:hover {
-            background-color: #87807F;
-        }
+li a:hover {
+  background-color: #87807f;
+}
 
-        .li_menu {
-            margin-bottom: 10px;
-        }
+.li_menu {
+  margin-bottom: 10px;
+}
 
-        table,
-        th,
-        td {
+table,
+th,
+td {
+  text-align: left;
+  border-collapse: collapse;
+}
 
-            text-align: left;
-            border-collapse: collapse;
-        }
+.fila {
+  padding-bottom: 10px;
+}
 
-        .fila {
-            padding-bottom: 10px;
-        }
+.info_box {
+  border: solid;
+  border-width: 2px;
+  border-color: #222;
+  background-color: #e7e9eb;
+  width: 100%;
+  height: 150px;
+}
 
-        .info_box {
-            border: solid;
-            border-width: 2px;
-            border-color: #222;
-            background-color: #E7E9EB;
-            width: 100%;
-            height: 150px;
-        }
+.mt-10 {
+  margin-top: 10px;
+}
 
-        .mt-10 {
-            margin-top: 10px;
-            ;
-        }
+#Bueno {
+  accent-color: green;
+}
 
-        #Bueno {
-            accent-color: green;
-        }
+#Medio {
+  accent-color: yellow;
+}
 
-        #Medio {
-            accent-color: yellow;
-        }
+#Malo {
+  accent-color: red;
+}
 
-        #Malo {
-            accent-color: red;
-        }
+#NA {
+  accent-color: blue;
+}
 
-        #NA {
-            accent-color: blue;
-        }
+input {
+  float: right;
+}
 
-        input {
-            float: right;
-        }
+th {
+  text-align: right;
+  color: #fff;
+  background: black;
+}
 
-        th {
-            text-align: right;
-            color: #fff;
-            background: black;
-        }
+tfoot {
+  text-align: center;
+  color: #fff;
+  background: black;
+}
 
-        tfoot {
-            text-align: center;
-            color: #fff;
-            background: black;
-        }
+textarea {
+  resize: none;
+}
 
-        textarea {
-            resize: none;
-        }
+body {
+  background-color: #dbebf9;
+  font-family: "Roboto", sans-serif;
+}
 
-        body {
-            background-color: #DBEBF9;
-            font-family: "Roboto", sans-serif;
-        }
+.backgroundopacity {
+  opacity: 0.5;
+}
 
-        .backgroundopacity {
-            opacity: 0.5;
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
 
-        }
+.navbar a {
+  float: auto;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn,
+.dropbtn:focus {
+  background-color: #87807f;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  padding: 16px;
+  padding-right: 76px;
+  padding-left: 75px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #87807f;
+}
+#fondoMenu{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
