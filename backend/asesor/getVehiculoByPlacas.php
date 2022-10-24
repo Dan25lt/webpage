@@ -5,7 +5,7 @@
     $_post = json_decode(file_get_contents('php://input'),true);
     $placas = $_post['placas'];
     
-    $query = "SELECT v.idvehiculos, v.año, v.vin, v.placas, m.modelo, ma.marca, c.idcliente, c.nombre, c.apellido, c.rfc, c.telefono, c.email, d.iddireccion, d.calle, d.numeroint, d.numeroext, d.idarea_postal
+    $query = "SELECT v.idvehiculos, v.año, v.vin, v.placas, m.idmodelo, m.modelo, ma.marca, c.idcliente, c.nombre, c.apellido, c.rfc, c.telefono, c.email, d.iddireccion, d.calle, d.numeroint, d.numeroext, d.idarea_postal
     FROM vehiculos v
     JOIN cliente c ON v.idcliente = c.idcliente
     JOIN direccion d ON c.iddireccion = d.iddireccion
@@ -23,6 +23,7 @@
             $rowObj->ano = $row['año'];
             $rowObj->vin = $row['vin'];
             $rowObj->placas = $row['placas'];
+            $rowObj->idmodelo = $row['idmodelo'];
             $rowObj->modelo = $row['modelo'];
             $rowObj->marca = $row['marca'];
             $rowObj->idcliente = $row['idcliente'];
