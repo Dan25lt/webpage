@@ -32,12 +32,12 @@
 
                             <div class="container">
 
-                                <p>idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
-                                <p>ano:<strong><span id="ver_ano"></span></strong></p>
-                                <p>vin:<strong><span id="ver_vin"></span></strong></p>
-                                <p>placas:<strong><span id="ver_placas"></span></strong></p>
-                                <p>modelo:<strong><span id="ver_modelo"></span></strong></p>
-                                <p>marca:<strong><span id="ver_marca"></span></strong></p>
+                                <p>Idempleado:<strong><span id="idempleado"></span></strong></p>
+                                <p>Usuario:<strong><span id="usuario"></span></strong></p>
+                                <p>Contrasena:<strong><span id="contrasena"></span></strong></p>
+                                <p>Nombre:<strong><span id="nombre"></span></strong></p>
+                                <p>Apellido:<strong><span id="apellido"></span></strong></p>
+                                <p>Puesto:<strong><span id="puesto"></span></strong></p>
 
                                 <label>
                                 </label>
@@ -52,8 +52,9 @@
 
                 </div>
 
-                <div class="fila">
-                    <div id="tabla_vehiculo"></div>
+                <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
+                    <h1 style="color: 222;">Selecciona el usuario deseado desde la tabla</h1>
+                    <div id="tabla_usuarios"></div>
                 </div>
 
 
@@ -68,34 +69,28 @@
 
                             <div class="container">
                                 <div class="form-group">
-                                    <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos"
+                                    <input type="hidden" placeholder="" name="idempleado" id="idempleado" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Usuario</b></label><br>
+                                    <input type="text" placeholder="" name="usuario" id="usuario" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contrasena"><b>Contrasena</b></label><br>
+                                    <input type="password" placeholder="" name="contrasena" id="contrasena"
                                         required><br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" placeholder="" name="idmarca" id="idmarca" required><br>
+                                    <label ><b>Nombre</b></label><br>
+                                    <input type="text" placeholder="" name="nombre" id="nombre" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" placeholder="" name="idmodelo" id="idmodelo" required><br>
+                                    <label ><b>Apellido</b></label><br>
+                                    <input type="text" placeholder="" name="apellido" id="apellido" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="contraseña"><b>Ano</b></label><br>
-                                    <input type="text" placeholder="" name="ano" id="ano" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contraseña"><b>VIN</b></label><br>
-                                    <input type="text" placeholder="" name="vin" id="vin" required>
-                                </div>
-                                <div class="form-group">
-                                    <label><b>Placas</b></label><br>
-                                    <input type="text" maxlength="7" placeholder="" name="placas" id="placas" required>
-                                </div>
-                                <div class="form-group">
-                                    <label><b>Modelo</b></label><br>
-                                    <input type="text" placeholder="" name="modelo" id="modelo" required>
-                                </div>
-                                <div class="form-group">
-                                    <label><b>Marca</b></label><br>
-                                    <input type="text" placeholder="" name="marca" id="marca" required>
+                                    <label><b>Puesto</b></label><br>
+                                    <input type="text" maxlength="7" placeholder="" name="puesto" id="puesto" required>
                                 </div>
                                 <button type="submit" name="" id="">Guardar</button>
 
@@ -111,30 +106,29 @@
                 <script>
                     function cargarTodos() {
 
-                        fetch('./backend/administrador/getVehiculos.php', {
+                        fetch('./backend/administrador/getUsers.php', {
                             method: 'GET',
                         })
                             .then(function (response) {
                                 return response.text();
                             })
                             .then(function (return_data) {
-                                if (return_data == "no hay vehiculos") {
-                                    alert("no hay vehiculos");
+                                if (return_data == "no hay Usuarios") {
+                                    alert("no hay Usuarios");
                                     return;
                                 }
-
-                                console.log("HERE")
+                                
                                 console.log(return_data);
 
                                 var data = JSON.parse(return_data);
 
                                 var columnNames = [
-                                    "idvehiculos",
-                                    "ano",
-                                    "vin",
-                                    "placas",
-                                    "modelo",
-                                    "marca",
+                                    "idempleado",
+                                    "usuario",
+                                    "contrasena",
+                                    "nombre",
+                                    "apellido",
+                                    "puesto", ,
                                     "opciones"
                                 ];
 
@@ -148,23 +142,23 @@
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 var td = document.createElement('td');
-                                var text = document.createTextNode('Ano');
+                                var text = document.createTextNode('Ususario');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 var td = document.createElement('td');
-                                var text = document.createTextNode('VIN');
+                                var text = document.createTextNode('Contrasena');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 td = document.createElement('td');
-                                text = document.createTextNode('Placas');
+                                text = document.createTextNode('Nombre');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 td = document.createElement('td');
-                                text = document.createTextNode('Modelo');
+                                text = document.createTextNode('Apellido');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 td = document.createElement('td');
-                                text = document.createTextNode('Marca');
+                                text = document.createTextNode('Puesto');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 td = document.createElement('td');
@@ -182,7 +176,7 @@
                                         var td = document.createElement('td');
 
                                         if (columnNames[j] === 'opciones') {
-
+                                           
                                             var btn = document.createElement('input');
                                             btn.type = "button";
                                             btn.className = "btnEdit";
@@ -195,6 +189,14 @@
                                             btn.type = "button";
                                             btn.className = "btnVer";
                                             btn.value = "Ver";
+                                            btn.name = data[i]['idvehiculos'];
+
+                                            tr.appendChild(btn);
+
+                                            var btn = document.createElement('input');
+                                            btn.type = "button";
+                                            btn.className = "btnBorrar";
+                                            btn.value = "Borrar";
                                             btn.name = data[i]['idvehiculos'];
 
                                             tr.appendChild(btn);
@@ -211,7 +213,7 @@
                                 }
 
 
-                                document.getElementById("tabla_vehiculo").appendChild(table);
+                                document.getElementById("tabla_usuarios").appendChild(table);
 
 
                                 const editBtns = document.getElementsByClassName('btnEdit');
@@ -224,11 +226,20 @@
                                 }
 
                                 const verBtns = document.getElementsByClassName('btnVer');
-
+                               
                                 for (const btnVer of verBtns) {
                                     btnVer.addEventListener("click", e => {
                                         console.log("ver Id: ", e.target.name);
                                         verById(e.target.name);
+                                    })
+                                }
+
+                                const borrarBtns = document.getElementsByClassName('btnBorrar');
+
+                                for (const btnBorrar of borrarBtns) {
+                                    btnBorrar.addEventListener("click", e => {
+                                        console.log("ver  Id: ", e.target.name);
+                                        borrarById(e.target.name);
                                     })
                                 }
 
@@ -245,7 +256,7 @@
 
                         document.getElementById('id01').style.display = 'block';
 
-                        fetch('./backend/administrador/getVehiculoById.php', {
+                        fetch('./backend/administrador/getUsersById.php', {
                             method: 'POST',
                             body: JSON.stringify({
                                 id: id,
@@ -262,12 +273,12 @@
 
                                 respuesta = JSON.parse(respuesta);
 
-                                document.getElementById("idvehiculos").value = respuesta[0]['idvehiculos'];
-                                document.getElementById("ano").value = respuesta[0]['ano'];
-                                document.getElementById("vin").value = respuesta[0]['vin'];
-                                document.getElementById("placas").value = respuesta[0]['placas'];
-                                document.getElementById("modelo").value = respuesta[0]['modelo'];
-                                document.getElementById("marca").value = respuesta[0]['marca'];
+                                document.getElementById("idempleado").value = respuesta[0]['idempleado'];
+                                document.getElementById("usuario").value = respuesta[0]['usuario'];
+                                document.getElementById("contrasena").value = respuesta[0]['contrasena'];
+                                document.getElementById("nombre").value = respuesta[0]['nombre'];
+                                document.getElementById("apellido").value = respuesta[0]['apellido'];
+                                document.getElementById("puesto").value = respuesta[0]['puesto'];
 
                             });
                     }
@@ -279,7 +290,7 @@
                         event.preventDefault();
                         let editModalForm = new FormData(document.getElementById("editModalForm"));
 
-                        fetch('./backend/administrador/updateVehiculosById.php', {
+                        fetch('./backend/administrador/updateUserById.php', {
                             method: 'POST',
                             body: editModalForm
                         })
@@ -313,10 +324,12 @@
                             }
                         }
                     }
+
                     function verById(id) {
+                        
                         document.getElementById('modalVer').style.display = 'block';
 
-                        fetch('./backend/administrador/getVehiculoById.php', {
+                        fetch('./backend/administrador/getUsersById.php', {
                             method: 'POST',
                             body: JSON.stringify({
                                 id: id,
@@ -326,20 +339,22 @@
                                 'Content-Type': 'application/json'
                             }
                         })
+                        
                             .then(function (response) {
                                 return response.text();
+
                             })
                             .then(function (respuesta) {
                                 respuesta = JSON.parse(respuesta);
-                                console.log(respuesta)
+                                console.log(respuesta);
 
 
-                                document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
-                                document.getElementById("ver_ano").innerHTML = respuesta[0]['ano'];
-                                document.getElementById("ver_vin").innerHTML = respuesta[0]['vin'];
-                                document.getElementById("ver_placas").innerHTML = respuesta[0]['placas'];
-                                document.getElementById("ver_modelo").innerHTML = respuesta[0]['modelo'];
-                                document.getElementById("ver_marca").innerHTML = respuesta[0]['marca'];
+                                document.getElementById("idempleado").innerHTML = respuesta[0]['idempleado'];
+                                document.getElementById("usuario").innerHTML = respuesta[0]['usuario'];
+                                document.getElementById("contrasena").innerHTML = respuesta[0]['contrasena'];
+                                document.getElementById("nombre").innerHTML = respuesta[0]['nombre'];
+                                document.getElementById("apellido").innerHTML = respuesta[0]['apellido'];
+                                document.getElementById("puesto").innerHTML = respuesta[0]['puesto'];
 
                             });
                     }
@@ -350,5 +365,7 @@
 
 
             </body>
-
+        </table>
+    </body>
+</div>
 </html>

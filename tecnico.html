@@ -4,6 +4,7 @@
     <title>Altamotriz</title>
     <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
     <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
         .ul-menu {
             list-style-type: none;
@@ -123,15 +124,34 @@
     <nav>
         <!--------------------------------- Menu ------------------------------------->
         <div class="li_menu">
-            <ul style="border-radius: 8px;" class="ul-menu">
-                <li class="li-menu"><a href="./admin.html">Administrador</a></li>
-                <li class="li-menu"><a href="./gerente.html">Gerente</a></li>
-                <li class="li-menu"><a href="./asesor.html">Asesor</a></li>
-                <li class="li-menu"><a href="./tecnico.html">Tecnico</a></li>
-                <li class="li-menu"><a href="./lavado.html">Lavador</a></li>
-                <li class="li-menu"><a href="./calidad.html">Calidad</a></li>
-                <li class="li-menu"><a href="./index.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
-                            style="width: 25px;height:22px;"></a></li>
+            <ul style="border-radius: 8px;">
+                <li> <div class="dropdown">
+                    <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="menuadministrador">
+                        <a href="./admin_usuarios.html">Aministrar Usuarios</a>
+                        <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
+                        <a href="./admin_clientes.html">Aministrar Clientes</a>
+                    </div>
+                    </div> 
+                </li>
+                <li><a href="./gerente.html">Gerente</a></li>
+                <li> <div class="dropdown">
+                  <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
+                  <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content" id="menuasesor">
+                    <a href="./asesor.html">Ver ordenes activas</a>
+                      <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
+                  </div>
+                  </div> 
+              </li>
+                <li><a href="./tecnico.html">Tecnico</a></li>
+                <li><a href="./lavado.html">Lavador</a></li>
+                <li><a href="./calidad.html">Calidad</a></li>
+                <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -612,7 +632,30 @@
                     console.log(err);
                 });
         });
-
+        function dropdownclickadmin() {
+          document.getElementById("menuadministrador").classList.toggle("show");
+        }
+        
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var menuadministrador = document.getElementById("menuadministrador");
+            if (menuadministrador.classList.contains('show')) {
+              menuadministrador.classList.remove('show');
+            }
+          }
+        }
+        function dropdownclickasesor() {
+          document.getElementById("menuasesor").classList.toggle("show");
+        }
+        
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var menuasesor = document.getElementById("menuasesor");
+            if (menuasesor.classList.contains('show')) {
+              menuasesor.classList.remove('show');
+            }
+          }
+        }
     </script>
 </body>
 
