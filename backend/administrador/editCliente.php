@@ -1,5 +1,5 @@
 <?php
-    include '../config/database_config.php'; 
+    include '../../config/database_config.php'; 
 
     $return_data = array();
     $idcliente = $_POST['idcliente'];

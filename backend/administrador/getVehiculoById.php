@@ -7,7 +7,9 @@
 
     $return_data = array();
     
-    $query = "SELECT * FROM vehiculos WHERE idvehiculos = $id";
+    $query = "SELECT v.idvehiculos, v.año, v.vin, v.placas, m.modelo, ma.marca
+    FROM vehiculos v LEFT JOIN modelo m ON v.idmodelo = m.idmodelo LEFT JOIN marca ma
+ON v.idvehiculos =  ma.idmarca  WHERE idvehiculos = $id";
 
     $result = $con->query($query);
 
@@ -17,12 +19,12 @@
 
             $rowObj = new stdClass();
 
-            $rowObj->idcliente = $row['idvehiculos'];
-            $rowObj->año = $row['año'];
+            $rowObj->idvehiculos = $row['idvehiculos'];
+            $rowObj->ano = $row['año'];
             $rowObj->vin = $row['vin'];
             $rowObj->placas = $row['placas'];
-            $rowObj->idmodelo = $row['idmodelo'];
-            $rowObj->idcliente = $row['idcliente'];
+            $rowObj->modelo = $row['modelo'];
+            $rowObj->marca = $row['marca'];
             array_push($return_data, $rowObj);
         }
 
