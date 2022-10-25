@@ -11,13 +11,13 @@
     $marca  = $_POST['marca'];
     $idmodelo  = $_POST['idmodelo'];
     $idmarca  = $_POST['idmarca'];
+    
 
 
-    $query = "UPDATE vehiculo 
-    SET año = '$ano', vin = '$vin', rfc = '$rfc', placas = '$placas'
+    $query = "UPDATE vehiculos 
+    SET año = '$ano', vin = '$vin', placas = '$placas'
     WHERE idvehiculos = '$idvehiculos'";
-
-
+    
     if ($con->query($query) === TRUE) {
     } else {
         echo "Error: " . $query . "<br>" . $con->error;

@@ -1,5 +1,5 @@
 <?php
-    include '../config/database_config.php'; 
+    include '../../config/database_config.php'; 
 
     $return_data = array();
 
@@ -21,7 +21,7 @@
             '$numeroint',
             '$numeroext',
             '$colonia',
-            '$idarea_postal',
+            '$idarea_postal'
             NOW())";
 
     if ($con->query($query) === TRUE) {
@@ -34,7 +34,7 @@
     $result = $con->query($query);
 
     if ($result->num_rows > 0) {
-        // output data of each row
+        
         while($row = $result->fetch_assoc()) {      
             $iddireccion = $row['iddireccion'];
         }
@@ -55,7 +55,7 @@
             '$apellido',
             '$rfc',
             '$telefono',
-            '$iddireccion',
+            '$iddireccion'
             NOW())";
 
     if ($con->query($query) === TRUE) {

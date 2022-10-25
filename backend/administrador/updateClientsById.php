@@ -14,7 +14,7 @@
     $numeroext  = $_POST['numeroext'];
     $colonia = $_POST['colonia'];
     $idarea_postal  = $_POST['idarea_postal'];
-    $iddireccion = $_POST['idcliente'];
+    $iddireccion = $_POST['iddireccion'];
 
 
     $query = "UPDATE cliente 

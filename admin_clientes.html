@@ -76,6 +76,9 @@
                   <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
                 </div>
                 <div class="form-group">
+                  <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
+                </div>
+                <div class="form-group">
                   <label for="contraseña"><b>Nombre</b></label><br>
                   <input type="text" placeholder="" name="nombre" id="nombre" required>
                 </div>
@@ -333,6 +336,7 @@
                 document.getElementById("numeroext").value = respuesta[0]['numeroext'];
                 document.getElementById("colonia").value = respuesta[0]['colonia'];
                 document.getElementById("idarea_postal").value = respuesta[0]['idarea_postal'];
+          
 
               });
           }
@@ -409,6 +413,8 @@
                 document.getElementById("ver_numeroext").innerHTML = respuesta[0]['numeroext'];
                 document.getElementById("ver_colonia").innerHTML = respuesta[0]['colonia'];
                 document.getElementById("ver_idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
+                document.getElementById("ver_idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
+
 
               });
           }

@@ -14,6 +14,7 @@
                     o.rfc,
                     o.telefono,
                     o.email,
+                    o.iddireccion,
                     d.calle,
                     d.numeroint,
                     d.numeroext,
@@ -21,7 +22,7 @@
                     d.idarea_postal
                 FROM cliente o 
                 LEFT JOIN direccion d 
-                ON o.idcliente = d.iddireccion";
+                ON o.iddireccion = d.iddireccion";
 
     $result = $con->query($query);
 

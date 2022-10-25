@@ -32,12 +32,12 @@
 
                             <div class="container">
 
-                                <p>idvehiculos:<strong><span id="ver_idvehiculos   "></span></strong></p>
-                                <p>ano:<strong><span id="ver_ano   "></span></strong></p>
-                                <p>vin:<strong><span id="ver_vin   "></span></strong></p>
-                                <p>placas:<strong><span id="ver_placas   "></span></strong></p>
-                                <p>modelo:<strong><span id="ver_modelo   "></span></strong></p>
-                                <p>marca:<strong><span id="ver_marca   "></span></strong></p>
+                                <p>idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
+                                <p>ano:<strong><span id="ver_ano"></span></strong></p>
+                                <p>vin:<strong><span id="ver_vin"></span></strong></p>
+                                <p>placas:<strong><span id="ver_placas"></span></strong></p>
+                                <p>modelo:<strong><span id="ver_modelo"></span></strong></p>
+                                <p>marca:<strong><span id="ver_marca"></span></strong></p>
 
                                 <label>
                                 </label>
@@ -72,7 +72,13 @@
                                         required><br>
                                 </div>
                                 <div class="form-group">
-                                    <label for="contraseña"><b>Año</b></label><br>
+                                    <input type="hidden" placeholder="" name="idmarca" id="idmarca" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" placeholder="" name="idmodelo" id="idmodelo" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contraseña"><b>Ano</b></label><br>
                                     <input type="text" placeholder="" name="ano" id="ano" required>
                                 </div>
                                 <div class="form-group">
@@ -128,7 +134,8 @@
                                     "vin",
                                     "placas",
                                     "modelo",
-                                    "marca"
+                                    "marca",
+                                    "opciones"
                                 ];
 
                                 var table = document.createElement('table');
@@ -141,7 +148,7 @@
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 var td = document.createElement('td');
-                                var text = document.createTextNode('Año');
+                                var text = document.createTextNode('Ano');
                                 td.appendChild(text);
                                 tr.appendChild(td);
                                 var td = document.createElement('td');
@@ -160,15 +167,22 @@
                                 text = document.createTextNode('Marca');
                                 td.appendChild(text);
                                 tr.appendChild(td);
+                                td = document.createElement('td');
+                                text = document.createTextNode('Opciones');
+                                td.appendChild(text);
+                                tr.appendChild(td);
                                 table.appendChild(tr);
 
 
                                 // Lenado de la tabla 
                                 for (var i = 0; i < data.length; i++) {
                                     var tr = document.createElement('tr');
+
                                     for (var j = 0; j < columnNames.length; j++) {
                                         var td = document.createElement('td');
+
                                         if (columnNames[j] === 'opciones') {
+
                                             var btn = document.createElement('input');
                                             btn.type = "button";
                                             btn.className = "btnEdit";
@@ -319,12 +333,13 @@
                                 respuesta = JSON.parse(respuesta);
                                 console.log(respuesta)
 
-                                document.getElementById("idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
-                                document.getElementById("ano").innerHTML = respuesta[0]['ano'];
-                                document.getElementById("vin").innerHTML = respuesta[0]['vin'];
-                                document.getElementById("placas").innerHTML = respuesta[0]['placas'];
-                                document.getElementById("modelo").innerHTML = respuesta[0]['modelo'];
-                                document.getElementById("marca").innerHTML = respuesta[0]['marca'];
+
+                                document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
+                                document.getElementById("ver_ano").innerHTML = respuesta[0]['ano'];
+                                document.getElementById("ver_vin").innerHTML = respuesta[0]['vin'];
+                                document.getElementById("ver_placas").innerHTML = respuesta[0]['placas'];
+                                document.getElementById("ver_modelo").innerHTML = respuesta[0]['modelo'];
+                                document.getElementById("ver_marca").innerHTML = respuesta[0]['marca'];
 
                             });
                     }

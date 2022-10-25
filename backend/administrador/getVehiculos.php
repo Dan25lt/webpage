@@ -18,7 +18,7 @@ FROM vehiculos v
 LEFT JOIN modelo m 
 ON v.idvehiculos = m.idmodelo
 LEFT JOIN marca ma
-ON v.idvehiculos =  ma.marca";
+ON v.idvehiculos =  ma.idmarca";
 
 $result = $con->query($query);
 
