@@ -55,7 +55,7 @@
           <input id="placas" name="placas" style="border-radius: 5px;"></input>
         </td>
         <td>
-          <button id="btn_buscar_placas" class="button ">Buscar y seleccionar</button>
+          <button id="btn_buscar_placas" class="btnblue">Buscar y seleccionar</button>
         </td>
       </table>
       <table>
@@ -66,7 +66,7 @@
           <input id="operacion" name="operacion" style="border-radius: 5px;"></input>
         </td>
         <td>
-          <button id="btn_buscar_operacion" class="button ">Buscar y seleccionar</button>
+          <button id="btn_buscar_operacion" class="btnblue ">Agregar operacion</button>
         </td>
       </table>
     </div>
@@ -133,12 +133,16 @@
             </table>
           </td>
           <td style="text-align: center; width: 33.33333%;">
-            <legend style="text-align: left;">Operaciones:</legend>
-            <span id="operaciones"></span>
-            <button id="btn_guardar_orden" class="button ">Guardar cambios</button>
+            <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
+              <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
+              <span id="operaciones"></span>
+
           </td>
         </tr>
-
+        <tr>
+          <td colspan="3"><button id="btn_guardar_orden" class="btnblue ">Guardar cambios</button></td>
+        </tr>
+        
       </table>
     </div>
   </div>
@@ -146,6 +150,9 @@
 
     let vehiculo_seleccionado = false;
     let minimo_una_numero_operacion = false;
+
+    let idvehiculos = '';
+    let lista_operaciones = [];
 
     document.getElementById('btn_buscar_placas').onclick = function () {
       let placas = document.getElementById('placas').value;
@@ -181,14 +188,17 @@
           document.getElementById('vehiculo_vin').innerHTML = data[0].vin || "NA";
           document.getElementById('vehiculo_modelo').innerHTML = data[0].modelo || "NA";
           document.getElementById('vehiculo_marca').innerHTML = data[0].marca || "NA";
-          document.getElementById('cliente_nombre').innerHTML = data[0].nombre + " " + data[0].apellido ;
+          document.getElementById('cliente_nombre').innerHTML = data[0].nombre + " " + data[0].apellido;
           document.getElementById('cliente_telefono').innerHTML = data[0].telefono || "NA";
           document.getElementById('cliente_rfc').innerHTML = data[0].rfc || "NA";
           document.getElementById('cliente_email').innerHTML = data[0].email || "NA";
           document.getElementById('cliente_direccion').innerHTML = data[0].calle + " " + data[0].numeroext + " " + data[0].numeroint;
           document.getElementById('cliente_cp').innerHTML = data[0].idarea_postal || "NA";
 
+          idvehiculos = data[0].idvehiculos;
+
           vehiculo_seleccionado = true;
+          document.getElementById('placas').value = "";
         })
         .catch(function (err) {
           console.log(err);
@@ -221,11 +231,28 @@
 
           let data = JSON.parse(return_data);
 
-          console.log(data[0].placas);
+          console.log(data)
 
-          // document.getElementById('vehiculo_placas').innerHTML = data[0].placas || "NA";
+          var div = document.createElement('div');
+
+          for (let i = 0; i < data.length; i++) {
+            const operacion = data[i];
+            var span = document.createElement('span');
+            var text = document.createTextNode("-" + data[0]['descripcion']);
+            span.appendChild(text);
+            div.appendChild(span);
+            var br = document.createElement('br');
+            div.appendChild(br);
+          }
+          div.setAttribute("style", "background-color:#F2F2F2 ;");
+          document.getElementById('operaciones').appendChild(div);
 
           minimo_una_numero_operacion = true;
+          document.getElementById('operacion').value = "";
+
+          lista_operaciones.push(data[0]['idoperaciones']);
+
+          console.log(lista_operaciones);
         })
         .catch(function (err) {
           console.log(err);
@@ -233,11 +260,38 @@
     };
 
     document.getElementById('btn_guardar_orden').onclick = function () {
-      if (!vehiculo_seleccionado && !minimo_una_numero_operacion) {
+      if (!vehiculo_seleccionado || !minimo_una_numero_operacion) {
         alert("Porfavor selecciona un vehiculo y un numero de operacion");
         return;
       }
-      alert("se armo");
+
+
+      fetch('./backend/asesor/postOrder.php', {
+        method: 'POST',
+        body: JSON.stringify({
+          idvehiculos: idvehiculos,
+          lista_operaciones: lista_operaciones.join(',')
+        })
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+          console.log(return_data);
+
+          if (return_data === 'Registro insertado') {
+            alert("Registro insertado");
+            document.location.reload();
+          } else {
+            alert("Error al insertar");
+          }
+
+          
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+
 
     };
   </script>
