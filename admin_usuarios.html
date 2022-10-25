@@ -34,7 +34,7 @@
 
                                 <p>Idempleado:<strong><span id="idempleado"></span></strong></p>
                                 <p>Usuario:<strong><span id="usuario"></span></strong></p>
-                                <p>Contrasena:<strong><span id="contraseña"></span></strong></p>
+                                <p>Contrasena:<strong><span id="contrasena"></span></strong></p>
                                 <p>Nombre:<strong><span id="nombre"></span></strong></p>
                                 <p>Apellido:<strong><span id="apellido"></span></strong></p>
                                 <p>Puesto:<strong><span id="puesto"></span></strong></p>
@@ -76,8 +76,8 @@
                                     <input type="text" placeholder="" name="usuario" id="usuario" required><br>
                                 </div>
                                 <div class="form-group">
-                                    <label for="contraseña"><b>Contrasena</b></label><br>
-                                    <input type="password" placeholder="" name="contraseña" id="contraseña"
+                                    <label for="contrasena"><b>Contrasena</b></label><br>
+                                    <input type="password" placeholder="" name="contrasena" id="contrasena"
                                         required><br>
                                 </div>
                                 <div class="form-group">
@@ -125,7 +125,7 @@
                                 var columnNames = [
                                     "idempleado",
                                     "usuario",
-                                    "contraseña",
+                                    "contrasena",
                                     "nombre",
                                     "apellido",
                                     "puesto", ,
@@ -275,7 +275,7 @@
 
                                 document.getElementById("idempleado").value = respuesta[0]['idempleado'];
                                 document.getElementById("usuario").value = respuesta[0]['usuario'];
-                                document.getElementById("contraseña").value = respuesta[0]['contraseña'];
+                                document.getElementById("contrasena").value = respuesta[0]['contrasena'];
                                 document.getElementById("nombre").value = respuesta[0]['nombre'];
                                 document.getElementById("apellido").value = respuesta[0]['apellido'];
                                 document.getElementById("puesto").value = respuesta[0]['puesto'];
@@ -351,7 +351,7 @@
 
                                 document.getElementById("idempleado").innerHTML = respuesta[0]['idempleado'];
                                 document.getElementById("usuario").innerHTML = respuesta[0]['usuario'];
-                                document.getElementById("contraseña").innerHTML = respuesta[0]['contraseña'];
+                                document.getElementById("contrasena").innerHTML = respuesta[0]['contrasena'];
                                 document.getElementById("nombre").innerHTML = respuesta[0]['nombre'];
                                 document.getElementById("apellido").innerHTML = respuesta[0]['apellido'];
                                 document.getElementById("puesto").innerHTML = respuesta[0]['puesto'];

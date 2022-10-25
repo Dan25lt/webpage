@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
         $rowObj = new rowObject();
         $rowObj->idempleado = $row['idempleado'];
         $rowObj->usuario = $row['usuario'];
-        $rowObj->contraseña = $row['contraseña'];
+        $rowObj->contrasena = $row['contraseña'];
         $rowObj->nombre = $row['nombre'];
         $rowObj->apellido = $row['apellido'];
         $rowObj->puesto = $row['puesto'];
