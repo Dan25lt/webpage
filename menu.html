@@ -16,10 +16,10 @@
     <div class="li_menu">
         <ul style="border-radius: 8px;">
             <li> <div class="dropdown">
-                <button class="dropbtn" onclick="dropdownclick()">Administrador
+                <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
                 <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content" id="myDropdown">
+                <div class="dropdown-content" id="menuadministrador">
                     <a href="./admin_usuarios.html">Aministrar Usuarios</a>
                     <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
                     <a href="./admin_clientes.html">Aministrar Clientes</a>
@@ -27,7 +27,16 @@
                 </div> 
             </li>
             <li><a href="./gerente.html">Gerente</a></li>
-            <li><a href="./asesor.html">Asesor</a></li>
+            <li> <div class="dropdown">
+              <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
+              <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content" id="menuasesor">
+                <a href="./asesor.html">Ver ordenes activas</a>
+                  <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
+              </div>
+              </div> 
+          </li>
             <li><a href="./tecnico.html">Tecnico</a></li>
             <li><a href="./lavado.html">Lavador</a></li>
             <li><a href="./calidad.html">Calidad</a></li>
@@ -51,15 +60,27 @@
     </div>
     <script>
         
-        function dropdownclick() {
-          document.getElementById("myDropdown").classList.toggle("show");
+        function dropdownclickadmin() {
+          document.getElementById("menuadministrador").classList.toggle("show");
         }
         
         window.onclick = function(e) {
           if (!e.target.matches('.dropbtn')) {
-          var myDropdown = document.getElementById("myDropdown");
-            if (myDropdown.classList.contains('show')) {
-              myDropdown.classList.remove('show');
+          var menuadministrador = document.getElementById("menuadministrador");
+            if (menuadministrador.classList.contains('show')) {
+              menuadministrador.classList.remove('show');
+            }
+          }
+        }
+        function dropdownclickasesor() {
+          document.getElementById("menuasesor").classList.toggle("show");
+        }
+        
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var menuasesor = document.getElementById("menuasesor");
+            if (menuasesor.classList.contains('show')) {
+              menuasesor.classList.remove('show');
             }
           }
         }

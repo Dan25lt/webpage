@@ -52,7 +52,8 @@
 
                 </div>
 
-                <div class="fila">
+                <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
+                    <h1 style="color: 222;">Selecciona el Vehiculo deseado desde la tabla</h1>
                     <div id="tabla_vehiculo"></div>
                 </div>
 
@@ -213,7 +214,6 @@
 
                                 document.getElementById("tabla_vehiculo").appendChild(table);
 
-
                                 const editBtns = document.getElementsByClassName('btnEdit');
 
                                 for (const btnEdit of editBtns) {
@@ -331,7 +331,7 @@
                             })
                             .then(function (respuesta) {
                                 respuesta = JSON.parse(respuesta);
-                                console.log(respuesta)
+                                console.log(respuesta);
 
 
                                 document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
@@ -350,5 +350,8 @@
 
 
             </body>
+        </table>
+    </body>
+</div>
 
 </html>

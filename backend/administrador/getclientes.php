@@ -5,7 +5,7 @@
     
     class rowObject
     {
-        public $idordenDeServicio;
+        public $idcliente;
     }
 
     $query = "SELECT o.idcliente, 
