@@ -60,24 +60,24 @@
           <tr class="info_box">
             <td style="text-align: left; width: 20%;">
               <fieldset style="background-color: #fff;">
-              <legend style="font-size: 120%; margin-bottom: 30px;"><strong >Orden:</strong></legend>
-              <ul style="background-color:#F2F2F2 ;">
-                <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
-                <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
-                <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
-                <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
-              </ul>
+                <legend style="font-size: 120%; margin-bottom: 30px;"><strong>Orden:</strong></legend>
+                <ul style="background-color:#F2F2F2 ;">
+                  <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
+                  <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
+                  <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
+                  <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
+                </ul>
               </fieldset>
             </td>
             <td style="text-align: left; width: 20%;">
               <fieldset style="background-color: #fff;">
-              <legend style="font-size: 120%; margin-bottom: 30px"><strong >Cliente:</strong></legend>
-              <ul style="background-color:#F2F2F2 ;">
-                <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
-                <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
-                <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
-              </ul>
-            </fieldset>
+                <legend style="font-size: 120%; margin-bottom: 30px"><strong>Cliente:</strong></legend>
+                <ul style="background-color:#F2F2F2 ;">
+                  <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
+                  <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
+                  <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
+                </ul>
+              </fieldset>
             </td>
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarComentariosAsesor()">
@@ -88,9 +88,9 @@
             </td>
             <td style="text-align: center; width: 20%;">
               <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
-              <legend  style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
-              <span id="operaciones"></span>
-            </fieldset>
+                <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
+                <span id="operaciones"></span>
+              </fieldset>
             </td>
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarEstatus()">
@@ -126,6 +126,64 @@
           </div>
         </table>
       </div>
+
+      <div style="background-color:#6283C1 ; display: block; height: 22px;
+        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+        Fotos
+      </div>
+
+      <!-- 
+        FOTOS
+       -->
+      <div id="id01" class="modal">
+        <div class="modal-content animate">
+          <form class="" onsubmit="validateCaptcha()" id="loginForm">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+              <div>
+                <img src="" id="modal_img" width="450px" height="auto">
+              </div>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto"></td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img2" width="150px" height="auto"></td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img3" width="150px" height="auto"></td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img4" width="150px" height="auto"></td>
+        </tr>
+        <tr>
+          <td>
+            <button id="btn_upload_img1">Cargar</button>
+            <button id="btn_delete_img1">Borrar</button>
+          </td>
+          <td>
+            <button id="btn_upload_img2">Cargar</button>
+            <button id="btn_delete_img2">Borrar</button>
+          </td>
+          <td>
+            <button id="btn_upload_img3">Cargar</button>
+            <button id="btn_delete_img3">Borrar</button>
+          </td>
+          <td>
+            <button id="btn_upload_img4">Cargar</button>
+            <button id="btn_delete_img4">Borrar</button>
+          </td>
+        </tr>
+
+      </table>
 
       <div style="background-color:#6283C1 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
@@ -427,7 +485,8 @@
 
             </tr>
             <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar cambios</button></th>
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar
+                  cambios</button></th>
             </tr>
           </tfoot>
         </table>
@@ -937,7 +996,7 @@
                 </table>
               </td>
             </tr>
-           
+
           </tbody>
           <tfoot>
             <tr>
@@ -945,7 +1004,8 @@
                 &nbsp</th>
             </tr>
             <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar cambios</button></th>
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar
+                  cambios</button></th>
             </tr>
           </tfoot>
         </table>
@@ -990,13 +1050,30 @@
         </table>
       </div>
 
+      <br>
+      <br>
+      <br>
+      <table width="100%">
+        <td>
+          <div width="100%" style="background-color:#6283C1 ; display: block; height: 22px;
+          min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+            Fotos
+          </div>
+        </td>
+      </table>
+      <br>
+      <br>
+      <br>
+
     </div>
   </div>
+
 
   <script src="./js/cookies_handler.js"></script>
   <script src="./js/check_list_tecnico.js"></script>
   <script src="./js/check_list_calidad.js"></script>
   <script src="./js/comentarios.js"></script>
+  <script src="./js/modal_imgs.js"></script>
 
   <!---------------------- Script para la lectura de los datos de la base de datos ---------------------->
   <script>
@@ -1095,6 +1172,11 @@
                 btn.setAttribute("rfc", data[i]['rfc'] || "NA");
                 btn.setAttribute("estatus", data[i]['estatus'] || "NA");
 
+                btn.setAttribute("img_url1", data[i]['img_url1'] || "NA");
+                btn.setAttribute("img_url2", data[i]['img_url2'] || "NA");
+                btn.setAttribute("img_url3", data[i]['img_url3'] || "NA");
+                btn.setAttribute("img_url4", data[i]['img_url4'] || "NA");
+
                 btn.value = "     Ver     ";
                 var text = btn; // text va a tener adentro un boton
 
@@ -1143,9 +1225,7 @@
     */
     function userInterfaseInit() {
       // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
-      document.getElementById('orden_servicio_contenido').style.display = 'none';
-
-
+      // document.getElementById('orden_servicio_contenido').style.display = 'none';
     }
 
     var mostrarOrdenServicioEspecifica = function () {
@@ -1161,6 +1241,9 @@
       cargarCheckListTecnico(orden_id);
       cargarCheckListCalidad(orden_id);
 
+      /*
+      * Mostrar datos de la orden
+      */
       document.getElementById("order_info_folio").innerHTML = this.getAttribute("order_id");
       document.getElementById("order_info_vehiculo").innerHTML = this.getAttribute("vehiculo");
       document.getElementById("order_info_placas").innerHTML = this.getAttribute("placas");
@@ -1171,6 +1254,23 @@
       document.getElementById("cliente_rfc").innerHTML = this.getAttribute("rfc");
 
       document.getElementById("estatus_combobox").value = this.getAttribute("estatus");
+
+      /*
+      * mostrar Fotos chiquitas
+      */
+      if (this.getAttribute("img_url1") !== 'NA') {
+        document.getElementById("img1").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url1"));
+      }
+      if (this.getAttribute("img_url2") !== 'NA') {
+        document.getElementById("img2").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url2"));
+      }
+      if (this.getAttribute("img_url3") !== 'NA') {
+        document.getElementById("img3").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url3"));
+      }
+      if (this.getAttribute("img_url4") !== 'NA') {
+        document.getElementById("img4").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url4"));
+      }
+
 
       getOperacionesList(orden_id);
     };
@@ -1200,13 +1300,13 @@
           for (let i = 0; i < data.length; i++) {
             const operacion = data[i];
             var span = document.createElement('span');
-            var text = document.createTextNode( "-" + operacion['descripcion']);
+            var text = document.createTextNode("-" + operacion['descripcion']);
             span.appendChild(text);
             div.appendChild(span);
             var br = document.createElement('br');
             div.appendChild(br);
           }
-          div.setAttribute("style","background-color:#F2F2F2 ;");
+          div.setAttribute("style", "background-color:#F2F2F2 ;");
           document.getElementById('operaciones').appendChild(div);
 
         })

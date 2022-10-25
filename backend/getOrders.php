@@ -22,7 +22,11 @@
           c.telefono,
           c.rfc,
           c.nombre,
-          c.apellido
+          c.apellido,
+          o.img_url1,
+          o.img_url2,
+          o.img_url3,
+          o.img_url4
       FROM odendeservicio o
       LEFT JOIN vehiculos v
       ON o.idvehiculos = v.idvehiculos
@@ -51,6 +55,11 @@
             $rowObj->rfc = $row['rfc'];
             $rowObj->nombre = $row['nombre'];
             $rowObj->apellido = $row['apellido'];
+
+            $rowObj->img_url1 = $row['img_url1'];
+            $rowObj->img_url2 = $row['img_url2'];
+            $rowObj->img_url3 = $row['img_url3'];
+            $rowObj->img_url4 = $row['img_url4'];
 
             array_push($return_data, $rowObj);
         }
