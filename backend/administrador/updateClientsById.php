@@ -14,16 +14,27 @@
     $numeroext  = $_POST['numeroext'];
     $colonia = $_POST['colonia'];
     $idarea_postal  = $_POST['idarea_postal'];
+    $iddireccion = $_POST['idcliente'];
 
 
-    $query = "UPDATE alumnos 
-    SET nombre = '$nombre', apellido_paterno = '$apellido_paterno', apellido_materno = '$apellido_materno', fecha_nacimiento = '$fecha_nacimiento', curp = '$curp', estado = '$estado', grado = '$grado', telefono = '$telefono', email = '$email'
-    WHERE idalumnos = '$idalumnos'";
+    $query = "UPDATE cliente 
+    SET nombre = '$nombre', apellido = '$apellido', rfc = '$rfc', telefono = '$telefono', email = '$email' 
+    WHERE idcliente = '$idcliente'";
+
+
+    if ($con->query($query) === TRUE) {
+    } else {
+        echo "Error: " . $query . "<br>" . $con->error;
+    }
+
+ $query = "UPDATE direccion 
+    SET calle = '$calle', numeroint = '$numeroint', numeroext = '$numeroext', colonia = '$colonia', idarea_postal = '$idarea_postal' 
+    WHERE iddireccion = '$iddireccion'";
+    
 
     if ($con->query($query) === TRUE) {
         echo "Registro actualizado";
     } else {
         echo "Error: " . $query . "<br>" . $con->error;
     }
-
 ?>

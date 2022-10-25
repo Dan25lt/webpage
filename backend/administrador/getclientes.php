@@ -38,7 +38,7 @@
             $rowObj->calle = $row['calle'];
             $rowObj->numeroint = $row['numeroint'];
             $rowObj->numeroext = $row['numeroext'];
-            $rowObj->numeroext = $row['colonia'];
+            $rowObj->colonia = $row['colonia'];
             $rowObj->idarea_postal = $row['idarea_postal'];
             array_push($return_data, $rowObj);
         }

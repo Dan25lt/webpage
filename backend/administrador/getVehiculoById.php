@@ -1,5 +1,5 @@
 <?php
-    include '../config/database_config.php'; 
+    include '../../config/database_config.php'; 
 
     $_post = json_decode(file_get_contents('php://input'),true);
     $id = $_post['id'];
@@ -29,7 +29,7 @@
         echo json_encode($return_data);
 
     } else {
-        echo 'no hay clientes'; 
+        echo 'no hay vehiculos'; 
     }
 
 ?>
