@@ -487,6 +487,31 @@
         });
     }
 
+    var insertForm = document.getElementById("addModalForm");
+    insertForm.addEventListener('submit', handleInsertForm);
+
+    function handleInsertForm(event) {
+      event.preventDefault();
+      let addModalForm = new FormData(document.getElementById("addModalForm"));
+
+      fetch('./backend/administrador/insertClients.php', {
+        method: 'POST',
+        body: addModalForm
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (respuesta) {
+          console.log(respuesta);
+          if (respuesta === 'Registro insertado') {
+            alert("Registro insertado");
+            window.location.reload();
+          } else {
+            alert("Error al insertar el registro");
+          }
+        });
+    }
+
     userInterfaseInit();
     cargarTodos();
   </script>
