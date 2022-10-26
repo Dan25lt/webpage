@@ -34,7 +34,7 @@
       ON v.idmodelo = m.idmodelo
       LEFT JOIN cliente c
       ON v.idcliente = c.idcliente
-      WHERE o.idordenDeServicio AND o.estatus <> 'Finalizado' ";
+      WHERE o.idordenDeServicio AND o.estatus = 'En servicio tecnico' ";
 
     $result = $con->query($query);
 

@@ -1105,14 +1105,6 @@
       <br>
       <br>
       <br>
-      <table width="100%">
-        <td>
-          <div width="100%" style="background-color:#6283C1 ; display: block; height: 22px;
-          min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
-            Fotos
-          </div>
-        </td>
-      </table>
       <br>
       <br>
       <br>
@@ -1159,7 +1151,7 @@
             "fechaEntrada",
             "fechaSalida",
             "estatus",
-            "alertas",
+            // "alertas",
             "opciones"];
 
           var table = document.createElement('table');
@@ -1189,10 +1181,10 @@
           text = document.createTextNode('Fecha salida');
           td.appendChild(text);
           tr.appendChild(td);
-          td = document.createElement('td');
+          /* td = document.createElement('td');
           text = document.createTextNode('Estatus');
           td.appendChild(text);
-          tr.appendChild(td);
+          tr.appendChild(td); */
           td = document.createElement('td');
           text = document.createTextNode('Atencion');
           td.appendChild(text);
@@ -1279,7 +1271,7 @@
     */
     function userInterfaseInit() {
       // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
-      // document.getElementById('orden_servicio_contenido').style.display = 'none';
+      document.getElementById('orden_servicio_contenido').style.display = 'none';
     }
 
     var mostrarOrdenServicioEspecifica = function () {
@@ -1379,6 +1371,7 @@
 
           if (return_data === "Registro actualizado") {
             alert("Registro actualizado.");
+            window.location.reload();
           } else {
             console.log(return_data);
             alert("Error no se pudo guardar la informacion.");
@@ -1393,6 +1386,7 @@
     cargarOrdenes();
     inspeccionarMisCookies();
     userInterfaseInit();
+
     function dropdownclickadmin() {
           document.getElementById("menuadministrador").classList.toggle("show");
         }
