@@ -7,7 +7,7 @@ class rowObject
 {
     public $idempleado;
 }
-$query = "SELECT * FROM empleado";
+$query = "SELECT * FROM empleado WHERE idempleado > 1";
 
 $result = $con->query($query);
 

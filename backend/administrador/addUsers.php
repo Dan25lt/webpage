@@ -3,12 +3,11 @@ include '../../config/database_config.php';
 
 $return_data = array();
 
-$idempleado = $_POST['idempleado'];
-$usuario = $_POST['usuario'];
-$contraseña = $_POST['contraseña'];
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$puest = $_POST['puest'];
+$usuario = $_POST['add_usuario'];
+$contraseña = $_POST['add_contrasena'];
+$nombre = $_POST['add_nombre'];
+$apellido = $_POST['add_apellido'];
+$puesto = $_POST['add_puesto'];
 
 $query = "INSERT INTO empleado  (
          idempleado, 
@@ -17,17 +16,15 @@ $query = "INSERT INTO empleado  (
          nombre, 
          apellido, 
          puesto)
-         values (null,
-            '$idempleado',    
+         values (null,    
             '$usuario',   
             '$contraseña',    
             '$nombre',    
             '$apellido',    
-            '$puesto' 
-            NOW())";
+            '$puesto')";
 
 if ($con->query($query) === TRUE) {
-    echo "Registro actualizado";
+    echo "Registro insertado";
 } else {
     echo "Error: " . $query . "<br>" . $con->error;
 }

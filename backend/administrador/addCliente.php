@@ -39,29 +39,29 @@
             $iddireccion = $row['iddireccion'];
         }
 
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $rfc = $_POST['rfc'];
-    $telefono = $_POST['telefono'];
-    $query = "INSERT INTO cliente  (
-        idcliente, 
-        nombre, 
-        apellido, 
-        rfc, 
-        telefono,
-        iddireccion,)
-         values (null,
-            '$nombre',
-            '$apellido',
-            '$rfc',
-            '$telefono',
-            '$iddireccion'
-            NOW())";
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $rfc = $_POST['rfc'];
+        $telefono = $_POST['telefono'];
+        $query = "INSERT INTO cliente  (
+            idcliente, 
+            nombre, 
+            apellido, 
+            rfc, 
+            telefono,
+            iddireccion,)
+            values (null,
+                '$nombre',
+                '$apellido',
+                '$rfc',
+                '$telefono',
+                '$iddireccion'
+                NOW())";
 
-    if ($con->query($query) === TRUE) {
-        echo "Registro actualizado";
-    } else {
-        echo "Error: " . $query . "<br>" . $con->error;
-    }
-
+        if ($con->query($query) === TRUE) {
+            echo "Registro actualizado";
+        } else {
+            echo "Error: " . $query . "<br>" . $con->error;
+        }
+    }  
 ?>
