@@ -7,10 +7,10 @@
     $ano = $_POST['ano'];
     $vin  = $_POST['vin'];
     $placas  = $_POST['placas'];
-    $modelo  = $_POST['modelo'];
-    $marca  = $_POST['marca'];
-    $idmodelo  = $_POST['idmodelo'];
-    $idmarca  = $_POST['idmarca'];
+    /* $modelo  = $_POST['modelo'];
+    $marca  = $_POST['marca']; */
+    /* $idmodelo  = $_POST['idmodelo'];
+    $idmarca  = $_POST['idmarca']; */
     
 
 
@@ -19,11 +19,12 @@
     WHERE idvehiculos = '$idvehiculos'";
     
     if ($con->query($query) === TRUE) {
+        echo "Registro actualizado";
     } else {
         echo "Error: " . $query . "<br>" . $con->error;
     }
 
-    $query = "UPDATE modelo 
+    /* $query = "UPDATE modelo 
     SET modelo = '$modelo' 
     WHERE idmodelo = '$idmodelo'";
 
@@ -42,5 +43,5 @@
         echo "Registro actualizado";
     } else {
         echo "Error: " . $query . "<br>" . $con->error;
-    }
+    } */
 ?>

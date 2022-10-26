@@ -9,16 +9,14 @@ class rowObject
 }
 
 $query = "SELECT v.idvehiculos, 
-   v.año,
-   v.vin,
-   v.placas,
-   m.modelo,
-   ma.marca
-FROM vehiculos v 
-LEFT JOIN modelo m 
-ON v.idvehiculos = m.idmodelo
-LEFT JOIN marca ma
-ON v.idvehiculos =  ma.idmarca";
+    v.año,
+    v.vin,
+    v.placas,
+    m.modelo,
+    ma.marca
+    FROM vehiculos v 
+    JOIN modelo m ON v.idmodelo = m.idmodelo
+    JOIN marca ma ON m.idmarca =  ma.idmarca";
 
 $result = $con->query($query);
 

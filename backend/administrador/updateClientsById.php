@@ -16,11 +16,9 @@
     $idarea_postal  = $_POST['idarea_postal'];
     $iddireccion = $_POST['iddireccion'];
 
-
     $query = "UPDATE cliente 
     SET nombre = '$nombre', apellido = '$apellido', rfc = '$rfc', telefono = '$telefono', email = '$email' 
     WHERE idcliente = '$idcliente'";
-
 
     if ($con->query($query) === TRUE) {
     } else {
@@ -30,7 +28,6 @@
  $query = "UPDATE direccion 
     SET calle = '$calle', numeroint = '$numeroint', numeroext = '$numeroext', colonia = '$colonia', idarea_postal = '$idarea_postal' 
     WHERE iddireccion = '$iddireccion'";
-    
 
     if ($con->query($query) === TRUE) {
         echo "Registro actualizado";
