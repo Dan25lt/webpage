@@ -14,9 +14,9 @@ CREATE TABLE `area_postal` (
 --
 
 LOCK TABLES `area_postal` WRITE;
-/*!40000 ALTER TABLE `area_postal` DISABLE KEYS */;
+
 INSERT INTO `area_postal` VALUES (31050,'Chihuahua','Chihuahua');
-/*!40000 ALTER TABLE `area_postal` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --

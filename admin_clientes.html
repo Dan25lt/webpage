@@ -85,15 +85,15 @@
             </div>
             <div class="form-group">
               <label for="contraseña"><b>Nombre</b></label><br>
-              <input type="text" placeholder="" name="nombre" id="nombre" required>
+              <input type="text" placeholder="" name="nombre" id="nombre" onkeypress="checkInputOnlyLetters(event)" required>
             </div>
             <div class="form-group">
               <label for="contraseña"><b>Apellidos</b></label><br>
-              <input type="text" placeholder="" name="apellido" id="apellido" required>
+              <input type="text" placeholder="" name="apellido" id="apellido" onkeypress="checkInputOnlyLetters(event)" required>
             </div>
             <div class="form-group">
               <label><b>RFC</b></label><br>
-              <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" required>
+              <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" onkeypress="checkInputOnlyLettersAndNumbers(event)" required>
             </div>
             <div class="form-group">
               <label><b>Telefono</b></label><br>
@@ -105,7 +105,7 @@
             </div>
             <div class="form-group">
               <label><b>Calle</b></label><br>
-              <input type="text" placeholder="" name="calle" id="calle" required>
+              <input type="text" placeholder="" name="calle" id="calle" onkeypress="checkInputOnlyLettersAndNumbers(event)" required>
             </div>
             <div class="form-group">
               <label><b>Numero interior</b></label><br>
@@ -117,7 +117,7 @@
             </div>
             <div class="container_padding">
               <label><b>Colonia</b></label><br>
-              <input type="text" placeholder="" name="colonia" id="colonia">
+              <input type="text" placeholder="" name="colonia" id="colonia" onkeypress="checkInputOnlyLettersAndNumbers(event)">
             </div>
             <div class="container_padding">
               <label><b>C.P.</b></label><br>
@@ -149,15 +149,15 @@
           </div>
           <div class="form-group">
             <label for="contraseña"><b>Nombre</b></label><br>
-            <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
+            <input type="text" placeholder="" name="add_nombre" id="add_nombre" onkeypress="checkInputOnlyLetters(event)" required>
           </div>
           <div class="form-group">
             <label for="contraseña"><b>Apellidos</b></label><br>
-            <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
+            <input type="text" placeholder="" name="add_apellido" id="add_apellido" onkeypress="checkInputOnlyLetters(event)" required>
           </div>
           <div class="form-group">
             <label><b>RFC</b></label><br>
-            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" required>
+            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" onkeypress="checkInputOnlyLettersAndNumbers(event)"  required>
           </div>
           <div class="form-group">
             <label><b>Telefono</b></label><br>
@@ -169,19 +169,19 @@
           </div>
           <div class="form-group">
             <label><b>Calle</b></label><br>
-            <input type="text" placeholder="" name="add_calle" id="add_calle" required>
+            <input type="text" placeholder="" name="add_calle" id="add_calle" onkeypress="checkInputOnlyLettersAndNumbers(event)" required>
           </div>
           <div class="form-group">
             <label><b>Numero interior</b></label><br>
-            <input type="number" t placeholder="" name="add_numeroint" id="add_numeroint">
+            <input type="number"  placeholder="" name="add_numeroint" id="add_numeroint">
           </div>
           <div class="container_padding">
             <label><b>Numero exterior</b></label><br>
-            <input type="number" t placeholder="" name="add_numeroext" id="add_numeroext">
+            <input type="number"  placeholder="" name="add_numeroext" id="add_numeroext">
           </div>
           <div class="container_padding">
             <label><b>Colonia</b></label><br>
-            <input type="text" placeholder="" name="add_colonia" id="add_colonia">
+            <input type="text" placeholder="" name="add_colonia" id="add_colonia" onkeypress="checkInputOnlyLettersAndNumbers(event)">
           </div>
           <div class="container_padding">
             <label><b>C.P.</b></label><br>
@@ -221,6 +221,30 @@
         this.value = this.value.slice(0, 5);
       }
     }
+    
+    document.getElementById('add_telefono').oninput = function () {
+      if (this.value.length > 10) {
+        this.value = this.value.slice(0, 10);
+      }
+    }
+    document.getElementById('add_numeroint').oninput = function () {
+      if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+      }
+    }
+    document.getElementById('add_numeroext').oninput = function () {
+      if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+      }
+    }
+    document.getElementById('add_idarea_postal').oninput = function () {
+      if (this.value.length > 5) {
+        this.value = this.value.slice(0, 5);
+      }
+    }
+
+
+
     function cargarTodos() {
 
       fetch('./backend/administrador/getclientes.php', {
@@ -512,6 +536,22 @@
         });
     }
 
+    function checkInputOnlyLetters(e)
+{
+    //only alpha-numeric characters
+    var ok = /[A-Za-z]/.test(String.fromCharCode(e.charCode));
+    if (!ok)
+        e.preventDefault();
+}
+function checkInputOnlyLettersAndNumbers(e)
+{
+    //only alpha-numeric characters
+    var ok = /[A-Za-z0-9]/.test(String.fromCharCode(e.charCode));
+    if (!ok)
+        e.preventDefault();
+}
+
+    
     userInterfaseInit();
     cargarTodos();
   </script>

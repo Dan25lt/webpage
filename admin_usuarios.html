@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group">
                                 <label><b>Usuario</b></label><br>
-                                <input type="text" placeholder="" name="usuario" id="usuario" required><br>
+                                <input type="text" placeholder="" name="usuario" id="usuario" onkeypress="checkInputOnlyLetters(event)" required><br>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena"><b>Contrasena</b></label><br>
@@ -88,15 +88,15 @@
                             </div>
                             <div class="form-group">
                                 <label><b>Nombre</b></label><br>
-                                <input type="text" placeholder="" name="nombre" id="nombre" required>
+                                <input type="text" placeholder="" name="nombre" id="nombre" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Apellido</b></label><br>
-                                <input type="text" placeholder="" name="apellido" id="apellido" required>
+                                <input type="text" placeholder="" name="apellido" id="apellido" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Puesto</b></label><br>
-                                <input type="text" maxlength="7" placeholder="" name="puesto" id="puesto" required>
+                                <input type="text"  placeholder="" name="puesto" id="puesto" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <button type="submit">Guardar</button>
 
@@ -125,7 +125,7 @@
                             </div>
                             <div class="form-group">
                                 <label><b>Usuario</b></label><br>
-                                <input type="text" placeholder="" name="add_usuario" id="add_usuario" required><br>
+                                <input type="text" placeholder="" name="add_usuario" id="add_usuario" onkeypress="checkInputOnlyLetters(event)" required><br>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena"><b>Contrasena</b></label><br>
@@ -134,15 +134,15 @@
                             </div>
                             <div class="form-group">
                                 <label><b>Nombre</b></label><br>
-                                <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
+                                <input type="text" placeholder="" name="add_nombre" id="add_nombre" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Apellido</b></label><br>
-                                <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
+                                <input type="text" placeholder="" name="add_apellido" id="add_apellido" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Puesto</b></label><br>
-                                <input type="text" maxlength="7" placeholder="" name="add_puesto" id="add_puesto" required>
+                                <input type="text"  placeholder="" name="add_puesto" id="add_puesto" onkeypress="checkInputOnlyLetters(event)" required>
                             </div>
                             <button type="submit">Guardar</button>
 
@@ -480,7 +480,20 @@
                     console.log(err);
                 });
         }
-
+        function checkInputOnlyLetters(e)
+{
+    //only alpha-numeric characters
+    var ok = /[A-Za-z]/.test(String.fromCharCode(e.charCode));
+    if (!ok)
+        e.preventDefault();
+}
+function checkInputOnlyLettersAndNumbers(e)
+{
+    //only alpha-numeric characters
+    var ok = /[A-Za-z0-9]/.test(String.fromCharCode(e.charCode));
+    if (!ok)
+        e.preventDefault();
+}
 
         userInterfaseInit();
         cargarTodos();
