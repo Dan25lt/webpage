@@ -1,8 +1,3 @@
-body {
-    background-color: #CCE3F6;
-    font-family: "Roboto", sans-serif;
- }
-
  .version {
     position: fixed;
     bottom: 0;
@@ -120,3 +115,27 @@ body {
        width: 100%;
     }
  }
+
+ #leftbox {
+   float:left; 
+
+   width:33%;
+   height:280px;
+}
+#middlebox{
+   float:left; 
+ 
+   width:33%;
+   height:280px;
+}
+#rightbox{
+   float:right;
+
+   width:33%;
+   height:280px;
+}
+
+footer{
+padding-top: 250px;
+
+}

@@ -9,14 +9,11 @@
 </head>
 
 
-<body>
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
-            min-width: 950px; ">
-    <li style="color: #6283C1;">barra de color</li>
-  </div>
-  <header style="background-color: #CCE3F6;">
-    <img src="./img/logo.png" alt="logo_Altamotriz" class="centrar" ;>
-  </header>
+<body style="background-color: #F0F0F0 ;">
+    
+  <div style="background-color: black;">
+    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+</div>
   <nav>
     <!--------------------------------- Menu ------------------------------------->
     <div class="li_menu">
@@ -46,7 +43,7 @@
           <li><a href="./tecnico.html">Tecnico</a></li>
           <li><a href="./lavado.html">Lavador</a></li>
           <li><a href="./calidad.html">Calidad</a></li>
-          <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
+          <li><a href=".logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
           </li>
       </ul>
   </div>
@@ -56,7 +53,7 @@
     Bienvenido <span id="username"> nombre de usuario </span>
   </div>
 
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
+  <div style="background-color:#222 ; display: block; height: 22px;
             min-width: 950px; color: white; margin-bottom:5px; padding-top:
             5px;">
     Tabla de Ordenes de Servicio activas
@@ -70,7 +67,7 @@
 
 
       <!-------------------------------------------- Informacion de Orden Seleccionada ------------------------------------------------->
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
                 min-width: 950px; color: white; margin-bottom:5px; padding-top:
                 5px;">
         Informacion de Orden Seleccionada
@@ -118,7 +115,7 @@
                   <label for="cars">Cambiar el Estatus:</label>
                 </div>
                 <div>
-                  <button type="submit" class="button ">Siguiente Area</button>
+                  <button style="margin-right: 15px; margin-top: 15px;" type="submit" class="btnsindex">Siguiente Area</button>
                 </div>
               </form>
             </td>
@@ -136,7 +133,7 @@
         </table>
       </div>
 
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
         Fotos
       </div>
@@ -226,7 +223,7 @@
 
       </table>
 
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
         Resumen
       </div>
@@ -526,7 +523,7 @@
 
             </tr>
             <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
                   cambios</button></th>
             </tr>
           </tfoot>
@@ -544,9 +541,9 @@
               <td>
                 <form onsubmit="guardarComentariosTecnicos()">
                   <legend>Comentarios del Tecnico</legend>
-                  <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px;"
+                  <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px; width: 98%;"
                     id="comentarios_tecnicos"></textarea>
-                  <button type="submit" class="button ">Guardar cambios</button>
+                  <button type="submit" class="btnsindex">Guardar cambios</button>
                 </form>
               </td>
             </tr>

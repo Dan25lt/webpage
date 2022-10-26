@@ -1,17 +1,25 @@
 .html{
   min-width:900px;
+  max-width: 900px;
 }
 .btnsindex {
-  background-color: DodgerBlue;
-  border: none;
+
+  border:#fff 1px;
   color: white;
-  padding: 20px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  display: block;
+  font-size: 20px;
+  cursor: pointer; 
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+  display: block;
+  background-color: royalblue;
+  padding: 15px;
+  border: 1px solid #9b9b9b;
+  border-radius: 7px;
+  text-align: center;  
+  overflow: hidden;
+  box-shadow: 0 0 3px #9b9b9b;
+
 }
 .button{
   background-color: #4CAF50; /* Green */
@@ -173,7 +181,6 @@ textarea {
 }
 
 body {
-  background-color: #dbebf9;
   font-family: "Roboto", sans-serif;
 }
 
@@ -332,3 +339,27 @@ li a:hover {
   background-color: #0064bd;
   box-shadow: none;
 }  
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+
+/* Embellecimiento de tablas  */
+.mejora_table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.mejora_td, .mejora_th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.mejora_tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -9,14 +9,11 @@
 </head>
 
 
-<body>
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
-            min-width: 950px; ">
-    <li style="color: #6283C1;">barra de color</li>
-  </div>
-  <header style="background-color: #CCE3F6;">
-    <img src="./img/logo.png" alt="logo_Altamotriz" class="centrar" ;>
-  </header>
+<body style="background-color: #F0F0F0 ;">
+    
+  <div style="background-color: black;">
+    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+</div>
   <nav>
     <!--------------------------------- Menu ------------------------------------->
     <div class="li_menu">
@@ -56,7 +53,7 @@
     Bienvenido <span id="username"> nombre de usuario </span>
   </div>
 
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
+  <div style="background-color:#222 ; display: block; height: 22px;
             min-width: 950px; color: white; margin-bottom:5px; padding-top:
             5px;">
     Tabla de Ordenes de Servicio activas
@@ -70,7 +67,7 @@
 
 
       <!-------------------------------------------- Informacion de Orden Seleccionada ------------------------------------------------->
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
                 min-width: 950px; color: white; margin-bottom:5px; padding-top:
                 5px;">
         Informacion de Orden Seleccionada
@@ -103,7 +100,7 @@
               <form onsubmit="guardarComentariosAsesor()">
                 <legend style="text-align: left; "><strong style="font-size:120% ;">Notas</strong>:</legend>
                 <textarea id="comentarios_asesor" rows="6" cols="55" style="border-radius: 5px;"></textarea>
-                <button type="submit" class="button ">Guardar cambios</button>
+                <button type="submit" class="btnsindex">Guardar cambios</button>
               </form>
             </td>
             <td style="text-align: center; width: 20%;">
@@ -129,7 +126,7 @@
                   </select>
                 </div>
                 <div>
-                  <button type="submit" class="button ">Guardar cambios</button>
+                  <button type="submit" class="btnsindex">Guardar cambios</button>
                 </div>
               </form>
             </td>
@@ -147,7 +144,7 @@
         </table>
       </div>
 
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
         Fotos
       </div>
@@ -237,7 +234,7 @@
 
       </table>
 
-      <div style="background-color:#6283C1 ; display: block; height: 22px;
+      <div style="background-color:#222 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
         Resumen
       </div>
@@ -537,7 +534,7 @@
 
             </tr>
             <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
                   cambios</button></th>
             </tr>
           </tfoot>
@@ -1056,7 +1053,7 @@
                 &nbsp</th>
             </tr>
             <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="button ">Guardar
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
                   cambios</button></th>
             </tr>
           </tfoot>
@@ -1072,9 +1069,9 @@
               <td>
                 <form onsubmit="guardarComentariosTecnicos()">
                   <legend>Comentarios del Tecnico</legend>
-                  <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px;"
+                  <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px; width: 98%;"
                     id="comentarios_tecnicos"></textarea>
-                  <button type="submit" class="button ">Guardar cambios</button>
+                  <button type="submit" class="btnsindex">Guardar cambios</button>
                 </form>
               </td>
             <tr>
@@ -1082,8 +1079,8 @@
                 <form onsubmit="guardarComentariosLavado()">
                   <legend>Comentarios del area de lavado</legend>
                   <textarea id="comentarios_lavado" rows="8" cols="95"
-                    style="border-radius: 5px; margin: 5px;"></textarea>
-                  <button type="submit" class="button ">Guardar cambios</button>
+                    style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
+                  <button type="submit" class="btnsindex">Guardar cambios</button>
                 </form>
               </td>
             </tr>
@@ -1092,8 +1089,8 @@
                 <form onsubmit="guardarComentariosCalidad()">
                   <legend>Comentarios del area de Calidad</legend>
                   <textarea id="comentarios_calidad" rows="8" cols="95"
-                    style="border-radius: 5px; margin: 5px;"></textarea>
-                  <button type="submit" class="button ">Guardar cambios</button>
+                    style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
+                  <button type="submit" class="btnsindex">Guardar cambios</button>
                 </form>
               </td>
             </tr>

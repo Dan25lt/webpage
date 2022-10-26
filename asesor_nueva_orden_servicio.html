@@ -13,14 +13,11 @@
   </style>
 </head>
 
-<body>
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
-            min-width: 950px; ">
-    <li style="color: #6283C1;">barra de color</li>
-  </div>
-  <header style="background-color: #CCE3F6;">
-    <img src="./img/logo.png" alt="logo_Altamotriz" class="centrar" ;>
-  </header>
+<body style="background-color: #F0F0F0 ;">
+    
+  <div style="background-color: black;">
+    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+</div>
   <nav>
     <!--------------------------------- Menu ------------------------------------->
     <div class="li_menu">
@@ -62,7 +59,7 @@
     <!-- Bienvenido <span id="username"> nombre de usuario </span> -->
   </div>
 
-  <div style="background-color:#6283C1 ; display: block; height: 22px;
+  <div style="background-color:#222 ; display: block; height: 22px;
                 min-width: 950px; color: white; margin-bottom:5px; padding-top:
                 5px;">
     Crear orden de servicio:
@@ -71,38 +68,30 @@
     <div class="fila">
       <table>
         <td>
-          <label for="placas">Placas:</label><br>
+          <label style="font-size: 130%;" for="placas"><strong>Placas:</strong> </label><br>
         </td>
         <td>
-          <input id="placas" name="placas" style="border-radius: 5px;"></input>
+          <input id="placas" name="placas" style="border-radius: 5px; margin-top: 5px; height:35px;"></input>
+          
         </td>
         <td>
-          <button id="btn_buscar_placas" class="btnblue">Buscar y seleccionar</button>
+          <button  style="font-size: 130%;" id="btn_buscar_placas" class="btnblue">Buscar y seleccionar</button>
         </td>
       </table>
       <table>
         <td>
-          <label for="fname">id operacion:</label><br>
+          <label style="font-size: 130%;" for="fname"><strong>Operacion:</strong></label><br>
         </td>
         <td>
-          <input id="operacion" name="operacion" style="border-radius: 5px;"></input>
+          <input id="operacion" name="operacion" style="border-radius: 5px; width: 100%; margin-top: 5px; height:35px;"></input><br><br>
+          <label>"Ingresar <strong>codigo</strong> de operacion"</label>
         </td>
         <td>
-          <button id="btn_buscar_operacion" class="btnblue ">Agregar operacion</button>
+          <button style="font-size: 130%;" id="btn_buscar_operacion" class="btnblue ">Agregar operacion</button>
         </td>
-      </table>
-      <table>
-        <tr>
-          <td>
-            <button id="addVehiculo" name="addVehiculo" class="btnblue" style="border-radius: 5px;"> Agregar Cliente</input>
-          </td>
-          <td>
-            <button id="addCliente" name="addCliente" class="btnblue"  style="border-radius: 5px;"> Agregar Vehiculo</input>
-          </td>
-        </tr>
       </table>
     </div>
-    <div style="background-color:#6283C1 ; display: block; height: 22px;
+    <div style="background-color:#222 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top:
         5px;">
       Detalles de la orden:
@@ -173,7 +162,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3"><button id="btn_guardar_orden" class="btnblue ">Guardar cambios</button></td>
+          <td colspan="3"><button id="btn_guardar_orden" class="btnsindex ">Guardar cambios</button></td>
         </tr>
 
       </table>
