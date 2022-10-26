@@ -5,430 +5,491 @@
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
   <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
   <link rel="stylesheet" href="./css/index.css" type="text/css" />
-  
-
 </head>
-<img src="./img/logo.png" width="250" height="100" alt="" class="centrar" ;>
 
-<div class="li_menu">
-  <ul style="border-radius: 8px;">
-    <li class="li-right"><a href="./menu.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
-          style="width: 25px;height:22px;">&nbsp &nbsp Volver al menu principal</a>
-    </li>
-  </ul>
-</div>
-<div style="margin-top:150px;">
+<body style="background-color: #ecf5fc;">
+  <img src="./img/logo.png" width="250" height="100" alt="" class="centrar" ;>
 
-  <body style="background-color: #ecf5fc;">
-    <table class="container">
+  <div class="li_menu">
+    <ul style="border-radius: 8px;">
+      <li class="li-right"><a href="./menu.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
+            style="width: 25px;height:22px;">&nbsp &nbsp Volver al menu principal</a>
+      </li>
+    </ul>
+  </div>
+  <div>
 
-      <body>
+    <div class="fila" style="  margin: auto; width: 60%; padding: 10px;">
+      <h1 style="color: 222;">Selecciona el cliente deseado desde la tabla</h1>
+      <div id="tabla_cliente"></div>
 
-        <div id="modalVer" class="modal">
-          <div class="modal-content animate">
-            <form class="" id="verModalForm">
-              <div class="imgcontainer">
-                <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
-                  title="Close Modal">&times;</span>
-              </div>
+      <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
+        <h2 style="color: 222;">Agregar un cliente nuevo</h2>
+        <div class="fila" style=" margin: auto; width: 40%; padding: 10px;">
+          <button id="btn_creat_user"
+            onclick="document.getElementById('modalAddClientes').style.display='block'">Agregar</button>
+        </div>
+      </div>
+    </div>
 
-              <div class="container">
-
-                <p> idcliente:<strong><span id="ver_idcliente"></span></strong></p>
-                <p> nombre:<strong><span id="ver_nombre"></span></strong></p>
-                <p> apellido:<strong><span id="ver_apellido"></span></strong></p>
-                <p> rfc:<strong><span id="ver_rfc"></span></strong></p>
-                <p> telefono:<strong><span id="ver_telefono"></span></strong></p>
-                <p> email:<strong><span id="ver_email"></span></strong></p>
-                <p> calle:<strong><span id="ver_calle"></span></strong></p>
-                <p> numeroint:<strong><span id="ver_numeroint"></span></strong></p>
-                <p> numeroext:<strong><span id="ver_numeroext"></span></strong></p>
-                <p> colonia:<strong><span id="ver_colonia"></span></strong></p>
-                <p> idarea_postal:<strong><span id="ver_idarea_postal"></span></strong></p>
-
-                <label>
-                </label>
-              </div>
-
-              <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
-                  class="cancelbtn">Cancelar</button>
-              </div>
-            </form>
+    <div id="modalVer" class="modal">
+      <div class="modal-content animate">
+        <form class="" id="verModalForm">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
+              title="Close Modal">&times;</span>
           </div>
 
-        </div>
+          <div class="container">
 
-        <div class="fila" style="  margin: auto; width: 60%; padding: 10px;">
-          <h1 style="color: 222;">Selecciona el cliente deseado desde la tabla</h1>
-          <div id="tabla_cliente"></div>
-        </div>
+            <p> idcliente:<strong><span id="ver_idcliente"></span></strong></p>
+            <p> nombre:<strong><span id="ver_nombre"></span></strong></p>
+            <p> apellido:<strong><span id="ver_apellido"></span></strong></p>
+            <p> rfc:<strong><span id="ver_rfc"></span></strong></p>
+            <p> telefono:<strong><span id="ver_telefono"></span></strong></p>
+            <p> email:<strong><span id="ver_email"></span></strong></p>
+            <p> calle:<strong><span id="ver_calle"></span></strong></p>
+            <p> numeroint:<strong><span id="ver_numeroint"></span></strong></p>
+            <p> numeroext:<strong><span id="ver_numeroext"></span></strong></p>
+            <p> colonia:<strong><span id="ver_colonia"></span></strong></p>
+            <p> idarea_postal:<strong><span id="ver_idarea_postal"></span></strong></p>
 
-
-        <div id="id01" class="modal">
-          <div class="modal-content" style="width:40%">
-            <form id="editModalForm">
-              <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                  title="Close Modal">&times;</span>
-
-              </div>
-
-              <div class="container">
-                <div class="form-group">
-                  <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
-                </div>
-                <div class="form-group">
-                  <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
-                </div>
-                <div class="form-group">
-                  <label for="contraseña"><b>Nombre</b></label><br>
-                  <input type="text" placeholder="" name="nombre" id="nombre" required>
-                </div>
-                <div class="form-group">
-                  <label for="contraseña"><b>Apellidos</b></label><br>
-                  <input type="text" placeholder="" name="apellido" id="apellido" required>
-                </div>
-                <div class="form-group">
-                  <label><b>RFC</b></label><br>
-                  <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" required>
-                </div>
-                <div class="form-group">
-                  <label><b>Telefono</b></label><br>
-                  <input type="number" placeholder="" name="telefono" id="telefono" required>
-                </div>
-                <div class="form-group">
-                  <label><b>Email</b></label><br>
-                  <input type="email" placeholder="" name="email" id="email" required>
-                </div>
-                <div class="form-group">
-                  <label><b>Calle</b></label><br>
-                  <input type="text" placeholder="" name="calle" id="calle" required>
-                </div>
-                <div class="form-group">
-                  <label><b>Numero interior</b></label><br>
-                  <input type="number" t placeholder="" name="numeroint" id="numeroint">
-                </div>
-                <div class="container_padding">
-                  <label><b>Numero exterior</b></label><br>
-                  <input type="number" t placeholder="" name="numeroext" id="numeroext">
-                </div>
-                <div class="container_padding">
-                  <label><b>Colonia</b></label><br>
-                  <input type="text" placeholder="" name="colonia" id="colonia">
-                </div>
-                <div class="container_padding">
-                  <label><b>C.P.</b></label><br>
-                  <input type="number" placeholder="" name="idarea_postal" id="idarea_postal" required>
-                </div>
-                <button type="submit" name="" id="">Guardar</button>
-
-                <div class="container" style="background-color:#f1f1f1">
-                  <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancelar</button>
-                </div>
-            </form>
+            <label>
+            </label>
           </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
+              class="cancelbtn">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <div id="id01" class="modal">
+      <div class="modal-content" style="width:40%">
+        <form id="editModalForm">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+              title="Close Modal">&times;</span>
+
+          </div>
+
+          <div class="container">
+            <div class="form-group">
+              <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
+            </div>
+            <div class="form-group">
+              <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
+            </div>
+            <div class="form-group">
+              <label for="contraseña"><b>Nombre</b></label><br>
+              <input type="text" placeholder="" name="nombre" id="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="contraseña"><b>Apellidos</b></label><br>
+              <input type="text" placeholder="" name="apellido" id="apellido" required>
+            </div>
+            <div class="form-group">
+              <label><b>RFC</b></label><br>
+              <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" required>
+            </div>
+            <div class="form-group">
+              <label><b>Telefono</b></label><br>
+              <input type="number" placeholder="" name="telefono" id="telefono" required>
+            </div>
+            <div class="form-group">
+              <label><b>Email</b></label><br>
+              <input type="email" placeholder="" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label><b>Calle</b></label><br>
+              <input type="text" placeholder="" name="calle" id="calle" required>
+            </div>
+            <div class="form-group">
+              <label><b>Numero interior</b></label><br>
+              <input type="number" t placeholder="" name="numeroint" id="numeroint">
+            </div>
+            <div class="container_padding">
+              <label><b>Numero exterior</b></label><br>
+              <input type="number" t placeholder="" name="numeroext" id="numeroext">
+            </div>
+            <div class="container_padding">
+              <label><b>Colonia</b></label><br>
+              <input type="text" placeholder="" name="colonia" id="colonia">
+            </div>
+            <div class="container_padding">
+              <label><b>C.P.</b></label><br>
+              <input type="number" placeholder="" name="idarea_postal" id="idarea_postal" required>
+            </div>
+            <button type="submit" name="" id="">Guardar</button>
+
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn">Cancelar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Add cliente -->
+  <div id="modalAddClientes" class="modal">
+    <div class="modal-content" style="width:40%">
+      <form id="addModalForm">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('modalAddClientes').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
         </div>
 
+        <div class="container">
+          <div class="form-group">
+            <input type="hidden" placeholder="" name="add_iddireccion" id="add_iddireccion" required><br>
+          </div>
+          <div class="form-group">
+            <label for="contraseña"><b>Nombre</b></label><br>
+            <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="contraseña"><b>Apellidos</b></label><br>
+            <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
+          </div>
+          <div class="form-group">
+            <label><b>RFC</b></label><br>
+            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" required>
+          </div>
+          <div class="form-group">
+            <label><b>Telefono</b></label><br>
+            <input type="number" placeholder="" name="add_telefono" id="add_telefono" required>
+          </div>
+          <div class="form-group">
+            <label><b>Email</b></label><br>
+            <input type="email" placeholder="" name="add_email" id="add_email" required>
+          </div>
+          <div class="form-group">
+            <label><b>Calle</b></label><br>
+            <input type="text" placeholder="" name="add_calle" id="add_calle" required>
+          </div>
+          <div class="form-group">
+            <label><b>Numero interior</b></label><br>
+            <input type="number" t placeholder="" name="add_numeroint" id="add_numeroint">
+          </div>
+          <div class="container_padding">
+            <label><b>Numero exterior</b></label><br>
+            <input type="number" t placeholder="" name="add_numeroext" id="add_numeroext">
+          </div>
+          <div class="container_padding">
+            <label><b>Colonia</b></label><br>
+            <input type="text" placeholder="" name="add_colonia" id="add_colonia">
+          </div>
+          <div class="container_padding">
+            <label><b>C.P.</b></label><br>
+            <input type="number" placeholder="" name="add_idarea_postal" id="add_idarea_postal" required>
+          </div>
+          <button type="submit">Guardar</button>
 
-        <script>
-          document.getElementById('telefono').oninput = function () {
-            if (this.value.length > 10) {
-              this.value = this.value.slice(0, 10);
-            }
-          }
-          document.getElementById('numeroint').oninput = function () {
-            if (this.value.length > 6) {
-              this.value = this.value.slice(0, 6);
-            }
-          }
-          document.getElementById('numeroext').oninput = function () {
-            if (this.value.length > 6) {
-              this.value = this.value.slice(0, 6);
-            }
-          }
-          document.getElementById('idarea_postal').oninput = function () {
-            if (this.value.length > 5) {
-              this.value = this.value.slice(0, 5);
-            }
-          }
-          function cargarTodos() {
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('modalAddClientes').style.display='none'"
+              class="cancelbtn">Cancelar</button>
+          </div>
+      </form>
+    </div>
+  </div>
 
-            fetch('./backend/administrador/getclientes.php', {
-              method: 'GET',
-            })
-              .then(function (response) {
-                return response.text();
-              })
-              .then(function (return_data) {
-                if (return_data == "no hay clientes") {
-                  alert("no hay clientes");
-                  return;
-                }
+  </div>
 
-                console.log("HERE")
-                console.log(return_data);
+  <!-- End Modal Add cliente -->
+  <script>
+    document.getElementById('telefono').oninput = function () {
+      if (this.value.length > 10) {
+        this.value = this.value.slice(0, 10);
+      }
+    }
+    document.getElementById('numeroint').oninput = function () {
+      if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+      }
+    }
+    document.getElementById('numeroext').oninput = function () {
+      if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+      }
+    }
+    document.getElementById('idarea_postal').oninput = function () {
+      if (this.value.length > 5) {
+        this.value = this.value.slice(0, 5);
+      }
+    }
+    function cargarTodos() {
 
-                var data = JSON.parse(return_data);
-
-                var columnNames = [
-                  "idcliente",
-                  "nombre",
-                  "apellido",
-                  "rfc",
-                  "telefono",
-                  "email",
-                  "calle",
-                  "numeroint",
-                  "numeroext",
-                  "colonia",
-                  "idarea_postal",
-                  "opciones"
-                ];
-
-                var table = document.createElement('table');
-
-                // Titulos solamente
-                var tr = document.createElement('tr');
-
-                var td = document.createElement('td');
-                var text = document.createTextNode('Id');
-                td.appendChild(text);
-                tr.appendChild(td);
-                var td = document.createElement('td');
-                var text = document.createTextNode('Nombre');
-                td.appendChild(text);
-                tr.appendChild(td);
-                var td = document.createElement('td');
-                var text = document.createTextNode('Apellido');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('RFC');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('Telefono');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('Email');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('Calle');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('Numero Interior');
-                td.appendChild(text);
-                tr.appendChild(td);
-                var td = document.createElement('td');
-                var text = document.createTextNode('Numero Exterior');
-                td.appendChild(text);
-                tr.appendChild(td);
-                var td = document.createElement('td');
-                var text = document.createTextNode('Colonia');
-                td.appendChild(text);
-                tr.appendChild(td);
-                var td = document.createElement('td');
-                var text = document.createTextNode('Codigo postal');
-                td.appendChild(text);
-                tr.appendChild(td);
-                td = document.createElement('td');
-                text = document.createTextNode('Opciones');
-                td.appendChild(text);
-                tr.appendChild(td);
-                table.appendChild(tr);
-
-
-                // Lenado de la tabla 
-                for (var i = 0; i < data.length; i++) {
-                  var tr = document.createElement('tr');
-                  for (var j = 0; j < columnNames.length; j++) {
-                    var td = document.createElement('td');
-                    if (columnNames[j] === 'opciones') {
-                      var btn = document.createElement('input');
-                      btn.type = "button";
-                      btn.className = "btnEdit";
-                      btn.value = "Editar";
-                      btn.name = data[i]['idcliente'];
-
-                      tr.appendChild(btn);
-
-                      var btn = document.createElement('input');
-                      btn.type = "button";
-                      btn.className = "btnVer";
-                      btn.value = "Ver";
-                      btn.name = data[i]['idcliente'];
-
-                      tr.appendChild(btn);
-                    }
-                    else {
-                      var text = document.createTextNode(data[i][columnNames[j]]);
-
-                      td.appendChild(text);
-                      tr.appendChild(td);
-                    }
-                  }
-
-                  table.appendChild(tr);
-                }
-
-
-                document.getElementById("tabla_cliente").appendChild(table);
-
-
-                const editBtns = document.getElementsByClassName('btnEdit');
-
-                for (const btnEdit of editBtns) {
-                  btnEdit.addEventListener("click", e => {
-                    console.log("edit Id:", e.target.name);
-                    editById(e.target.name);
-                  })
-                }
-
-                const verBtns = document.getElementsByClassName('btnVer');
-
-                for (const btnVer of verBtns) {
-                  btnVer.addEventListener("click", e => {
-                    console.log("ver Id: ", e.target.name);
-                    verById(e.target.name);
-                  })
-                }
-
-              })
-              .catch(function (err) {
-                console.log(err);
-              });
-
-
+      fetch('./backend/administrador/getclientes.php', {
+        method: 'GET',
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+          if (return_data == "no hay clientes") {
+            alert("no hay clientes");
+            return;
           }
 
+          console.log("HERE")
+          console.log(return_data);
 
-          function editById(id) {
+          var data = JSON.parse(return_data);
 
-            document.getElementById('id01').style.display = 'block';
+          var columnNames = [
+            "idcliente",
+            "nombre",
+            "apellido",
+            "rfc",
+            "telefono",
+            "email",
+            "calle",
+            "numeroint",
+            "numeroext",
+            "colonia",
+            "idarea_postal",
+            "opciones"
+          ];
 
-            fetch('./backend/administrador/getClientsById.php', {
-              method: 'POST',
-              body: JSON.stringify({
-                id: id,
-              }),
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+          var table = document.createElement('table');
+
+          // Titulos solamente
+          var tr = document.createElement('tr');
+
+          var td = document.createElement('td');
+          var text = document.createTextNode('Id');
+          td.appendChild(text);
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          var text = document.createTextNode('Nombre');
+          td.appendChild(text);
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          var text = document.createTextNode('Apellido');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('RFC');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('Telefono');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('Email');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('Calle');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('Numero Interior');
+          td.appendChild(text);
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          var text = document.createTextNode('Numero Exterior');
+          td.appendChild(text);
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          var text = document.createTextNode('Colonia');
+          td.appendChild(text);
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          var text = document.createTextNode('Codigo postal');
+          td.appendChild(text);
+          tr.appendChild(td);
+          td = document.createElement('td');
+          text = document.createTextNode('Opciones');
+          td.appendChild(text);
+          tr.appendChild(td);
+          table.appendChild(tr);
+
+
+          // Lenado de la tabla 
+          for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 0; j < columnNames.length; j++) {
+              var td = document.createElement('td');
+              if (columnNames[j] === 'opciones') {
+                var btn = document.createElement('input');
+                btn.type = "button";
+                btn.className = "btnEdit";
+                btn.value = "Editar";
+                btn.name = data[i]['idcliente'];
+
+                tr.appendChild(btn);
+
+                var btn = document.createElement('input');
+                btn.type = "button";
+                btn.className = "btnVer";
+                btn.value = "Ver";
+                btn.name = data[i]['idcliente'];
+
+                tr.appendChild(btn);
               }
-            })
-              .then(function (response) {
-                return response.text();
-              })
-              .then(function (respuesta) {
+              else {
+                var text = document.createTextNode(data[i][columnNames[j]]);
 
-                respuesta = JSON.parse(respuesta);
-
-                document.getElementById("idcliente").value = respuesta[0]['idcliente'];
-                document.getElementById("nombre").value = respuesta[0]['nombre'];
-                document.getElementById("apellido").value = respuesta[0]['apellido'];
-                document.getElementById("rfc").value = respuesta[0]['rfc'];
-                document.getElementById("telefono").value = respuesta[0]['telefono'];
-                document.getElementById("email").value = respuesta[0]['email'];
-                document.getElementById("calle").value = respuesta[0]['calle'];
-                document.getElementById("numeroint").value = respuesta[0]['numeroint'];
-                document.getElementById("numeroext").value = respuesta[0]['numeroext'];
-                document.getElementById("colonia").value = respuesta[0]['colonia'];
-                document.getElementById("idarea_postal").value = respuesta[0]['idarea_postal'];
-
-
-              });
-          }
-
-          var form = document.getElementById("editModalForm");
-          form.addEventListener('submit', handleEditForm);
-
-          function handleEditForm(event) {
-            event.preventDefault();
-            let editModalForm = new FormData(document.getElementById("editModalForm"));
-
-            fetch('./backend/administrador/updateClientsById.php', {
-              method: 'POST',
-              body: editModalForm
-            })
-              .then(function (response) {
-                return response.text();
-              })
-              .then(function (respuesta) {
-                console.log(respuesta);
-                if (respuesta === 'Registro actualizado') {
-                  alert("Registro actualizado");
-                  window.location.reload();
-                } else {
-                  alert("Error al actualizar el registro");
-                }
-              });
-          }
-
-          function userInterfaseInit() {
-
-            function redireccionCliente() {
-              location.replace("./index.html");
-            }
-
-            // crear el modal
-            var modal = document.getElementById('id01');
-
-            // se cierra si se hace click fuera de la ventana
-            window.onclick = function (event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
+                td.appendChild(text);
+                tr.appendChild(td);
               }
             }
-          }
-          function verById(id) {
-            document.getElementById('modalVer').style.display = 'block';
 
-            fetch('./backend/administrador/getClientsById.php', {
-              method: 'POST',
-              body: JSON.stringify({
-                id: id,
-              }),
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
+            table.appendChild(tr);
+          }
+
+
+          document.getElementById("tabla_cliente").appendChild(table);
+
+
+          const editBtns = document.getElementsByClassName('btnEdit');
+
+          for (const btnEdit of editBtns) {
+            btnEdit.addEventListener("click", e => {
+              console.log("edit Id:", e.target.name);
+              editById(e.target.name);
             })
-              .then(function (response) {
-                return response.text();
-              })
-              .then(function (respuesta) {
-                respuesta = JSON.parse(respuesta);
-                console.log(respuesta);
-
-                document.getElementById("ver_idcliente").innerHTML = respuesta[0]['idcliente'];
-                document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
-                document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
-                document.getElementById("ver_rfc").innerHTML = respuesta[0]['rfc'];
-                document.getElementById("ver_telefono").innerHTML = respuesta[0]['telefono'];
-                document.getElementById("ver_email").innerHTML = respuesta[0]['email'];
-                document.getElementById("ver_calle").innerHTML = respuesta[0]['calle'];
-                document.getElementById("ver_numeroint").innerHTML = respuesta[0]['numeroint'];
-                document.getElementById("ver_numeroext").innerHTML = respuesta[0]['numeroext'];
-                document.getElementById("ver_colonia").innerHTML = respuesta[0]['colonia'];
-                document.getElementById("ver_idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
-
-
-
-              });
           }
 
+          const verBtns = document.getElementsByClassName('btnVer');
 
-          userInterfaseInit();
-          cargarTodos();
-        </script>
+          for (const btnVer of verBtns) {
+            btnVer.addEventListener("click", e => {
+              console.log("ver Id: ", e.target.name);
+              verById(e.target.name);
+            })
+          }
+
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
 
 
-  </body>
-</div>
+    }
+
+
+    function editById(id) {
+
+      document.getElementById('id01').style.display = 'block';
+
+      fetch('./backend/administrador/getClientsById.php', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: id,
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (respuesta) {
+
+          respuesta = JSON.parse(respuesta);
+
+          document.getElementById("idcliente").value = respuesta[0]['idcliente'];
+          document.getElementById("nombre").value = respuesta[0]['nombre'];
+          document.getElementById("apellido").value = respuesta[0]['apellido'];
+          document.getElementById("rfc").value = respuesta[0]['rfc'];
+          document.getElementById("telefono").value = respuesta[0]['telefono'];
+          document.getElementById("email").value = respuesta[0]['email'];
+          document.getElementById("calle").value = respuesta[0]['calle'];
+          document.getElementById("numeroint").value = respuesta[0]['numeroint'];
+          document.getElementById("numeroext").value = respuesta[0]['numeroext'];
+          document.getElementById("colonia").value = respuesta[0]['colonia'];
+          document.getElementById("idarea_postal").value = respuesta[0]['idarea_postal'];
+
+
+        });
+    }
+
+    var form = document.getElementById("editModalForm");
+    form.addEventListener('submit', handleEditForm);
+
+    function handleEditForm(event) {
+      event.preventDefault();
+      let editModalForm = new FormData(document.getElementById("editModalForm"));
+
+      fetch('./backend/administrador/updateClientsById.php', {
+        method: 'POST',
+        body: editModalForm
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (respuesta) {
+          console.log(respuesta);
+          if (respuesta === 'Registro actualizado') {
+            alert("Registro actualizado");
+            window.location.reload();
+          } else {
+            alert("Error al actualizar el registro");
+          }
+        });
+    }
+
+    function userInterfaseInit() {
+
+      function redireccionCliente() {
+        location.replace("./index.html");
+      }
+
+      // crear el modal
+      var modal = document.getElementById('id01');
+
+      // se cierra si se hace click fuera de la ventana
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
+    function verById(id) {
+      document.getElementById('modalVer').style.display = 'block';
+
+      fetch('./backend/administrador/getClientsById.php', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: id,
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (respuesta) {
+          respuesta = JSON.parse(respuesta);
+          console.log(respuesta);
+
+          document.getElementById("ver_idcliente").innerHTML = respuesta[0]['idcliente'];
+          document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
+          document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
+          document.getElementById("ver_rfc").innerHTML = respuesta[0]['rfc'];
+          document.getElementById("ver_telefono").innerHTML = respuesta[0]['telefono'];
+          document.getElementById("ver_email").innerHTML = respuesta[0]['email'];
+          document.getElementById("ver_calle").innerHTML = respuesta[0]['calle'];
+          document.getElementById("ver_numeroint").innerHTML = respuesta[0]['numeroint'];
+          document.getElementById("ver_numeroext").innerHTML = respuesta[0]['numeroext'];
+          document.getElementById("ver_colonia").innerHTML = respuesta[0]['colonia'];
+          document.getElementById("ver_idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
+        });
+    }
+
+    userInterfaseInit();
+    cargarTodos();
+  </script>
+</body>
 
 </html>
