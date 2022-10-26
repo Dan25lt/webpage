@@ -186,20 +186,52 @@
         </tr>
         <tr>
           <td>
-            <button id="btn_upload_img1">Cargar</button>
-            <button id="btn_delete_img1">Borrar</button>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_1" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile();" >
+            <!-- Para borrar -->
+            <button id="btn_delete_img1" name="delete_1" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_1" style="cursor: pointer;">
+              <small>seleccionar imagen</small> 
+            </label>
           </td>
           <td>
-            <button id="btn_upload_img2">Cargar</button>
-            <button id="btn_delete_img2">Borrar</button>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_2" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile2();" >
+            <!-- Para borrar -->
+            <button id="btn_delete_img2" name="delete_2" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_2" style="cursor: pointer;">
+              <small>seleccionar imagen</small> 
+            </label>
           </td>
           <td>
-            <button id="btn_upload_img3">Cargar</button>
-            <button id="btn_delete_img3">Borrar</button>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_3" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile3();" >
+            <!-- Para borrar -->
+            <button id="btn_delete_img3" name="delete_3" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_3" style="cursor: pointer;">
+              <small>seleccionar imagen</small> 
+            </label>
           </td>
           <td>
-            <button id="btn_upload_img4">Cargar</button>
-            <button id="btn_delete_img4">Borrar</button>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_4" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile4();" >
+            <!-- Para borrar -->
+            <button id="btn_delete_img4" name="delete_4" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_4" style="cursor: pointer;">
+              <small>seleccionar imagen</small> 
+            </label>
           </td>
         </tr>
 
@@ -1116,6 +1148,8 @@
             return;
           }
 
+          document.getElementById("tabla_asesor").innerHTML = "";
+
           var data = JSON.parse(return_data);
 
           var columnNames = ["idordenDeServicio",
@@ -1275,22 +1309,7 @@
 
       document.getElementById("estatus_combobox").value = this.getAttribute("estatus");
 
-      /*
-      * mostrar Fotos chiquitas
-      */
-      if (this.getAttribute("img_url1") !== 'NA') {
-        document.getElementById("img1").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url1"));
-      }
-      if (this.getAttribute("img_url2") !== 'NA') {
-        document.getElementById("img2").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url2"));
-      }
-      if (this.getAttribute("img_url3") !== 'NA') {
-        document.getElementById("img3").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url3"));
-      }
-      if (this.getAttribute("img_url4") !== 'NA') {
-        document.getElementById("img4").setAttribute("src", "./img/uploads/" + this.getAttribute("img_url4"));
-      }
-
+      mostrarImagenesChiquitas(this);
 
       getOperacionesList(orden_id);
     };
