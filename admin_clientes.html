@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="./css/index.css" type="text/css" />
 </head>
 
-<body style="background-color: #ecf5fc;">
-  <img src="./img/logo.png" width="250" height="100" alt="" class="centrar" ;>
+<body style="background-color: #F0F0F0 ;">
+    
+  <div style="background-color: black;">
+    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+</div>
 
   <div class="li_menu">
     <ul style="border-radius: 8px;">
@@ -17,7 +20,7 @@
       </li>
     </ul>
   </div>
-  <div>
+  <div class="centar">
 
     <div class="fila" style="  margin: auto; width: 60%; padding: 10px;">
       <h1 style="color: 222;">Selecciona el cliente deseado desde la tabla</h1>
@@ -26,7 +29,7 @@
       <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
         <h2 style="color: 222;">Agregar un cliente nuevo</h2>
         <div class="fila" style=" margin: auto; width: 40%; padding: 10px;">
-          <button id="btn_creat_user"
+          <button class="btnsindex" id="btn_creat_user"
             onclick="document.getElementById('modalAddClientes').style.display='block'">Agregar</button>
         </div>
       </div>
@@ -281,67 +284,84 @@
 
           var table = document.createElement('table');
 
+
           // Titulos solamente
           var tr = document.createElement('tr');
 
+
           var td = document.createElement('td');
           var text = document.createTextNode('Id');
-          td.appendChild(text);
+          td.appendChild(text);          
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           var td = document.createElement('td');
           var text = document.createTextNode('Nombre');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           var td = document.createElement('td');
           var text = document.createTextNode('Apellido');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('RFC');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Telefono');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Email');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Calle');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Numero Interior');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           var td = document.createElement('td');
           var text = document.createTextNode('Numero Exterior');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           var td = document.createElement('td');
           var text = document.createTextNode('Colonia');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           var td = document.createElement('td');
           var text = document.createTextNode('Codigo postal');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Opciones');
           td.appendChild(text);
           tr.appendChild(td);
+          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           table.appendChild(tr);
 
 
           // Lenado de la tabla 
           for (var i = 0; i < data.length; i++) {
             var tr = document.createElement('tr');
+            tr.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
             for (var j = 0; j < columnNames.length; j++) {
               var td = document.createElement('td');
+              td.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
               if (columnNames[j] === 'opciones') {
                 var btn = document.createElement('input');
+                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
                 btn.type = "button";
                 btn.className = "btnEdit";
                 btn.value = "Editar";
@@ -350,6 +370,7 @@
                 tr.appendChild(btn);
 
                 var btn = document.createElement('input');
+                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 3px; ";
                 btn.type = "button";
                 btn.className = "btnVer";
                 btn.value = "Ver";

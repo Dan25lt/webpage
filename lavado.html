@@ -306,48 +306,60 @@
           var text = document.createTextNode('Orden De Servicio');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Vin');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Tipo de vehiculo');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Placas');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Fecha entrada');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Fecha salida');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           /* td = document.createElement('td');
           text = document.createTextNode('Estatus');
           td.appendChild(text);
-          tr.appendChild(td); */
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;"; */
           td = document.createElement('td');
           text = document.createTextNode('Atencion');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
           td = document.createElement('td');
           text = document.createTextNode('Opciones');
           td.appendChild(text);
           tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
 
           table.appendChild(tr);
 
 
           for (var i = 0; i < data.length; i++) {
             var tr = document.createElement('tr');
+            tr.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
             for (var j = 0; j < columnNames.length; j++) {
               var td = document.createElement('td');
+              td.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
               if (columnNames[j] === 'opciones') {
                 var btn = document.createElement('input');
+                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
                 btn.type = "button";
                 btn.className = "";
 
