@@ -34,7 +34,7 @@
 
                                 <p>Idempleado:<strong><span id="idempleado"></span></strong></p>
                                 <p>Usuario:<strong><span id="usuario"></span></strong></p>
-                                <p>Contrasena:<strong><span id="contrasena"></span></strong></p>
+                                <p>Contrasena:<strong><span id="contraseña"></span></strong></p>
                                 <p>Nombre:<strong><span id="nombre"></span></strong></p>
                                 <p>Apellido:<strong><span id="apellido"></span></strong></p>
                                 <p>Puesto:<strong><span id="puesto"></span></strong></p>
@@ -55,6 +55,12 @@
                 <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
                     <h1 style="color: 222;">Selecciona el usuario deseado desde la tabla</h1>
                     <div id="tabla_usuarios"></div>
+                </div>
+                <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
+                    <h2 style="color: 222;">Agregar un usuario nuevo</h2>
+                    <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
+                        <button  onclick="document.getElementById('modaladdUsers').style.display='block'">Agregar</button>
+                    </div>                    
                 </div>
 
 
@@ -102,6 +108,49 @@
                     </div>
                 </div>
 
+                <div id="modaladdUsers" class="modal">
+                    <div class="modal-content" style="width:40%">
+                        <form id="editModalForm">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('modaladdUsers').style.display='none'" class="close"
+                                    title="Close Modal">&times;</span>
+
+                            </div>
+
+                            <div class="container">
+                                <div class="form-group">
+                                    <input type="hidden" placeholder="" name="idempleado" id="idempleado" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Usuario</b></label><br>
+                                    <input type="text" placeholder="" name="usuario" id="usuario" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contrasena"><b>Contrasena</b></label><br>
+                                    <input type="password" placeholder="" name="contrasena" id="contrasena"
+                                        required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Nombre</b></label><br>
+                                    <input type="text" placeholder="" name="nombre" id="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Apellido</b></label><br>
+                                    <input type="text" placeholder="" name="apellido" id="apellido" required>
+                                </div>
+                                <div class="form-group">
+                                    <label><b>Puesto</b></label><br>
+                                    <input type="text" maxlength="7" placeholder="" name="puesto" id="puesto" required>
+                                </div>
+                                <button type="submit" name="" id="">Guardar</button>
+
+                                <div class="container" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('modaladdUsers').style.display='none'"
+                                        class="cancelbtn">Cancelar</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
 
                 <script>
                     function cargarTodos() {
@@ -220,7 +269,7 @@
 
                                 for (const btnEdit of editBtns) {
                                     btnEdit.addEventListener("click", e => {
-                                        console.log("edit Id:", e.target.name);
+                                        console.log("ver Id:", e.target.name);
                                         editById(e.target.name);
                                     })
                                 }
@@ -242,11 +291,13 @@
                                         borrarById(e.target.name);
                                     })
                                 }
+                        
 
                             })
                             .catch(function (err) {
                                 console.log(err);
                             });
+
 
 
                     }
@@ -270,9 +321,9 @@
                                 return response.text();
                             })
                             .then(function (respuesta) {
-
+                                
                                 respuesta = JSON.parse(respuesta);
-
+                                
                                 document.getElementById("idempleado").value = respuesta[0]['idempleado'];
                                 document.getElementById("usuario").value = respuesta[0]['usuario'];
                                 document.getElementById("contrasena").value = respuesta[0]['contrasena'];
@@ -316,11 +367,18 @@
 
                         // crear el modal
                         var modal = document.getElementById('id01');
+                         // crear el modal
+                         var modaladd = document.getElementById('modaladdUsers');
 
                         // se cierra si se hace click fuera de la ventana
                         window.onclick = function (event) {
                             if (event.target == modal) {
                                 modal.style.display = "none";
+                            }
+                        }
+                        window.onclick = function (event) {
+                            if (event.target == modaladd) {
+                                modaladd.style.display = "none";
                             }
                         }
                     }
@@ -351,7 +409,7 @@
 
                                 document.getElementById("idempleado").innerHTML = respuesta[0]['idempleado'];
                                 document.getElementById("usuario").innerHTML = respuesta[0]['usuario'];
-                                document.getElementById("contrasena").innerHTML = respuesta[0]['contrasena'];
+                                document.getElementById("contraseña").innerHTML = respuesta[0]['contraseña'];
                                 document.getElementById("nombre").innerHTML = respuesta[0]['nombre'];
                                 document.getElementById("apellido").innerHTML = respuesta[0]['apellido'];
                                 document.getElementById("puesto").innerHTML = respuesta[0]['puesto'];

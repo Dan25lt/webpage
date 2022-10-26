@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
         $rowObj = new stdClass();
         $rowObj->idempleado = $row['idempleado'];
         $rowObj->usuario = $row['usuario'];
-        $rowObj->contraseña = $row['contraseña'];
+        $rowObj->contrasena = $row['contraseña'];
         $rowObj->nombre = $row['nombre'];
         $rowObj->apellido = $row['apellido'];
         $rowObj->puesto = $row['puesto'];

@@ -25,35 +25,37 @@
     <!--------------------------------- Menu ------------------------------------->
     <div class="li_menu">
       <ul style="border-radius: 8px;">
-          <li> <div class="dropdown">
-              <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
               <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content" id="menuadministrador">
-                  <a href="./admin_usuarios.html">Aministrar Usuarios</a>
-                  <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
-                  <a href="./admin_clientes.html">Aministrar Clientes</a>
-              </div>
-              </div> 
-          </li>
-          <li><a href="./gerente.html">Gerente</a></li>
-          <li> <div class="dropdown">
+            </button>
+            <div class="dropdown-content" id="menuadministrador">
+              <a href="./admin_usuarios.html">Aministrar Usuarios</a>
+              <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
+              <a href="./admin_clientes.html">Aministrar Clientes</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="./gerente.html">Gerente</a></li>
+        <li>
+          <div class="dropdown">
             <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
-            <i class="fa fa-caret-down"></i>
+              <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="menuasesor">
               <a href="./asesor.html">Ver ordenes activas</a>
-                <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
+              <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a>
             </div>
-            </div> 
+          </div>
         </li>
-          <li><a href="./tecnico.html">Tecnico</a></li>
-          <li><a href="./lavado.html">Lavador</a></li>
-          <li><a href="./calidad.html">Calidad</a></li>
-          <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
-          </li>
+        <li><a href="./tecnico.html">Tecnico</a></li>
+        <li><a href="./lavado.html">Lavador</a></li>
+        <li><a href="./calidad.html">Calidad</a></li>
+        <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
+        </li>
       </ul>
-  </div>
+    </div>
   </nav>
 
   <div class="welcome">
@@ -89,6 +91,16 @@
           <button id="btn_buscar_operacion" class="btnblue ">Agregar operacion</button>
         </td>
       </table>
+      <table>
+        <tr>
+          <td>
+            <button id="addVehiculo" name="addVehiculo" class="btnblue" style="border-radius: 5px;"> Agregar Cliente</input>
+          </td>
+          <td>
+            <button id="addCliente" name="addCliente" class="btnblue"  style="border-radius: 5px;"> Agregar Vehiculo</input>
+          </td>
+        </tr>
+      </table>
     </div>
     <div style="background-color:#6283C1 ; display: block; height: 22px;
         min-width: 950px; color: white; margin-bottom:5px; padding-top:
@@ -99,59 +111,60 @@
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr class="info_box">
           <td style="text-align: left; width: 33.33333%;">
-            <legend>Vehiculo:</legend>
-            <table>
+            <legend style="font-size: 120%;"><strong>Vehiculo:</strong></legend>
+            <table style="border: none;">
               <tr>
-                <td>Ano: </td>
-                <td><strong><span id="vehiculo_ano"></span></strong></td>
+                <td style="border: none;"> Ano: </td>
+                <td style="border: none;"><strong><span id="vehiculo_ano"></span></strong></td>
               </tr>
               <tr>
-                <td>Vin: </td>
-                <td><strong><span id="vehiculo_vin"></span></strong></td>
+                <td style="border: none;">Vin: </td>
+                <td style="border: none;"><strong><span id="vehiculo_vin"></span></strong></td>
               </tr>
               <tr>
-                <td>Placas: </td>
-                <td><strong><span id="vehiculo_placas"></span></strong></td>
+                <td style="border: none;">Placas: </td>
+                <td style="border: none;"><strong><span id="vehiculo_placas"></span></strong></td>
               </tr>
               <tr>
-                <td>Modelo: </td>
-                <td><strong><span id="vehiculo_modelo"></span></strong></td>
+                <td style="border: none;">Modelo: </td>
+                <td style="border: none;"><strong><span id="vehiculo_modelo"></span></strong></td>
               </tr>
               <tr>
-                <td>Marca: </td>
-                <td><strong><span id="vehiculo_marca"></span></strong></td>
+                <td style="border: none;">Marca: </td>
+                <td style="border: none;"><strong><span id="vehiculo_marca"></span></strong></td>
               </tr>
             </table>
           </td>
           <td style="text-align: left; width: 33.33333%;">
-            <legend>Cliente:</legend>
-            <table>
+            <legend style="font-size: 120%;"><strong>Cliente:</strong></legend>
+            <table style="border: none;">
               <tr>
-                <td>Nombre: </td>
-                <td><strong><span id="cliente_nombre"></span></strong></td>
+                <td style="border: none;">Nombre: </td>
+                <td style="border: none;"><strong><span id="cliente_nombre"></span></strong></td>
               </tr>
               <tr>
-                <td>Telefono: </td>
-                <td><strong><span id="cliente_telefono"></span></strong></td>
+                <td style="border: none;">Telefono: </td>
+                <td style="border: none;"><strong><span id="cliente_telefono"></span></strong></td>
               </tr>
               <tr>
-                <td>RFC: </td>
-                <td><strong><span id="cliente_rfc"></span></strong></td>
+                <td style="border: none;">RFC: </td>
+                <td style="border: none;"><strong><span id="cliente_rfc"></span></strong></td>
               </tr>
               <tr>
-                <td>Email:</td>
-                <td><strong><span id="cliente_email"></span></strong></td>
+                <td style="border: none;">Email:</td>
+                <td style="border: none;"><strong><span id="cliente_email"></span></strong></td>
               </tr>
               <tr>
-                <td>Direccion: </td>
-                <td><strong><span id="cliente_direccion"></span></strong></td>
+                <td style="border: none;">Direccion: </td>
+                <td style="border: none;"><strong><span id="cliente_direccion"></span></strong></td>
               </tr>
               <tr>
-                <td>C.P.:</td>
-                <td><strong><span id="cliente_cp"></span></strong></td>
+                <td style="border: none;">C.P.:</td>
+                <td style="border: none;"><strong><span id="cliente_cp"></span></strong></td>
               </tr>
             </table>
           </td>
+
           <td style="text-align: center; width: 33.33333%;">
             <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
               <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
@@ -162,7 +175,7 @@
         <tr>
           <td colspan="3"><button id="btn_guardar_orden" class="btnblue ">Guardar cambios</button></td>
         </tr>
-        
+
       </table>
     </div>
   </div>
@@ -306,7 +319,7 @@
             alert("Error al insertar");
           }
 
-          
+
         })
         .catch(function (err) {
           console.log(err);
@@ -316,29 +329,29 @@
     };
 
     function dropdownclickadmin() {
-          document.getElementById("menuadministrador").classList.toggle("show");
+      document.getElementById("menuadministrador").classList.toggle("show");
+    }
+
+    window.onclick = function (e) {
+      if (!e.target.matches('.dropbtn')) {
+        var menuadministrador = document.getElementById("menuadministrador");
+        if (menuadministrador.classList.contains('show')) {
+          menuadministrador.classList.remove('show');
         }
-        
-        window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
-          var menuadministrador = document.getElementById("menuadministrador");
-            if (menuadministrador.classList.contains('show')) {
-              menuadministrador.classList.remove('show');
-            }
-          }
+      }
+    }
+    function dropdownclickasesor() {
+      document.getElementById("menuasesor").classList.toggle("show");
+    }
+
+    window.onclick = function (e) {
+      if (!e.target.matches('.dropbtn')) {
+        var menuasesor = document.getElementById("menuasesor");
+        if (menuasesor.classList.contains('show')) {
+          menuasesor.classList.remove('show');
         }
-        function dropdownclickasesor() {
-          document.getElementById("menuasesor").classList.toggle("show");
-        }
-        
-        window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
-          var menuasesor = document.getElementById("menuasesor");
-            if (menuasesor.classList.contains('show')) {
-              menuasesor.classList.remove('show');
-            }
-          }
-        }
+      }
+    }
   </script>
 </body>
 
