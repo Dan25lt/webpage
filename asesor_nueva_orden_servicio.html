@@ -259,14 +259,15 @@
 
           for (let i = 0; i < data.length; i++) {
             const operacion = data[i];
+            //se crean variables para crear un Span y el texto que luego aparecera en pantalla
             var span = document.createElement('span');
             var text = document.createTextNode("-" + data[0]['descripcion']);
-            span.appendChild(text);
-            div.appendChild(span);
-            var br = document.createElement('br');
-            div.appendChild(br);
+            span.appendChild(text);//se mete la descripcion en el Span
+            div.appendChild(span);//se mete el span dentro de un div
+            var br = document.createElement('br'); //se crea un salto de linea
+            div.appendChild(br);// se mete el salto del linea en el div
           }
-          div.setAttribute("style", "background-color:#F2F2F2 ;");
+          div.setAttribute("style", "background-color:#F2F2F2 ;");// se le da style al div
           document.getElementById('operaciones').appendChild(div);
 
           minimo_una_numero_operacion = true;
@@ -316,11 +317,11 @@
 
 
     };
-
+//al presionar el elemento el menu se muestra
     function dropdownclickadmin() {
       document.getElementById("menuadministrador").classList.toggle("show");
     }
-
+//al seleccionar algo, el menu se esconde de nuevo
     window.onclick = function (e) {
       if (!e.target.matches('.dropbtn')) {
         var menuadministrador = document.getElementById("menuadministrador");
@@ -329,10 +330,11 @@
         }
       }
     }
+    //al presionar el elemento el menu se muestra
     function dropdownclickasesor() {
       document.getElementById("menuasesor").classList.toggle("show");
     }
-
+//al seleccionar algo, el menu se esconde de nuevo
     window.onclick = function (e) {
       if (!e.target.matches('.dropbtn')) {
         var menuasesor = document.getElementById("menuasesor");
