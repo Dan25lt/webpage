@@ -1,11 +1,12 @@
 <html>
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Altamotriz</title>
     <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
     <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
     <link rel="stylesheet" href="./css/index.css" type="text/css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body style="background-color: #F0F0F0 ;">
@@ -13,32 +14,32 @@
     <div style="background-color: black;">
         <img src="./img/logo.png" width="1300" height="150" alt="" ;>
     </div>
-     <span>
+    <span>
         <div class="center" style="width: 20%; margin-top: 150; margin-bottom: 250;">
             <h1 style="color: black;">Hola Bienvenido</h1>
             <div>
                 <button class="btnsindex btnsindex:hover espaciador" onclick="redireccionalCliente()"
-                style="width:auto; float: left;"> Soy
-                cliente</button>
-            <button class="btnsindex btnsindex:hover espaciador"
-                onclick="document.getElementById('id01').style.display='block'"
-                style="width:auto; float: right;">Iniciar
-                Sesión</button>
-            </div>    
-            <h2 style="color: black;">Seleccione la opción deseada</h2>          
+                    style="width:auto; float: left;"> Soy
+                    cliente</button>
+                <button class="btnsindex btnsindex:hover espaciador"
+                    onclick="document.getElementById('id01').style.display='block'"
+                    style="width:auto; float: right;">Iniciar
+                    Sesión</button>
+            </div>
+            <h2 style="color: black;">Seleccione la opción deseada</h2>
         </div>
     </span>
     <div style="background-color:#cecece ; display: block; height: 30px;
     min-width: 950px; padding: 0;">
-     </div>
+    </div>
     <span>
 
         <div style="background-color:#272828 ; display: block;
         min-width: 950px; padding: 0;">
-                <div>
-                    <img class="center" style="margin: auto;" src="./img/ventajas.png" alt="ventajas">
-                </div>
+            <div>
+                <img class="center" style="margin: auto;" src="./img/ventajas.png" alt="ventajas">
             </div>
+        </div>
     </span>
 
 
@@ -64,15 +65,20 @@
                     <label for="captcha" id="captcha_msj" class="text-info"><b>Captcha</b></label>
                     <div id="captcha">
                     </div>
-                    <input type="text" name="securityCode" id="cpatchaTextBox" class="form-control"
-                        placeholder="Captcha">
+                </div>
+                <div>
+                    <form action="?" method="POST">
+                        <div class="g-recaptcha" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
+                        <br />
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
                 <div class="form-group">
                     <p id="loginResult">
 
                     </p>
                 </div>
-                <button  style="width:10%;" type="submit" name="iniciar" id="iniciar">Iniciar Sesión</button>
+                <button style="width:10%;" type="submit" name="iniciar" id="iniciar">Iniciar Sesión</button>
                 <label>
                     <!-- Recordarme<input style="float: left;" type="checkbox" checked="checked" name="remember"> -->
                 </label>
@@ -86,51 +92,7 @@
     </div>
     <script>
 
-        /*
-        * CAPTCHA
-        */
-        var code; // variable para comparar el captcha
-        function createCaptcha() {
-            //Se borra el capcha anterior almacenado
-            document.getElementById('captcha').innerHTML = "";
-            var charsArray =
-                "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var lengthOtp = 6;
-            var captcha = [];
-            for (var i = 0; i < lengthOtp; i++) {
-                //no se aceptara que se repitan caracteres en el capcha
-                var index = Math.floor(Math.random() * charsArray.length + 1); //Se selleciona la siguiente letra del array
-                if (captcha.indexOf(charsArray[index]) == -1)
-                    captcha.push(charsArray[index]);
-                else i--;
-            }
-            var canv = document.createElement("canvas");
-            canv.id = "captcha";
-            canv.width = 100;
-            canv.height = 50;
-            var ctx = canv.getContext("2d");
-            ctx.font = "25px Georgia";
-            ctx.strokeText(captcha.join(""), 0, 30);
-            //Se alamacena capcha parap oder validarlo mas adelante
-            code = captcha.join("");
-            document.getElementById("captcha").appendChild(canv); // agrega el canvas al cuerpo 
-        }
-
-        /*
-        * VALIDAR CAPTCHA
-        */
-        function validateCaptcha() {
-            event.preventDefault();
-            if (document.getElementById("cpatchaTextBox").value == code) {
-                console.log("Exito validando el captcha");
-                login()
-
-            } else {
-                alert("Captcha Invalido. Vuelve a intentarlo.");
-                createCaptcha();
-            }
-        }
-
+      
         /*
         * Login de Usuario 
         */
@@ -201,7 +163,7 @@
 
 
         // Inicializar las funciones aqui despues del codigo
-        createCaptcha(); // Inicializar el captcha
+      
         userInterfaseInit();
     </script>
     <script>function redireccionalCliente() {
@@ -269,8 +231,8 @@
                     </div>
                 </div>
             </div>
-            <div >
-                <p style="color: #fff; margin-top: 150px;">Autocamiones de Chihuahua S.A de C.V.</p>            
+            <div>
+                <p style="color: #fff; margin-top: 150px;">Autocamiones de Chihuahua S.A de C.V.</p>
             </div>
         </div>
         <div class="mapouter">
