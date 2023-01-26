@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+  <meta charset="UTF-8"/>
   <title>Altamotriz</title>
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
   <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
@@ -24,7 +25,7 @@
               </button>
               <div class="dropdown-content" id="menuadministrador">
                   <a href="./admin_usuarios.html">Aministrar Usuarios</a>
-                  <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
+                  <a href="./admin_vehiculos.html">Aministrar Vehículos</a>
                   <a href="./admin_clientes.html">Aministrar Clientes</a>
               </div>
               </div> 
@@ -35,12 +36,12 @@
             <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="menuasesor">
-              <a href="./asesor.html">Ver ordenes activas</a>
+              <a href="./asesor.html">Ver órdenes activas</a>
                 <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
             </div>
             </div> 
         </li>
-          <li><a href="./tecnico.html">Tecnico</a></li>
+          <li><a href="./tecnico.html">Técnico</a></li>
           <li><a href="./lavado.html">Lavador</a></li>
           <li><a href="./calidad.html">Calidad</a></li>
           <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
@@ -50,13 +51,13 @@
   </nav>
 
   <div class="welcome">
-    Bienvenido <span id="username"> nombre de usuario </span>
+    Bienvenido <span id="username"> Nombre de usuario </span>
   </div>
 
   <div style="background-color:#222 ; display: block; height: 22px;
             min-width: 950px; color: white; margin-bottom:5px; padding-top:
             5px;">
-    Tabla de Ordenes de Servicio activas
+    Tabla de órdenes de Servicio activas
   </div>
   <div class="contenido">
     <div class="fila">
@@ -70,7 +71,7 @@
       <div style="background-color:#222 ; display: block; height: 22px;
                 min-width: 950px; color: white; margin-bottom:5px; padding-top:
                 5px;">
-        Informacion de Orden Seleccionada
+        Información de Orden Seleccionada
       </div>
       <div class="fila">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -80,7 +81,7 @@
                 <legend style="font-size: 120%; margin-bottom: 30px;"><strong>Orden:</strong></legend>
                 <ul style="background-color:#F2F2F2 ;">
                   <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
-                  <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
+                  <li>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
                   <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
                   <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
                 </ul>
@@ -91,7 +92,7 @@
                 <legend style="font-size: 120%; margin-bottom: 30px"><strong>Cliente:</strong></legend>
                 <ul style="background-color:#F2F2F2 ;">
                   <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
-                  <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
+                  <li>Teléfono: <strong><span id="cliente_telefono"></span></strong></li><br>
                   <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
                 </ul>
               </fieldset>
@@ -180,7 +181,7 @@
             <button id="btn_delete_img1" name="delete_1" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_1" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -192,7 +193,7 @@
             <button id="btn_delete_img2" name="delete_2" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_2" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -204,7 +205,7 @@
             <button id="btn_delete_img3" name="delete_3" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_3" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -216,7 +217,7 @@
             <button id="btn_delete_img4" name="delete_4" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_4" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
         </tr>
@@ -238,7 +239,7 @@
             <tr>
               <td>
                 <form onsubmit="guardarComentariosLavado()">
-                  <legend>Comentarios del area de lavado</legend>
+                  <legend>Comentarios del área de lavado</legend>
                   <textarea id="comentarios_lavado" rows="8" cols="95"
                     style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
                   <button type="submit" class="btnsindex">Guardar cambios</button>

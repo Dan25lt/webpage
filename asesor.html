@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+  <meta charset="UTF-8"/>
   <title>Altamotriz</title>
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
   <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
@@ -24,7 +25,7 @@
               </button>
               <div class="dropdown-content" id="menuadministrador">
                   <a href="./admin_usuarios.html">Aministrar Usuarios</a>
-                  <a href="./admin_vehiculos.html">Aministrar Vehiculos</a>
+                  <a href="./admin_vehiculos.html">Aministrar Vehículos</a>
                   <a href="./admin_clientes.html">Aministrar Clientes</a>
               </div>
               </div> 
@@ -35,12 +36,12 @@
             <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="menuasesor">
-              <a href="./asesor.html">Ver ordenes activas</a>
+              <a href="./asesor.html">Ver órdenes activas</a>
                 <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
             </div>
             </div> 
         </li>
-          <li><a href="./tecnico.html">Tecnico</a></li>
+          <li><a href="./tecnico.html">Técnico</a></li>
           <li><a href="./lavado.html">Lavador</a></li>
           <li><a href="./calidad.html">Calidad</a></li>
           <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
@@ -50,7 +51,7 @@
   </nav>
 
   <div class="welcome">
-    Bienvenido <span id="username"> nombre de usuario </span>
+    Bienvenido <span id="username"> Nombre de usuario </span>
   </div>
 
   <div style="background-color:#222 ; display: block; height: 22px;
@@ -79,8 +80,8 @@
               <fieldset style="background-color: #fff;">
                 <legend style="font-size: 120%; margin-bottom: 30px;"><strong>Orden:</strong></legend>
                 <ul style="background-color:#F2F2F2 ;">
-                  <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
-                  <li>Vehiculo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
+                  <li>Fólio: <strong><span id="order_info_folio"></span></strong></li><br>
+                  <li>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
                   <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
                   <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
                 </ul>
@@ -91,7 +92,7 @@
                 <legend style="font-size: 120%; margin-bottom: 30px"><strong>Cliente:</strong></legend>
                 <ul style="background-color:#F2F2F2 ;">
                   <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
-                  <li>Telefono: <strong><span id="cliente_telefono"></span></strong></li><br>
+                  <li>Teléfono: <strong><span id="cliente_telefono"></span></strong></li><br>
                   <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
                 </ul>
               </fieldset>
@@ -112,15 +113,15 @@
             <td style="text-align: center; width: 20%;">
               <form onsubmit="guardarEstatus()">
                 <div>
-                  <label for="cars">Cambiar el Estatus:</label>
+                  <label for="cars">Cambiar el estatus:</label>
                 </div>
                 <div>
                   <select name="estatus_combobox" id="estatus_combobox" style="margin-bottom: 30px;
                   margin-top: 20px;">
                     <option value="En espera">En espera</option>
-                    <option value="En servicio tecnico">En servicio tecnico</option>
+                    <option value="En servicio tecnico">En servicio técnico</option>
                     <option value="En servicio de lavador">En servicio de lavador</option>
-                    <option value="En inspeccion de calidad">En inspeccion de calidad</option>
+                    <option value="En inspeccion de calidad">En inspección de calidad</option>
                     <option value="Terminado">Terminado</option>
                     <option value="Finalizado">Finalizado</option>
                   </select>
@@ -191,7 +192,7 @@
             <button id="btn_delete_img1" name="delete_1" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_1" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -203,7 +204,7 @@
             <button id="btn_delete_img2" name="delete_2" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_2" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -215,7 +216,7 @@
             <button id="btn_delete_img3" name="delete_3" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_3" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
           <td>
@@ -227,7 +228,7 @@
             <button id="btn_delete_img4" name="delete_4" class="btnImg">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_4" style="cursor: pointer;">
-              <small>seleccionar imagen</small> 
+              <small>Seleccionar imagen</small> 
             </label>
           </td>
         </tr>
@@ -282,7 +283,7 @@
                     <tr>
                       <td align="left" colspan="3">
                         <legend style="border-style: 0px;">Limpiador
-                          de medallon trasero: <input type="radio" id="limpiador_medallon_trasero_bueno"
+                          de medallón trasero: <input type="radio" id="limpiador_medallon_trasero_bueno"
                             name="limpiador_medallon_trasero" value="Bueno">
                           <input type="radio" id="limpiador_medallon_trasero_medio" name="limpiador_medallon_trasero"
                             value="Medio">
@@ -303,8 +304,8 @@
                     </tr>
                     <!---------------------- Direccion suspension ---------------------->
                     <tr>
-                      <td bgcolor="black" style="color:#fff" align="center"><Strong>Direccion
-                          Suspension</Strong></td>
+                      <td bgcolor="black" style="color:#fff" align="center"><Strong>Dirección
+                          Suspensión</Strong></td>
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
@@ -356,7 +357,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Direccion:
+                        <legend style="border-style: 0px;">Dirección:
                           <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
                           <input type="radio" id="direccion_medio" name="direccion" value="Medio">
                           <input type="radio" id="direccion_malo" name="direccion" value="Malo">
@@ -490,7 +491,7 @@
                     <tr>
                       <td align="left" colspan="3">
                         <legend style="border-style: 0px;">Liquido
-                          direccion hidraulica: <input type="radio" id="liquido_direccion_hidraulica_bueno"
+                          dirección hidraulica: <input type="radio" id="liquido_direccion_hidraulica_bueno"
                             name="liquido_direccion_hidraulica" value="Bueno">
                           <input type="radio" id="liquido_direccion_hidraulica_medio"
                             name="liquido_direccion_hidraulica" value="Medio">
@@ -512,7 +513,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Revision
+                        <legend style="border-style: 0px;">Revisión
                           de bateria: <input type="radio" id="revision_bateria_bueno" name="revision_bateria"
                             value="Bueno">
                           <input type="radio" id="revision_bateria_medio" name="revision_bateria" value="Medio">
@@ -580,7 +581,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Tapon de
+                        <legend style="border-style: 0px;">Tapón de
                           carter apretado: <input type="radio" id="tapon_carter_bueno" name="tapon_carter"
                             value="Bueno">
                           <input type="radio" id="tapon_carter_malo" name="tapon_carter" value="Malo">
@@ -615,7 +616,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Diagnostico de bateria correcto:
+                        <legend style="border-style: 0px;">Diagnóstico de bateria correcto:
                           <input type="radio" id="diagnostico_bateria_bueno" name="diagnostico_bateria" value="Bueno">
                           <input type="radio" id="diagnostico_bateria_malo" name="diagnostico_bateria" value="Malo">
                         </legend>
@@ -631,7 +632,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Aceite de transmision:
+                        <legend style="border-style: 0px;">Aceite de transmisión:
                           <input type="radio" id="aceite_transmision_bueno" name="aceite_transmision" value="Bueno">
                           <input type="radio" id="aceite_transmision_malo" name="aceite_transmision" value="Malo">
                         </legend>
@@ -639,7 +640,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Nivel de :
+                        <legend style="border-style: 0px;">Nivel de anticongelante:
                           <input type="radio" id="nivel_anticongelante_bueno" name="nivel_anticongelante" value="Bueno">
                           <input type="radio" id="nivel_anticongelante_malo" name="nivel_anticongelante" value="Malo">
                         </legend>
@@ -647,7 +648,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Nivel de direccion hidraulica:
+                        <legend style="border-style: 0px;">Nivel de dirección hidráulica:
                           <input type="radio" id="nivel_direccion_bueno" name="nivel_direccion" value="Bueno">
                           <input type="radio" id="nivel_direccion_malo" name="nivel_direccion" value="Malo">
                         </legend>
@@ -655,7 +656,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Diagnostico de banda de motor:
+                        <legend style="border-style: 0px;">Diagnóstico de banda de motor:
                           <input type="radio" id="diagnostico_banda_bueno" name="diagnostico_banda" value="Bueno">
                           <input type="radio" id="diagnostico_banda_malo" name="diagnostico_banda" value="Malo">
                         </legend>
@@ -663,7 +664,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Diagnostico de mangueras:
+                        <legend style="border-style: 0px;">Diagnóstico de mangueras:
                           <input type="radio" id="diagnostico_mangeras_bueno" name="diagnostico_mangeras" value="Bueno">
                           <input type="radio" id="diagnostico_mangeras_malo" name="diagnostico_mangeras" value="Malo">
                         </legend>
@@ -671,7 +672,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Diagnostico de arneses:
+                        <legend style="border-style: 0px;">Diagnóstico de arneses:
                           <input type="radio" id="diagnostico_arneses_bueno" name="diagnostico_arneses" value="Bueno">
                           <input type="radio" id="diagnostico_arneses_malo" name="diagnostico_arneses" value="Malo">
                         </legend>
@@ -679,7 +680,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Inspeccion de neumaticos:
+                        <legend style="border-style: 0px;">Inspección de neumáticos:
                           <input type="radio" id="inspeccion_neumaticos_bueno" name="inspeccion_neumaticos"
                             value="Bueno">
                           <input type="radio" id="inspeccion_neumaticos_malo" name="inspeccion_neumaticos" value="Malo">
@@ -688,7 +689,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Presion de neumaticos:
+                        <legend style="border-style: 0px;">Presión de neumáticos:
                           <input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos" value="Bueno">
                           <input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo">
                         </legend>
@@ -696,7 +697,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Presion de neumatico de refaccion:
+                        <legend style="border-style: 0px;">Presión de neumático de refacción:
                           <input type="radio" id="presion_extra_bueno" name="presion_extra" value="Bueno">
                           <input type="radio" id="presion_extra_malo" name="presion_extra" value="Malo">
                         </legend>
@@ -712,7 +713,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Operacion de luces:
+                        <legend style="border-style: 0px;">Operación de luces:
                           <input type="radio" id="luces_bueno" name="luces" value="Bueno">
                           <input type="radio" id="luces_malo" name="luces" value="Malo">
                         </legend>
@@ -720,7 +721,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Operacion de limpiaparabrisas:
+                        <legend style="border-style: 0px;">Operación de limpiaparabrisas:
                           <input type="radio" id="operacion_limpiabrisas_bueno" name="operacion_limpiabrisas"
                             value="Bueno">
                           <input type="radio" id="operacion_limpiabrisas_malo" name="operacion_limpiabrisas"
@@ -730,21 +731,21 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Vida util de frenos adecuado:
+                        <legend style="border-style: 0px;">Vida útil de frenos adecuado:
                           <input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno">
                           <input type="radio" id="vida_util_frenos_malo" name="vida_util_frenos" value="Malo">
                         </legend>
                       </td>
                     </tr>
                     <!---------------------- Configuracion del vehiculo ---------------------->
-                    <th><strong>Configuracion del vehiculo&nbsp &nbsp
+                    <th><strong>Configuración del vehículo&nbsp &nbsp
                         &nbsp &nbsp &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
                     <tr>
                     <tr>
                       <td align="left" colspan="3">
                         <legend style="border-style: 0px;">Verificar
-                          y asegurar la configuracion <br>
-                          inicial del vehiculo despues de los
+                          y asegurar la configuración <br>
+                          inicial del vehículo despues de los
                           trabajos<br> realizados.<br> (En
                           caso de realizar algun cambio
                           notificar<br> al cliente):
@@ -761,7 +762,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tbody>
                     <!---------------------- Revision de calidad en la operacion del taller ---------------------->
-                    <th><strong>Revision de calidad en la operacion
+                    <th><strong>Revision de calidad en la operación
                         del taller&nbsp &nbsp &nbsp &nbsp &nbsp
                         X &nbsp&nbspB&nbsp&nbsp</strong></th>
                     <tr>
@@ -775,7 +776,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Danos en carroceria:
+                        <legend style="border-style: 0px;">Daños en carroceria:
                           <input type="radio" id="dano_carroceria_bueno" name="dano_carroceria" value="Bueno">
                           <input type="radio" id="dano_carroceria_malo" name="dano_carroceria" value="Malo">
                         </legend>
@@ -859,16 +860,16 @@
 
                     <!---------------------- Control de calidad en la operacion del taller ---------------------->
                     <th><strong>Control de calidad en la
-                        operacion del taller&nbsp &nbsp
+                        operación del taller&nbsp &nbsp
                         &nbsp &nbsp &nbsp X
                         &nbsp&nbspB&nbsp&nbsp</strong></th>
                     <tr>
                     <tr>
                       <td align="left" colspan="3">
                         <legend style="border-style: 0px;">
-                          Se inicio la operacion
+                          Se inicio la operación
                           a tiempo conforme a <br> la
-                          programacion:
+                          programación:
                           <input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno">
                           <input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo">
                         </legend>
@@ -878,7 +879,7 @@
                       <td align="left" colspan="3">
                         <legend style="border-style: 0px;">Las protecciones se
                           mantienen correctamente<br>instaladas
-                          durante la operacion:
+                          durante la operación:
                           <input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno">
                           <input type="radio" id="protecciones_malo" name="protecciones" value="Malo">
                         </legend>
@@ -896,7 +897,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">La hoja de inspeccion
+                        <legend style="border-style: 0px;">La hoja de inspección
                           del vehiculo se encuentra
                           <br> llena completamente:
                           <input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno">
@@ -924,7 +925,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Se reviso la funcion
+                        <legend style="border-style: 0px;">Se reviso la función
                           VIP del vehiculo
                           <input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno">
                           <input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo">
@@ -947,7 +948,7 @@
                     <tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Se aplico torque a
+                        <legend style="border-style: 0px;">Se aplicó torque a
                           tornillos de caliper
                           <input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno">
                           <input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo">
@@ -956,7 +957,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Nivel de liquido
+                        <legend style="border-style: 0px;">Nivel de líquido
                           de frenos
                           <input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno">
                           <input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo">
@@ -1015,7 +1016,7 @@
                     </tr>
                     <tr>
                       <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Operacion de
+                        <legend style="border-style: 0px;">Operación de
                           frenado correcta
                           <input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno">
                           <input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo">
@@ -1068,7 +1069,7 @@
             <tr>
               <td>
                 <form onsubmit="guardarComentariosTecnicos()">
-                  <legend>Comentarios del Tecnico</legend>
+                  <legend>Comentarios del Técnico</legend>
                   <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px; width: 98%;"
                     id="comentarios_tecnicos"></textarea>
                   <button type="submit" class="btnsindex">Guardar cambios</button>
@@ -1077,7 +1078,7 @@
             <tr>
               <td>
                 <form onsubmit="guardarComentariosLavado()">
-                  <legend>Comentarios del area de lavado</legend>
+                  <legend>Comentarios del área de lavado</legend>
                   <textarea id="comentarios_lavado" rows="8" cols="95"
                     style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
                   <button type="submit" class="btnsindex">Guardar cambios</button>
@@ -1087,7 +1088,7 @@
             <tr>
               <td>
                 <form onsubmit="guardarComentariosCalidad()">
-                  <legend>Comentarios del area de Calidad</legend>
+                  <legend>Comentarios del área de Calidad</legend>
                   <textarea id="comentarios_calidad" rows="8" cols="95"
                     style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
                   <button type="submit" class="btnsindex">Guardar cambios</button>
