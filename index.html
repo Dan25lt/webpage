@@ -1,262 +1,175 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Altamotriz</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-    <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-    <link rel="stylesheet" href="./css/index.css" type="text/css" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <meta charset="utf-8">
+  <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+  
+
+
+  <meta name="theme-color" content="#fafafa">
 </head>
 
-<body style="background-color: #F0F0F0 ;">
+<body>
 
-    <div style="background-color: black;">
-        <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="">Your Site</a>
+
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+      </ul>
     </div>
-    <span>
-        <div class="center" style="width: 20%; margin-top: 150; margin-bottom: 250;">
-            <h1 style="color: black;">Hola Bienvenido</h1>
-            <div>
-                <button class="btnsindex btnsindex:hover espaciador" onclick="redireccionalCliente()"
-                    style="width:auto; float: left;"> Soy
-                    cliente</button>
-                <button class="btnsindex btnsindex:hover espaciador"
-                    onclick="document.getElementById('id01').style.display='block'"
-                    style="width:auto; float: right;">Iniciar
-                    Sesión</button>
-            </div>
-            <h2 style="color: black;">Seleccione la opción deseada</h2>
+  </div>
+
+  <div class="splash-container">
+    <div class="splash">
+      <h1 class="splash-head">Big Bold Text</h1>
+      <p class="splash-subhead">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </p>
+      <p>
+        <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>
+
+      <div class="pure-g">
+        <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+          <h3 class="content-subhead">
+            <i class="fa fa-rocket"></i>
+            Get Started Quickly
+          </h3>
+          <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+          </p>
         </div>
-    </span>
-    <div style="background-color:#cecece ; display: block; height: 30px;
-    min-width: 950px; padding: 0;">
-    </div>
-    <span>
-
-        <div style="background-color:#272828 ; display: block;
-        min-width: 950px; padding: 0;">
-            <div>
-                <img class="center" style="margin: auto;" src="./img/ventajas.png" alt="ventajas">
-            </div>
+        <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+          <h3 class="content-subhead">
+            <i class="fa fa-mobile"></i>
+            Responsive Layouts
+          </h3>
+          <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+          </p>
         </div>
-    </span>
-
-
-
-    <div id="id01" class="modal">
-        <form class="modal-content animate" onsubmit="validateCaptcha()" id="loginForm">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Close Modal">&times;</span>
-                <img style="width: 200; " src="./img/login.png" alt="Logo" class="logo">
-            </div>
-
-            <div class="container">
-                <div class="form-group">
-                    <label for="usuario"><b>Usuario</b></label>
-                    <input type="text" placeholder="Escribe tu Usuario" name="username" id="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="contraseña"><b>Contraseña</b></label>
-                    <input type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="captcha" id="captcha_msj" class="text-info"><b>Captcha</b></label>
-                    <div id="captcha">
-                    </div>
-                </div>
-                <div>
-                    <form action="?" method="POST">
-                        <div class="g-recaptcha" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
-                        <br />
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-                <div class="form-group">
-                    <p id="loginResult">
-
-                    </p>
-                </div>
-                <button style="width:10%;" type="submit" name="iniciar" id="iniciar">Iniciar Sesión</button>
-                <label>
-                    <!-- Recordarme<input style="float: left;" type="checkbox" checked="checked" name="remember"> -->
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancelar</button>
-            </div>
-        </form>
+        <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+          <h3 class="content-subhead">
+            <i class="fa fa-th-large"></i>
+            Modular
+          </h3>
+          <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+          </p>
+        </div>
+        <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+          <h3 class="content-subhead">
+            <i class="fa fa-check-square-o"></i>
+            Plays Nice
+          </h3>
+          <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+          </p>
+        </div>
+      </div>
     </div>
-    <script>
 
-      
-        /*
-        * Login de Usuario 
-        */
-        function login() {
-            let loginForm = new FormData(document.getElementById("loginForm"));
+    <div class="ribbon l-box-lrg pure-g">
+      <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+        <img width="300" alt="File Icons" class="pure-img-responsive" src="/img/common/file-icons.png">
+      </div>
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 
-            fetch('./backend/login.php', {
-                method: 'POST',
-                body: loginForm
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (data) {
-                    console.log(" ========================= ")
-                    console.log(data);
-                    var response = JSON.parse(data);
+        <h2 class="content-head content-head-ribbon">Laboris nisi ut aliquip.</h2>
 
-                    if (response.statusCode === 200) {
-                        document.getElementById("loginResult").innerHTML = response.msj + " Puesto: " + response.puesto;
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor.
+        </p>
+      </div>
+    </div>
 
-                        // codigo para redireccionar,
+    <div class="content">
+      <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
 
-                        if (response.puesto == 'Administrador') {
-                            location.replace("./menu.html");
-                        } else if (response.puesto == 'Asesor') {
-                            location.replace("./asesor.html");
-                        }
-                        else if (response.puesto == 'Tecnico') {
-                            location.replace("./tecnico.html");
-                        }
-                        else if (response.puesto == 'Lavador') {
-                            location.replace("./lavado.html");
-                        }
-                        else if (response.puesto == 'Calidad') {
-                            location.replace("./calidad.html");
-                        }
-                        else if (response.puesto == 'Gerente') {
-                            location.replace("./gerente.html");
-                        }
+      <div class="pure-g">
+        <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+          <form class="pure-form pure-form-stacked">
+            <fieldset>
 
-                    } else if (response.statusCode === 403) {
-                        document.getElementById("loginResult").innerHTML = response.msj;
-                    }
-                });
-        }
-
-        /*
-        * Todo lo referente a la UI
-        * Se mete todo en una sola funcion y se corre
-        */
-        function userInterfaseInit() {
-
-            function redireccionCliente() {
-                location.replace("./index.html");
-            }
-
-            // crear el modal
-            var modal = document.getElementById('id01');
-
-            // se cierra si se hace click fuera de la ventana
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        }
+              <label for="name">Your Name</label>
+              <input id="name" type="text" placeholder="Your Name">
 
 
-        // Inicializar las funciones aqui despues del codigo
-      
-        userInterfaseInit();
-    </script>
-    <script>function redireccionalCliente() {
-            location.replace("./cliente.html");
-        }</script>
+              <label for="email">Your Email</label>
+              <input id="email" type="email" placeholder="Your Email">
+
+              <label for="password">Your Password</label>
+              <input id="password" type="password" placeholder="Your Password">
+
+              <button type="submit" class="pure-button">Sign Up</button>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+          <h4>Contact Us</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </p>
+
+          <h4>More Information</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer l-box is-center">
+      View the source of this layout to learn more. Made with love by the Pure Team.
+    </div>
+
+  </div>
+
+  <!-- <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script> -->
 
 
 </body>
-
-
-
-
-<footer style="background-color:#272828 ;">
-    <div>
-        <div style="background-color:black; width: 50%; height: 400; text-align: center; float: right;">
-            <div style="color: white; padding-top: 10px; padding-bottom: 20;">
-                <div>
-                    <strong>Ubicación</strong>
-                    <br>
-                    <p>Periférico de la Juventud #7101 Residencial Cumbres 2, C.P 31217, Chih, Chihuahua</p>
-                    <p></p>
-                </div>
-            </div>
-            <div style="padding-bottom:50;">
-                <div style="padding-bottom:15;">
-                    <a style=" color: #fff;text-decoration: none;" href="tel:6144425300"><i><img
-                                src="./img/tel_ico_32.png" alt="tel icon"></i>Teléfono:
-                        614-442-5300</a>
-                </div>
-                <div>
-                    <div>
-                        <a style=" color: #fff;text-decoration: none" href="https://wa.me/+526145396323" target="_blank"
-                            onclick="setgtag('whatsapp');"><i></i><img src="./img/whatsapp-24.ico"
-                                alt="whatsapp logo">&nbsp&nbsp 614-539-63-23</a><br>
-                    </div>
-                </div>
-            </div>
-            <div>
-
-                <div style="color: white; ">
-                    <div>
-                        <div style="float: left; width:33%;">
-                            <strong>Horario de Ventas</strong><br>
-                            Lunes a Viernes 9:00 a.m. - 8:00 p.m.<br>
-                            Sábados 9:00 a.m. - 6:00 p.m.<br>
-                            Domingos 11:00 a.m. - 5:00 p.m.
-                            <br>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="float: left; width:33%;">
-                            <strong>Horario de Servicio</strong><br>
-                            Lunes a Viernes 8:00 a.m. - 6:00 p.m.<br>
-                            Sábados 8:00 a.m. - 1:30 p.m.<br>
-                            <br>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="float: right; width:33%;">
-                            <strong>Horario de Refacciones</strong><br>
-                            Lunes a Viernes 8:00 a.m. - 6:00 p.m.<br>
-                            Sábados 8:00 a.m. - 1:30 p.m.<br>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <p style="color: #fff; margin-top: 150px;">Autocamiones de Chihuahua S.A de C.V.</p>
-            </div>
-        </div>
-        <div class="mapouter">
-            <div class="gmap_canvas"><iframe width="100%" height="400" id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=altamotriz&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                    scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
-                <style>
-                    .mapouter {
-                        position: relative;
-                        text-align: right;
-                        width: 50%;
-                    }
-                </style>
-                <style>
-                    .gmap_canvas {
-                        overflow: hidden;
-                        background: none !important;
-
-                    }
-                </style>
-            </div>
-        </div>
-    </div>
-
-</footer>
 
 </html>
