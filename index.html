@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
   <link rel="stylesheet" href="css/main/styles.css">
+  <link rel="stylesheet" href="css/main/modal.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -37,28 +38,30 @@
       <a class="pure-menu-heading" href=""><img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="140px"></a>
 
       <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+        <!-- <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Iniciar Sesión</a></li> -->
+        <li class="pure-menu-item"><label class="pure-menu-link btn" for="modal-1">Iniciar Sesión</label></li>
       </ul>
     </div>
   </div>
 
-
-  <div class="splash-container">
-    <div class="splash">
-      <h1 class="splash-head">Big Bold Text</h1>
-      <p class="splash-subhead">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </p>
-      <p>
-        <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
-      </p>
-    </div>
-  </div>
-
-
   <div class="content-wrapper">
+
+    <div class="content ribbon-white l-box-lrg pure-g is-center">
+      <h2 class="content-head is-center black-text">Encuentra tu orden de servicio.</h2>
+
+        <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1">
+          <form class="pure-form">
+            <fieldset>
+              <legend>Ingresa tu numero de orden.</legend>
+              <input type="text" placeholder="" style="max-width: 200px;"/>
+              <button type="submit" class="pure-button pure-button-primary" style="margin-bottom: 1em;">Sign in</button>
+            </fieldset>
+          </form>
+        </div>
+
+    </div>
+
+
     <div class="content ribbon l-box-lrg pure-g is-center">
       <h2 class="content-head is-center white-text">Descubre las ventajas que tenemos para ti.</h2>
 
@@ -129,6 +132,19 @@
           <p>
             Periferico de la Juventud #7101 Residencial Cumbres 2, C.P 31217, Chih, Chihuahua.
           </p>
+          <br>
+          <p>
+            <a style=" color: #fff;text-decoration: none;" href="tel:6144425300">
+              <img src="./img/tel_ico_32.png" alt="tel icon">
+              Teléfono: 614-442-5300
+            </a>
+          </p>
+          <p>
+            <a style=" color: #fff;text-decoration: none" href="https://wa.me/+526145396323" target="_blank"
+              onclick="setgtag('whatsapp');"><i></i><img src="./img/whatsapp-24.ico" alt="whatsapp logo">
+              614-539-63-23
+            </a>
+          </p>
 
           <div class="pure-g">
             <div class="pure-u-1-3">
@@ -160,10 +176,83 @@
 
   </div>
 
-  <!-- <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script> -->
+  <!-- MODALES -->
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-1"></label>
+      <!-- Modal content -->
+      <form class="pure-form pure-form-stacked" onsubmit="login(event)" id="loginForm">
+        <fieldset>
+          <label for="username">Usuario</label>
+          <input type="text" placeholder="Escribe tu Usuario" name="username" id="username" required>
+          <label for="stacked-password">Contraseña</label>
+          <input type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
+          <div class="g-recaptcha" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
+          <label for="stacked-password"></label>
+          <button type="submit" class="pure-button pure-button-primary">Iniciar Sesión</button>
+        </fieldset>
+      </form>
+      <!-- /Modal content -->
+    </div>
+  </div>
+  <!-- /MODALES -->
 
+  
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript">
+    /*
+    * Login de Usuario 
+    */
+    function login(e) {
+      e.preventDefault();
+      let loginForm = new FormData(document.getElementById("loginForm"));
+
+      fetch('./backend/login.php', {
+        method: 'POST',
+        body: loginForm
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
+
+          console.log(" ========================= ")
+          console.log(data);
+          var response = JSON.parse(data);
+
+          if (response.statusCode === 200) {
+            document.getElementById("loginResult").innerHTML = response.msj + " Puesto: " + response.puesto;
+
+            // codigo para redireccionar,
+
+            if (response.puesto == 'Administrador') {
+              location.replace("./menu.html");
+            } else if (response.puesto == 'Asesor') {
+              location.replace("./asesor.html");
+            }
+            else if (response.puesto == 'Tecnico') {
+              location.replace("./tecnico.html");
+            }
+            else if (response.puesto == 'Lavador') {
+              location.replace("./lavado.html");
+            }
+            else if (response.puesto == 'Calidad') {
+              location.replace("./calidad.html");
+            }
+            else if (response.puesto == 'Gerente') {
+              location.replace("./gerente.html");
+            }
+
+          } else if (response.statusCode === 403) {
+            document.getElementById("loginResult").innerHTML = response.msj;
+          }
+        });
+    }
+  </script>
+  <!-- /SCRIPTS -->
 
 </body>
 
