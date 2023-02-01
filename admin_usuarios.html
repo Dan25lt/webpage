@@ -1,516 +1,350 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-    <meta charset="UTF-8"/>
-    <title>Altamotriz</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-    <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-    <link rel="stylesheet" href="./css/index.css" type="text/css" />
+  <meta charset="utf-8">
+  <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+
+  <link rel="stylesheet" href="css/html5boilerplate/main.css">
+  <link rel="stylesheet" href="css/html5boilerplate/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <link rel="stylesheet" href="css/main/styles.css">
+  <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/navbar.css">
+  <link rel="stylesheet" href="css/main/table.css">
+
+  <meta name="theme-color" content="#fafafa">
+
 </head>
 
-<body style="background-color: #F0F0F0 ;">
-    
-    <div style="background-color: black;">
-      <img src="./img/logo.png" width="1300" height="150" alt="" ;>
-  </div>
-    <div>
-        <div>
-            <div class="li_menu">
-                <ul style="border-radius: 8px;">
-                    <li class="li-right"><a href="./menu.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
-                                style="width: 25px;height:22px;">&nbsp &nbsp Volver al menú principal</a>
-                    </li>
-                </ul>
-            </div>
+<body>
+
+  <nav>
+    <div id="logo">
+      <img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="120px">
+    </div>
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+    <ul class="menu">
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-1" class="toggle">Administrador</label>
+        <a href="#">Administrador</a>
+        <input type="checkbox" id="drop-1" />
+        <ul>
+          <li><a href="./admin_usuarios.html">Usuarios</a></li>
+          <li><a href="./admin_vehiculos.html">Vehículos</a></li>
+          <li><a href="./admin_clientes.html">clientes</a></li>
+        </ul>
+      </li>
+      <li><a href="./gerente.html">Gerente</a></li>
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-2" class="toggle">Asesor</label>
+        <a href="#">Asesor</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+          <li><a href="./asesor.html">Ordenes activas</a></li>
+          <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
+        </ul>
+      </li>
+      <li><a href="./tecnico.html">Técnico</a></li>
+      <li><a href="./lavado.html">Lavador</a></li>
+      <li><a href="./calidad.html">Calidad</a></li>
+      <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <div class="content ribbon-white l-box-lrg pure-g">
+      <h2 class="content-sub-head black-text">Usuarios.</h2>
+
+      <div class="pure-g">
+        <div class="l-box pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1">
+
+
+            <table>
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job Title</th>
+                    <th>Twitter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-column="First Name">James</td>
+                    <td data-column="Last Name">Matman</td>
+                    <td data-column="Job Title">Chief Sandwich Eater</td>
+                    <td data-column="Twitter">@james</td>
+                  </tr>
+                  <tr>
+                    <td data-column="First Name">Andor</td>
+                    <td data-column="Last Name">Nagy</td>
+                    <td data-column="Job Title">Designer</td>
+                    <td data-column="Twitter">@andornagy</td>
+                  </tr>
+                  <tr>
+                    <td data-column="First Name">Tamas</td>
+                    <td data-column="Last Name">Biro</td>
+                    <td data-column="Job Title">Game Tester</td>
+                    <td data-column="Twitter">@tamas</td>
+                  </tr>
+                  <tr>
+                    <td data-column="First Name">Zoli</td>
+                    <td data-column="Last Name">Mastah</td>
+                    <td data-column="Job Title">Developer</td>
+                    <td data-column="Twitter">@zoli</td>
+                  </tr>
+                  <tr>
+                    <td data-column="First Name">Szabi</td>
+                    <td data-column="Last Name">Nagy</td>
+                    <td data-column="Job Title">Chief Sandwich Eater</td>
+                    <td data-column="Twitter">@szabi</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
         </div>
+      </div>
 
-        <div>
-            <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
-                <h1 style="color: 222;">Selecciona el usuario deseado desde la tabla</h1>
-                <div id="tabla_usuarios"></div>
-            </div>
-            <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
-                <h2 style="color: 222;">Agregar un usuario nuevo</h2>
-                <div class="fila" style=" margin: auto; width: 40%; padding: 10px;">
-                    <button class="btnsindex" id="btn_creat_user"
-                        onclick="document.getElementById('modaladdUsers').style.display='block'">Agregar</button>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div id="modalVer" class="modal">
-                <div class="modal-content animate">
-                    <form class="" id="verModalForm">
-                        <div class="imgcontainer">
-                            <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
-                                title="Close Modal">&times;</span>
-                        </div>
-
-                        <div class="container">
-
-                            <p>Idempleado:<strong><span id="ver_idempleado"></span></strong></p>
-                            <p>Usuario:<strong><span id="ver_usuario"></span></strong></p>
-                            <p>Contraseña:<strong><span id="ver_contraseña"></span></strong></p>
-                            <p>Nombre:<strong><span id="ver_nombre"></span></strong></p>
-                            <p>Apellido:<strong><span id="ver_apellido"></span></strong></p>
-                            <p>Puesto:<strong><span id="ver_puesto"></span></strong></p>
-
-                            <label>
-                            </label>
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
-                                class="cancelbtn">Cancelar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div id="id01" class="modal">
-                <div class="modal-content" style="width:40%">
-                    <form id="editModalForm">
-                        <div class="imgcontainer">
-                            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                                title="Close Modal">&times;</span>
-
-                        </div>
-
-                        <div class="container">
-                            <div class="form-group">
-                                <input type="hidden" placeholder="" name="idempleado" id="idempleado" required><br>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Usuario</b></label><br>
-                                <input type="text" placeholder="" name="usuario" id="usuario" required><br>
-                            </div>
-                            <div class="form-group">
-                                <label for="contrasena"><b>Contraseña</b></label><br>
-                                <input type="password" placeholder="" name="contrasena" id="contrasena" required><br>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Nombre</b></label><br>
-                                <input type="text" placeholder="" name="nombre" id="nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Apellido</b></label><br>
-                                <input type="text" placeholder="" name="apellido" id="apellido" required>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Puesto</b></label><br>
-                                <input type="text"  placeholder="" name="puesto" id="puesto" required>
-                            </div>
-                            <button type="submit">Guardar</button>
-
-                            <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                    class="cancelbtn">Cancelar</button>
-                            </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div id="modaladdUsers" class="modal">
-                <div class="modal-content" style="width:40%">
-                    <form id="addModalForm">
-                        <div class="imgcontainer">
-                            <span onclick="document.getElementById('modaladdUsers').style.display='none'" class="close"
-                                title="Close Modal">&times;</span>
-
-                        </div>
-
-                        <div class="container">
-                            <div class="form-group">
-                                <input type="hidden" placeholder="" name="add_idempleado" id="add_idempleado"
-                                    required><br>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Usuario</b></label><br>
-                                <input type="text" placeholder="" name="add_usuario" id="add_usuario" required><br>
-                            </div>
-                            <div class="form-group">
-                                <label for="contrasena"><b>Contraseña</b></label><br>
-                                <input type="password" placeholder="" name="add_contrasena" id="add_contrasena"
-                                    required><br>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Nombre</b></label><br>
-                                <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Apellido</b></label><br>
-                                <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
-                            </div>
-                            <div class="form-group">
-                                <label><b>Puesto</b></label><br>
-                                <input type="text"  placeholder="" name="add_puesto" id="add_puesto" required>
-                            </div>
-                            <button type="submit">Guardar</button>
-
-                            <div class="container" style="background-color:#f1f1f1">
-                                <button type="button"
-                                    onclick="document.getElementById('modaladdUsers').style.display='none'"
-                                    class="cancelbtn">Cancelar</button>
-                            </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <script>
-        function cargarTodos() {
 
-            fetch('./backend/administrador/getUsers.php', {
-                method: 'GET',
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (return_data) {
-                    if (return_data == "no hay Usuarios") {
-                        alert("no hay Usuarios");
-                        return;
-                    }
+    <!-- <div class="content ribbon l-box-lrg pure-g is-center">
+      <h2 class="content-head is-center white-text">Descubre las ventajas que tenemos para ti.</h2>
 
-                    console.log(return_data);
-
-                    var data = JSON.parse(return_data);
-
-                    var columnNames = [
-                        "idempleado",
-                        "usuario",
-                        "contrasena",
-                        "nombre",
-                        "apellido",
-                        "puesto",
-                        "opciones"
-                    ];
-
-                    var table = document.createElement('table');
-
-                    // Titulos solamente
-                    var tr = document.createElement('tr');
-
-                    var td = document.createElement('td');
-                    var text = document.createTextNode('Id');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    var td = document.createElement('td');
-                    var text = document.createTextNode('Ususario');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    var td = document.createElement('td');
-                    var text = document.createTextNode('Contrasena');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    td = document.createElement('td');
-                    text = document.createTextNode('Nombre');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    td = document.createElement('td');
-                    text = document.createTextNode('Apellido');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    td = document.createElement('td');
-                    text = document.createTextNode('Puesto');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    td = document.createElement('td');
-                    text = document.createTextNode('Opciones');
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                    td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-                    table.appendChild(tr);
+      <div class="pure-g">
+        <div class="l-box pure-u-1 pure-u-md-1-3 pure-u-lg-1-3">
+          <div class="l-box pure-u-1 is-center">
+            <img src="img/gauge.png" alt="velocidad">
+          </div>
+          <h3 class="content-subhead red-text is-center">
+            Rapidez en el Servicio
+          </h3>
+          <p class="is-center white-text">
+            Porque entendemos que el tiempo es de gran valor para nuestros clientes.
+          </p>
+        </div>
+        <div class="l-box pure-u-1 pure-u-md-1-3 pure-u-lg-1-3">
+          <div class="l-box pure-u-1 is-center">
+            <img src="img/gear.png" alt="calidad">
+          </div>
+          <h3 class="content-subhead red-text is-center">
+            Atención de Calidad
+          </h3>
+          <p class="is-center white-text">
+            Nuestra prioridad es que nuestros clientes estén 100% satisfechos.
+          </p>
+        </div>
+        <div class="l-box pure-u-1 pure-u-md-1-3 pure-u-lg-1-3">
+          <div class="l-box pure-u-1 is-center">
+            <img src="img/tools.png" alt="expertos">
+          </div>
+          <h3 class="content-subhead red-text is-center">
+            Profecionales expertos
+          </h3>
+          <p class="is-center white-text">
+            Contamos con los más altos estándares en los trabajos realizados por nuestro equipo de expertos que cuentan
+            con el conocimiento adecuado para el servicio de tu vehículo.
+          </p>
+        </div>
+      </div>
+    </div>  -->
 
 
-                    // Lenado de la tabla 
-                    for (var i = 0; i < data.length; i++) {
-                        var tr = document.createElement('tr');
-                        tr.style.cssText = " background-color: #E7E9EB; padding: 10px; text-align: center;";
-                        for (var j = 0; j < columnNames.length; j++) {
-                            var td = document.createElement('td');
-                            td.style.cssText = " background-color: #E7E9EB; padding: 10px; text-align: center;";
-                            if (columnNames[j] === 'opciones') {
+    <!-- <div class="content ribbon-white">
+      <div class="pure-g">
+        <div class="l-box-lrg pure-u-1 pure-u-md-2-5 no-padding">
+          <div class="gmap_canvas"><iframe width="100%" height="400" id="gmap_canvas"
+              src="https://maps.google.com/maps?q=altamotriz&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
+              scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+            <style>
+              .mapouter {
+                position: relative;
+                text-align: right;
+                width: 50%;
+              }
+            </style>
+            <style>
+              .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
 
-                                var btn = document.createElement('input');
-                                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 6px; ";
-                                btn.type = "button";
-                                btn.className = "btnEdit";
-                                btn.value = "Editar";
-                                btn.name = data[i]['idempleado'];
+              }
+            </style>
+          </div>
+        </div>
 
-                                tr.appendChild(btn);
+        <div class="l-box-lrg pure-u-1 pure-u-md-3-5 ribbon-black is-center">
+          <h5 class="white-text">Ubicación</h5>
+          <p>
+            Periferico de la Juventud #7101 Residencial Cumbres 2, C.P 31217, Chih, Chihuahua.
+          </p>
+          <br>
+          <p>
+            <a style=" color: #fff;text-decoration: none;" href="tel:6144425300">
+              <img src="./img/tel_ico_32.png" alt="tel icon">
+              Teléfono: 614-442-5300
+            </a>
+          </p>
+          <p>
+            <a style=" color: #fff;text-decoration: none" href="https://wa.me/+526145396323" target="_blank"
+              onclick="setgtag('whatsapp');"><i></i><img src="./img/whatsapp-24.ico" alt="whatsapp logo">
+              614-539-63-23
+            </a>
+          </p>
 
-                                var btn = document.createElement('input');
-                                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 6px; ";
-                                btn.type = "button";
-                                btn.className = "btnVer";
-                                btn.value = "Ver";
-                                btn.name = data[i]['idempleado'];
+          <div class="pure-g">
+            <div class="pure-u-1-3">
+              <h5 class="white-text">Horario de Ventas</h5>
+              <p>Lunes a Viernes 9:00 a.m. - 8:00 p.m.</p>
+              <p>Sábados 9:00 a.m. - 6:00 p.m.</p>
+              <p>Domingos 11:00 a.m. - 5:00 p.m.</p>
+            </div>
+            <div class="pure-u-1-3">
+              <h5 class="white-text">Horario de Servicio</h5>
+              <p>Lunes a Viernes 8:00 a.m. - 6:00 p.m.</p>
+              <p>Sábados 8:00 a.m. - 1:30 p.m.</p>
+            </div>
+            <div class="pure-u-1-3">
+              <h5 class="white-text">Horario de Refacciones</h5>
+              <p>Lunes a Viernes 8:00 a.m. - 6:00 p.m.</p>
+              <p>Sábados 8:00 a.m. - 1:30 p.m.</p>
+            </div>
+          </div>
 
-                                tr.appendChild(btn);
+        </div>
+      </div>
 
-                                var btn = document.createElement('input');
-                                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 6px; ";
-                                btn.type = "button";
-                                btn.className = "btnBorrar";
-                                btn.value = "Borrar";
-                                btn.name = data[i]['idempleado'];
+    </div> -->
 
-                                tr.appendChild(btn);
-                            }
-                            else {
-                                var text = document.createTextNode(data[i][columnNames[j]]);
+    <div class="footer l-box is-center">
+      <p>Autocamiones de Chihuahua S.A de C.V.</p>
+    </div>
 
-                                td.appendChild(text);
-                                tr.appendChild(td);
-                            }
-                        }
+  </div>
 
-                        table.appendChild(tr);
-                    }
+  <!-- MODALES -->
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-1"></label>
+      <!-- Modal content -->
+      <form class="pure-form pure-form-stacked" onsubmit="login(event)" id="loginForm">
+        <fieldset>
+          <label for="username">Usuario</label>
+          <input type="text" placeholder="Escribe tu Usuario" name="username" id="username" required>
+          <label for="stacked-password">Contraseña</label>
+          <input type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
 
+          <div class="g-recaptcha" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
 
-                    document.getElementById("tabla_usuarios").appendChild(table);
-
-
-                    const editBtns = document.getElementsByClassName('btnEdit');
-
-                    for (const btnEdit of editBtns) {
-                        btnEdit.addEventListener("click", e => {
-                            console.log("ver Id:", e.target.name);
-                            editById(e.target.name);
-                        })
-                    }
-
-                    const verBtns = document.getElementsByClassName('btnVer');
-
-                    for (const btnVer of verBtns) {
-                        btnVer.addEventListener("click", e => {
-                            console.log("ver Id: ", e.target.name);
-                            verById(e.target.name);
-                        })
-                    }
-
-                    const borrarBtns = document.getElementsByClassName('btnBorrar');
-
-                    for (const btnBorrar of borrarBtns) {
-                        btnBorrar.addEventListener("click", e => {
-                            console.log("ver  Id: ", e.target.name);
-                            deleteById(e.target.name);
-                        })
-                    }
+          <label for="stacked-password"></label>
+          <button type="submit" class="pure-button pure-button-primary">Iniciar Sesión</button>
+        </fieldset>
+      </form>
+      <!-- /Modal content -->
+    </div>
+  </div>
+  <!-- /MODALES -->
 
 
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript">
+    /*
+    * Login de Usuario 
+    */
+    function login(e) {
+      e.preventDefault();
+      let loginForm = new FormData(document.getElementById("loginForm"));
 
+      fetch('./backend/login.php', {
+        method: 'POST',
+        body: loginForm
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
 
+          if (data === "Debes completar el captcha") {
+            Toastify({
+              text: "Debes completar el captcha",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
 
-        }
+            return;
+          }
+          if (data === "Lo siento, parece que eres un robot") {
+            Toastify({
+              text: "Usuario y/o contraseña incorrectos", // TODO: cambiar este mensaje a algo mas acorde
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
 
+            return;
+          }
 
-        function editById(id) {
+          var response = JSON.parse(data);
 
-            document.getElementById('id01').style.display = 'block';
+          if (response.statusCode === 200) {
 
-            fetch('./backend/administrador/getUsersById.php', {
-                method: 'POST',
-                body: JSON.stringify({
-                    id: id,
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (respuesta) {
+            // codigo para redireccionar,
 
-                    respuesta = JSON.parse(respuesta);
-
-                    document.getElementById("idempleado").value = respuesta[0]['idempleado'];
-                    document.getElementById("usuario").value = respuesta[0]['usuario'];
-                    document.getElementById("contrasena").value = respuesta[0]['contrasena'];
-                    document.getElementById("nombre").value = respuesta[0]['nombre'];
-                    document.getElementById("apellido").value = respuesta[0]['apellido'];
-                    document.getElementById("puesto").value = respuesta[0]['puesto'];
-
-                });
-        }
-
-        var form = document.getElementById("editModalForm");
-        form.addEventListener('submit', handleEditForm);
-
-        function handleEditForm(event) {
-            event.preventDefault();
-            let editModalForm = new FormData(document.getElementById("editModalForm"));
-
-            fetch('./backend/administrador/updateUserById.php', {
-                method: 'POST',
-                body: editModalForm
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (respuesta) {
-                    console.log(respuesta);
-                    if (respuesta === 'Registro actualizado') {
-                        alert("Registro actualizado");
-                        window.location.reload();
-                    } else {
-                        alert("Error al actualizar el registro");
-                    }
-                });
-        }
-
-        function userInterfaseInit() {
-
-            function redireccionCliente() {
-                location.replace("./index.html");
+            if (response.puesto == 'Administrador') {
+              location.replace("./menu.html");
+            } else if (response.puesto == 'Asesor') {
+              location.replace("./asesor.html");
+            }
+            else if (response.puesto == 'Tecnico') {
+              location.replace("./tecnico.html");
+            }
+            else if (response.puesto == 'Lavador') {
+              location.replace("./lavado.html");
+            }
+            else if (response.puesto == 'Calidad') {
+              location.replace("./calidad.html");
+            }
+            else if (response.puesto == 'Gerente') {
+              location.replace("./gerente.html");
             }
 
-            //referenciar el modal
-            var modal = document.getElementById('id01');
-            var modaladd = document.getElementById('modaladdUsers');
+          } else if (response.statusCode === 403) {
+            Toastify({
+              text: "Usuario y/o contraseña incorrectos",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
+          }
+        });
+    }
+  </script>
+  <!-- /SCRIPTS -->
 
-            // se cierra si se hace click fuera de la ventana
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            window.onclick = function (event) {
-                if (event.target == modaladd) {
-                    modaladd.style.display = "none";
-                }
-            }
-        }
-
-        function verById(id) {
-
-            document.getElementById('modalVer').style.display = 'block';
-
-            fetch('./backend/administrador/getUsersById.php', {
-                method: 'POST',
-                body: JSON.stringify({
-                    id: id,
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-
-                .then(function (response) {
-                    return response.text();
-
-                })
-                .then(function (respuesta) {
-                    respuesta = JSON.parse(respuesta);
-                    console.log(respuesta);
-
-
-                    document.getElementById("ver_idempleado").innerHTML = respuesta[0]['idempleado'];
-                    document.getElementById("ver_usuario").innerHTML = respuesta[0]['usuario'];
-                    document.getElementById("ver_contraseña").innerHTML = respuesta[0]['contrasena'];
-                    document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
-                    document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
-                    document.getElementById("ver_puesto").innerHTML = respuesta[0]['puesto'];
-
-                });
-        }
-        function deleteById(id) {
-            fetch('./backend/administrador/deleteUsersById.php', {
-                method: 'POST',
-                body: JSON.stringify({
-                    id: id,
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (respuesta) {
-                    console.log(respuesta);
-                    if (respuesta === "Registro eliminado") {
-
-                        window.location.reload();
-
-                    } else {
-                        alert("se elimino el registro");
-                    }
-                }
-                );
-        }
-
-
-
-
-
-        var form = document.getElementById("addModalForm");
-        form.addEventListener('submit', handleAddForm);
-
-        function handleAddForm(event) {
-            event.preventDefault();
-
-            let addModalForm = new FormData(document.getElementById("addModalForm"));
-
-            fetch('./backend/administrador/addUsers.php', {
-                method: 'POST',
-                body: addModalForm
-            })
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (return_data) {
-                    console.log(return_data);
-
-                    if (return_data === 'Registro insertado') {
-                        alert("Registro insertado");
-                        document.location.reload();
-                    } else {
-                        alert("Error al insertar");
-                    }
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-        }
-        function checkInputOnlyLetters(e)
-{
-    //only alpha-numeric characters
-    var ok = /[A-Za-z]/.test(String.fromCharCode(e.charCode));
-    if (!ok)
-        e.preventDefault();
-}
-function checkInputOnlyLettersAndNumbers(e)
-{
-    //only alpha-numeric characters
-    var ok = /[A-Za-z0-9]/.test(String.fromCharCode(e.charCode));
-    if (!ok)
-        e.preventDefault();
-}
-
-        userInterfaseInit();
-        cargarTodos();
-    </script>
 </body>
 
 </html>

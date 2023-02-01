@@ -290,11 +290,11 @@ label {
     color: #fff;
 }
 
-.red-text { 
+.red-text {
     color: #BC170F;
 }
 
-.gray-text { 
+.gray-text {
     color: #AAAA8C;
 }
 
@@ -324,19 +324,27 @@ p {
     margin: 0px !important;
 }
 
-.toast-error { 
+.toast-error {
     background: #CA5E58;
     color: #fff;
 }
 
-.toast-warning { 
+.toast-warning {
     background: #F9A937;
     color: #fff;
 }
 
-.toast-success { 
+.toast-success {
     background: #73B573;
     color: #fff;
 }
 
-  
+.content-sub-head {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: 100%;
+    padding-left: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
