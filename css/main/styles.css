@@ -323,3 +323,20 @@ p {
 .no-margin {
     margin: 0px !important;
 }
+
+.toast-error { 
+    background: #CA5E58;
+    color: #fff;
+}
+
+.toast-warning { 
+    background: #F9A937;
+    color: #fff;
+}
+
+.toast-success { 
+    background: #73B573;
+    color: #fff;
+}
+
+  
