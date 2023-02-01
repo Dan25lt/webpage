@@ -72,29 +72,36 @@ function cargarTodos() {
 					var td = document.createElement('td');
 					if (columnNames[j] === 'opciones') {
 
-						var btn = document.createElement('input');
-						btn.type = "button";
-						btn.className = "button-table-secondary";
-						btn.value = "Ver";
-						btn.name = data[i]['idempleado'];
+						var btn = document.createElement('label');
+						btn.className = "button-table-secondary btnVer";
+						btn.innerHTML = "Ver";
+						
+						btn.setAttribute("for", "modal-ver")
+						btn.setAttribute("name", data[i]['idempleado'])
 
-						tr.appendChild(btn);
+						td.appendChild(btn);
 
-						var btn = document.createElement('input');
-						btn.type = "button";
-						btn.className = "button-table-success";
-						btn.value = "Editar";
-						btn.name = data[i]['idempleado'];
+						var btn = document.createElement('label');
+						btn.className = "button-table-warning btnEdit";
+						btn.innerHTML = "Editar";
 
-						tr.appendChild(btn);
+						btn.setAttribute("for", "modal-edit")
+						btn.setAttribute("name", data[i]['idempleado'])
 
-						var btn = document.createElement('input');
-						btn.type = "button";
-						btn.className = "button-table-error";
-						btn.value = "Borrar";
-						btn.name = data[i]['idempleado'];
+						td.appendChild(btn);
 
-						tr.appendChild(btn);
+						var btn = document.createElement('label');
+						btn.className = "button-table-error btnBorrar";
+						btn.innerHTML = "Borrar";
+
+						btn.setAttribute("for", "modal-delete")
+						btn.setAttribute("name", data[i]['idempleado'])
+
+						td.appendChild(btn);
+
+						td.dataset.column = "opciones";
+
+						tr.appendChild(td);
 					}
 					else {
 						var text = document.createTextNode(data[i][columnNames[j]]);
@@ -117,8 +124,8 @@ function cargarTodos() {
 
 			for (const btnEdit of editBtns) {
 				btnEdit.addEventListener("click", e => {
-					console.log("ver Id:", e.target.name);
-					editById(e.target.name);
+					console.log("edit Id:", e.target.getAttribute('name'));
+					editById(e.target.getAttribute('name'));
 				})
 			}
 
@@ -126,8 +133,8 @@ function cargarTodos() {
 
 			for (const btnVer of verBtns) {
 				btnVer.addEventListener("click", e => {
-					console.log("ver Id: ", e.target.name);
-					verById(e.target.name);
+					console.log("ver Id: ", e.target.getAttribute('name'));
+					verById(e.target.getAttribute('name'));
 				})
 			}
 
@@ -135,8 +142,8 @@ function cargarTodos() {
 
 			for (const btnBorrar of borrarBtns) {
 				btnBorrar.addEventListener("click", e => {
-					console.log("ver  Id: ", e.target.name);
-					deleteById(e.target.name);
+					console.log("delete  Id: ", e.target.getAttribute('name'));
+					deleteById(e.target.getAttribute('name'));
 				})
 			}
 
@@ -148,8 +155,6 @@ function cargarTodos() {
 }
 
 function editById(id) {
-
-	document.getElementById('id01').style.display = 'block';
 
 	fetch('./backend/administrador/getUsersById.php', {
 		method: 'POST',
@@ -228,8 +233,6 @@ function userInterfaseInit() {
 }
 
 function verById(id) {
-
-	document.getElementById('modalVer').style.display = 'block';
 
 	fetch('./backend/administrador/getUsersById.php', {
 		method: 'POST',

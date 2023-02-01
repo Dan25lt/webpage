@@ -360,6 +360,9 @@ p {
     margin-left: 0.25em;
     cursor: pointer;
     font-size: 14px;
+    letter-spacing: 0em;
+    text-transform: capitalize;
+    padding: 0.25em 0.5em;
 }
 
 .button-table-success {

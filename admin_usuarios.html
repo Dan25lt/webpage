@@ -75,8 +75,9 @@
     <div class="content-wrapper">
 
         <div class="content ribbon-white l-box-lrg pure-g">
-            <h2 class="content-sub-head black-text">Usuarios.</h2>
-
+            <h2 class="content-sub-head black-text">Usuarios.
+                <label class="button-table-success" for="modal-add"> Agregar nuevo</label>
+            </h2>
             <div class="pure-g">
                 <div class="l-box pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1">
 
@@ -94,150 +95,128 @@
     </div>
 
     <!-- MODALES -->
-    <input class="modal-state" id="modal-1" type="checkbox" />
+    <input class="modal-state" id="modal-add" type="checkbox" />
     <div class="modal">
-        <label class="modal__bg" for="modal-1"></label>
+        <label class="modal__bg" for="modal-add"></label>
         <div class="modal__inner">
-            <label class="modal__close" for="modal-1"></label>
+            <label class="modal__close" for="modal-add"></label>
             <!-- Modal content -->
 
+            <form id="addModalForm">
+                <div class="form-group">
+                    <input type="hidden" placeholder="" name="add_idempleado" id="add_idempleado" required><br>
+                </div>
+                <div class="form-group">
+                    <label><b>Usuario</b></label><br>
+                    <input type="text" placeholder="" name="add_usuario" id="add_usuario" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena"><b>Contraseña</b></label><br>
+                    <input type="password" placeholder="" name="add_contrasena" id="add_contrasena"
+                        required><br>
+                </div>
+                <div class="form-group">
+                    <label><b>Nombre</b></label><br>
+                    <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Apellido</b></label><br>
+                    <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Puesto</b></label><br>
+                    <input type="text" placeholder="" name="add_puesto" id="add_puesto" required>
+                </div>
+                <button type="submit">Guardar</button>
+            </form>
 
+            <!-- /Modal content -->
+        </div>
+    </div>
+
+    <input class="modal-state" id="modal-ver" type="checkbox" />
+    <div class="modal">
+        <label class="modal__bg" for="modal-ver"></label>
+        <div class="modal__inner">
+            <label class="modal__close" for="modal-ver"></label>
+            <!-- Modal content -->
+
+            <p>Idempleado:<strong><span id="ver_idempleado"></span></strong></p>
+            <p>Usuario:<strong><span id="ver_usuario"></span></strong></p>
+            <p>Contraseña:<strong><span id="ver_contraseña"></span></strong></p>
+            <p>Nombre:<strong><span id="ver_nombre"></span></strong></p>
+            <p>Apellido:<strong><span id="ver_apellido"></span></strong></p>
+            <p>Puesto:<strong><span id="ver_puesto"></span></strong></p>
+
+            <!-- /Modal content -->
+        </div>
+    </div>
+
+    <input class="modal-state" id="modal-edit" type="checkbox" />
+    <div class="modal">
+        <label class="modal__bg" for="modal-edit"></label>
+        <div class="modal__inner">
+            <label class="modal__close" for="modal-edit"></label>
+            <!-- Modal content -->
+
+            <form id="editModalForm">
+                <div class="form-group">
+                    <input type="hidden" placeholder="" name="idempleado" id="idempleado" required><br>
+                </div>
+                <div class="form-group">
+                    <label><b>Usuario</b></label><br>
+                    <input type="text" placeholder="" name="usuario" id="usuario" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena"><b>Contraseña</b></label><br>
+                    <input type="password" placeholder="" name="contrasena" id="contrasena" required><br>
+                </div>
+                <div class="form-group">
+                    <label><b>Nombre</b></label><br>
+                    <input type="text" placeholder="" name="nombre" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Apellido</b></label><br>
+                    <input type="text" placeholder="" name="apellido" id="apellido" required>
+                </div>
+                <div class="form-group">
+                    <label><b>Puesto</b></label><br>
+                    <input type="text" placeholder="" name="puesto" id="puesto" required>
+                </div>
+                <button type="submit">Guardar</button>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancelar</button>
+                </div>
+            </form>
+
+            <!-- /Modal content -->
+        </div>
+    </div>
+
+    <input class="modal-state" id="modal-delete" type="checkbox" />
+    <div class="modal">
+        <label class="modal__bg" for="modal-delete"></label>
+        <div class="modal__inner">
+            <label class="modal__close" for="modal-delete"></label>
+            <!-- Modal content -->
+
+            Delete
 
             <!-- /Modal content -->
         </div>
     </div>
 
 
-    <div id="modalVer" class="modal">
-        <div class="modal-content animate">
-            <form class="" id="verModalForm">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-                </div>
-
-                <div class="container">
-
-                    <p>Idempleado:<strong><span id="ver_idempleado"></span></strong></p>
-                    <p>Usuario:<strong><span id="ver_usuario"></span></strong></p>
-                    <p>Contraseña:<strong><span id="ver_contraseña"></span></strong></p>
-                    <p>Nombre:<strong><span id="ver_nombre"></span></strong></p>
-                    <p>Apellido:<strong><span id="ver_apellido"></span></strong></p>
-                    <p>Puesto:<strong><span id="ver_puesto"></span></strong></p>
-
-                    <label>
-                    </label>
-                </div>
-
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
-                        class="cancelbtn">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+        <!-- /MODALES -->
 
 
-    <div id="id01" class="modal">
-        <div class="modal-content" style="width:40%">
-            <form id="editModalForm">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-
-                </div>
-
-                <div class="container">
-                    <div class="form-group">
-                        <input type="hidden" placeholder="" name="idempleado" id="idempleado" required><br>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Usuario</b></label><br>
-                        <input type="text" placeholder="" name="usuario" id="usuario" required><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="contrasena"><b>Contraseña</b></label><br>
-                        <input type="password" placeholder="" name="contrasena" id="contrasena" required><br>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Nombre</b></label><br>
-                        <input type="text" placeholder="" name="nombre" id="nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Apellido</b></label><br>
-                        <input type="text" placeholder="" name="apellido" id="apellido" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Puesto</b></label><br>
-                        <input type="text" placeholder="" name="puesto" id="puesto" required>
-                    </div>
-                    <button type="submit">Guardar</button>
-
-                    <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                            class="cancelbtn">Cancelar</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-
-
-    <div id="modaladdUsers" class="modal">
-        <div class="modal-content" style="width:40%">
-            <form id="addModalForm">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('modaladdUsers').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-
-                </div>
-
-                <div class="container">
-                    <div class="form-group">
-                        <input type="hidden" placeholder="" name="add_idempleado" id="add_idempleado"
-                            required><br>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Usuario</b></label><br>
-                        <input type="text" placeholder="" name="add_usuario" id="add_usuario" required><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="contrasena"><b>Contraseña</b></label><br>
-                        <input type="password" placeholder="" name="add_contrasena" id="add_contrasena"
-                            required><br>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Nombre</b></label><br>
-                        <input type="text" placeholder="" name="add_nombre" id="add_nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Apellido</b></label><br>
-                        <input type="text" placeholder="" name="add_apellido" id="add_apellido" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Puesto</b></label><br>
-                        <input type="text" placeholder="" name="add_puesto" id="add_puesto" required>
-                    </div>
-                    <button type="submit">Guardar</button>
-
-                    <div class="container" style="background-color:#f1f1f1">
-                        <button type="button"
-                            onclick="document.getElementById('modaladdUsers').style.display='none'"
-                            class="cancelbtn">Cancelar</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-
-
-    
-    <!-- /MODALES -->
-
-
-    <!-- SCRIPTS -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script type="text/javascript" src="js/pages/admin_usuarios.js"></script>
-    <!-- /SCRIPTS -->
+        <!-- SCRIPTS -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script type="text/javascript" src="js/pages/admin_usuarios.js"></script>
+        <!-- /SCRIPTS -->
 
 </body>
 
