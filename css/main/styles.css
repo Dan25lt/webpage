@@ -348,3 +348,36 @@ p {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.button-table-success,
+.button-table-error,
+.button-table-warning,
+.button-table-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    border: 0em;
+    margin-left: 0.25em;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button-table-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.button-table-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+
+.button-table-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
+.button-table-secondary {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}
