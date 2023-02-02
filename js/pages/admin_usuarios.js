@@ -75,7 +75,7 @@ function cargarTodos() {
 						var btn = document.createElement('label');
 						btn.className = "button-table-secondary btnVer";
 						btn.innerHTML = "Ver";
-						
+
 						btn.setAttribute("for", "modal-ver")
 						btn.setAttribute("name", data[i]['idempleado'])
 
@@ -175,7 +175,6 @@ function editById(id) {
 
 			document.getElementById("idempleado").value = respuesta[0]['idempleado'];
 			document.getElementById("usuario").value = respuesta[0]['usuario'];
-			document.getElementById("contrasena").value = respuesta[0]['contrasena'];
 			document.getElementById("nombre").value = respuesta[0]['nombre'];
 			document.getElementById("apellido").value = respuesta[0]['apellido'];
 			document.getElementById("puesto").value = respuesta[0]['puesto'];
@@ -189,6 +188,9 @@ form.addEventListener('submit', handleEditForm);
 
 function handleEditForm(event) {
 	event.preventDefault();
+
+	document.getElementById("edit_user_submit_btn").disabled = true;
+
 	let editModalForm = new FormData(document.getElementById("editModalForm"));
 
 	fetch('./backend/administrador/updateUserById.php', {
@@ -201,35 +203,25 @@ function handleEditForm(event) {
 		.then(function (respuesta) {
 			console.log(respuesta);
 			if (respuesta === 'Registro actualizado') {
-				alert("Registro actualizado");
-				window.location.reload();
+
+				Toastify({
+					text: "Registro actualizado",
+					duration: 3000,
+					className: "toast-success",
+				}).showToast();
+
+				setTimeout(function () {
+					document.location.reload();
+				}, 3000);
+
 			} else {
-				alert("Error al actualizar el registro");
+				Toastify({
+					text: "Error al actualizar el registro",
+					duration: 3000,
+					className: "toast-error",
+				}).showToast();
 			}
 		});
-}
-
-function userInterfaseInit() {
-
-	function redireccionCliente() {
-		location.replace("./index.html");
-	}
-
-	//referenciar el modal
-	var modal = document.getElementById('id01');
-	var modaladd = document.getElementById('modaladdUsers');
-
-	// se cierra si se hace click fuera de la ventana
-	window.onclick = function (event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-	window.onclick = function (event) {
-		if (event.target == modaladd) {
-			modaladd.style.display = "none";
-		}
-	}
 }
 
 function verById(id) {
@@ -243,25 +235,21 @@ function verById(id) {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		}
-	})
+	}).then(function (response) {
+		return response.text();
 
-		.then(function (response) {
-			return response.text();
+	}).then(function (respuesta) {
+		respuesta = JSON.parse(respuesta);
+		console.log(respuesta);
 
-		})
-		.then(function (respuesta) {
-			respuesta = JSON.parse(respuesta);
-			console.log(respuesta);
+		document.getElementById("ver_idempleado").innerHTML = respuesta[0]['idempleado'];
+		document.getElementById("ver_usuario").innerHTML = respuesta[0]['usuario'];
+		document.getElementById("ver_contraseña").innerHTML = respuesta[0]['contrasena'];
+		document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
+		document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
+		document.getElementById("ver_puesto").innerHTML = respuesta[0]['puesto'];
 
-
-			document.getElementById("ver_idempleado").innerHTML = respuesta[0]['idempleado'];
-			document.getElementById("ver_usuario").innerHTML = respuesta[0]['usuario'];
-			document.getElementById("ver_contraseña").innerHTML = respuesta[0]['contrasena'];
-			document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
-			document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
-			document.getElementById("ver_puesto").innerHTML = respuesta[0]['puesto'];
-
-		});
+	});
 }
 
 function deleteById(id) {
@@ -274,21 +262,19 @@ function deleteById(id) {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		}
-	})
-		.then(function (response) {
-			return response.text();
-		})
-		.then(function (respuesta) {
-			console.log(respuesta);
-			if (respuesta === "Registro eliminado") {
+	}).then(function (response) {
+		return response.text();
+	}).then(function (respuesta) {
+		console.log(respuesta);
+		if (respuesta === "Registro eliminado") {
 
-				window.location.reload();
+			window.location.reload();
 
-			} else {
-				alert("se elimino el registro");
-			}
+		} else {
+			alert("se elimino el registro");
 		}
-		);
+	}
+	);
 }
 
 var form = document.getElementById("addModalForm");
@@ -296,6 +282,8 @@ form.addEventListener('submit', handleAddForm);
 
 function handleAddForm(event) {
 	event.preventDefault();
+
+	document.getElementById("add_user_submit_btn").disabled = true;
 
 	let addModalForm = new FormData(document.getElementById("addModalForm"));
 
@@ -310,10 +298,23 @@ function handleAddForm(event) {
 			console.log(return_data);
 
 			if (return_data === 'Registro insertado') {
-				alert("Registro insertado");
-				document.location.reload();
+
+				Toastify({
+					text: "Registro insertado",
+					duration: 3000,
+					className: "toast-success",
+				}).showToast();
+
+				setTimeout(function () {
+					document.location.reload();
+				}, 3000);
+
 			} else {
-				alert("Error al insertar");
+				Toastify({
+					text: "Error al insertar el registro",
+					duration: 3000,
+					className: "toast-error",
+				}).showToast();
 			}
 		})
 		.catch(function (err) {
