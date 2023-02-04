@@ -253,28 +253,39 @@ function verById(id) {
 }
 
 function deleteById(id) {
-	fetch('./backend/administrador/deleteUsersById.php', {
-		method: 'POST',
-		body: JSON.stringify({
-			id: id,
-		}),
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		}
-	}).then(function (response) {
-		return response.text();
-	}).then(function (respuesta) {
-		console.log(respuesta);
-		if (respuesta === "Registro eliminado") {
 
-			window.location.reload();
+	let text = "Esta seguro que\nQuiere eliminar el registro.";
+	if (confirm(text) == true) {
 
-		} else {
-			alert("se elimino el registro");
+		fetch('./backend/administrador/deleteUsersById.php', {
+			method: 'POST',
+			body: JSON.stringify({
+				id: id,
+			}),
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then(function (response) {
+			return response.text();
+		}).then(function (respuesta) {
+			console.log(respuesta);
+			if (respuesta === "Registro eliminado") {
+
+				Toastify({
+					text: "Registro eliminado",
+					duration: 3000,
+					className: "toast-success",
+				}).showToast();
+
+				setTimeout(function () {
+					document.location.reload();
+				}, 3000);
+
+			}
 		}
+		);
 	}
-	);
 }
 
 var form = document.getElementById("addModalForm");
@@ -336,5 +347,4 @@ function checkInputOnlyLettersAndNumbers(e) {
 		e.preventDefault();
 }
 
-userInterfaseInit();
 cargarTodos();
