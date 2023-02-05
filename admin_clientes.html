@@ -1,583 +1,287 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="utf-8">
   <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-  <link rel="stylesheet" href="./css/index.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/html5boilerplate/main.css">
+  <link rel="stylesheet" href="css/html5boilerplate/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <link rel="stylesheet" href="css/main/styles.css">
+  <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/navbar.css">
+  <link rel="stylesheet" href="css/main/table.css">
+
+  <meta name="theme-color" content="#fafafa">
+
 </head>
 
-<body style="background-color: #F0F0F0 ;">
-    
-  <div style="background-color: black;">
-    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
-</div>
+<body>
 
-  <div class="li_menu">
-    <ul style="border-radius: 8px;">
-      <li class="li-right"><a href="./menu.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
-            style="width: 25px;height:22px;">&nbsp &nbsp Volver al menú principal</a>
+  <nav>
+    <div id="logo">
+      <img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="120px">
+    </div>
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+    <ul class="menu">
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-1" class="toggle">Administrador</label>
+        <a href="#">Administrador</a>
+        <input type="checkbox" id="drop-1" />
+        <ul>
+          <li><a href="./admin_usuarios.html">Usuarios</a></li>
+          <li><a href="./admin_vehiculos.html">Vehículos</a></li>
+          <li><a href="./admin_clientes.html">clientes</a></li>
+        </ul>
+      </li>
+      <li><a href="./gerente.html">Gerente</a></li>
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-2" class="toggle">Asesor</label>
+        <a href="#">Asesor</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+          <li><a href="./asesor.html">Ordenes activas</a></li>
+          <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
+        </ul>
+      </li>
+      <li><a href="./tecnico.html">Técnico</a></li>
+      <li><a href="./lavado.html">Lavador</a></li>
+      <li><a href="./calidad.html">Calidad</a></li>
+      <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
       </li>
     </ul>
-  </div>
-  <div class="centar">
+  </nav>
 
-    <div class="fila" style="  margin: auto; width: 60%; padding: 10px;">
-      <h1 style="color: 222;">Selecciona el cliente deseado desde la tabla</h1>
-      <div id="tabla_cliente"></div>
+  <div class="content-wrapper">
 
-      <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
-        <h2 style="color: 222;">Agregar un cliente nuevo</h2>
-        <div class="fila" style=" margin: auto; width: 40%; padding: 10px;">
-          <button class="btnsindex" id="btn_creat_user"
-            onclick="document.getElementById('modalAddClientes').style.display='block'">Agregar</button>
+    <div class="content ribbon-white l-box-lrg pure-g">
+      <h2 class="content-sub-head black-text">Clientes.
+        <label class="button-table-success" for="modal-add"> Agregar nuevo</label>
+      </h2>
+      <div class="pure-g">
+        <div class="l-box pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1">
+
+          <div id="tabla"></div>
+
         </div>
       </div>
-    </div>
-
-    <div id="modalVer" class="modal">
-      <div class="modal-content animate">
-        <form class="" id="verModalForm">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-          </div>
-
-          <div class="container">
-
-            <p> id cliente:<strong><span id="ver_idcliente"></span></strong></p>
-            <p> Nombre:<strong><span id="ver_nombre"></span></strong></p>
-            <p> Apellido:<strong><span id="ver_apellido"></span></strong></p>
-            <p> RFC:<strong><span id="ver_rfc"></span></strong></p>
-            <p> Telefono:<strong><span id="ver_telefono"></span></strong></p>
-            <p> Email:<strong><span id="ver_email"></span></strong></p>
-            <p> Calle:<strong><span id="ver_calle"></span></strong></p>
-            <p> Número int:<strong><span id="ver_numeroint"></span></strong></p>
-            <p> Número ext:<strong><span id="ver_numeroext"></span></strong></p>
-            <p> Colonia:<strong><span id="ver_colonia"></span></strong></p>
-            <p> id area_postal:<strong><span id="ver_idarea_postal"></span></strong></p>
-
-            <label>
-            </label>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
-              class="cancelbtn">Cancelar</button>
-          </div>
-        </form>
-      </div>
 
     </div>
 
-    <div id="id01" class="modal">
-      <div class="modal-content" style="width:40%">
-        <form id="editModalForm">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-          <div class="container">
-            <div class="form-group">
-              <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
-            </div>
-            <div class="form-group">
-              <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
-            </div>
-            <div class="form-group">
-              <label for="contraseña"><b>Nombre</b></label><br>
-              <input type="text" placeholder="" name="nombre" id="nombre"  required>
-            </div>
-            <div class="form-group">
-              <label for="contraseña"><b>Apellidos</b></label><br>
-              <input type="text" placeholder="" name="apellido" id="apellido"  required>
-            </div>
-            <div class="form-group">
-              <label><b>RFC</b></label><br>
-              <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" onkeypress="checkInputOnlyLettersAndNumbers(event)" required>
-            </div>
-            <div class="form-group">
-              <label><b>Teléfono</b></label><br>
-              <input type="number" placeholder="" name="telefono" id="telefono" required>
-            </div>
-            <div class="form-group">
-              <label><b>Email</b></label><br>
-              <input type="email" placeholder="" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-              <label><b>Calle</b></label><br>
-              <input type="text" placeholder="" name="calle" id="calle"  required>
-            </div>
-            <div class="form-group">
-              <label><b>Número interior</b></label><br>
-              <input type="number" t placeholder="" name="numeroint" id="numeroint">
-            </div>
-            <div class="container_padding">
-              <label><b>Número exterior</b></label><br>
-              <input type="number" t placeholder="" name="numeroext" id="numeroext">
-            </div>
-            <div class="container_padding">
-              <label><b>Colonia</b></label><br>
-              <input type="text" placeholder="" name="colonia" id="colonia" >
-            </div>
-            <div class="container_padding">
-              <label><b>C.P.</b></label><br>
-              <input type="number" placeholder="" name="idarea_postal" id="idarea_postal" required>
-            </div>
-            <button type="submit" name="" id="">Guardar</button>
-
-            <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                class="cancelbtn">Cancelar</button>
-            </div>
-        </form>
-      </div>
+    <div class="footer l-box is-center">
+      <p>Autocamiones de Chihuahua S.A de C.V.</p>
     </div>
+
   </div>
 
-  <!-- Modal Add cliente -->
-  <div id="modalAddClientes" class="modal">
-    <div class="modal-content" style="width:40%">
-      <form id="addModalForm">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('modalAddClientes').style.display='none'" class="close"
-            title="Close Modal">&times;</span>
-        </div>
+  <!-- MODALES -->
+  <input class="modal-state" id="modal-add" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-add"></label>
+    <div class="modal__inner modal-large">
+      <label class="modal__close" for="modal-add"></label>
+      <!-- Modal content -->
+      <form class="pure-form pure-form-aligned" id="addModalForm">
+        <fieldset>
 
-        <div class="container">
-          <div class="form-group">
-            <input type="hidden" placeholder="" name="add_iddireccion" id="add_iddireccion" required><br>
+          <input type="hidden" placeholder="" name="add_iddireccion" id="add_iddireccion" required><br>
+          <div class="pure-control-group">
+            <label for="add_nombre">Nombre</label>
+            <input type="text" placeholder="" name="add_nombre" id="add_nombre" pattern="^[a-zA-Z ]{3,16}$" required>
+            <!-- <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required> -->
+            <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
-          <div class="form-group">
-            <label for="contraseña"><b>Nombre</b></label><br>
-            <input type="text" placeholder="" name="add_nombre" id="add_nombre"  required>
+          <div class="pure-control-group">
+            <label for="add_apellido">Apellido</label>
+            <input type="text" placeholder="" name="add_apellido" id="add_apellido" pattern="^[a-zA-Z ]{3,16}$" required>
+            <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
-          <div class="form-group">
-            <label for="contraseña"><b>Apellidos</b></label><br>
-            <input type="text" placeholder="" name="add_apellido" id="add_apellido"  required>
+          <div class="pure-control-group">
+            <label for="add_rfc">RFC</label>
+            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" pattern="^[a-zA-Z0-9_-]{3,16}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> minimo 3 maximo 6 caracteres.</span>
           </div>
-          <div class="form-group">
-            <label><b>RFC</b></label><br>
-            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" onkeypress="checkInputOnlyLettersAndNumbers(event)"  required>
+          <div class="pure-control-group">
+            <label for="add_telefono">Telefono</label>
+            <input type="text" placeholder="" name="add_telefono" id="add_telefono" pattern="^[0-9_-]{3,16}$" required>
+            <span class="pure-form-message-inline">Telefono <br></span>
           </div>
-          <div class="form-group">
-            <label><b>Teléfono</b></label><br>
-            <input type="number" placeholder="" name="add_telefono" id="add_telefono" required>
-          </div>
-          <div class="form-group">
-            <label><b>Email</b></label><br>
+          <div class="pure-control-group">
+            <label for="add_email">Email</label>
             <input type="email" placeholder="" name="add_email" id="add_email" required>
+            <span class="pure-form-message-inline"> <br> </span>
           </div>
-          <div class="form-group">
-            <label><b>Calle</b></label><br>
-            <input type="text" placeholder="" name="add_calle" id="add_calle" onkeypress="checkInputOnlyLettersAndNumbers(event)" required>
+          <div class="pure-control-group">
+            <label for="add_calle">calle</label>
+            <input type="text" placeholder="" name="add_calle" id="add_calle" pattern="^[a-zA-Z0-9_- ]{3,32}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras</span>
           </div>
-          <div class="form-group">
-            <label><b>Número interior</b></label><br>
-            <input type="number"  placeholder="" name="add_numeroint" id="add_numeroint">
+          <div class="pure-control-group">
+            <label for="add_numeroext">Número exterior</label>
+            <input type="number" placeholder="" name="add_numeroext" id="add_numeroext" min="0" max="999999">
+            <span class="pure-form-message-inline">  </span>
           </div>
-          <div class="container_padding">
-            <label><b>Número exterior</b></label><br>
-            <input type="number"  placeholder="" name="add_numeroext" id="add_numeroext">
+          <div class="pure-control-group">
+            <label for="add_numeroint">Numero Interior</label>
+            <input type="number" placeholder="" name="add_numeroint" id="add_numeroint" min="0" max="999999">
+            <span class="pure-form-message-inline">  </span>
           </div>
-          <div class="container_padding">
-            <label><b>Colonia</b></label><br>
-            <input type="text" placeholder="" name="add_colonia" id="add_colonia" ">
+          <div class="pure-control-group">
+            <label for="add_colonia">Colonia</label>
+            <input type="text" placeholder="" name="add_colonia" id="add_colonia" pattern="^[a-zA-Z0-9 ]{3,16}$" required>
+            <span class="pure-form-message-inline"> Solo letros, numeros <br> y espacios. </span>
           </div>
-          <div class="container_padding">
-            <label><b>C.P.</b></label><br>
-            <input type="number" placeholder="" name="add_idarea_postal" id="add_idarea_postal" required>
+          <div class="pure-control-group">
+            <label for="add_idarea_postal">Codigo postal</label>
+            <input type="text" placeholder="" name="add_idarea_postal" id="add_idarea_postal" pattern="^[0-9]{5,%}$" required>
+            <span class="pure-form-message-inline"> Solo codigos postales <br> (5 numeros) </span>
           </div>
-          <button type="submit">Guardar</button>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('modalAddClientes').style.display='none'"
-              class="cancelbtn">Cancelar</button>
+          
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary" id="add_submit_btn">Guardar</button>
           </div>
+        </fieldset>
       </form>
+
+      <!-- /Modal content -->
     </div>
   </div>
 
+  <input class="modal-state" id="modal-ver" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-ver"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-ver"></label>
+      <!-- Modal content -->
+
+      <p class="info-text"> id cliente:<strong><span id="ver_idcliente"></span></strong></p>
+      <p class="info-text"> Nombre:<strong><span id="ver_nombre"></span></strong></p>
+      <p class="info-text"> Apellido:<strong><span id="ver_apellido"></span></strong></p>
+      <p class="info-text"> RFC:<strong><span id="ver_rfc"></span></strong></p>
+      <p class="info-text"> Telefono:<strong><span id="ver_telefono"></span></strong></p>
+      <p class="info-text"> Email:<strong><span id="ver_email"></span></strong></p>
+      <p class="info-text"> Calle:<strong><span id="ver_calle"></span></strong></p>
+      <p class="info-text"> Número ext:<strong><span id="ver_numeroext"></span></strong></p>
+      <p class="info-text"> Número int:<strong><span id="ver_numeroint"></span></strong></p>
+      <p class="info-text"> Colonia:<strong><span id="ver_colonia"></span></strong></p>
+      <p class="info-text"> id area_postal:<strong><span id="ver_idarea_postal"></span></strong></p>
+
+      <!-- /Modal content -->
+    </div>
   </div>
 
-  <!-- End Modal Add cliente -->
-  <script>
-    document.getElementById('telefono').oninput = function () {
-      if (this.value.length > 10) {
-        this.value = this.value.slice(0, 10);
-      }
-    }
-    document.getElementById('numeroint').oninput = function () {
-      if (this.value.length > 6) {
-        this.value = this.value.slice(0, 6);
-      }
-    }
-    document.getElementById('numeroext').oninput = function () {
-      if (this.value.length > 6) {
-        this.value = this.value.slice(0, 6);
-      }
-    }
-    document.getElementById('idarea_postal').oninput = function () {
-      if (this.value.length > 5) {
-        this.value = this.value.slice(0, 5);
-      }
-    }
-    
-    document.getElementById('add_telefono').oninput = function () {
-      if (this.value.length > 10) {
-        this.value = this.value.slice(0, 10);
-      }
-    }
-    document.getElementById('add_numeroint').oninput = function () {
-      if (this.value.length > 6) {
-        this.value = this.value.slice(0, 6);
-      }
-    }
-    document.getElementById('add_numeroext').oninput = function () {
-      if (this.value.length > 6) {
-        this.value = this.value.slice(0, 6);
-      }
-    }
-    document.getElementById('add_idarea_postal').oninput = function () {
-      if (this.value.length > 5) {
-        this.value = this.value.slice(0, 5);
-      }
-    }
+  <input class="modal-state" id="modal-edit" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-edit"></label>
+    <div class="modal__inner modal-large">
+      <label class="modal__close" for="modal-edit"></label>
+      <!-- Modal content -->
+
+      <form class="pure-form pure-form-aligned" id="editModalForm">
+        <fieldset>
+          <input type="hidden" placeholder="" name="idcliente" id="idcliente" required><br>
+          <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
+          <div class="pure-control-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" placeholder="" name="nombre" id="nombre" pattern="^[a-zA-Z ]{3,16}$" required>
+            <!-- <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required> -->
+            <span class="pure-form-message-inline">Solo letras y espacios.</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" placeholder="" name="apellido" id="apellido" pattern="^[a-zA-Z ]{3,16}$" required>
+            <span class="pure-form-message-inline">Solo letras y espacios.</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="rfc">RFC</label>
+            <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" pattern="^[a-zA-Z0-9_-]{3,16}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> minimo 3 maximo 6 caracteres.</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" placeholder="" name="telefono" id="telefono" pattern="^[0-9_-]{3,16}$" required>
+            <span class="pure-form-message-inline">Telefono <br></span>
+          </div>
+          <div class="pure-control-group">
+            <label for="email">Email</label>
+            <input type="email" placeholder="" name="email" id="email" required>
+            <span class="pure-form-message-inline"> <br> </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="rfc">calle</label>
+            <input type="text" placeholder="" name="calle" id="calle" pattern="^[a-zA-Z0-9_- ]{3,32}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="numeroint">Numero Interior</label>
+            <input type="number" placeholder="" name="numeroint" id="numeroint" min="0" max="999999">
+            <span class="pure-form-message-inline">  </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="numeroint">Número exterior</label>
+            <input type="number" placeholder="" name="numeroext" id="numeroext" min="0" max="999999">
+            <span class="pure-form-message-inline">  </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="colonia">Colonia</label>
+            <input type="text" placeholder="" name="colonia" id="colonia" pattern="^[a-zA-Z0-9 ]{3,16}$" required>
+            <span class="pure-form-message-inline"> Solo letros, numeros <br> y espacios. </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="idarea_postal">Codigo postal</label>
+            <input type="text" placeholder="" name="idarea_postal" id="idarea_postal" pattern="^[0-9]{5,%}$" required>
+            <span class="pure-form-message-inline"> Solo codigos postales <br> (5 numeros) </span>
+          </div>
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary" id="edit_submit_btn">Guardar</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <!-- /Modal content -->
+    </div>
+  </div>
+
+  <!-- <input class="modal-state" id="modal-delete" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-delete"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-delete"></label>
+
+      
+    </div>
+  </div> -->
 
 
-
-    function cargarTodos() {
-
-      fetch('./backend/administrador/getclientes.php', {
-        method: 'GET',
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          if (return_data == "no hay clientes") {
-            alert("no hay clientes");
-            return;
-          }
-
-          console.log("HERE")
-          console.log(return_data);
-
-          var data = JSON.parse(return_data);
-
-          var columnNames = [
-            "idcliente",
-            "nombre",
-            "apellido",
-            "rfc",
-            "telefono",
-            "email",
-            "calle",
-            "numeroint",
-            "numeroext",
-            "colonia",
-            "idarea_postal",
-            "opciones"
-          ];
-
-          var table = document.createElement('table');
+  <!-- /MODALES -->
 
 
-          // Titulos solamente
-          var tr = document.createElement('tr');
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="js/pages/admin_clientes.js"></script>
+  <!-- /SCRIPTS -->
 
-
-          var td = document.createElement('td');
-          var text = document.createTextNode('Id');
-          td.appendChild(text);          
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Nombre');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Apellido');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('RFC');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Telefono');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Email');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Calle');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Numero Interior');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Numero Exterior');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Colonia');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Codigo postal');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Opciones');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          table.appendChild(tr);
-
-
-          // Lenado de la tabla 
-          for (var i = 0; i < data.length; i++) {
-            var tr = document.createElement('tr');
-            tr.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
-            for (var j = 0; j < columnNames.length; j++) {
-              var td = document.createElement('td');
-              td.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
-              if (columnNames[j] === 'opciones') {
-                var btn = document.createElement('input');
-                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
-                btn.type = "button";
-                btn.className = "btnEdit";
-                btn.value = "Editar";
-                btn.name = data[i]['idcliente'];
-
-                tr.appendChild(btn);
-
-                var btn = document.createElement('input');
-                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 3px; ";
-                btn.type = "button";
-                btn.className = "btnVer";
-                btn.value = "Ver";
-                btn.name = data[i]['idcliente'];
-
-                tr.appendChild(btn);
-              }
-              else {
-                var text = document.createTextNode(data[i][columnNames[j]]);
-
-                td.appendChild(text);
-                tr.appendChild(td);
-              }
-            }
-
-            table.appendChild(tr);
-          }
-
-
-          document.getElementById("tabla_cliente").appendChild(table);
-
-
-          const editBtns = document.getElementsByClassName('btnEdit');
-
-          for (const btnEdit of editBtns) {
-            btnEdit.addEventListener("click", e => {
-              console.log("edit Id:", e.target.name);
-              editById(e.target.name);
-            })
-          }
-
-          const verBtns = document.getElementsByClassName('btnVer');
-
-          for (const btnVer of verBtns) {
-            btnVer.addEventListener("click", e => {
-              console.log("ver Id: ", e.target.name);
-              verById(e.target.name);
-            })
-          }
-
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-
-
-    }
-
-
-    function editById(id) {
-
-      document.getElementById('id01').style.display = 'block';
-
-      fetch('./backend/administrador/getClientsById.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          id: id,
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-
-          respuesta = JSON.parse(respuesta);
-
-          document.getElementById("idcliente").value = respuesta[0]['idcliente'];
-          document.getElementById("iddireccion").value = respuesta[0]['iddireccion'];
-          document.getElementById("nombre").value = respuesta[0]['nombre'];
-          document.getElementById("apellido").value = respuesta[0]['apellido'];
-          document.getElementById("rfc").value = respuesta[0]['rfc'];
-          document.getElementById("telefono").value = respuesta[0]['telefono'];
-          document.getElementById("email").value = respuesta[0]['email'];
-          document.getElementById("calle").value = respuesta[0]['calle'];
-          document.getElementById("numeroint").value = respuesta[0]['numeroint'];
-          document.getElementById("numeroext").value = respuesta[0]['numeroext'];
-          document.getElementById("colonia").value = respuesta[0]['colonia'];
-          document.getElementById("idarea_postal").value = respuesta[0]['idarea_postal'];
-
-
-        });
-    }
-
-    var form = document.getElementById("editModalForm");
-    form.addEventListener('submit', handleEditForm);
-
-    function handleEditForm(event) {
-      event.preventDefault();
-      let editModalForm = new FormData(document.getElementById("editModalForm"));
-
-      fetch('./backend/administrador/updateClientsById.php', {
-        method: 'POST',
-        body: editModalForm
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          console.log(respuesta);
-          if (respuesta === 'Registro actualizado') {
-            alert("Registro actualizado");
-            window.location.reload();
-          } else {
-            alert("Error al actualizar el registro");
-          }
-        });
-    }
-
-    function userInterfaseInit() {
-
-      function redireccionCliente() {
-        location.replace("./index.html");
-      }
-
-      // crear el modal
-      var modal = document.getElementById('id01');
-
-      // se cierra si se hace click fuera de la ventana
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    }
-    function verById(id) {
-      document.getElementById('modalVer').style.display = 'block';
-
-      fetch('./backend/administrador/getClientsById.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          id: id,
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          respuesta = JSON.parse(respuesta);
-          console.log(respuesta);
-
-          document.getElementById("ver_idcliente").innerHTML = respuesta[0]['idcliente'];
-          document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
-          document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
-          document.getElementById("ver_rfc").innerHTML = respuesta[0]['rfc'];
-          document.getElementById("ver_telefono").innerHTML = respuesta[0]['telefono'];
-          document.getElementById("ver_email").innerHTML = respuesta[0]['email'];
-          document.getElementById("ver_calle").innerHTML = respuesta[0]['calle'];
-          document.getElementById("ver_numeroint").innerHTML = respuesta[0]['numeroint'];
-          document.getElementById("ver_numeroext").innerHTML = respuesta[0]['numeroext'];
-          document.getElementById("ver_colonia").innerHTML = respuesta[0]['colonia'];
-          document.getElementById("ver_idarea_postal").innerHTML = respuesta[0]['idarea_postal'];
-        });
-    }
-
-    var insertForm = document.getElementById("addModalForm");
-    insertForm.addEventListener('submit', handleInsertForm);
-
-    function handleInsertForm(event) {
-      event.preventDefault();
-      let addModalForm = new FormData(document.getElementById("addModalForm"));
-
-      fetch('./backend/administrador/insertClients.php', {
-        method: 'POST',
-        body: addModalForm
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          console.log(respuesta);
-          if (respuesta === 'Registro insertado') {
-            alert("Registro insertado");
-            window.location.reload();
-          } else {
-            alert("Error al insertar el registro");
-          }
-        });
-    }
-
-    function checkInputOnlyLetters(e)
-{
-    //only alpha-numeric characters
-    var ok = /[A-Za-z]/.test(String.fromCharCode(e.charCode));
-    if (!ok)
-        e.preventDefault();
-}
-function checkInputOnlyLettersAndNumbers(e)
-{
-    //only alpha-numeric characters
-    var ok = /[A-Za-z0-9]/.test(String.fromCharCode(e.charCode));
-    if (!ok)
-        e.preventDefault();
-}
-
-    
-    userInterfaseInit();
-    cargarTodos();
-  </script>
 </body>
 
 </html>

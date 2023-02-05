@@ -90,8 +90,7 @@ function cargarTodos() {
             td.dataset.column = "opciones";
 
             tr.appendChild(td);
-          }
-          else {
+          } else {
             var text = document.createTextNode(data[i][columnNames[j]]);
 
             td.appendChild(text);
@@ -190,7 +189,13 @@ function handleEditForm(event) {
       }, 3000);
 
     } else {
-      alert("Error al actualizar el registro");
+
+      Toastify({
+        text: "Error al actualizar el registro",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+      
     }
   });
 }
