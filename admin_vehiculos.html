@@ -1,426 +1,232 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="utf-8">
   <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-  <link rel="stylesheet" href="./css/index.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/html5boilerplate/main.css">
+  <link rel="stylesheet" href="css/html5boilerplate/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <link rel="stylesheet" href="css/main/styles.css">
+  <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/navbar.css">
+  <link rel="stylesheet" href="css/main/table.css">
+
+  <meta name="theme-color" content="#fafafa">
+
 </head>
 
-<body style="background-color: #F0F0F0 ;">
+<body>
 
-  <div style="background-color: black;">
-    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
-  </div>
-
-  <div class="li_menu">
-    <ul style="border-radius: 8px;">
-      <li class="li-right"><a href="./menu.html"><img src="./img/cerrar_sesion.ico" alt="Salir"
-            style="width: 25px;height:22px;">&nbsp &nbsp Volver al menú principal</a>
+  <nav>
+    <div id="logo">
+      <img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="120px">
+    </div>
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+    <ul class="menu">
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-1" class="toggle">Administrador</label>
+        <a href="#">Administrador</a>
+        <input type="checkbox" id="drop-1" />
+        <ul>
+          <li><a href="./admin_usuarios.html">Usuarios</a></li>
+          <li><a href="./admin_vehiculos.html">Vehículos</a></li>
+          <li><a href="./admin_clientes.html">clientes</a></li>
+        </ul>
+      </li>
+      <li><a href="./gerente.html">Gerente</a></li>
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-2" class="toggle">Asesor</label>
+        <a href="#">Asesor</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+          <li><a href="./asesor.html">Ordenes activas</a></li>
+          <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
+        </ul>
+      </li>
+      <li><a href="./tecnico.html">Técnico</a></li>
+      <li><a href="./lavado.html">Lavador</a></li>
+      <li><a href="./calidad.html">Calidad</a></li>
+      <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
       </li>
     </ul>
-  </div>
+  </nav>
 
-  <div>
+  <div class="content-wrapper">
 
-    <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
-      <h1 style="color: 222;">Selecciona el Vehículo deseado desde la tabla</h1>
-      <div id="tabla_vehiculo"></div>
+    <div class="content ribbon-white l-box-lrg pure-g">
+      <h2 class="content-sub-head black-text">Vehículos.
+        <label class="button-table-success" for="modal-add"> Agregar nuevo</label>
+      </h2>
+      <div class="pure-g">
+        <div class="l-box pure-u-1-1 pure-u-md-1-1 pure-u-lg-1-1">
 
-      <div class="fila" style="  margin: auto; width: 40%; padding: 10px;">
-        <h2 style="color: 222;">Agregar un vehículo nuevo</h2>
-        <div class="fila" style=" margin: auto; width: 40%; padding: 10px;">
-          <button class="btnsindex" id="btn_creat_user"
-            onclick="document.getElementById('addVehiculosModal').style.display='block'">Agregar</button>
+          <div id="tabla_vehiculo"></div>
+
         </div>
       </div>
+
     </div>
 
-    <div id="modalVer" class="modal">
-      <div class="modal-content animate">
-        <form class="" id="verModalForm">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('modalVer').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-          </div>
-          <div class="container">
-            <p>Idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
-            <p>Año:<strong><span id="ver_ano"></span></strong></p>
-            <p>VIN:<strong><span id="ver_vin"></span></strong></p>
-            <p>Placas:<strong><span id="ver_placas"></span></strong></p>
-            <p>Modelo:<strong><span id="ver_modelo"></span></strong></p>
-            <p>Marca:<strong><span id="ver_marca"></span></strong></p>
-          </div>
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('modalVer').style.display='none'"
-              class="cancelbtn">Cancelar</button>
-          </div>
-        </form>
-      </div>
+    <div class="footer l-box is-center">
+      <p>Autocamiones de Chihuahua S.A de C.V.</p>
     </div>
-
-    <div id="id01" class="modal">
-      <div class="modal-content" style="width:40%">
-        <form id="editModalForm">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-          </div>
-          <div class="container">
-            <div class="form-group">
-              <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required><br>
-            </div>
-            <div class="form-group">
-              <input type="hidden" placeholder="" name="idmarca" id="idmarca" required><br>
-            </div>
-            <div class="form-group">
-              <input type="hidden" placeholder="" name="idmodelo" id="idmodelo" required><br>
-            </div>
-            <div class="form-group">
-              <label for="contraseña"><b>Año</b></label><br>
-              <input type="text" placeholder="" name="ano" id="ano" required>
-            </div>
-            <div class="form-group">
-              <label for="contraseña"><b>VIN</b></label><br>
-              <input type="text" placeholder="" name="vin" id="vin" required>
-            </div>
-            <div class="form-group">
-              <label><b>Placas</b></label><br>
-              <input type="text" maxlength="7" placeholder="" name="placas" id="placas" required>
-            </div>
-            <!-- <div class="form-group">
-              <label><b>Modelo</b></label><br>
-              <input type="text" placeholder="" name="modelo" id="modelo" required>
-            </div>
-            <div class="form-group">
-              <label><b>Marca</b></label><br>
-              <input type="text" placeholder="" name="marca" id="marca" required>
-            </div> -->
-            <button type="submit" name="" id="">Guardar</button>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'"
-              class="cancelbtn">Cancelar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div id="addVehiculosModal" class="modal">
-      <div class="modal-content" style="width:40%">
-        <form id="addModalForm">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('addVehiculosModal').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-          </div>
-
-          <div class="container">
-            <div class="form-group">
-              <label for="contraseña"><b>Año</b></label><br>
-              <input type="text" placeholder="" name="add_ano" id="add_ano" required>
-            </div>
-            <div class="form-group">
-              <label for="contraseña"><b>VIN</b></label><br>
-              <input type="text" placeholder="" name="add_vin" id="add_vin" required>
-            </div>
-            <div class="form-group">
-              <label><b>Placas</b></label><br>
-              <input type="text" maxlength="7" placeholder="" name="add_placas" id="add_placas" required>
-            </div>
-            <div class="form-group">
-              <label><b>Modelo Id</b></label><br>
-              <input type="text" placeholder="" name="add_id_modelo" id="add_id_modelo" required>
-            </div>
-            <div class="form-group">
-              <label><b>Cliente Id</b></label><br>
-              <input type="text" placeholder="" name="add_id_cliente" id="add_id_cliente" required>
-            </div>
-            <button type="submit">Guardar</button>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('addVehiculosModal').style.display='none'"
-              class="cancelbtn">Cancelar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-
 
   </div>
-  <script>
-    function cargarTodos() {
 
-      fetch('./backend/administrador/getVehiculos.php', {
-        method: 'GET',
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          if (return_data == "no hay vehiculos") {
-            alert("no hay vehiculos");
-            return;
-          }
+  <!-- MODALES -->
+  <input class="modal-state" id="modal-add" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-add"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-add"></label>
+      <!-- Modal content -->
+      <form class="pure-form pure-form-aligned" id="addModalForm">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="add_ano">Año</label>
+            <input type="text" placeholder="" name="add_ano" id="add_ano" pattern="^[12][0-9]{3}$" required>
+            <span class="pure-form-message-inline"> Solo admite numeros <br> 4 digitos para el año </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="add_vin">Vin</label>
+            <input type="text" placeholder="" name="add_vin" id="add_vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="add_placas">Placas</label>
+            <input type="text" maxlength="7" placeholder="" name="add_placas" id="add_placas" pattern="^[a-zA-Z0-9_-]{3,9}$" required>
+            <span class="pure-form-message-inline"> Matricula<br> </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="add_id_marca">Marca</label>
+            <select name="add_id_marca" id="add_id_marca">
+            </select>
+          </div>
+          <div class="pure-control-group">
+            <label for="add_id_modelo">Modelo</label>
+            <select name="add_id_modelo" id="add_id_modelo">
+            </select>
+          </div>
+          <div class="pure-control-group">
+            <label for="add_id_cliente">Cliente</label>
+            <select name="add_id_cliente" id="add_id_cliente">
+            </select>
+          </div>
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary" id="add_submit_btn">Guardar</button>
+          </div>
+        </fieldset>
+      </form>
 
-          console.log("HERE")
-          console.log(return_data);
+      <!-- /Modal content -->
+    </div>
+  </div>
 
-          var data = JSON.parse(return_data);
+  <input class="modal-state" id="modal-ver" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-ver"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-ver"></label>
+      <!-- Modal content -->
 
-          var columnNames = [
-            "idvehiculos",
-            "ano",
-            "vin",
-            "placas",
-            "modelo",
-            "marca",
-            "opciones"
-          ];
+      <p class="info-text">Idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
+      <p class="info-text">Año:<strong><span id="ver_ano"></span></strong></p>
+      <p class="info-text">VIN:<strong><span id="ver_vin"></span></strong></p>
+      <p class="info-text">Placas:<strong><span id="ver_placas"></span></strong></p>
+      <p class="info-text">Modelo:<strong><span id="ver_modelo"></span></strong></p>
+      <p class="info-text">Marca:<strong><span id="ver_marca"></span></strong></p>
 
-          var table = document.createElement('table');
+      <!-- /Modal content -->
+    </div>
+  </div>
 
-          // Titulos solamente
-          var tr = document.createElement('tr');
+  <input class="modal-state" id="modal-edit" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-edit"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-edit"></label>
+      <!-- Modal content -->
 
-          var td = document.createElement('td');
-          var text = document.createTextNode('Id');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('Ano');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          var td = document.createElement('td');
-          var text = document.createTextNode('VIN');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Placas');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Modelo');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Marca');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Opciones');
-          td.appendChild(text);
-          tr.appendChild(td);
-          td.style.cssText = " background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          table.appendChild(tr);
+      <form class="pure-form pure-form-aligned" id="editModalForm">
+        <fieldset>
+          <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required><br>
+          <div class="pure-control-group">
+            <label for="ano">Año</label>
+            <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required>
+            <span class="pure-form-message-inline"> Solo admite numeros <br> 4 digitos para el año </span>
+          </div>
+          <div class="pure-control-group">
+            <label for="vin">Vin</label>
+            <input type="text" placeholder="" name="vin" id="vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
+            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="placas">Placas</label>
+            <input type="text" maxlength="7" placeholder="" name="placas" id="placas" pattern="^[a-zA-Z0-9_-]{3,9}$" required>
+            <span class="pure-form-message-inline"> Matricula<br> </span>
+          </div>
+          <!-- <div class="pure-control-group">
+            <label for="puesto">Puesto</label>
+            <select name="puesto" id="puesto">
+              <option value="Administrador">Administrador</option>
+              <option value="Asesor">Asesor</option>
+              <option value="Tecnico">Tecnico</option>
+              <option value="Lavador">Lavador</option>
+              <option value="Calidad">Calidad</option>
+              <option value="Gerente">Gerente</option>
+            </select>
+          </div> -->
+          <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary" id="edit_submit_btn">Guardar</button>
+          </div>
+        </fieldset>
+      </form>
 
+      <!-- /Modal content -->
+    </div>
+  </div>
 
-          // Lenado de la tabla 
-          for (var i = 0; i < data.length; i++) {
-            var tr = document.createElement('tr');
-            tr.style.cssText = " background-color: #E7E9EB; padding: 10px; text-align: center;";
-            for (var j = 0; j < columnNames.length; j++) {
-              var td = document.createElement('td');
-              td.style.cssText = " background-color: #E7E9EB; padding: 10px; text-align: center;";
-              if (columnNames[j] === 'opciones') {
+  <!-- <input class="modal-state" id="modal-delete" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-delete"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-delete"></label>
 
-                var btn = document.createElement('input');
-                btn.style.cssText = "border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
-                btn.type = "button";
-                btn.className = "btnEdit";
-                btn.value = "Editar";
-                btn.name = data[i]['idvehiculos'];
-
-                tr.appendChild(btn);
-
-                var btn = document.createElement('input');
-                btn.style.cssText = "border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
-                btn.type = "button";
-                btn.className = "btnVer";
-                btn.value = "Ver";
-                btn.name = data[i]['idvehiculos'];
-
-                tr.appendChild(btn);
-              }
-              else {
-                var text = document.createTextNode(data[i][columnNames[j]]);
-
-                td.appendChild(text);
-                tr.appendChild(td);
-              }
-            }
-
-            table.appendChild(tr);
-          }
-
-
-          document.getElementById("tabla_vehiculo").appendChild(table);
-
-          const editBtns = document.getElementsByClassName('btnEdit');
-
-          for (const btnEdit of editBtns) {
-            btnEdit.addEventListener("click", e => {
-              console.log("edit Id:", e.target.name);
-              editById(e.target.name);
-            })
-          }
-
-          const verBtns = document.getElementsByClassName('btnVer');
-
-          for (const btnVer of verBtns) {
-            btnVer.addEventListener("click", e => {
-              console.log("ver Id: ", e.target.name);
-              verById(e.target.name);
-            })
-          }
-
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    }
+      
+    </div>
+  </div> -->
 
 
-    function editById(id) {
-
-      document.getElementById('id01').style.display = 'block';
-
-      fetch('./backend/administrador/getVehiculoById.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          id: id,
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-
-          respuesta = JSON.parse(respuesta);
-
-          document.getElementById("idvehiculos").value = respuesta[0]['idvehiculos'];
-          document.getElementById("ano").value = respuesta[0]['ano'];
-          document.getElementById("vin").value = respuesta[0]['vin'];
-          document.getElementById("placas").value = respuesta[0]['placas'];
-          /* document.getElementById("modelo").value = respuesta[0]['modelo'];
-          document.getElementById("marca").value = respuesta[0]['marca']; */
-
-        });
-    }
-
-    var form = document.getElementById("editModalForm");
-    form.addEventListener('submit', handleEditForm);
-
-    function handleEditForm(event) {
-      event.preventDefault();
-      let editModalForm = new FormData(document.getElementById("editModalForm"));
-
-      fetch('./backend/administrador/updateVehiculosById.php', {
-        method: 'POST',
-        body: editModalForm
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          console.log(respuesta);
-          if (respuesta === 'Registro actualizado') {
-            alert("Registro actualizado");
-            window.location.reload();
-          } else {
-            alert("Error al actualizar el registro");
-          }
-        });
-    }
-
-    function userInterfaseInit() {
-
-      function redireccionCliente() {
-        location.replace("./index.html");
-      }
-
-      // crear el modal
-      var modal = document.getElementById('id01');
-
-      // se cierra si se hace click fuera de la ventana
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    }
-    function verById(id) {
-      document.getElementById('modalVer').style.display = 'block';
-
-      fetch('./backend/administrador/getVehiculoById.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          id: id,
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          respuesta = JSON.parse(respuesta);
-          console.log(respuesta);
+  <!-- /MODALES -->
 
 
-          document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
-          document.getElementById("ver_ano").innerHTML = respuesta[0]['ano'];
-          document.getElementById("ver_vin").innerHTML = respuesta[0]['vin'];
-          document.getElementById("ver_placas").innerHTML = respuesta[0]['placas'];
-          document.getElementById("ver_modelo").innerHTML = respuesta[0]['modelo'];
-          document.getElementById("ver_marca").innerHTML = respuesta[0]['marca'];
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="js/pages/admin_vehiculos.js"></script>
+  <!-- /SCRIPTS -->
 
-        });
-    }
-
-    var insertForm = document.getElementById("addModalForm");
-    insertForm.addEventListener('submit', handleInsertForm);
-
-    function handleInsertForm(event) {
-      event.preventDefault();
-      let addModalForm = new FormData(document.getElementById("addModalForm"));
-
-      fetch('./backend/administrador/insertVehiculos.php', {
-        method: 'POST',
-        body: addModalForm
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (respuesta) {
-          console.log(respuesta);
-          if (respuesta === 'Registro insertado') {
-            alert("Registro insertado");
-            window.location.reload();
-          } else {
-            alert("Error al insertar el registro");
-          }
-        });
-    }
-
-    userInterfaseInit();
-    cargarTodos();
-  </script>
 </body>
 
 </html>

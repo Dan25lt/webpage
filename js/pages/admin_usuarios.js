@@ -321,11 +321,13 @@ function handleAddForm(event) {
 				}, 3000);
 
 			} else {
+
 				Toastify({
 					text: "Error al insertar el registro",
 					duration: 3000,
 					className: "toast-error",
 				}).showToast();
+				
 			}
 		})
 		.catch(function (err) {
