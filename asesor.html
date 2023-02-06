@@ -101,7 +101,7 @@
           <form onsubmit="guardarComentariosAsesor()">
             <legend><strong>Notas: </strong></legend>
             <textarea id="comentarios_asesor" rows="5" class="text-are-full-width"></textarea>
-            <button type="submit" class="pure-button pure-button-primary">Guardar</button>
+            <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
           </form>
         </div>
         <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
@@ -119,7 +119,7 @@
               <option value="Terminado">Terminado</option>
               <option value="Finalizado">Finalizado</option>
             </select>
-            <button type="submit" class="pure-button pure-button-primary">Guardar</button>
+            <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
           </form>
         </div>
       </div>
@@ -184,6 +184,36 @@
         </div>
       </div>
 
+      <h4 class="content-sub-head black-text">Comentarios.</h4>
+      <div class="pure-g">
+        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+          <form onsubmit="guardarComentariosTecnicos()">
+            <legend>Técnico</legend>
+            <textarea rows="5" class="text-are-full-width" id="comentarios_tecnicos"></textarea>
+            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+          </form>
+
+        </div>
+        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+          <form onsubmit="guardarComentariosCalidad()">
+            <legend>Área de Calidad</legend>
+            <textarea id="comentarios_calidad" rows="5" class="text-are-full-width"></textarea>
+            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+          </form>
+
+        </div>
+        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+          <form onsubmit="guardarComentariosLavado()">
+            <legend>Área de lavado</legend>
+            <textarea id="comentarios_lavado" rows="5" class="text-are-full-width"></textarea>
+            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+          </form>
+
+        </div>
+      </div>
       <h4 class="content-sub-head black-text">Resumen.</h4>
       <div class="pure-g">
         <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
@@ -573,8 +603,8 @@
                     B:Bueno &nbsp &nbsp</th>
                 </tr>
                 <tr>
-                  <th colspan="2" style="background-color:#F2F2F2 ;">
-                    <button type="submit" class="pure-button pure-button-primary ">Guardar cambios</button>
+                  <th colspan="2" class="table-button-asesor">
+                    <button type="submit" class="pure-button pure-button-primary button-small ">Guardar cambios</button>
                   </th>
                 </tr>
               </tfoot>
@@ -712,8 +742,10 @@
                         </tr>
                         <tr>
                           <td>Presión de neumáticos:</td>
-                          <td><input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo"></td>
-                          <td><input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos" value="Bueno"></td>
+                          <td><input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo">
+                          </td>
+                          <td><input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos" value="Bueno">
+                          </td>
                         </tr>
                         <tr>
                           <td>Presión de neumático de refacción:</td>
@@ -733,32 +765,35 @@
                         <tr>
                           <td>Operación de limpiaparabrisas:</td>
                           <td><input type="radio" id="operacion_limpiabrisas_malo" name="operacion_limpiabrisas"
-                            value="Malo"></td>
+                              value="Malo"></td>
                           <td><input type="radio" id="operacion_limpiabrisas_bueno" name="operacion_limpiabrisas"
-                            value="Bueno"></td>
+                              value="Bueno"></td>
                         </tr>
                         <tr>
                           <td>Vida útil de frenos adecuado:</td>
                           <td><input type="radio" id="vida_util_frenos_malo" name="vida_util_frenos" value="Malo"></td>
-                          <td><input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno"></td>
+                          <td><input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno">
+                          </td>
                         </tr>
                         <!---------------------- Configuracion del vehiculo ---------------------->
-                        <th><strong>Configuración del vehículo&nbsp &nbsp
-                            &nbsp &nbsp &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
                         <tr>
+                          <th>Configuración del vehículo</th>
+                          <th>X </th>
+                          <th>B </th>
+                        </tr>
                         <tr>
                           <td>
                             Verificar
-                              y asegurar la configuración <br>
-                              inicial del vehículo despues de los
-                              trabajos<br> realizados.<br> (En
-                              caso de realizar algun cambio
-                              notificar<br> al cliente):
+                            y asegurar la configuración <br>
+                            inicial del vehículo despues de los
+                            trabajos<br> realizados.<br> (En
+                            caso de realizar algun cambio
+                            notificar<br> al cliente):
                           </td>
                           <td><input type="radio" id="configuracion_fabrica_malo" name="configuracion_fabrica"
-                            value="Malo"></td>
+                              value="Malo"></td>
                           <td><input type="radio" id="configuracion_fabrica_bueno" name="configuracion_fabrica"
-                            value="Bueno"></td>
+                              value="Bueno"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -767,14 +802,18 @@
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                       <tbody>
                         <!---------------------- Revision de calidad en la operacion del taller ---------------------->
-                        <th><strong>Revision de calidad en la operación
-                            del taller&nbsp &nbsp &nbsp &nbsp &nbsp
-                            X &nbsp&nbspB&nbsp&nbsp</strong></th>
                         <tr>
+                          <th>Revision de calidad en la operación
+                            del taller</th>
+                          <th>X </th>
+                          <th>B </th>
+                        </tr>
                         <tr>
                           <td>Carroceria limpia:</td>
-                          <td><input type="radio" id="correceria_limpia_malo" name="correceria_limpia" value="Malo"></td>
-                          <td><input type="radio" id="correceria_limpia_bueno" name="correceria_limpia" value="Bueno"></td>
+                          <td><input type="radio" id="correceria_limpia_malo" name="correceria_limpia" value="Malo">
+                          </td>
+                          <td><input type="radio" id="correceria_limpia_bueno" name="correceria_limpia" value="Bueno">
+                          </td>
                         </tr>
                         <tr>
                           <td>Daños en carroceria:</td>
@@ -783,8 +822,10 @@
                         </tr>
                         <tr>
                           <td>Vestiduras limpias:</td>
-                          <td><input type="radio" id="vestiduras_limpias_malo" name="vestiduras_limpias" value="Malo"></td>
-                          <td><input type="radio" id="vestiduras_limpias_bueno" name="vestiduras_limpias" value="Bueno"></td>
+                          <td><input type="radio" id="vestiduras_limpias_malo" name="vestiduras_limpias" value="Malo">
+                          </td>
+                          <td><input type="radio" id="vestiduras_limpias_bueno" name="vestiduras_limpias" value="Bueno">
+                          </td>
                         </tr>
                         <tr>
                           <td>Volante limpio:</td>
@@ -810,11 +851,11 @@
                           <td>Espejos retrovisores bien ajustados:</td>
                           <td>
                             <input type="radio" id="retrovisores_ajustados_malo" name="retrovisores_ajustados"
-                                value="Malo">
+                              value="Malo">
                           </td>
                           <td>
                             <input type="radio" id="retrovisores_ajustados_bueno" name="retrovisores_ajustados"
-                                value="Bueno">
+                              value="Bueno">
                           </td>
                         </tr>
                         <tr>
@@ -842,197 +883,135 @@
                           <th>X </th>
                           <th>B </th>
                         </tr>
-                        <th><strong>&nbsp &nbsp
-                            &nbsp &nbsp &nbsp X
-                            &nbsp&nbspB&nbsp&nbsp</strong></th>
                         <tr>
+                          <td>
+                            Se inicio la operación a tiempo conforme a la programación:
+                          </td>
+                          <td><input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo"></td>
+                          <td><input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno"></td>
+                        </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">
-                              Se inicio la operación
-                              a tiempo conforme a <br> la
-                              programación:
-                              <input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno">
-                              <input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo">
-                            </legend>
+                          <td>
+                            Las protecciones se mantienen correctamente instaladas durante la operación:
+                          </td>
+                          <td><input type="radio" id="protecciones_malo" name="protecciones" value="Malo"></td>
+                          <td><input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Las piezas reemplazadas se colocan en bolsa y en la cajuela:
+                          </td>
+                          <td><input type="radio" id="piezas_malo" name="piezas" value="Malo"></td>
+                          <td><input type="radio" id="piezas_bueno" name="piezas" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>La hoja de inspección del vehiculo se encuentra llena completamente:</td>
+                          <td><input type="radio" id="hoja_inspeccion_malo" name="hoja_inspeccion" value="Malo"></td>
+                          <td><input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Se concluye en el tiempo programado:</td>
+                          <td><input type="radio" id="tiempo_programado_malo" name="tiempo_programado" value="Malo">
+                          </td>
+                          <td><input type="radio" id="tiempo_programado_bueno" name="tiempo_programado" value="Bueno">
                           </td>
                         </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Las protecciones se
-                              mantienen correctamente<br>instaladas
-                              durante la operación:
-                              <input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno">
-                              <input type="radio" id="protecciones_malo" name="protecciones" value="Malo">
-                            </legend>
+                          <td>Cuidado de los objetos personales adecuado</td>
+                          <td><input type="radio" id="objetos_personales_malo" name="objetos_personales" value="Malo">
+                          </td>
+                          <td><input type="radio" id="objetos_personales_bueno" name="objetos_personales" value="Bueno">
                           </td>
                         </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Las piezas
-                              reemplazadas se colocan en
-                              bolsa<br>y en la cajuela:
-                              <input type="radio" id="piezas_bueno" name="piezas" value="Bueno">
-                              <input type="radio" id="piezas_malo" name="piezas" value="Malo">
-                            </legend>
-                          </td>
+                          <td>Se reviso la función VIP del vehiculo</td>
+                          <td><input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo"></td>
+                          <td><input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno"></td>
                         </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">La hoja de inspección
-                              del vehiculo se encuentra
-                              <br> llena completamente:
-                              <input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno">
-                              <input type="radio" id="hoja_inspeccion_malo" name="hoja_inspeccion" value="Malo">
-                            </legend>
+                          <td>Se aplicaron campañas reportadas</td>
+                          <td>
+                            <input type="radio" id="campanas_reportadas_malo" name="campanas_reportadas" value="Malo">
                           </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Se concluye en el
-                              tiempo programado:
-                              <input type="radio" id="tiempo_programado_bueno" name="tiempo_programado" value="Bueno">
-                              <input type="radio" id="tiempo_programado_malo" name="tiempo_programado" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Cuidado de los objetos
-                              personales adecuado
-                              <input type="radio" id="objetos_personales_bueno" name="objetos_personales" value="Bueno">
-                              <input type="radio" id="objetos_personales_malo" name="objetos_personales" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Se reviso la función
-                              VIP del vehiculo
-                              <input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno">
-                              <input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Se aplicaron campañas
-                              reportadas
-                              <input type="radio" id="campanas_reportadas_bueno" name="campanas_reportadas"
-                                value="Bueno">
-                              <input type="radio" id="campanas_reportadas_malo" name="campanas_reportadas" value="Malo">
-                            </legend>
+                          <td>
+                            <input type="radio" id="campanas_reportadas_bueno" name="campanas_reportadas" value="Bueno">
                           </td>
                         </tr>
                         <!---------------------- Revision de calidad en trabajo de frenos ---------------------->
-                        <th><strong>Calidad de trabajo de
-                            frenos&nbsp &nbsp &nbsp &nbsp
-                            &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
                         <tr>
+                          <th>Calidad de trabajo de frenos</th>
+                          <th>X </th>
+                          <th>B </th>
+                        </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Se aplicó torque a
-                              tornillos de caliper
-                              <input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno">
-                              <input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo">
-                            </legend>
+                          <td>Se aplicó torque a tornillos de caliper</td>
+                          <td><input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo"></td>
+                          <td><input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Nivel de líquido de frenos</td>
+                          <td><input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo"></td>
+                          <td><input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Asentamiento de balatas</td>
+                          <td><input type="radio" id="asentamiento_balatas_malo" name="asentamiento_balatas"
+                              value="Malo">
+                          </td>
+                          <td><input type="radio" id="asentamiento_balatas_bueno" name="asentamiento_balatas"
+                              value="Bueno">
                           </td>
                         </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Nivel de líquido
-                              de frenos
-                              <input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno">
-                              <input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo">
-                            </legend>
-                          </td>
+                          <td>Prueba de camino</td>
+                          <td><input type="radio" id="prueba_camino_malo" name="prueba_camino" value="Malo"></td>
+                          <td><input type="radio" id="prueba_camino_bueno" name="prueba_camino" value="Bueno"></td>
                         </tr>
                         <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Asentamiento de
-                              balatas
-                              <input type="radio" id="asentamiento_balatas_bueno" name="asentamiento_balatas"
-                                value="Bueno">
-                              <input type="radio" id="asentamiento_balatas_malo" name="asentamiento_balatas"
+                          <td>Vibra pedal al aplicar el freno?</td>
+                          <td><input type="radio" id="vibra_pedal_malo" name="vibra_pedal" value="Malo"></td>
+                          <td><input type="radio" id="vibra_pedal_bueno" name="vibra_pedal" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Viaje de pedal correcto</td>
+                          <td><input type="radio" id="viaje_pedal_malo" name="viaje_pedal" value="Malo"></td>
+                          <td><input type="radio" id="viaje_pedal_bueno" name="viaje_pedal" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Pedal esponjoso</td>
+                          <td><input type="radio" id="pedal_esponjoso_malo" name="pedal_esponjoso" value="Malo"></td>
+                          <td><input type="radio" id="pedal_esponjoso_bueno" name="pedal_esponjoso" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Pedal duro</td>
+                          <td><input type="radio" id="pedal_duro_malo" name="pedal_duro" value="Malo"></td>
+                          <td><input type="radio" id="pedal_duro_bueno" name="pedal_duro" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Operación de frenado correcta</td>
+                          <td><input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo"></td>
+                          <td><input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Frenos ruidosos</td>
+                          <td><input type="radio" id="frenos_ruidosos_malo" name="frenos_ruidosos" value="Malo"></td>
+                          <td><input type="radio" id="frenos_ruidosos_bueno" name="frenos_ruidosos" value="Bueno"></td>
+                        </tr>
+                        <tr>
+                          <td>Ajuste correcto del freno de estacionamiento</td>
+                          <td>
+                            <input type="radio" id="ajuste_correcto_freno_malo" name="ajuste_correcto_freno"
                                 value="Malo">
-                            </legend>
                           </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Prueba de camino
-                              <input type="radio" id="prueba_camino_bueno" name="prueba_camino" value="Bueno">
-                              <input type="radio" id="prueba_camino_malo" name="prueba_camino" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Vibra pedal al
-                              aplicar el freno?
-                              <input type="radio" id="vibra_pedal_bueno" name="vibra_pedal" value="Bueno">
-                              <input type="radio" id="vibra_pedal_malo" name="vibra_pedal" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Viaje de pedal
-                              correcto<input type="radio" id="viaje_pedal_bueno" name="viaje_pedal" value="Bueno">
-                              <input type="radio" id="viaje_pedal_malo" name="viaje_pedal" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Pedal esponjoso
-                              <input type="radio" id="pedal_esponjoso_bueno" name="pedal_esponjoso" value="Bueno">
-                              <input type="radio" id="pedal_esponjoso_malo" name="pedal_esponjoso" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Pedal duro
-                              <input type="radio" id="pedal_duro_bueno" name="pedal_duro" value="Bueno">
-                              <input type="radio" id="pedal_duro_malo" name="pedal_duro" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Operación de
-                              frenado correcta
-                              <input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno">
-                              <input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Frenos ruidosos
-                              <input type="radio" id="frenos_ruidosos_bueno" name="frenos_ruidosos" value="Bueno">
-                              <input type="radio" id="frenos_ruidosos_malo" name="frenos_ruidosos" value="Malo">
-                            </legend>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td align="left" colspan="3">
-                            <legend style="border-style: 0px;">Ajuste correcto
-                              del freno de
-                              estacionamiento
-                              <input type="radio" id="ajuste_correcto_freno_bueno" name="ajuste_correcto_freno"
-                                value="Bueno">
-                              <input type="radio" id="ajuste_correcto_freno_malo" name="ajuste_correcto_freno"
-                                value="Malo">
-                            </legend>
+                          <td>
+                            <input type="radio" id="ajuste_correcto_freno_bueno" name="ajuste_correcto_freno"
+                            value="Bueno">
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
                 </tr>
-
               </tbody>
               <tfoot>
                 <tr>
@@ -1040,8 +1019,9 @@
                     &nbsp</th>
                 </tr>
                 <tr>
-                  <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
-                      cambios</button></th>
+                  <th colspan="2" class="table-button-asesor">
+                    <button type="submit" class="pure-button pure-button-primary button-small ">Guardar cambios</button>
+                  </th>
                 </tr>
               </tfoot>
             </table>
@@ -1101,7 +1081,7 @@
             </select>
           </div>
           <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary" id="add_submit_btn">Guardar</button>
+            <button type="submit" class="pure-button pure-button-primary button-small" id="add_submit_btn">Guardar</button>
           </div>
         </fieldset>
       </form>
@@ -1166,7 +1146,7 @@
             </select>
           </div> -->
           <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary" id="edit_submit_btn">Guardar</button>
+            <button type="submit" class="pure-button pure-button-primary button-small" id="edit_submit_btn">Guardar</button>
           </div>
         </fieldset>
       </form>
