@@ -82,955 +82,989 @@
         </div>
       </div>
 
-      <h4 class="content-sub-head black-text">Informacíon de la orden seleccionada.</h4>
-      <div class="pure-g">
-        <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
-          <legend><strong>Orden:</strong></legend>
-          <p>Fólio: <strong><span id="order_info_folio"></span></strong></p>
-          <p>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></p>
-          <p>Placas: <strong><span id="order_info_placas"></span></strong></p>
-          <p>Vin: <strong><span id="order_info_vin"></span></strong></p>
+      <div id="orden_servicio_contenido" orden_actual="0">
+        <h4 class="content-sub-head black-text">Informacíon de la orden seleccionada.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Orden:</strong></legend>
+            <p>Fólio: <strong><span id="order_info_folio"></span></strong></p>
+            <p>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></p>
+            <p>Placas: <strong><span id="order_info_placas"></span></strong></p>
+            <p>Vin: <strong><span id="order_info_vin"></span></strong></p>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Cliente:</strong></legend>
+            <p>Nombre: <strong><span id="cliente_nombre"></span></strong></p>
+            <p>Teléfono: <strong><span id="cliente_telefono"></span></strong></p>
+            <p>RFC: <strong><span id="cliente_rfc"></span></strong></p>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 box-border-solid">
+            <form onsubmit="guardarComentariosAsesor()">
+              <legend><strong>Notas: </strong></legend>
+              <textarea id="comentarios_asesor" rows="5" class="text-are-full-width"></textarea>
+              <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
+            </form>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Operaciones:</strong></legend>
+            <span id="operaciones"></span>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Cambiar el estatus:</strong>:</legend>
+            <form onsubmit="guardarEstatus()">
+              <select name="estatus_combobox" id="estatus_combobox" style="margin-bottom: 30px; margin-top: 20px;">
+                <option value="En espera">En espera</option>
+                <option value="En servicio tecnico">En servicio técnico</option>
+                <option value="En servicio de lavador">En servicio de lavador</option>
+                <option value="En inspeccion de calidad">En inspección de calidad</option>
+                <option value="Terminado">Terminado</option>
+                <option value="Finalizado">Finalizado</option>
+              </select>
+              <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
+            </form>
+          </div>
         </div>
-        <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
-          <legend><strong>Cliente:</strong></legend>
-          <p>Nombre: <strong><span id="cliente_nombre"></span></strong></p>
-          <p>Teléfono: <strong><span id="cliente_telefono"></span></strong></p>
-          <p>RFC: <strong><span id="cliente_rfc"></span></strong></p>
+
+        <h4 class="content-sub-head black-text">Fotos.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img1" width="100%" height="auto">
+            </label>
+            <br>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" class="button-small" name="file" id="img_to_upload_1"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <!-- Para borrar -->
+            <button id="btn_delete_img1" name="delete_1" class="btnImg button-small">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_1" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img2" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_2"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile2();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img2" name="delete_2" class="btnImg button-small">Borrar</button>
+            <label for="img_to_upload_2" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+
+            <img src="./img/default-image_500.png" class="evidencia" id="img3" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_3"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile3();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img3" name="delete_3" class="btnImg button-small">Borrar</button>
+            <label for="img_to_upload_3" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img4" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_4"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile4();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img4" name="delete_4" class="btnImg button-small">Borrar</button>
+            <label for="img_to_upload_4" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </div>
         </div>
-        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 box-border-solid">
-          <form onsubmit="guardarComentariosAsesor()">
-            <legend><strong>Notas: </strong></legend>
-            <textarea id="comentarios_asesor" rows="5" class="text-are-full-width"></textarea>
-            <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
-          </form>
+
+        <h4 class="content-sub-head black-text">Comentarios.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+            <form onsubmit="guardarComentariosTecnicos()">
+              <legend>Técnico</legend>
+              <textarea rows="5" class="text-are-full-width" id="comentarios_tecnicos"></textarea>
+              <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+            </form>
+
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+            <form onsubmit="guardarComentariosCalidad()">
+              <legend>Área de Calidad</legend>
+              <textarea id="comentarios_calidad" rows="5" class="text-are-full-width"></textarea>
+              <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+            </form>
+
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
+
+            <form onsubmit="guardarComentariosLavado()">
+              <legend>Área de lavado</legend>
+              <textarea id="comentarios_lavado" rows="5" class="text-are-full-width"></textarea>
+              <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+            </form>
+
+          </div>
         </div>
-        <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
-          <legend><strong>Operaciones:</strong></legend>
-          <span id="operaciones"></span>
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
-          <legend><strong>Cambiar el estatus:</strong>:</legend>
-          <form onsubmit="guardarEstatus()">
-            <select name="estatus_combobox" id="estatus_combobox" style="margin-bottom: 30px; margin-top: 20px;">
-              <option value="En espera">En espera</option>
-              <option value="En servicio tecnico">En servicio técnico</option>
-              <option value="En servicio de lavador">En servicio de lavador</option>
-              <option value="En inspeccion de calidad">En inspección de calidad</option>
-              <option value="Terminado">Terminado</option>
-              <option value="Finalizado">Finalizado</option>
-            </select>
-            <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
-          </form>
-        </div>
-      </div>
+        <h4 class="content-sub-head black-text">Resumen.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
+            <!-------------------------------------------- Checklist Tecnico ------------------------------------------------->
+            <form onsubmit="guardarCheckListTecnico()" id="checkListTecnicoForm">
+              <table border="1" cellpadding="0" cellspacing="0" align="left" style="border: 3px solid black;">
+                <caption><strong>CheckList Tecnico</strong></caption>
 
-      <h4 class="content-sub-head black-text">Fotos.</h4>
-      <div class="pure-g">
-        <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
-          <img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto">
-          <br>
-          <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
-          <input type="file" class="button-small" name="file" id="img_to_upload_1"
-            style="opacity: 0; position: absolute; z-index: -1;">
-          <!-- con este boton triggerea el updaload -->
-
-          <input type="button" class="button-small" id="btn_uploadfile" value="Cargar" onclick="uploadFile();">
-
-          <button class="button-small" id="btn_uploadfile" onclick="uploadFile();">
-            <i class="fa fa-upload" aria-hidden="true"></i>
-          </button>
-
-          <!-- Para borrar -->
-          <button id="btn_delete_img1" name="delete_1" class="btnImg button-small">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </button>
-          <!-- este es la parte donde se da click -->
-          <label for="img_to_upload_1" style="cursor: pointer;">
-            <small>Seleccionar imagen</small>
-          </label>
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
-          <img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto">
-          <br>
-          <input type="file" class="button-small" name="file" id="img_to_upload_2"
-            style="opacity: 0; position: absolute; z-index: -1;">
-          <input type="button" class="button-small" id="btn_uploadfile" value="Cargar" onclick="uploadFile2();">
-          <button id="btn_delete_img2" name="delete_2" class="btnImg button-small">Borrar</button>
-          <label for="img_to_upload_2" style="cursor: pointer;">
-            <small>Seleccionar imagen</small>
-          </label>
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
-          <img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto">
-          <br>
-          <input type="file" class="button-small" name="file" id="img_to_upload_3"
-            style="opacity: 0; position: absolute; z-index: -1;">
-          <input type="button" class="button-small" id="btn_uploadfile" value="Cargar" onclick="uploadFile3();">
-          <button id="btn_delete_img3" name="delete_3" class="btnImg button-small">Borrar</button>
-          <label for="img_to_upload_3" style="cursor: pointer;">
-            <small>Seleccionar imagen</small>
-          </label>
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
-          <img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto">
-          <br>
-          <input type="file" class="button-small" name="file" id="img_to_upload_4"
-            style="opacity: 0; position: absolute; z-index: -1;">
-          <input type="button" class="button-small" id="btn_uploadfile" value="Cargar" onclick="uploadFile4();">
-          <button id="btn_delete_img4" name="delete_4" class="btnImg button-small">Borrar</button>
-          <label for="img_to_upload_4" style="cursor: pointer;">
-            <small>Seleccionar imagen</small>
-          </label>
-        </div>
-      </div>
-
-      <h4 class="content-sub-head black-text">Comentarios.</h4>
-      <div class="pure-g">
-        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
-
-          <form onsubmit="guardarComentariosTecnicos()">
-            <legend>Técnico</legend>
-            <textarea rows="5" class="text-are-full-width" id="comentarios_tecnicos"></textarea>
-            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
-          </form>
-
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
-
-          <form onsubmit="guardarComentariosCalidad()">
-            <legend>Área de Calidad</legend>
-            <textarea id="comentarios_calidad" rows="5" class="text-are-full-width"></textarea>
-            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
-          </form>
-
-        </div>
-        <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 is-center">
-
-          <form onsubmit="guardarComentariosLavado()">
-            <legend>Área de lavado</legend>
-            <textarea id="comentarios_lavado" rows="5" class="text-are-full-width"></textarea>
-            <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
-          </form>
-
-        </div>
-      </div>
-      <h4 class="content-sub-head black-text">Resumen.</h4>
-      <div class="pure-g">
-        <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
-          <!-------------------------------------------- Checklist Tecnico ------------------------------------------------->
-          <form onsubmit="guardarCheckListTecnico()" id="checkListTecnicoForm">
-            <table border="1" cellpadding="0" cellspacing="0" align="left" style="border: 3px solid black;">
-              <caption><strong>CheckList Tecnico</strong></caption>
-
-              <tbody>
-                <tr>
-                  <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                      <tbody>
-                        <!---------------------- Parte trasera ---------------------->
-                        <tr>
-                          <th>Parte trasera</th>
-                          <th>N </th>
-                          <th>X </th>
-                          <th>/ </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>Pastillas de freno traseras der.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_der_malo"
-                              name="pastillas_freno_traseras_der" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_der_medio"
-                              name="pastillas_freno_traseras_der" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_der_bueno"
-                              name="pastillas_freno_traseras_der" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Pastillas de freno traseras izq.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_izq_malo"
-                              name="pastillas_freno_traseras_izq" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_izq_medio"
-                              name="pastillas_freno_traseras_izq" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_traseras_izq_bueno"
-                              name="pastillas_freno_traseras_izq" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Limpiador de medallón trasero:</td>
-                          <td>
-                            <input type="radio" id="limpiador_medallon_trasero_na" name="limpiador_medallon_trasero"
-                              value="NA">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiador_medallon_trasero_malo" name="limpiador_medallon_trasero"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiador_medallon_trasero_medio" name="limpiador_medallon_trasero"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiador_medallon_trasero_bueno" name="limpiador_medallon_trasero"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Luces traseras:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="luces_traseras_malo" name="luces_traseras" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="luces_traseras_medio" name="luces_traseras" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="luces_traseras_bueno" name="luces_traseras" value="Bueno">
-                          </td>
-                        </tr>
-                        <!---------------------- Direccion suspension ---------------------->
-                        <tr>
-                          <td><Strong>Dirección Suspensión</Strong></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>Amortiguador delantero der.:</td>
-                          <td></td>
-                          <td>
-
-                            <input type="radio" id="amortiguador_delantero_der_malo" name="amortiguador_delantero_der"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="amortiguador_delantero_der_medio" name="amortiguador_delantero_der"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio"
-                                id="amortiguador_delantero_der_bueno" name="amortiguador_delantero_der" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Amortiguador delantero izq.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="amortiguador_delantero_izq_malo" name="amortiguador_delantero_izq"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="amortiguador_delantero_izq_medio" name="amortiguador_delantero_izq"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="amortiguador_delantero_izq_bueno" name="amortiguador_delantero_izq"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Amortiguador trasero der.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="amortiguador_trasero_der_malo" name="amortiguador_trasero_der"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="amortiguador_trasero_der_medio" name="amortiguador_trasero_der"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio" id="amortiguador_trasero_der_bueno"
-                                name="amortiguador_trasero_der" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Amortiguador trasero izq.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="amortiguador_trasero_izq_malo" name="amortiguador_trasero_izq"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="amortiguador_trasero_izq_medio" name="amortiguador_trasero_izq"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio" id="amortiguador_trasero_izq_bueno"
-                                name="amortiguador_trasero_izq" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Dirección:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="direccion_malo" name="direccion" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="direccion_medio" name="direccion" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
-                          </td>
-                        </tr>
-                        <!---------------------- General ---------------------->
-                        <tr>
-                          <td><strong>General</strong></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>Reset indicador cambio aceite:</td>
-                          <td>
-                            <input type="radio" id="reset_indicador_cambio_aceite_na"
-                              name="reset_indicador_cambio_aceite" value="NA">
-                          </td>
-                          <td>
-                            <input type="radio" id="reset_indicador_cambio_aceite_malo"
-                              name="reset_indicador_cambio_aceite" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="reset_indicador_cambio_aceite_medio"
-                              name="reset_indicador_cambio_aceite" value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio"
-                                id="reset_indicador_cambio_aceite_bueno" name="reset_indicador_cambio_aceite"
-                                value="Bueno">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                      <tbody>
-                        <!---------------------- Parte delantera ---------------------->
-                        <tr>
-                          <th>Parte delantera</th>
-                          <th>N </th>
-                          <th>X </th>
-                          <th>/ </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>Filtro de aire de motor:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor" value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio" id="filtro_aire_motor_bueno"
-                                name="filtro_aire_motor" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Filtro de Cabina:</td>
-                          <td><input type="radio" id="filtro_cabina_na" name="filtro_cabina" value="NA"></td>
-                          <td><input type="radio" id="filtro_cabina_malo" name="filtro_cabina" value="Malo"></td>
-                          <td><input type="radio" id="filtro_cabina_medio" name="filtro_cabina" value="Medio"></td>
-                          <td><input type="radio" id="filtro_cabina_bueno" name="filtro_cabina" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Pastillas de freno delanteras der.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_der_malo"
-                              name="pastillas_freno_delanteras_der" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_der_medio"
-                              name="pastillas_freno_delanteras_der" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_der_bueno"
-                              name="pastillas_freno_delanteras_der" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Pastillas de freno delanteras izq.:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_izq_malo"
-                              name="pastillas_freno_delanteras_izq" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_izq_medio"
-                              name="pastillas_freno_delanteras_izq" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="pastillas_freno_delanteras_izq_bueno"
-                              name="pastillas_freno_delanteras_izq" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Limpiaparabrisas derecho:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="limpiaparabrisas_derecho_malo" name="limpiaparabrisas_derecho"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiaparabrisas_derecho_medio" name="limpiaparabrisas_derecho"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <legend style="border-style: 0px;"> <input type="radio" id="limpiaparabrisas_derecho_bueno"
-                                name="limpiaparabrisas_derecho" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Limpiaparabrisas izquierdo:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="limpiaparabrisas_izquierdo_malo" name="limpiaparabrisas_izquierdo"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiaparabrisas_izquierdo_medio" name="limpiaparabrisas_izquierdo"
-                              value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="limpiaparabrisas_izquierdo_bueno" name="limpiaparabrisas_izquierdo"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Faro derecho y luces:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="faro_derecho_luces_bueno" name="faro_derecho_luces" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Faro izquiero y luces:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="faro_izquiero_luces_medio" name="faro_izquiero_luces" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="faro_izquiero_luces_bueno" name="faro_izquiero_luces" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Anticongelante:</td>
-                          <td></td>
-                          <td><input type="radio" id="anticongelante_malo" name="anticongelante" value="Malo"></td>
-                          <td><input type="radio" id="anticongelante_medio" name="anticongelante" value="Medio"></td>
-                          <td><input type="radio" id="anticongelante_bueno" name="anticongelante" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Liquido dirección hidraulica:</td>
-                          <td>
-                            <input type="radio" id="liquido_direccion_hidraulica_na" name="liquido_direccion_hidraulica"
-                              value="NA">
-                          </td>
-                          <td>
-                            <input type="radio" id="liquido_direccion_hidraulica_malo"
-                              name="liquido_direccion_hidraulica" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="liquido_direccion_hidraulica_medio"
-                              name="liquido_direccion_hidraulica" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="liquido_direccion_hidraulica_bueno"
-                              name="liquido_direccion_hidraulica" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Banda de accesorios:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="banda_accesorios_malo" name="banda_accesorios" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="banda_accesorios_medio" name="banda_accesorios" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="banda_accesorios_bueno" name="banda_accesorios" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Revisión de bateria:</td>
-                          <td></td>
-                          <td>
-                            <input type="radio" id="revision_bateria_malo" name="revision_bateria" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="revision_bateria_medio" name="revision_bateria" value="Medio">
-                          </td>
-                          <td>
-                            <input type="radio" id="revision_bateria_bueno" name="revision_bateria" value="Bueno">
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
-                    &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
-                    B:Bueno &nbsp &nbsp</th>
-                </tr>
-                <tr>
-                  <th colspan="2" class="table-button-asesor">
-                    <button type="submit" class="pure-button pure-button-primary button-small ">Guardar cambios</button>
-                  </th>
-                </tr>
-              </tfoot>
-            </table>
-          </form>
-        </div>
-        <!-------------------------------------- Checklist calidad ------------------------------------------>
-        <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
-          <form onsubmit="guardarCheckListCalidad()" id="checkListCalidadForm">
-            <table border="1" cellpadding="0" cellspacing="0" align="right" style="border: 3px solid black;">
-              <caption><strong>CheckList Control de Calidad</strong></caption>
-
-              <tbody>
-                <tr>
-                  <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                      <tbody>
-                        <!---------------------- Mantenimiento ---------------------->
-                        <tr>
-                          <th>Servicio de mantenimiento</th>
-                          <th>X </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>Bayoneta instalada correctamente:</td>
-                          <td><input type="radio" id="bayoneta_malo" name="bayoneta" value="Malo"></td>
-                          <td><input type="radio" id="bayoneta_bueno" name="bayoneta" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Aceite de motor a nivel y limpio:</td>
-                          <td><input type="radio" id="aceite_motor_malo" name="aceite_motor" value="Malo"></td>
-                          <td><input type="radio" id="aceite_motor_bueno" name="aceite_motor" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Filtro de aceite nuevo:</td>
-                          <td><input type="radio" id="filtro_aceite_malo" name="filtro_aceite" value="Malo"></td>
-                          <td><input type="radio" id="filtro_aceite_bueno" name="filtro_aceite" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Tapón de carter apretado:</td>
-                          <td><input type="radio" id="tapon_carter_malo" name="tapon_carter" value="Malo"></td>
-                          <td><input type="radio" id="tapon_carter_bueno" name="tapon_carter" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Filtro de aire nuevo/ bien instalado:</td>
-                          <td><input type="radio" id="filtro_aire_nuevo_malo" name="filtro_aire_nuevo" value="Malo">
-                          </td>
-                          <td><input type="radio" id="filtro_aire_nuevo_bueno" name="filtro_aire_nuevo" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Filtro de cobustible nuevo (si aplica):</td>
-                          <td><input type="radio" id="filtro_combustible_malo" name="filtro_combustible" value="Malo">
-                          </td>
-                          <td><input type="radio" id="filtro_combustible_bueno" name="filtro_combustible" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Conexiones de filtro de combustible:</td>
-                          <td>
-                            <input type="radio" id="conexion_filtro_combustible_malo" name="conexion_filtro_combustible"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="conexion_filtro_combustible_bueno"
-                              name="conexion_filtro_combustible" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Diagnóstico de bateria correcto:</td>
-                          <td>
-                            <input type="radio" id="diagnostico_bateria_malo" name="diagnostico_bateria" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="diagnostico_bateria_bueno" name="diagnostico_bateria" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Borne de bateria apretados/limpios:</td>
-                          <td><input type="radio" id="borne_bateria_malo" name="borne_bateria" value="Malo"></td>
-                          <td><input type="radio" id="borne_bateria_bueno" name="borne_bateria" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Aceite de transmisión:</td>
-                          <td><input type="radio" id="aceite_transmision_malo" name="aceite_transmision" value="Malo">
-                          </td>
-                          <td><input type="radio" id="aceite_transmision_bueno" name="aceite_transmision" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Nivel de anticongelante:</td>
-                          <td><input type="radio" id="nivel_anticongelante_malo" name="nivel_anticongelante"
-                              value="Malo"></td>
-                          <td><input type="radio" id="nivel_anticongelante_bueno" name="nivel_anticongelante"
-                              value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Nivel de dirección hidráulica:</td>
-                          <td><input type="radio" id="nivel_direccion_malo" name="nivel_direccion" value="Malo"></td>
-                          <td><input type="radio" id="nivel_direccion_bueno" name="nivel_direccion" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Diagnóstico de banda de motor:</td>
-                          <td><input type="radio" id="diagnostico_banda_malo" name="diagnostico_banda" value="Malo">
-                          </td>
-                          <td><input type="radio" id="diagnostico_banda_bueno" name="diagnostico_banda" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Diagnóstico de mangueras:</td>
-                          <td><input type="radio" id="diagnostico_mangeras_malo" name="diagnostico_mangeras"
-                              value="Malo"></td>
-                          <td><input type="radio" id="diagnostico_mangeras_bueno" name="diagnostico_mangeras"
-                              value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Diagnóstico de arneses:</td>
-                          <td>
-                            <input type="radio" id="diagnostico_arneses_malo" name="diagnostico_arneses" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="diagnostico_arneses_bueno" name="diagnostico_arneses" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Inspección de neumáticos:</td>
-                          <td>
-                            <input type="radio" id="inspeccion_neumaticos_malo" name="inspeccion_neumaticos"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="inspeccion_neumaticos_bueno" name="inspeccion_neumaticos"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Presión de neumáticos:</td>
-                          <td><input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo">
-                          </td>
-                          <td><input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Presión de neumático de refacción:</td>
-                          <td><input type="radio" id="presion_extra_malo" name="presion_extra" value="Malo"></td>
-                          <td><input type="radio" id="presion_extra_bueno" name="presion_extra" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Torque de birlos o tuercas:</td>
-                          <td><input type="radio" id="torque_birlos_malo" name="torque_birlos" value="Malo"></td>
-                          <td><input type="radio" id="torque_birlos_bueno" name="torque_birlos" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Operación de luces:</td>
-                          <td><input type="radio" id="luces_malo" name="luces" value="Malo"></td>
-                          <td><input type="radio" id="luces_bueno" name="luces" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Operación de limpiaparabrisas:</td>
-                          <td><input type="radio" id="operacion_limpiabrisas_malo" name="operacion_limpiabrisas"
-                              value="Malo"></td>
-                          <td><input type="radio" id="operacion_limpiabrisas_bueno" name="operacion_limpiabrisas"
-                              value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Vida útil de frenos adecuado:</td>
-                          <td><input type="radio" id="vida_util_frenos_malo" name="vida_util_frenos" value="Malo"></td>
-                          <td><input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno">
-                          </td>
-                        </tr>
-                        <!---------------------- Configuracion del vehiculo ---------------------->
-                        <tr>
-                          <th>Configuración del vehículo</th>
-                          <th>X </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>
-                            Verificar
-                            y asegurar la configuración <br>
-                            inicial del vehículo despues de los
-                            trabajos<br> realizados.<br> (En
-                            caso de realizar algun cambio
-                            notificar<br> al cliente):
-                          </td>
-                          <td><input type="radio" id="configuracion_fabrica_malo" name="configuracion_fabrica"
-                              value="Malo"></td>
-                          <td><input type="radio" id="configuracion_fabrica_bueno" name="configuracion_fabrica"
-                              value="Bueno"></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td valign="Top" width="50%">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                      <tbody>
-                        <!---------------------- Revision de calidad en la operacion del taller ---------------------->
-                        <tr>
-                          <th>Revision de calidad en la operación
-                            del taller</th>
-                          <th>X </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>Carroceria limpia:</td>
-                          <td><input type="radio" id="correceria_limpia_malo" name="correceria_limpia" value="Malo">
-                          </td>
-                          <td><input type="radio" id="correceria_limpia_bueno" name="correceria_limpia" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Daños en carroceria:</td>
-                          <td><input type="radio" id="dano_carroceria_malo" name="dano_carroceria" value="Malo"></td>
-                          <td><input type="radio" id="dano_carroceria_bueno" name="dano_carroceria" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Vestiduras limpias:</td>
-                          <td><input type="radio" id="vestiduras_limpias_malo" name="vestiduras_limpias" value="Malo">
-                          </td>
-                          <td><input type="radio" id="vestiduras_limpias_bueno" name="vestiduras_limpias" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Volante limpio:</td>
-                          <td><input type="radio" id="volante_limpio_malo" name="volante_limpio" value="Malo"></td>
-                          <td><input type="radio" id="volante_limpio_bueno" name="volante_limpio" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Palanca y controles limpios:</td>
-                          <td><input type="radio" id="palanca_limpia_malo" name="palanca_limpia" value="Malo"></td>
-                          <td><input type="radio" id="palanca_limpia_bueno" name="palanca_limpia" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Tablero limpio:</td>
-                          <td><input type="radio" id="tablero_limpio_malo" name="tablero_limpio" value="Malo"></td>
-                          <td><input type="radio" id="tablero_limpio_bueno" name="tablero_limpio" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Alfombra y tapetes limpios:</td>
-                          <td><input type="radio" id="alfombra_limpia_malo" name="alfombra_limpia" value="Malo"></td>
-                          <td><input type="radio" id="alfombra_limpia_bueno" name="alfombra_limpia" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Espejos retrovisores bien ajustados:</td>
-                          <td>
-                            <input type="radio" id="retrovisores_ajustados_malo" name="retrovisores_ajustados"
-                              value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="retrovisores_ajustados_bueno" name="retrovisores_ajustados"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Motor limpio:</td>
-                          <td><input type="radio" id="motor_limpio_malo" name="motor_limpio" value="Malo"></td>
-                          <td><input type="radio" id="motor_limpio_bueno" name="motor_limpio" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Bastidor limpio:</td>
-                          <td><input type="radio" id="bastidor_limpio_malo" name="bastidor_limpio" value="Malo"></td>
-                          <td><input type="radio" id="bastidor_limpio_bueno" name="bastidor_limpio" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Ruedas y rines limpios:</td>
-                          <td><input type="radio" id="rines_limpios_malo" name="rines_limpios" value="Malo"></td>
-                          <td><input type="radio" id="rines_limpios_bueno" name="rines_limpios" value="Bueno"></td>
-                        </tr>
-
-                        <!---------------------- Control de calidad en la operacion del taller ---------------------->
-                        <tr>
-                          <th>
-                            Control de calidad en la
-                            operación del taller
-                          </th>
-                          <th>X </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>
-                            Se inicio la operación a tiempo conforme a la programación:
-                          </td>
-                          <td><input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo"></td>
-                          <td><input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Las protecciones se mantienen correctamente instaladas durante la operación:
-                          </td>
-                          <td><input type="radio" id="protecciones_malo" name="protecciones" value="Malo"></td>
-                          <td><input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Las piezas reemplazadas se colocan en bolsa y en la cajuela:
-                          </td>
-                          <td><input type="radio" id="piezas_malo" name="piezas" value="Malo"></td>
-                          <td><input type="radio" id="piezas_bueno" name="piezas" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>La hoja de inspección del vehiculo se encuentra llena completamente:</td>
-                          <td><input type="radio" id="hoja_inspeccion_malo" name="hoja_inspeccion" value="Malo"></td>
-                          <td><input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Se concluye en el tiempo programado:</td>
-                          <td><input type="radio" id="tiempo_programado_malo" name="tiempo_programado" value="Malo">
-                          </td>
-                          <td><input type="radio" id="tiempo_programado_bueno" name="tiempo_programado" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cuidado de los objetos personales adecuado</td>
-                          <td><input type="radio" id="objetos_personales_malo" name="objetos_personales" value="Malo">
-                          </td>
-                          <td><input type="radio" id="objetos_personales_bueno" name="objetos_personales" value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Se reviso la función VIP del vehiculo</td>
-                          <td><input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo"></td>
-                          <td><input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Se aplicaron campañas reportadas</td>
-                          <td>
-                            <input type="radio" id="campanas_reportadas_malo" name="campanas_reportadas" value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="campanas_reportadas_bueno" name="campanas_reportadas" value="Bueno">
-                          </td>
-                        </tr>
-                        <!---------------------- Revision de calidad en trabajo de frenos ---------------------->
-                        <tr>
-                          <th>Calidad de trabajo de frenos</th>
-                          <th>X </th>
-                          <th>B </th>
-                        </tr>
-                        <tr>
-                          <td>Se aplicó torque a tornillos de caliper</td>
-                          <td><input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo"></td>
-                          <td><input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Nivel de líquido de frenos</td>
-                          <td><input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo"></td>
-                          <td><input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Asentamiento de balatas</td>
-                          <td><input type="radio" id="asentamiento_balatas_malo" name="asentamiento_balatas"
-                              value="Malo">
-                          </td>
-                          <td><input type="radio" id="asentamiento_balatas_bueno" name="asentamiento_balatas"
-                              value="Bueno">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Prueba de camino</td>
-                          <td><input type="radio" id="prueba_camino_malo" name="prueba_camino" value="Malo"></td>
-                          <td><input type="radio" id="prueba_camino_bueno" name="prueba_camino" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Vibra pedal al aplicar el freno?</td>
-                          <td><input type="radio" id="vibra_pedal_malo" name="vibra_pedal" value="Malo"></td>
-                          <td><input type="radio" id="vibra_pedal_bueno" name="vibra_pedal" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Viaje de pedal correcto</td>
-                          <td><input type="radio" id="viaje_pedal_malo" name="viaje_pedal" value="Malo"></td>
-                          <td><input type="radio" id="viaje_pedal_bueno" name="viaje_pedal" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Pedal esponjoso</td>
-                          <td><input type="radio" id="pedal_esponjoso_malo" name="pedal_esponjoso" value="Malo"></td>
-                          <td><input type="radio" id="pedal_esponjoso_bueno" name="pedal_esponjoso" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Pedal duro</td>
-                          <td><input type="radio" id="pedal_duro_malo" name="pedal_duro" value="Malo"></td>
-                          <td><input type="radio" id="pedal_duro_bueno" name="pedal_duro" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Operación de frenado correcta</td>
-                          <td><input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo"></td>
-                          <td><input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Frenos ruidosos</td>
-                          <td><input type="radio" id="frenos_ruidosos_malo" name="frenos_ruidosos" value="Malo"></td>
-                          <td><input type="radio" id="frenos_ruidosos_bueno" name="frenos_ruidosos" value="Bueno"></td>
-                        </tr>
-                        <tr>
-                          <td>Ajuste correcto del freno de estacionamiento</td>
-                          <td>
-                            <input type="radio" id="ajuste_correcto_freno_malo" name="ajuste_correcto_freno"
+                <tbody>
+                  <tr>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Parte trasera ---------------------->
+                          <tr>
+                            <th>Parte trasera</th>
+                            <th>N </th>
+                            <th>X </th>
+                            <th>/ </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno traseras der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_malo"
+                                name="pastillas_freno_traseras_der" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_medio"
+                                name="pastillas_freno_traseras_der" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_bueno"
+                                name="pastillas_freno_traseras_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno traseras izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_malo"
+                                name="pastillas_freno_traseras_izq" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_medio"
+                                name="pastillas_freno_traseras_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_bueno"
+                                name="pastillas_freno_traseras_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiador de medallón trasero:</td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_na" name="limpiador_medallon_trasero"
+                                value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_malo" name="limpiador_medallon_trasero"
                                 value="Malo">
-                          </td>
-                          <td>
-                            <input type="radio" id="ajuste_correcto_freno_bueno" name="ajuste_correcto_freno"
-                            value="Bueno">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th colspan="2">X:Mal &nbsp &nbsp B:Bien &nbsp
-                    &nbsp</th>
-                </tr>
-                <tr>
-                  <th colspan="2" class="table-button-asesor">
-                    <button type="submit" class="pure-button pure-button-primary button-small ">Guardar cambios</button>
-                  </th>
-                </tr>
-              </tfoot>
-            </table>
-          </form>
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_medio"
+                                name="limpiador_medallon_trasero" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_bueno"
+                                name="limpiador_medallon_trasero" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Luces traseras:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="luces_traseras_malo" name="luces_traseras" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="luces_traseras_medio" name="luces_traseras" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="luces_traseras_bueno" name="luces_traseras" value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- Direccion suspension ---------------------->
+                          <tr>
+                            <td><Strong>Dirección Suspensión</Strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador delantero der.:</td>
+                            <td></td>
+                            <td>
+
+                              <input type="radio" id="amortiguador_delantero_der_malo" name="amortiguador_delantero_der"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_der_medio"
+                                name="amortiguador_delantero_der" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_delantero_der_bueno" name="amortiguador_delantero_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador delantero izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_malo" name="amortiguador_delantero_izq"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_medio"
+                                name="amortiguador_delantero_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_bueno"
+                                name="amortiguador_delantero_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador trasero der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_der_malo" name="amortiguador_trasero_der"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_der_medio" name="amortiguador_trasero_der"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_trasero_der_bueno" name="amortiguador_trasero_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador trasero izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_izq_malo" name="amortiguador_trasero_izq"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_izq_medio" name="amortiguador_trasero_izq"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_trasero_izq_bueno" name="amortiguador_trasero_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Dirección:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="direccion_malo" name="direccion" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="direccion_medio" name="direccion" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- General ---------------------->
+                          <tr>
+                            <td><strong>General</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Reset indicador cambio aceite:</td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_na"
+                                name="reset_indicador_cambio_aceite" value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_malo"
+                                name="reset_indicador_cambio_aceite" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_medio"
+                                name="reset_indicador_cambio_aceite" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="reset_indicador_cambio_aceite_bueno" name="reset_indicador_cambio_aceite"
+                                  value="Bueno">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Parte delantera ---------------------->
+                          <tr>
+                            <th>Parte delantera</th>
+                            <th>N </th>
+                            <th>X </th>
+                            <th>/ </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Filtro de aire de motor:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio" id="filtro_aire_motor_bueno"
+                                  name="filtro_aire_motor" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Filtro de Cabina:</td>
+                            <td><input type="radio" id="filtro_cabina_na" name="filtro_cabina" value="NA"></td>
+                            <td><input type="radio" id="filtro_cabina_malo" name="filtro_cabina" value="Malo"></td>
+                            <td><input type="radio" id="filtro_cabina_medio" name="filtro_cabina" value="Medio"></td>
+                            <td><input type="radio" id="filtro_cabina_bueno" name="filtro_cabina" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno delanteras der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_malo"
+                                name="pastillas_freno_delanteras_der" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_medio"
+                                name="pastillas_freno_delanteras_der" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_bueno"
+                                name="pastillas_freno_delanteras_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno delanteras izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_malo"
+                                name="pastillas_freno_delanteras_izq" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_medio"
+                                name="pastillas_freno_delanteras_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_bueno"
+                                name="pastillas_freno_delanteras_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiaparabrisas derecho:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_derecho_malo" name="limpiaparabrisas_derecho"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_derecho_medio" name="limpiaparabrisas_derecho"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="limpiaparabrisas_derecho_bueno" name="limpiaparabrisas_derecho" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiaparabrisas izquierdo:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_malo" name="limpiaparabrisas_izquierdo"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_medio"
+                                name="limpiaparabrisas_izquierdo" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_bueno"
+                                name="limpiaparabrisas_izquierdo" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Faro derecho y luces:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_bueno" name="faro_derecho_luces" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Faro izquiero y luces:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_medio" name="faro_izquiero_luces"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_bueno" name="faro_izquiero_luces"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Anticongelante:</td>
+                            <td></td>
+                            <td><input type="radio" id="anticongelante_malo" name="anticongelante" value="Malo"></td>
+                            <td><input type="radio" id="anticongelante_medio" name="anticongelante" value="Medio"></td>
+                            <td><input type="radio" id="anticongelante_bueno" name="anticongelante" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Liquido dirección hidraulica:</td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_na"
+                                name="liquido_direccion_hidraulica" value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_malo"
+                                name="liquido_direccion_hidraulica" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_medio"
+                                name="liquido_direccion_hidraulica" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_bueno"
+                                name="liquido_direccion_hidraulica" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Banda de accesorios:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_malo" name="banda_accesorios" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_medio" name="banda_accesorios" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_bueno" name="banda_accesorios" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Revisión de bateria:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="revision_bateria_malo" name="revision_bateria" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="revision_bateria_medio" name="revision_bateria" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="revision_bateria_bueno" name="revision_bateria" value="Bueno">
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
+                      &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
+                      B:Bueno &nbsp &nbsp</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" class="table-button-asesor">
+                      <button type="submit" class="pure-button pure-button-primary button-small ">Guardar
+                        cambios</button>
+                    </th>
+                  </tr>
+                </tfoot>
+              </table>
+            </form>
+          </div>
+          <!-------------------------------------- Checklist calidad ------------------------------------------>
+          <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
+            <form onsubmit="guardarCheckListCalidad()" id="checkListCalidadForm">
+              <table border="1" cellpadding="0" cellspacing="0" align="right" style="border: 3px solid black;">
+                <caption><strong>CheckList Control de Calidad</strong></caption>
+
+                <tbody>
+                  <tr>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Mantenimiento ---------------------->
+                          <tr>
+                            <th>Servicio de mantenimiento</th>
+                            <th>X </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Bayoneta instalada correctamente:</td>
+                            <td><input type="radio" id="bayoneta_malo" name="bayoneta" value="Malo"></td>
+                            <td><input type="radio" id="bayoneta_bueno" name="bayoneta" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Aceite de motor a nivel y limpio:</td>
+                            <td><input type="radio" id="aceite_motor_malo" name="aceite_motor" value="Malo"></td>
+                            <td><input type="radio" id="aceite_motor_bueno" name="aceite_motor" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Filtro de aceite nuevo:</td>
+                            <td><input type="radio" id="filtro_aceite_malo" name="filtro_aceite" value="Malo"></td>
+                            <td><input type="radio" id="filtro_aceite_bueno" name="filtro_aceite" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Tapón de carter apretado:</td>
+                            <td><input type="radio" id="tapon_carter_malo" name="tapon_carter" value="Malo"></td>
+                            <td><input type="radio" id="tapon_carter_bueno" name="tapon_carter" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Filtro de aire nuevo/ bien instalado:</td>
+                            <td><input type="radio" id="filtro_aire_nuevo_malo" name="filtro_aire_nuevo" value="Malo">
+                            </td>
+                            <td><input type="radio" id="filtro_aire_nuevo_bueno" name="filtro_aire_nuevo" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Filtro de cobustible nuevo (si aplica):</td>
+                            <td><input type="radio" id="filtro_combustible_malo" name="filtro_combustible" value="Malo">
+                            </td>
+                            <td><input type="radio" id="filtro_combustible_bueno" name="filtro_combustible"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Conexiones de filtro de combustible:</td>
+                            <td>
+                              <input type="radio" id="conexion_filtro_combustible_malo"
+                                name="conexion_filtro_combustible" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="conexion_filtro_combustible_bueno"
+                                name="conexion_filtro_combustible" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Diagnóstico de bateria correcto:</td>
+                            <td>
+                              <input type="radio" id="diagnostico_bateria_malo" name="diagnostico_bateria" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="diagnostico_bateria_bueno" name="diagnostico_bateria"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Borne de bateria apretados/limpios:</td>
+                            <td><input type="radio" id="borne_bateria_malo" name="borne_bateria" value="Malo"></td>
+                            <td><input type="radio" id="borne_bateria_bueno" name="borne_bateria" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Aceite de transmisión:</td>
+                            <td><input type="radio" id="aceite_transmision_malo" name="aceite_transmision" value="Malo">
+                            </td>
+                            <td><input type="radio" id="aceite_transmision_bueno" name="aceite_transmision"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Nivel de anticongelante:</td>
+                            <td><input type="radio" id="nivel_anticongelante_malo" name="nivel_anticongelante"
+                                value="Malo"></td>
+                            <td><input type="radio" id="nivel_anticongelante_bueno" name="nivel_anticongelante"
+                                value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Nivel de dirección hidráulica:</td>
+                            <td><input type="radio" id="nivel_direccion_malo" name="nivel_direccion" value="Malo"></td>
+                            <td><input type="radio" id="nivel_direccion_bueno" name="nivel_direccion" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Diagnóstico de banda de motor:</td>
+                            <td><input type="radio" id="diagnostico_banda_malo" name="diagnostico_banda" value="Malo">
+                            </td>
+                            <td><input type="radio" id="diagnostico_banda_bueno" name="diagnostico_banda" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Diagnóstico de mangueras:</td>
+                            <td><input type="radio" id="diagnostico_mangeras_malo" name="diagnostico_mangeras"
+                                value="Malo"></td>
+                            <td><input type="radio" id="diagnostico_mangeras_bueno" name="diagnostico_mangeras"
+                                value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Diagnóstico de arneses:</td>
+                            <td>
+                              <input type="radio" id="diagnostico_arneses_malo" name="diagnostico_arneses" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="diagnostico_arneses_bueno" name="diagnostico_arneses"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Inspección de neumáticos:</td>
+                            <td>
+                              <input type="radio" id="inspeccion_neumaticos_malo" name="inspeccion_neumaticos"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="inspeccion_neumaticos_bueno" name="inspeccion_neumaticos"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Presión de neumáticos:</td>
+                            <td><input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo">
+                            </td>
+                            <td><input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Presión de neumático de refacción:</td>
+                            <td><input type="radio" id="presion_extra_malo" name="presion_extra" value="Malo"></td>
+                            <td><input type="radio" id="presion_extra_bueno" name="presion_extra" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Torque de birlos o tuercas:</td>
+                            <td><input type="radio" id="torque_birlos_malo" name="torque_birlos" value="Malo"></td>
+                            <td><input type="radio" id="torque_birlos_bueno" name="torque_birlos" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Operación de luces:</td>
+                            <td><input type="radio" id="luces_malo" name="luces" value="Malo"></td>
+                            <td><input type="radio" id="luces_bueno" name="luces" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Operación de limpiaparabrisas:</td>
+                            <td><input type="radio" id="operacion_limpiabrisas_malo" name="operacion_limpiabrisas"
+                                value="Malo"></td>
+                            <td><input type="radio" id="operacion_limpiabrisas_bueno" name="operacion_limpiabrisas"
+                                value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Vida útil de frenos adecuado:</td>
+                            <td><input type="radio" id="vida_util_frenos_malo" name="vida_util_frenos" value="Malo">
+                            </td>
+                            <td><input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- Configuracion del vehiculo ---------------------->
+                          <tr>
+                            <th>Configuración del vehículo</th>
+                            <th>X </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>
+                              Verificar
+                              y asegurar la configuración <br>
+                              inicial del vehículo despues de los
+                              trabajos<br> realizados.<br> (En
+                              caso de realizar algun cambio
+                              notificar<br> al cliente):
+                            </td>
+                            <td><input type="radio" id="configuracion_fabrica_malo" name="configuracion_fabrica"
+                                value="Malo"></td>
+                            <td><input type="radio" id="configuracion_fabrica_bueno" name="configuracion_fabrica"
+                                value="Bueno"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Revision de calidad en la operacion del taller ---------------------->
+                          <tr>
+                            <th>Revision de calidad en la operación
+                              del taller</th>
+                            <th>X </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Carroceria limpia:</td>
+                            <td><input type="radio" id="correceria_limpia_malo" name="correceria_limpia" value="Malo">
+                            </td>
+                            <td><input type="radio" id="correceria_limpia_bueno" name="correceria_limpia" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Daños en carroceria:</td>
+                            <td><input type="radio" id="dano_carroceria_malo" name="dano_carroceria" value="Malo"></td>
+                            <td><input type="radio" id="dano_carroceria_bueno" name="dano_carroceria" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Vestiduras limpias:</td>
+                            <td><input type="radio" id="vestiduras_limpias_malo" name="vestiduras_limpias" value="Malo">
+                            </td>
+                            <td><input type="radio" id="vestiduras_limpias_bueno" name="vestiduras_limpias"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Volante limpio:</td>
+                            <td><input type="radio" id="volante_limpio_malo" name="volante_limpio" value="Malo"></td>
+                            <td><input type="radio" id="volante_limpio_bueno" name="volante_limpio" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Palanca y controles limpios:</td>
+                            <td><input type="radio" id="palanca_limpia_malo" name="palanca_limpia" value="Malo"></td>
+                            <td><input type="radio" id="palanca_limpia_bueno" name="palanca_limpia" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Tablero limpio:</td>
+                            <td><input type="radio" id="tablero_limpio_malo" name="tablero_limpio" value="Malo"></td>
+                            <td><input type="radio" id="tablero_limpio_bueno" name="tablero_limpio" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Alfombra y tapetes limpios:</td>
+                            <td><input type="radio" id="alfombra_limpia_malo" name="alfombra_limpia" value="Malo"></td>
+                            <td><input type="radio" id="alfombra_limpia_bueno" name="alfombra_limpia" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Espejos retrovisores bien ajustados:</td>
+                            <td>
+                              <input type="radio" id="retrovisores_ajustados_malo" name="retrovisores_ajustados"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="retrovisores_ajustados_bueno" name="retrovisores_ajustados"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Motor limpio:</td>
+                            <td><input type="radio" id="motor_limpio_malo" name="motor_limpio" value="Malo"></td>
+                            <td><input type="radio" id="motor_limpio_bueno" name="motor_limpio" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Bastidor limpio:</td>
+                            <td><input type="radio" id="bastidor_limpio_malo" name="bastidor_limpio" value="Malo"></td>
+                            <td><input type="radio" id="bastidor_limpio_bueno" name="bastidor_limpio" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Ruedas y rines limpios:</td>
+                            <td><input type="radio" id="rines_limpios_malo" name="rines_limpios" value="Malo"></td>
+                            <td><input type="radio" id="rines_limpios_bueno" name="rines_limpios" value="Bueno"></td>
+                          </tr>
+
+                          <!---------------------- Control de calidad en la operacion del taller ---------------------->
+                          <tr>
+                            <th>
+                              Control de calidad en la
+                              operación del taller
+                            </th>
+                            <th>X </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>
+                              Se inicio la operación a tiempo conforme a la programación:
+                            </td>
+                            <td><input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo"></td>
+                            <td><input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Las protecciones se mantienen correctamente instaladas durante la operación:
+                            </td>
+                            <td><input type="radio" id="protecciones_malo" name="protecciones" value="Malo"></td>
+                            <td><input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Las piezas reemplazadas se colocan en bolsa y en la cajuela:
+                            </td>
+                            <td><input type="radio" id="piezas_malo" name="piezas" value="Malo"></td>
+                            <td><input type="radio" id="piezas_bueno" name="piezas" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>La hoja de inspección del vehiculo se encuentra llena completamente:</td>
+                            <td><input type="radio" id="hoja_inspeccion_malo" name="hoja_inspeccion" value="Malo"></td>
+                            <td><input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Se concluye en el tiempo programado:</td>
+                            <td><input type="radio" id="tiempo_programado_malo" name="tiempo_programado" value="Malo">
+                            </td>
+                            <td><input type="radio" id="tiempo_programado_bueno" name="tiempo_programado" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Cuidado de los objetos personales adecuado</td>
+                            <td><input type="radio" id="objetos_personales_malo" name="objetos_personales" value="Malo">
+                            </td>
+                            <td><input type="radio" id="objetos_personales_bueno" name="objetos_personales"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Se reviso la función VIP del vehiculo</td>
+                            <td><input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo"></td>
+                            <td><input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Se aplicaron campañas reportadas</td>
+                            <td>
+                              <input type="radio" id="campanas_reportadas_malo" name="campanas_reportadas" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="campanas_reportadas_bueno" name="campanas_reportadas"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- Revision de calidad en trabajo de frenos ---------------------->
+                          <tr>
+                            <th>Calidad de trabajo de frenos</th>
+                            <th>X </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Se aplicó torque a tornillos de caliper</td>
+                            <td><input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo"></td>
+                            <td><input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Nivel de líquido de frenos</td>
+                            <td><input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo"></td>
+                            <td><input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Asentamiento de balatas</td>
+                            <td><input type="radio" id="asentamiento_balatas_malo" name="asentamiento_balatas"
+                                value="Malo">
+                            </td>
+                            <td><input type="radio" id="asentamiento_balatas_bueno" name="asentamiento_balatas"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Prueba de camino</td>
+                            <td><input type="radio" id="prueba_camino_malo" name="prueba_camino" value="Malo"></td>
+                            <td><input type="radio" id="prueba_camino_bueno" name="prueba_camino" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Vibra pedal al aplicar el freno?</td>
+                            <td><input type="radio" id="vibra_pedal_malo" name="vibra_pedal" value="Malo"></td>
+                            <td><input type="radio" id="vibra_pedal_bueno" name="vibra_pedal" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Viaje de pedal correcto</td>
+                            <td><input type="radio" id="viaje_pedal_malo" name="viaje_pedal" value="Malo"></td>
+                            <td><input type="radio" id="viaje_pedal_bueno" name="viaje_pedal" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Pedal esponjoso</td>
+                            <td><input type="radio" id="pedal_esponjoso_malo" name="pedal_esponjoso" value="Malo"></td>
+                            <td><input type="radio" id="pedal_esponjoso_bueno" name="pedal_esponjoso" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pedal duro</td>
+                            <td><input type="radio" id="pedal_duro_malo" name="pedal_duro" value="Malo"></td>
+                            <td><input type="radio" id="pedal_duro_bueno" name="pedal_duro" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Operación de frenado correcta</td>
+                            <td><input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo">
+                            </td>
+                            <td><input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Frenos ruidosos</td>
+                            <td><input type="radio" id="frenos_ruidosos_malo" name="frenos_ruidosos" value="Malo"></td>
+                            <td><input type="radio" id="frenos_ruidosos_bueno" name="frenos_ruidosos" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Ajuste correcto del freno de estacionamiento</td>
+                            <td>
+                              <input type="radio" id="ajuste_correcto_freno_malo" name="ajuste_correcto_freno"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="ajuste_correcto_freno_bueno" name="ajuste_correcto_freno"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="2">X:Mal &nbsp &nbsp B:Bien &nbsp
+                      &nbsp</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" class="table-button-asesor">
+                      <button type="submit" class="pure-button pure-button-primary button-small ">Guardar
+                        cambios</button>
+                    </th>
+                  </tr>
+                </tfoot>
+              </table>
+            </form>
+          </div>
         </div>
+
+
       </div>
+
 
       <br><br><br><br>
-
 
     </div> <!-- container wrapper -->
 
@@ -1041,129 +1075,19 @@
   </div>
 
   <!-- MODALES -->
-  <input class="modal-state" id="modal-add" type="checkbox" />
+
+  <input class="modal-state" id="modal-1" type="checkbox" />
   <div class="modal">
-    <label class="modal__bg" for="modal-add"></label>
-    <div class="modal__inner">
-      <label class="modal__close" for="modal-add"></label>
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner modal-large">
+      <label class="modal__close" for="modal-1"></label>
       <!-- Modal content -->
-      <form class="pure-form pure-form-aligned" id="addModalForm">
-        <fieldset>
-          <div class="pure-control-group">
-            <label for="add_ano">Año</label>
-            <input type="text" placeholder="" name="add_ano" id="add_ano" pattern="^[12][0-9]{3}$" required>
-            <span class="pure-form-message-inline"> Solo admite numeros <br> 4 digitos para el año </span>
-          </div>
-          <div class="pure-control-group">
-            <label for="add_vin">Vin</label>
-            <input type="text" placeholder="" name="add_vin" id="add_vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
-          </div>
-          <div class="pure-control-group">
-            <label for="add_placas">Placas</label>
-            <input type="text" maxlength="7" placeholder="" name="add_placas" id="add_placas"
-              pattern="^[a-zA-Z0-9_-]{3,9}$" required>
-            <span class="pure-form-message-inline"> Matricula<br> </span>
-          </div>
-          <div class="pure-control-group">
-            <label for="add_id_marca">Marca</label>
-            <select name="add_id_marca" id="add_id_marca">
-            </select>
-          </div>
-          <div class="pure-control-group">
-            <label for="add_id_modelo">Modelo</label>
-            <select name="add_id_modelo" id="add_id_modelo">
-            </select>
-          </div>
-          <div class="pure-control-group">
-            <label for="add_id_cliente">Cliente</label>
-            <select name="add_id_cliente" id="add_id_cliente">
-            </select>
-          </div>
-          <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary button-small" id="add_submit_btn">Guardar</button>
-          </div>
-        </fieldset>
-      </form>
+
+      <img src="" id="modal_img" width="450px" height="auto">
 
       <!-- /Modal content -->
     </div>
   </div>
-
-  <input class="modal-state" id="modal-ver" type="checkbox" />
-  <div class="modal">
-    <label class="modal__bg" for="modal-ver"></label>
-    <div class="modal__inner">
-      <label class="modal__close" for="modal-ver"></label>
-      <!-- Modal content -->
-
-      <p class="info-text">Idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
-      <p class="info-text">Año:<strong><span id="ver_ano"></span></strong></p>
-      <p class="info-text">VIN:<strong><span id="ver_vin"></span></strong></p>
-      <p class="info-text">Placas:<strong><span id="ver_placas"></span></strong></p>
-      <p class="info-text">Modelo:<strong><span id="ver_modelo"></span></strong></p>
-      <p class="info-text">Marca:<strong><span id="ver_marca"></span></strong></p>
-
-      <!-- /Modal content -->
-    </div>
-  </div>
-
-  <input class="modal-state" id="modal-edit" type="checkbox" />
-  <div class="modal">
-    <label class="modal__bg" for="modal-edit"></label>
-    <div class="modal__inner">
-      <label class="modal__close" for="modal-edit"></label>
-      <!-- Modal content -->
-
-      <form class="pure-form pure-form-aligned" id="editModalForm">
-        <fieldset>
-          <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required><br>
-          <div class="pure-control-group">
-            <label for="ano">Año</label>
-            <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required>
-            <span class="pure-form-message-inline"> Solo admite numeros <br> 4 digitos para el año </span>
-          </div>
-          <div class="pure-control-group">
-            <label for="vin">Vin</label>
-            <input type="text" placeholder="" name="vin" id="vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
-          </div>
-          <div class="pure-control-group">
-            <label for="placas">Placas</label>
-            <input type="text" maxlength="7" placeholder="" name="placas" id="placas" pattern="^[a-zA-Z0-9_-]{3,9}$"
-              required>
-            <span class="pure-form-message-inline"> Matricula<br> </span>
-          </div>
-          <!-- <div class="pure-control-group">
-            <label for="puesto">Puesto</label>
-            <select name="puesto" id="puesto">
-              <option value="Administrador">Administrador</option>
-              <option value="Asesor">Asesor</option>
-              <option value="Tecnico">Tecnico</option>
-              <option value="Lavador">Lavador</option>
-              <option value="Calidad">Calidad</option>
-              <option value="Gerente">Gerente</option>
-            </select>
-          </div> -->
-          <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary button-small" id="edit_submit_btn">Guardar</button>
-          </div>
-        </fieldset>
-      </form>
-
-      <!-- /Modal content -->
-    </div>
-  </div>
-
-  <!-- <input class="modal-state" id="modal-delete" type="checkbox" />
-  <div class="modal">
-    <label class="modal__bg" for="modal-delete"></label>
-    <div class="modal__inner">
-      <label class="modal__close" for="modal-delete"></label>
-
-      
-    </div>
-  </div> -->
 
 
   <!-- /MODALES -->
@@ -1172,7 +1096,12 @@
   <!-- SCRIPTS -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="js/pages/check_list_tecnico.js"></script>
+  <script type="text/javascript" src="js/pages/check_list_calidad.js"></script>
+  <script type="text/javascript" src="js/pages/comentarios.js"></script>
+  <script type="text/javascript" src="js/pages/modal_imgs.js"></script>
   <script type="text/javascript" src="js/pages/asesor.js"></script>
+
   <!-- /SCRIPTS -->
 
 </body>

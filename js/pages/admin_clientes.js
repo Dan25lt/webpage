@@ -40,7 +40,13 @@ function cargarTodos() {
     })
     .then(function (return_data) {
       if (return_data == "no hay clientes") {
-        alert("no hay clientes");
+
+        Toastify({
+          text: "Error no hay clientes.",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+
         return;
       }
 
