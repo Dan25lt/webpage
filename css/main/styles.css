@@ -388,6 +388,22 @@ p {
     /* this is a light blue */
 }
 
+.button-xsmall {
+    font-size: 70%;
+}
+
+.button-small {
+    font-size: 85%;
+}
+
+.button-large {
+    font-size: 110%;
+}
+
+.button-xlarge {
+    font-size: 125%;
+}
+
 .info-text {
     font-size: 14px;
     color: #222;
@@ -397,4 +413,19 @@ p {
 
 .pure-form-message-inline {
     line-height: 1em;
+}
+
+.box-border-solid {
+    border: solid;
+    border-width: 2px;
+}
+
+.pure-g {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.text-are-full-width {
+    width: 100%;
+    height: 100%;
 }
