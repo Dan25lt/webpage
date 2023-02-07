@@ -5,7 +5,7 @@
 */
 
 function guardarComentariosTecnicos() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let comentarios_tecnicos = document.getElementById("comentarios_tecnicos").value;
@@ -80,7 +80,7 @@ function getComentariosTecnicos(orderNo) {
 */
 
 function guardarComentariosLavado() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let comentarios_lavado = document.getElementById("comentarios_lavado").value;
@@ -156,7 +156,7 @@ function getComentariosLavado(orderNo) {
 */
 
 function guardarComentariosCalidad() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let comentarios_calidad = document.getElementById("comentarios_calidad").value;
@@ -230,7 +230,7 @@ function getComentariosCalidad(orderNo) {
 */
 
 function guardarComentariosAsesor() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let comentarios_asesor = document.getElementById("comentarios_asesor").value;

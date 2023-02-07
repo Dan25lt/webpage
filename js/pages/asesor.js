@@ -215,7 +215,7 @@ function getOperacionesList(orden_id) {
 }
 
 function guardarEstatus() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let selected_status = document.getElementById("estatus_combobox").value;
@@ -246,7 +246,7 @@ function guardarEstatus() {
         }).showToast();
   
         setTimeout(function () {
-          document.location.reload();
+          // document.location.reload();
         }, 3000);
 
       } else {

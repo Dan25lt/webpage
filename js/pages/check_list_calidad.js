@@ -1,5 +1,5 @@
 function guardarCheckListCalidad() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let checkListCalidadForm = new FormData(document.getElementById("checkListCalidadForm"));

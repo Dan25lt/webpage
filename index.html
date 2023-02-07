@@ -211,7 +211,7 @@
     * Login de Usuario 
     */
     function login(e) {
-      e.preventDefault();
+      event.preventDefault();
       let loginForm = new FormData(document.getElementById("loginForm"));
 
       fetch('./backend/login.php', {

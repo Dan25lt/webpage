@@ -1,5 +1,5 @@
 function guardarCheckListTecnico() {
-  e.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+  event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   // Obtiene todos los datos de la forma
   let checkListTecnicoForm = new FormData(document.getElementById("checkListTecnicoForm"));
