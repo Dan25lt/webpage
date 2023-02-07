@@ -218,6 +218,8 @@ function getOperacionesList(orden_id) {
 function guardarEstatus() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
+  document.getElementById("btn-siguiente").disabled = true;
+  
   // Manda los datos al backend para ser guardados ahi 
   fetch('./backend/postEstatusAvanzarALavado.php', {
     method: 'POST',
