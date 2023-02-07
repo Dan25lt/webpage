@@ -1,5 +1,5 @@
 function cargarOrdenes() {
-  fetch('./backend/getOrdersParaTecnicos.php', {
+  fetch('./backend/getOrdersParaLavado.php', {
     method: 'POST',
     body: {
       info: ''
@@ -12,12 +12,13 @@ function cargarOrdenes() {
       // console.log(return_data);
 
       if (return_data == "no hay ordenes de servicio") {
+        
         Toastify({
           text: "No hay ordenes de servicio",
           duration: 3000,
           className: "toast-error",
         }).showToast();
-        
+
         return;
       }
 
@@ -36,7 +37,7 @@ function cargarOrdenes() {
         "opciones"];
 
       var table = document.createElement('table');
-      var thead = document.createElement('thead');
+      var thead = document.createElement('thead')
 
       var tr = document.createElement('tr');
       var th = document.createElement('th');
@@ -63,20 +64,21 @@ function cargarOrdenes() {
       text = document.createTextNode('Fecha salida');
       th.appendChild(text);
       tr.appendChild(th);
-      th = document.createElement('th');
+      /* th = document.createElement('th');
       text = document.createTextNode('Estatus');
       th.appendChild(text);
-      tr.appendChild(th);
-      /* th = document.createElement('th');
+      tr.appendChild(th); */
+      th = document.createElement('th');
       text = document.createTextNode('Atencion');
       th.appendChild(text);
-      tr.appendChild(th);  */
+      tr.appendChild(th);
       th = document.createElement('th');
       text = document.createTextNode('Opciones');
       th.appendChild(text);
       tr.appendChild(th);
 
       thead.appendChild(tr)
+
       table.appendChild(thead);
 
 
@@ -127,27 +129,6 @@ function cargarOrdenes() {
     });
 }
 
-/*
-* Revisa las cookies y se encarga del login de usuarios
-*/
-/* function inspeccionarMisCookies() {
-  var loguedIn = getCookie('loguedIn');
-  var username = getCookie('username');
-  var puesto = getCookie('puesto');
-
-  document.getElementById("username").innerHTML = username;
-
-  if (!loguedIn) {
-    location.replace("/"); // redirecciona al login si el usuario no esta autenticado.
-  }
-
-  if (puesto == 'OTRO Puesto') {
-    location.replace("/"); // redirecciona a la pagina del puesto para que no ande de metiche aqui
-  }
-
-  console.log(`Usuario: Id->${loguedIn}, username: ${username}, puesto: ${puesto}`);
-} */
-
 var mostrarOrdenServicioEspecifica = function () {
   var orden_id = this.getAttribute("order_id");
   document.getElementById('orden_servicio_contenido').style.display = 'block';
@@ -155,9 +136,7 @@ var mostrarOrdenServicioEspecifica = function () {
   document.getElementById('orden_servicio_contenido').setAttribute("orden_actual", orden_id);
 
   getComentariosAsesor(orden_id);
-  getComentariosTecnicos(orden_id);
-  cargarCheckListTecnico(orden_id);
-
+  getComentariosLavado(orden_id);
   /*
   * Mostrar datos de la orden
   */
@@ -169,8 +148,6 @@ var mostrarOrdenServicioEspecifica = function () {
   document.getElementById("cliente_nombre").innerHTML = this.getAttribute("nombre_cliente");
   document.getElementById("cliente_telefono").innerHTML = this.getAttribute("telefono");
   document.getElementById("cliente_rfc").innerHTML = this.getAttribute("rfc");
-
-  // document.getElementById("estatus_combobox").value = this.getAttribute("estatus");
 
   mostrarImagenesChiquitas(this);
 
@@ -190,7 +167,7 @@ function getOperacionesList(orden_id) {
       // console.log(return_data);
 
       if (return_data === "la orden de servicio no tiene operaciones") {
-
+        
         Toastify({
           text: "La orden de servicio no tiene operaciones",
           duration: 3000,
@@ -224,12 +201,12 @@ function guardarEstatus() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
 
   document.getElementById("btn-siguiente").disabled = true;
-  
+
   // Manda los datos al backend para ser guardados ahi 
-  fetch('./backend/postEstatusAvanzarALavado.php', {
+  fetch('./backend/postEstatusAvanzarACalidad.php', {
     method: 'POST',
     body: JSON.stringify({
-      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual")
+      orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
     }),
     headers: {
       'Accept': 'application/json',
@@ -242,7 +219,7 @@ function guardarEstatus() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-
+        
         Toastify({
           text: "Registro actualizado",
           duration: 3000,
@@ -252,10 +229,10 @@ function guardarEstatus() {
         setTimeout(function () {
           document.location.reload();
         }, 3000);
-
+        
       } else {
         console.log(return_data);
-
+        
         Toastify({
           text: "Error no se pudo guardar la informacion",
           duration: 3000,
@@ -268,6 +245,7 @@ function guardarEstatus() {
       console.log(err);
     });
 }
+
 
 function userInterfaseInit() {
   // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.

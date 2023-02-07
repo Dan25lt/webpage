@@ -30,10 +30,22 @@ function guardarComentariosCalidad() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        alert("Registro actualizado.");
+
+        Toastify({
+          text: "Registro actualizado",
+          duration: 3000,
+          className: "toast-success",
+        }).showToast();
+
       } else {
         console.log(return_data);
-        alert("Error no se pudo guardar la informacion.");
+
+        Toastify({
+          text: "Error no se pudo guardar la informacion",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+
       }
     })
     .catch(function (err) {
@@ -96,10 +108,22 @@ function guardarComentariosAsesor() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        alert("Registro actualizado.");
+        
+        Toastify({
+          text: "Registro actualizado",
+          duration: 3000,
+          className: "toast-success",
+        }).showToast();
+
       } else {
         console.log(return_data);
-        alert("Error no se pudo guardar la informacion.");
+        
+        Toastify({
+          text: "Error no se pudo guardar la informacion",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+        
       }
     })
     .catch(function (err) {
