@@ -1,871 +1,651 @@
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="utf-8">
   <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/asesor.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/html5boilerplate/main.css">
+  <link rel="stylesheet" href="css/html5boilerplate/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/navbar.css">
+  <link rel="stylesheet" href="css/main/table.css">
+  <link rel="stylesheet" href="css/main/styles.css">
+
+  <meta name="theme-color" content="#fafafa">
+
 </head>
 
+<body>
 
-<body style="background-color: #F0F0F0 ;">
-    
-  <div style="background-color: black;">
-    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
-</div>
   <nav>
-    <!--------------------------------- Menu ------------------------------------->
-    <div class="li_menu">
-      <ul style="border-radius: 8px;">
-          <li> <div class="dropdown">
-              <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
-              <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content" id="menuadministrador">
-                  <a href="./admin_usuarios.html">Aministrar Usuarios</a>
-                  <a href="./admin_vehiculos.html">Aministrar Vehículos</a>
-                  <a href="./admin_clientes.html">Aministrar Clientes</a>
-              </div>
-              </div> 
-          </li>
-          <li><a href="./gerente.html">Gerente</a></li>
-          <li> <div class="dropdown">
-            <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
-            <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content" id="menuasesor">
-              <a href="./asesor.html">Ver ordenes activas</a>
-                <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a> 
-            </div>
-            </div> 
-        </li>
-          <li><a href="./tecnico.html">Técnico</a></li>
-          <li><a href="./lavado.html">Lavador</a></li>
-          <li><a href="./calidad.html">Calidad</a></li>
-          <li><a href=".logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
-          </li>
-      </ul>
-  </div>
+    <div id="logo">
+      <img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="120px">
+    </div>
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+    <ul class="menu">
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-1" class="toggle">Administrador</label>
+        <a href="#">Administrador</a>
+        <input type="checkbox" id="drop-1" />
+        <ul>
+          <li><a href="./admin_usuarios.html">Usuarios</a></li>
+          <li><a href="./admin_vehiculos.html">Vehículos</a></li>
+          <li><a href="./admin_clientes.html">clientes</a></li>
+        </ul>
+      </li>
+      <li><a href="./gerente.html">Gerente</a></li>
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-2" class="toggle">Asesor</label>
+        <a href="#">Asesor</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+          <li><a href="./asesor.html">Ordenes activas</a></li>
+          <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
+        </ul>
+      </li>
+      <li><a href="./tecnico.html">Técnico</a></li>
+      <li><a href="./lavado.html">Lavador</a></li>
+      <li><a href="./calidad.html">Calidad</a></li>
+      <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
+      </li>
+    </ul>
   </nav>
 
-  <div class="welcome">
-    Bienvenido <span id="username"> nombre de usuario </span>
-  </div>
+  <div class="content-wrapper">
 
-  <div style="background-color:#222 ; display: block; height: 22px;
-            min-width: 950px; color: white; margin-bottom:5px; padding-top:
-            5px;">
-    Tabla de órdenes de Servicio activas
-  </div>
-  <div class="contenido">
-    <div class="fila">
-      <div id="tabla_asesor"></div>
-    </div>
-
-    <div id="orden_servicio_contenido" orden_actual="0">
-
-
-      <!-------------------------------------------- Informacion de Orden Seleccionada ------------------------------------------------->
-      <div style="background-color:#222 ; display: block; height: 22px;
-                min-width: 950px; color: white; margin-bottom:5px; padding-top:
-                5px;">
-        Información de Orden Seleccionada
-      </div>
-      <div class="fila">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tr class="info_box">
-            <td style="text-align: left; width: 20%;">
-              <fieldset style="background-color: #fff;">
-                <legend style="font-size: 120%; margin-bottom: 30px;"><strong>Orden:</strong></legend>
-                <ul style="background-color:#F2F2F2 ;">
-                  <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
-                  <li>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
-                  <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
-                  <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
-                </ul>
-              </fieldset>
-            </td>
-            <td style="text-align: left; width: 20%;">
-              <fieldset style="background-color: #fff;">
-                <legend style="font-size: 120%; margin-bottom: 30px"><strong>Cliente:</strong></legend>
-                <ul style="background-color:#F2F2F2 ;">
-                  <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
-                  <li>Teléfono: <strong><span id="cliente_telefono"></span></strong></li><br>
-                  <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
-                </ul>
-              </fieldset>
-            </td>
-            <td style="text-align: center; width: 20%;">
-              <form onsubmit="guardarComentariosAsesor()">
-                <legend style="text-align: left; "><strong style="font-size:120% ;">Notas</strong>:</legend>
-                <textarea id="comentarios_asesor" rows="6" cols="55" style="border-radius: 5px;" readonly></textarea>
-                <!-- <button type="submit" class="button ">Guardar cambios</button> -->
-              </form>
-            </td>
-            <td style="text-align: center; width: 20%;">
-              <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
-                <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
-                <span id="operaciones"></span>
-              </fieldset>
-            </td>
-            <td style="text-align: center; width: 20%;">
-              <form onsubmit="guardarEstatus()">
-                <div>
-                  <label for="cars">Cambiar el Estatus:</label>
-                </div>
-                <div>
-                  <button style="margin-right: 15px; margin-top: 15px;" type="submit" class="btnsindex">Siguiente Area</button>
-                </div>
-              </form>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-
-      <div>
-        <table>
-          <div id="table-titles">
-          </div>
-          <div id="table-body">
-          </div>
-        </table>
-      </div>
-
-      <div style="background-color:#222 ; display: block; height: 22px;
-        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
-        Fotos
-      </div>
-
-      <!-- 
-        FOTOS
-       -->
-      <div id="id01" class="modal">
-        <div class="modal-content animate">
-          <form class="" onsubmit="validateCaptcha()" id="loginForm">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                title="Close Modal">&times;</span>
-            </div>
-
-            <div class="container">
-              <div>
-                <img src="" id="modal_img" width="450px" height="auto">
-              </div>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                class="cancelbtn">Cancelar</button>
-            </div>
-          </form>
+    <div class="content ribbon-white l-box-lrg">
+      <h4 class="content-sub-head black-text">Ordenes de Servicio activas.</h4>
+      <div class="pure-g">
+        <div class="l-box pure-u-1 pure-u-md-5-5 pure-u-lg-5-5">
+          <div id="tabla"></div>
         </div>
       </div>
 
-      <table>
-        <tr>
-          <td><img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto"></td>
-          <td><img src="./img/default-image_500.png" class="evidencia" id="img2" width="150px" height="auto"></td>
-          <td><img src="./img/default-image_500.png" class="evidencia" id="img3" width="150px" height="auto"></td>
-          <td><img src="./img/default-image_500.png" class="evidencia" id="img4" width="150px" height="auto"></td>
-        </tr>
-        <tr>
-          <td>
+      <div id="orden_servicio_contenido" orden_actual="0">
+        <h4 class="content-sub-head black-text">Informacíon de la orden seleccionada.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Orden:</strong></legend>
+            <p>Fólio: <strong><span id="order_info_folio"></span></strong></p>
+            <p>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></p>
+            <p>Placas: <strong><span id="order_info_placas"></span></strong></p>
+            <p>Vin: <strong><span id="order_info_vin"></span></strong></p>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Cliente:</strong></legend>
+            <p>Nombre: <strong><span id="cliente_nombre"></span></strong></p>
+            <p>Teléfono: <strong><span id="cliente_telefono"></span></strong></p>
+            <p>RFC: <strong><span id="cliente_rfc"></span></strong></p>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-8-24 pure-u-lg-8-24 box-border-solid">
+            <form onsubmit="guardarComentariosAsesor()">
+              <legend><strong>Notas: </strong></legend>
+              <textarea id="comentarios_asesor" rows="5" class="text-are-full-width" readonly></textarea>
+            </form>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Operaciones:</strong></legend>
+            <span id="operaciones"></span>
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-4-24 pure-u-lg-4-24 box-border-solid">
+            <legend><strong>Cambiar el estatus:</strong>:</legend>
+            <form onsubmit="guardarEstatus()">
+              <select name="estatus_combobox" id="estatus_combobox" style="margin-bottom: 30px; margin-top: 20px;">
+                <option value="En espera">En espera</option>
+                <option value="En servicio tecnico">En servicio técnico</option>
+                <option value="En servicio de lavador">En servicio de lavador</option>
+                <option value="En inspeccion de calidad">En inspección de calidad</option>
+                <option value="Terminado">Terminado</option>
+                <option value="Finalizado">Finalizado</option>
+              </select>
+              <button type="submit" class="pure-button pure-button-primary button-small">Guardar</button>
+            </form>
+          </div>
+        </div>
+
+        <h4 class="content-sub-head black-text">Fotos.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img1" width="100%" height="auto">
+            </label>
+            <br>
             <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
-            <input type="file" name="file" id="img_to_upload_1" style="opacity: 0; position: absolute; z-index: -1;">
+            <input type="file" class="button-small" name="file" id="img_to_upload_1"
+              style="opacity: 0; position: absolute; z-index: -1;">
             <!-- con este boton triggerea el updaload -->
-            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile();" >
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
             <!-- Para borrar -->
-            <button id="btn_delete_img1" name="delete_1" class="btnImg">Borrar</button>
+            <button id="btn_delete_img1" name="delete_1" class="btnImg button-small">Borrar</button>
             <!-- este es la parte donde se da click -->
             <label for="img_to_upload_1" style="cursor: pointer;">
-              <small>Seleccionar imagen</small> 
+              <small>Seleccionar imagen</small>
             </label>
-          </td>
-          <td>
-            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
-            <input type="file" name="file" id="img_to_upload_2" style="opacity: 0; position: absolute; z-index: -1;">
-            <!-- con este boton triggerea el updaload -->
-            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile2();" >
-            <!-- Para borrar -->
-            <button id="btn_delete_img2" name="delete_2" class="btnImg">Borrar</button>
-            <!-- este es la parte donde se da click -->
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img2" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_2"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile2();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img2" name="delete_2" class="btnImg button-small">Borrar</button>
             <label for="img_to_upload_2" style="cursor: pointer;">
-              <small>Seleccionar imagen</small> 
+              <small>Seleccionar imagen</small>
             </label>
-          </td>
-          <td>
-            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
-            <input type="file" name="file" id="img_to_upload_3" style="opacity: 0; position: absolute; z-index: -1;">
-            <!-- con este boton triggerea el updaload -->
-            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile3();" >
-            <!-- Para borrar -->
-            <button id="btn_delete_img3" name="delete_3" class="btnImg">Borrar</button>
-            <!-- este es la parte donde se da click -->
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+
+            <img src="./img/default-image_500.png" class="evidencia" id="img3" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_3"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile3();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img3" name="delete_3" class="btnImg button-small">Borrar</button>
             <label for="img_to_upload_3" style="cursor: pointer;">
-              <small>Seleccionar imagen</small> 
+              <small>Seleccionar imagen</small>
             </label>
-          </td>
-          <td>
-            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
-            <input type="file" name="file" id="img_to_upload_4" style="opacity: 0; position: absolute; z-index: -1;">
-            <!-- con este boton triggerea el updaload -->
-            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile4();" >
-            <!-- Para borrar -->
-            <button id="btn_delete_img4" name="delete_4" class="btnImg">Borrar</button>
-            <!-- este es la parte donde se da click -->
+          </div>
+          <div class="l-box pure-u-1-1 pure-u-md-6-24 pure-u-lg-6-24 is-center">
+            <label for="modal-1">
+              <img src="./img/default-image_500.png" class="evidencia" id="img4" width="100%" height="auto">
+            </label>
+            <br>
+            <input type="file" class="button-small" name="file" id="img_to_upload_4"
+              style="opacity: 0; position: absolute; z-index: -1;">
+            <button class="button-small" id="btn_uploadfile" onclick="uploadFile4();">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button id="btn_delete_img4" name="delete_4" class="btnImg button-small">Borrar</button>
             <label for="img_to_upload_4" style="cursor: pointer;">
-              <small>Seleccionar imagen</small> 
+              <small>Seleccionar imagen</small>
             </label>
-          </td>
-        </tr>
+          </div>
+        </div>
 
-      </table>
+        <h4 class="content-sub-head black-text">Resumen.</h4>
+        <div class="pure-g">
+          <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
+            <!-------------------------------------------- Checklist Tecnico ------------------------------------------------->
+            <form onsubmit="guardarCheckListTecnico()" id="checkListTecnicoForm">
+              <table border="1" cellpadding="0" cellspacing="0" align="left" style="border: 3px solid black;">
+                <caption><strong>CheckList Tecnico</strong></caption>
 
-      <div style="background-color:#222 ; display: block; height: 22px;
-        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
-        Resumen
+                <tbody>
+                  <tr>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Parte trasera ---------------------->
+                          <tr>
+                            <th>Parte trasera</th>
+                            <th>N </th>
+                            <th>X </th>
+                            <th>/ </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno traseras der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_malo"
+                                name="pastillas_freno_traseras_der" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_medio"
+                                name="pastillas_freno_traseras_der" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_der_bueno"
+                                name="pastillas_freno_traseras_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno traseras izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_malo"
+                                name="pastillas_freno_traseras_izq" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_medio"
+                                name="pastillas_freno_traseras_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_traseras_izq_bueno"
+                                name="pastillas_freno_traseras_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiador de medallón trasero:</td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_na" name="limpiador_medallon_trasero"
+                                value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_malo" name="limpiador_medallon_trasero"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_medio"
+                                name="limpiador_medallon_trasero" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiador_medallon_trasero_bueno"
+                                name="limpiador_medallon_trasero" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Luces traseras:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="luces_traseras_malo" name="luces_traseras" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="luces_traseras_medio" name="luces_traseras" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="luces_traseras_bueno" name="luces_traseras" value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- Direccion suspension ---------------------->
+                          <tr>
+                            <td><Strong>Dirección Suspensión</Strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador delantero der.:</td>
+                            <td></td>
+                            <td>
+
+                              <input type="radio" id="amortiguador_delantero_der_malo" name="amortiguador_delantero_der"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_der_medio"
+                                name="amortiguador_delantero_der" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_delantero_der_bueno" name="amortiguador_delantero_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador delantero izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_malo" name="amortiguador_delantero_izq"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_medio"
+                                name="amortiguador_delantero_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_delantero_izq_bueno"
+                                name="amortiguador_delantero_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador trasero der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_der_malo" name="amortiguador_trasero_der"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_der_medio" name="amortiguador_trasero_der"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_trasero_der_bueno" name="amortiguador_trasero_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Amortiguador trasero izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_izq_malo" name="amortiguador_trasero_izq"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="amortiguador_trasero_izq_medio" name="amortiguador_trasero_izq"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="amortiguador_trasero_izq_bueno" name="amortiguador_trasero_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Dirección:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="direccion_malo" name="direccion" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="direccion_medio" name="direccion" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
+                            </td>
+                          </tr>
+                          <!---------------------- General ---------------------->
+                          <tr>
+                            <td><strong>General</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Reset indicador cambio aceite:</td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_na"
+                                name="reset_indicador_cambio_aceite" value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_malo"
+                                name="reset_indicador_cambio_aceite" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="reset_indicador_cambio_aceite_medio"
+                                name="reset_indicador_cambio_aceite" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="reset_indicador_cambio_aceite_bueno" name="reset_indicador_cambio_aceite"
+                                  value="Bueno">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td valign="Top" width="50%">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                          <!---------------------- Parte delantera ---------------------->
+                          <tr>
+                            <th>Parte delantera</th>
+                            <th>N </th>
+                            <th>X </th>
+                            <th>/ </th>
+                            <th>B </th>
+                          </tr>
+                          <tr>
+                            <td>Filtro de aire de motor:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor" value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio" id="filtro_aire_motor_bueno"
+                                  name="filtro_aire_motor" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Filtro de Cabina:</td>
+                            <td><input type="radio" id="filtro_cabina_na" name="filtro_cabina" value="NA"></td>
+                            <td><input type="radio" id="filtro_cabina_malo" name="filtro_cabina" value="Malo"></td>
+                            <td><input type="radio" id="filtro_cabina_medio" name="filtro_cabina" value="Medio"></td>
+                            <td><input type="radio" id="filtro_cabina_bueno" name="filtro_cabina" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno delanteras der.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_malo"
+                                name="pastillas_freno_delanteras_der" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_medio"
+                                name="pastillas_freno_delanteras_der" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_der_bueno"
+                                name="pastillas_freno_delanteras_der" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pastillas de freno delanteras izq.:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_malo"
+                                name="pastillas_freno_delanteras_izq" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_medio"
+                                name="pastillas_freno_delanteras_izq" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="pastillas_freno_delanteras_izq_bueno"
+                                name="pastillas_freno_delanteras_izq" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiaparabrisas derecho:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_derecho_malo" name="limpiaparabrisas_derecho"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_derecho_medio" name="limpiaparabrisas_derecho"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <legend style="border-style: 0px;"> <input type="radio"
+                                  id="limpiaparabrisas_derecho_bueno" name="limpiaparabrisas_derecho" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Limpiaparabrisas izquierdo:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_malo" name="limpiaparabrisas_izquierdo"
+                                value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_medio"
+                                name="limpiaparabrisas_izquierdo" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="limpiaparabrisas_izquierdo_bueno"
+                                name="limpiaparabrisas_izquierdo" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Faro derecho y luces:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_derecho_luces_bueno" name="faro_derecho_luces" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Faro izquiero y luces:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_medio" name="faro_izquiero_luces"
+                                value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="faro_izquiero_luces_bueno" name="faro_izquiero_luces"
+                                value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Anticongelante:</td>
+                            <td></td>
+                            <td><input type="radio" id="anticongelante_malo" name="anticongelante" value="Malo"></td>
+                            <td><input type="radio" id="anticongelante_medio" name="anticongelante" value="Medio"></td>
+                            <td><input type="radio" id="anticongelante_bueno" name="anticongelante" value="Bueno"></td>
+                          </tr>
+                          <tr>
+                            <td>Liquido dirección hidraulica:</td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_na"
+                                name="liquido_direccion_hidraulica" value="NA">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_malo"
+                                name="liquido_direccion_hidraulica" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_medio"
+                                name="liquido_direccion_hidraulica" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="liquido_direccion_hidraulica_bueno"
+                                name="liquido_direccion_hidraulica" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Banda de accesorios:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_malo" name="banda_accesorios" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_medio" name="banda_accesorios" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="banda_accesorios_bueno" name="banda_accesorios" value="Bueno">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Revisión de bateria:</td>
+                            <td></td>
+                            <td>
+                              <input type="radio" id="revision_bateria_malo" name="revision_bateria" value="Malo">
+                            </td>
+                            <td>
+                              <input type="radio" id="revision_bateria_medio" name="revision_bateria" value="Medio">
+                            </td>
+                            <td>
+                              <input type="radio" id="revision_bateria_bueno" name="revision_bateria" value="Bueno">
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
+                      &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
+                      B:Bueno &nbsp &nbsp</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2" class="table-button-asesor">
+                      <button type="submit" class="pure-button pure-button-primary button-small ">Guardar
+                        cambios</button>
+                    </th>
+                  </tr>
+                </tfoot>
+              </table>
+            </form>
+          </div>
+          <!-------------------------------------- Comentarios ------------------------------------------>
+          <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
+            <form onsubmit="guardarComentariosTecnicos()">
+              <legend> <strong>Comentarios</strong> </legend>
+              <textarea rows="5" class="text-are-full-width" id="comentarios_tecnicos"></textarea>
+              <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
+            </form>
+          </div>
+          
+        </div>
+
+
       </div>
-      <!-------------------------------------------- Resumen ------------------------------------------------->
-
-      <!-------------------------------------------- Checklist Tecnico ------------------------------------------------->
-      <form onsubmit="guardarCheckListTecnico()" id="checkListTecnicoForm">
 
 
-        <table border="1" cellpadding="0" cellspacing="0" width="49%" align="left" style="border: 3px solid black;">
-          <caption><strong>CheckList Técnico</strong></caption>
+      <br><br><br><br>
 
-          <tbody>
-            <tr>
-              <td valign="Top" width="50%">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                  <tbody>
-                    <!---------------------- Parte trasera ---------------------->
-                    <th><strong>Parte trasera&nbsp &nbsp &nbsp N
-                        &nbsp X &nbsp &nbsp/ &nbsp &nbspB</strong></th>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Pastillas
-                          de freno traseras der.: <input type="radio" id="pastillas_freno_traseras_der_bueno"
-                            name="pastillas_freno_traseras_der" value="Bueno">
-                          <input type="radio" id="pastillas_freno_traseras_der_medio"
-                            name="pastillas_freno_traseras_der" value="Medio">
-                          <input type="radio" id="pastillas_freno_traseras_der_malo" name="pastillas_freno_traseras_der"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Pastillas
-                          de freno traseras izq.: <input type="radio" id="pastillas_freno_traseras_izq_bueno"
-                            name="pastillas_freno_traseras_izq" value="Bueno">
-                          <input type="radio" id="pastillas_freno_traseras_izq_medio"
-                            name="pastillas_freno_traseras_izq" value="Medio">
-                          <input type="radio" id="pastillas_freno_traseras_izq_malo" name="pastillas_freno_traseras_izq"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Limpiador
-                          de medallón trasero: <input type="radio" id="limpiador_medallon_trasero_bueno"
-                            name="limpiador_medallon_trasero" value="Bueno">
-                          <input type="radio" id="limpiador_medallon_trasero_medio" name="limpiador_medallon_trasero"
-                            value="Medio">
-                          <input type="radio" id="limpiador_medallon_trasero_malo" name="limpiador_medallon_trasero"
-                            value="Malo"><input type="radio" id="limpiador_medallon_trasero_na"
-                            name="limpiador_medallon_trasero" value="NA">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Luces
-                          traseras: <input type="radio" id="luces_traseras_bueno" name="luces_traseras" value="Bueno">
-                          <input type="radio" id="luces_traseras_medio" name="luces_traseras" value="Medio">
-                          <input type="radio" id="luces_traseras_malo" name="luces_traseras" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <!---------------------- Dirección suspension ---------------------->
-                    <tr>
-                      <td bgcolor="black" style="color:#fff" align="center"><Strong>Dirección
-                          Suspensión</Strong></td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Amortiguador
-                          delantero der.: <input type="radio" id="amortiguador_delantero_der_bueno"
-                            name="amortiguador_delantero_der" value="Bueno">
-                          <input type="radio" id="amortiguador_delantero_der_medio" name="amortiguador_delantero_der"
-                            value="Medio">
-                          <input type="radio" id="amortiguador_delantero_der_malo" name="amortiguador_delantero_der"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Amortiguador
-                          delantero izq.: <input type="radio" id="amortiguador_delantero_izq_bueno"
-                            name="amortiguador_delantero_izq" value="Bueno">
-                          <input type="radio" id="amortiguador_delantero_izq_medio" name="amortiguador_delantero_izq"
-                            value="Medio">
-                          <input type="radio" id="amortiguador_delantero_izq_malo" name="amortiguador_delantero_izq"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Amortiguador
-                          trasero der.: <input type="radio" id="amortiguador_trasero_der_bueno"
-                            name="amortiguador_trasero_der" value="Bueno">
-                          <input type="radio" id="amortiguador_trasero_der_medio" name="amortiguador_trasero_der"
-                            value="Medio">
-                          <input type="radio" id="amortiguador_trasero_der_malo" name="amortiguador_trasero_der"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Amortiguador
-                          trasero izq.: <input type="radio" id="amortiguador_trasero_izq_bueno"
-                            name="amortiguador_trasero_izq" value="Bueno">
-                          <input type="radio" id="amortiguador_trasero_izq_medio" name="amortiguador_trasero_izq"
-                            value="Medio">
-                          <input type="radio" id="amortiguador_trasero_izq_malo" name="amortiguador_trasero_izq"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Dirección:
-                          <input type="radio" id="direccion_bueno" name="direccion" value="Bueno">
-                          <input type="radio" id="direccion_medio" name="direccion" value="Medio">
-                          <input type="radio" id="direccion_malo" name="direccion" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <!---------------------- General ---------------------->
-                    <tr>
-                      <td bgcolor="black" style="color:#fff" align="center"><Strong>General</Strong></td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Reset
-                          indicador cambio aceite: <input type="radio" id="reset_indicador_cambio_aceite_bueno"
-                            name="reset_indicador_cambio_aceite" value="Bueno">
-                          <input type="radio" id="reset_indicador_cambio_aceite_medio"
-                            name="reset_indicador_cambio_aceite" value="Medio">
-                          <input type="radio" id="reset_indicador_cambio_aceite_malo"
-                            name="reset_indicador_cambio_aceite" value="Malo"><input type="radio"
-                            id="reset_indicador_cambio_aceite_na" name="reset_indicador_cambio_aceite" value="NA">
-                        </legend>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td valign="Top" width="50%">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                  <tbody>
-                    <!---------------------- Parte delantera ---------------------->
-                    <th><strong>Parte delantera&nbsp &nbsp &nbsp N
-                        &nbsp X &nbsp &nbsp/&nbsp &nbsp B </strong></th>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Filtro
-                          de aire de motor: <input type="radio" id="filtro_aire_motor_bueno" name="filtro_aire_motor"
-                            value="Bueno">
-                          <input type="radio" id="filtro_aire_motor_medio" name="filtro_aire_motor" value="Medio">
-                          <input type="radio" id="filtro_aire_motor_malo" name="filtro_aire_motor" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <legend style="border-style: 0px;">Filtro
-                          de Cabina: <input type="radio" id="filtro_cabina_bueno" name="filtro_cabina" value="Bueno">
-                          <input type="radio" id="filtro_cabina_medio" name="filtro_cabina" value="Medio">
-                          <input type="radio" id="filtro_cabina_malo" name="filtro_cabina" value="Malo"><input
-                            type="radio" id="filtro_cabina_na" name="filtro_cabina" value="NA">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Pastillas
-                          de freno delanteras der.: <input type="radio" id="pastillas_freno_delanteras_der_bueno"
-                            name="pastillas_freno_delanteras_der" value="Bueno">
-                          <input type="radio" id="pastillas_freno_delanteras_der_medio"
-                            name="pastillas_freno_delanteras_der" value="Medio">
-                          <input type="radio" id="pastillas_freno_delanteras_der_malo"
-                            name="pastillas_freno_delanteras_der" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Pastillas
-                          de freno delanteras izq.: <input type="radio" id="pastillas_freno_delanteras_izq_bueno"
-                            name="pastillas_freno_delanteras_izq" value="Bueno">
-                          <input type="radio" id="pastillas_freno_delanteras_izq_medio"
-                            name="pastillas_freno_delanteras_izq" value="Medio">
-                          <input type="radio" id="pastillas_freno_delanteras_izq_malo"
-                            name="pastillas_freno_delanteras_izq" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
+    </div> <!-- container wrapper -->
 
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Limpiaparabrisas
-                          derecho: <input type="radio" id="limpiaparabrisas_derecho_bueno"
-                            name="limpiaparabrisas_derecho" value="Bueno">
-                          <input type="radio" id="limpiaparabrisas_derecho_medio" name="limpiaparabrisas_derecho"
-                            value="Medio">
-                          <input type="radio" id="limpiaparabrisas_derecho_malo" name="limpiaparabrisas_derecho"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Limpiaparabrisas
-                          izquierdo: <input type="radio" id="limpiaparabrisas_izquierdo_bueno"
-                            name="limpiaparabrisas_izquierdo" value="Bueno">
-                          <input type="radio" id="limpiaparabrisas_izquierdo_medio" name="limpiaparabrisas_izquierdo"
-                            value="Medio">
-                          <input type="radio" id="limpiaparabrisas_izquierdo_malo" name="limpiaparabrisas_izquierdo"
-                            value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Faro
-                          derecho y luces: <input type="radio" id="faro_derecho_luces_bueno" name="faro_derecho_luces"
-                            value="Bueno">
-                          <input type="radio" id="faro_derecho_luces_medio" name="faro_derecho_luces" value="Medio">
-                          <input type="radio" id="faro_derecho_luces_malo" name="faro_derecho_luces" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Faro
-                          izquiero y luces: <input type="radio" id="faro_izquiero_luces_bueno"
-                            name="faro_izquiero_luces" value="Bueno">
-                          <input type="radio" id="faro_izquiero_luces_medio" name="faro_izquiero_luces" value="Medio">
-                          <input type="radio" id="faro_izquiero_luces_malo" name="faro_izquiero_luces" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Anticongelante:
-                          <input type="radio" id="anticongelante_bueno" name="anticongelante" value="Bueno">
-                          <input type="radio" id="anticongelante_medio" name="anticongelante" value="Medio">
-                          <input type="radio" id="anticongelante_malo" name="anticongelante" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Líquido
-                          dirección hidráulica: <input type="radio" id="liquido_direccion_hidraulica_bueno"
-                            name="liquido_direccion_hidraulica" value="Bueno">
-                          <input type="radio" id="liquido_direccion_hidraulica_medio"
-                            name="liquido_direccion_hidraulica" value="Medio">
-                          <input type="radio" id="liquido_direccion_hidraulica_malo" name="liquido_direccion_hidraulica"
-                            value="Malo"><input type="radio" id="liquido_direccion_hidraulica_na"
-                            name="liquido_direccion_hidraulica" value="NA">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Banda
-                          de accesorios: <input type="radio" id="banda_accesorios_bueno" name="banda_accesorios"
-                            value="Bueno">
-                          <input type="radio" id="banda_accesorios_medio" name="banda_accesorios" value="Medio">
-                          <input type="radio" id="banda_accesorios_malo" name="banda_accesorios" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" colspan="3">
-                        <legend style="border-style: 0px;">Revisión
-                          de bateria: <input type="radio" id="revision_bateria_bueno" name="revision_bateria"
-                            value="Bueno">
-                          <input type="radio" id="revision_bateria_medio" name="revision_bateria" value="Medio">
-                          <input type="radio" id="revision_bateria_malo" name="revision_bateria" value="Malo">
-                        </legend>
-                      </td>
-                    </tr>
+    <div class="footer l-box is-center">
+      <p>Autocamiones de Chihuahua S.A de C.V.</p>
+    </div>
 
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="2">N:No aplica &nbsp &nbsp X:Reemplazo &nbsp
-                &nbsp /:Usado pero no necesita reemplazo &nbsp &nbsp
-                B:Bueno &nbsp &nbsp</th>
+  </div>
 
-            </tr>
-            <tr>
-              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
-                  cambios</button></th>
-            </tr>
-          </tfoot>
-        </table>
+  <!-- MODALES -->
 
-      </form>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner modal-large">
+      <label class="modal__close" for="modal-1"></label>
+      <!-- Modal content -->
 
-      <!---------------------- Comentarios  ---------------------->
+      <img src="" id="modal_img" width="450px" height="auto">
 
-      <div>
-        <table cellpadding="0" cellspacing="0" width="49%" align="left"
-          style="margin-top: 10px; border-color: #CCE3F6;">
-          <tbody>
-            <tr>
-              <td>
-                <form onsubmit="guardarComentariosTecnicos()">
-                  <legend>Comentarios del Técnico</legend>
-                  <textarea rows="8" cols="95" style="border-radius: 5px; margin: 5px; width: 98%;"
-                    id="comentarios_tecnicos"></textarea>
-                  <button type="submit" class="btnsindex">Guardar cambios</button>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
+      <!-- /Modal content -->
     </div>
   </div>
 
 
-  <script src="./js/cookies_handler.js"></script>
-  <script src="./js/check_list_tecnico.js"></script>
-  <script src="./js/comentarios_tecnico.js"></script>
-  <script src="./js/modal_imgs.js"></script>
-
-  <!---------------------- Script para la lectura de los datos de la base de datos ---------------------->
-  <script>
-
-    function cargarOrdenes() {
-      fetch('./backend/getOrdersParaTecnicos.php', {
-        method: 'POST',
-        body: {
-          info: ''
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          // console.log(return_data);
-
-          if (return_data == "no hay ordenes de servicio") {
-            console.log("TODO: implementa algo");
-            return;
-          }
-
-          document.getElementById("tabla_asesor").innerHTML = "";
-
-          var data = JSON.parse(return_data);
-
-          var columnNames = ["idordenDeServicio",
-            "vin",
-            "modelo",
-            "placas",
-            "fechaEntrada",
-            "fechaSalida",
-            "estatus",
-            // "alertas",
-            "opciones"];
-
-          var table = document.createElement('table');
-
-          var tr = document.createElement('tr');
-          var td = document.createElement('td');
-          var text = document.createTextNode('Orden De Servicio');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Vin');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Tipo de vehiculo');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Placas');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Fecha entrada');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Fecha salida');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          td = document.createElement('td');
-          text = document.createTextNode('Estatus');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-          /* td = document.createElement('td');
-          text = document.createTextNode('Atencion');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;"; */
-          td = document.createElement('td');
-          text = document.createTextNode('Opciones');
-          td.appendChild(text);
-          tr.appendChild(td);
-           td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
-
-          table.appendChild(tr);
+  <!-- /MODALES -->
 
 
-          for (var i = 0; i < data.length; i++) {
-            var tr = document.createElement('tr');
-            tr.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
-            for (var j = 0; j < columnNames.length; j++) {
-              var td = document.createElement('td');
-              td.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
-              if (columnNames[j] === 'opciones') {
-                var btn = document.createElement('input');
-                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
-                btn.type = "button";
-                btn.className = "";
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="js/pages/common/check_list_tecnico.js"></script>
+  <script type="text/javascript" src="js/pages/common/modal_imgs.js"></script>
+  <script type="text/javascript" src="js/pages/tecnico/comentarios_tecnico.js"></script>
+  <script type="text/javascript" src="js/pages/tecnico/tecnico.js"></script>
 
-                /*
-                * Detalles de cada orden, la guardamos en el boton para no tener que hacer otro GET
-                */
-                btn.setAttribute("order_id", data[i]['idordenDeServicio']);
-                btn.setAttribute("vehiculo", data[i]['modelo'] + " " + data[i]['ano']);
-                btn.setAttribute("placas", data[i]['placas']);
-                btn.setAttribute("vin", data[i]['vin']);
-                btn.setAttribute("nombre_cliente", data[i]['nombre'] + " " + data[i]['apellido']);
-                btn.setAttribute("telefono", data[i]['telefono'] || "NA");
-                btn.setAttribute("rfc", data[i]['rfc'] || "NA");
-                btn.setAttribute("estatus", data[i]['estatus'] || "NA");
+  <!-- /SCRIPTS -->
 
-                btn.setAttribute("img_url1", data[i]['img_url1'] || "NA");
-                btn.setAttribute("img_url2", data[i]['img_url2'] || "NA");
-                btn.setAttribute("img_url3", data[i]['img_url3'] || "NA");
-                btn.setAttribute("img_url4", data[i]['img_url4'] || "NA");
-
-                btn.value = "     Ver     ";
-                var text = btn; // text va a tener adentro un boton
-
-                btn.addEventListener('click', mostrarOrdenServicioEspecifica, false);
-
-              } else {
-                var text = document.createTextNode(data[i][columnNames[j]]);
-              }
-              td.appendChild(text);
-              tr.appendChild(td);
-            }
-            table.appendChild(tr);
-          }
-          document.getElementById("tabla_asesor").appendChild(table);
-
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    }
-
-    /*
-    * Revisa las cookies y se encarga del login de usuarios
-    */
-    function inspeccionarMisCookies() {
-      var loguedIn = getCookie('loguedIn');
-      var username = getCookie('username');
-      var puesto = getCookie('puesto');
-
-      document.getElementById("username").innerHTML = username;
-
-      if (!loguedIn) {
-        location.replace("/"); // redirecciona al login si el usuario no esta autenticado.
-      }
-
-      if (puesto == 'OTRO Puesto') {
-        location.replace("/"); // redirecciona a la pagina del puesto para que no ande de metiche aqui
-      }
-
-      console.log(`Usuario: Id->${loguedIn}, username: ${username}, puesto: ${puesto}`);
-    }
-
-    /*
-    * Todo lo referente a la UI
-    * Se mete todo en una sola funcion y se corre
-    */
-    function userInterfaseInit() {
-      // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
-      document.getElementById('orden_servicio_contenido').style.display = 'none';
-    }
-
-    var mostrarOrdenServicioEspecifica = function () {
-      var orden_id = this.getAttribute("order_id");
-      document.getElementById('orden_servicio_contenido').style.display = 'block';
-
-      document.getElementById('orden_servicio_contenido').setAttribute("orden_actual", orden_id);
-
-      getComentariosAsesor(orden_id);
-      getComentariosTecnicos(orden_id);
-      cargarCheckListTecnico(orden_id);
-
-      /*
-      * Mostrar datos de la orden
-      */
-      document.getElementById("order_info_folio").innerHTML = this.getAttribute("order_id");
-      document.getElementById("order_info_vehiculo").innerHTML = this.getAttribute("vehiculo");
-      document.getElementById("order_info_placas").innerHTML = this.getAttribute("placas");
-      document.getElementById("order_info_vin").innerHTML = this.getAttribute("vin");
-
-      document.getElementById("cliente_nombre").innerHTML = this.getAttribute("nombre_cliente");
-      document.getElementById("cliente_telefono").innerHTML = this.getAttribute("telefono");
-      document.getElementById("cliente_rfc").innerHTML = this.getAttribute("rfc");
-
-      // document.getElementById("estatus_combobox").value = this.getAttribute("estatus");
-
-      mostrarImagenesChiquitas(this);
-
-      getOperacionesList(orden_id);
-    };
-
-    function getOperacionesList(orden_id) {
-      fetch('./backend/getOperaciones.php', {
-        method: 'POST',
-        body: JSON.stringify({ orden_id: orden_id })
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-
-          // console.log(return_data);
-
-          if (return_data === "la orden de servicio no tiene operaciones") {
-            alert("la orden de servicio no tiene operaciones");
-            return;
-          }
-
-          document.getElementById('operaciones').innerHTML = "";
-
-          let data = JSON.parse(return_data);
-          var div = document.createElement('div');
-
-          for (let i = 0; i < data.length; i++) {
-            const operacion = data[i];
-            var span = document.createElement('span');
-            var text = document.createTextNode("-" + operacion['descripcion']);
-            span.appendChild(text);
-            div.appendChild(span);
-            var br = document.createElement('br');
-            div.appendChild(br);
-          }
-          div.setAttribute("style", "background-color:#F2F2F2 ;");
-          document.getElementById('operaciones').appendChild(div);
-
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    }
-
-    function guardarEstatus() {
-      event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
-
-      // Manda los datos al backend para ser guardados ahi 
-      fetch('./backend/postEstatusAvanzarALavado.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual")
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-
-          if (return_data === "Registro actualizado") {
-            alert("Registro actualizado.");
-            window.location.reload();
-          } else {
-            console.log(return_data);
-            alert("Error no se pudo guardar la informacion.");
-          }
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    }
-
-    // Inicializar las funciones aqui despues del codigo
-    cargarOrdenes();
-    inspeccionarMisCookies();
-    userInterfaseInit();
-
-    function dropdownclickadmin() {
-          document.getElementById("menuadministrador").classList.toggle("show");
-        }
-        
-        window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
-          var menuadministrador = document.getElementById("menuadministrador");
-            if (menuadministrador.classList.contains('show')) {
-              menuadministrador.classList.remove('show');
-            }
-          }
-        }
-        function dropdownclickasesor() {
-          document.getElementById("menuasesor").classList.toggle("show");
-        }
-        
-        window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
-          var menuasesor = document.getElementById("menuasesor");
-            if (menuasesor.classList.contains('show')) {
-              menuasesor.classList.remove('show');
-            }
-          }
-        }
-  </script>
 </body>
 
 </html>
