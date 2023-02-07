@@ -127,15 +127,6 @@ function cargarOrdenes() {
   });
 }
 
-/*
-* Todo lo referente a la UI
-* Se mete todo en una sola funcion y se corre
-*/
-function userInterfaseInit() {
-  // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
-  document.getElementById('orden_servicio_contenido').style.display = 'none';
-}
-
 var mostrarOrdenServicioEspecifica = function () {
   var orden_id = this.getAttribute("order_id");
   document.getElementById('orden_servicio_contenido').style.display = 'block';
@@ -198,14 +189,11 @@ function getOperacionesList(orden_id) {
 
       for (let i = 0; i < data.length; i++) {
         const operacion = data[i];
-        var span = document.createElement('span');
+        var p = document.createElement('p');
         var text = document.createTextNode("-" + operacion['descripcion']);
-        span.appendChild(text);
-        div.appendChild(span);
-        var br = document.createElement('br');
-        div.appendChild(br);
+        p.appendChild(text);
+        div.appendChild(p);
       }
-      div.setAttribute("style", "background-color:#F2F2F2 ;");
       document.getElementById('operaciones').appendChild(div);
 
     })
@@ -263,6 +251,11 @@ function guardarEstatus() {
     .catch(function (err) {
       console.log(err);
     });
+}
+
+function userInterfaseInit() {
+  // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
+  document.getElementById('orden_servicio_contenido').style.display = 'none';
 }
 
 // Inicializar las funciones aqui despues del codigo
