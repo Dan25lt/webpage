@@ -7,7 +7,7 @@
 
 function guardarComentariosLavado() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
-  
+
   // Obtiene todos los datos de la forma
   let comentarios_lavado = document.getElementById("comentarios_lavado").value;
 
@@ -31,10 +31,22 @@ function guardarComentariosLavado() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        alert("Registro actualizado.");
+
+        Toastify({
+          text: "Registro actualizado",
+          duration: 3000,
+          className: "toast-success",
+        }).showToast();
+
       } else {
         console.log(return_data);
-        alert("Error no se pudo guardar la informacion.");
+
+        Toastify({
+          text: "Error no se pudo guardar la informacion.",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+
       }
     })
     .catch(function (err) {
@@ -55,7 +67,7 @@ function getComentariosLavado(orderNo) {
       return response.text();
     })
     .then(function (return_data) {
-      
+
       // console.log("==== GET comentarios_lavado ====");
       // console.log(comentarios_lavado);
 
@@ -75,7 +87,7 @@ function getComentariosLavado(orderNo) {
 
 function guardarComentariosAsesor() {
   event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
-  
+
   // Obtiene todos los datos de la forma
   let comentarios_asesor = document.getElementById("comentarios_asesor").value;
 
@@ -97,10 +109,22 @@ function guardarComentariosAsesor() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        alert("Registro actualizado.");
+
+        Toastify({
+          text: "Registro actualizado",
+          duration: 3000,
+          className: "toast-success",
+        }).showToast();
+
       } else {
         console.log(return_data);
-        alert("Error no se pudo guardar la informacion.");
+        
+        Toastify({
+          text: "Error no se pudo guardar la informacion.",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+        
       }
     })
     .catch(function (err) {
@@ -121,7 +145,7 @@ function getComentariosAsesor(orderNo) {
       return response.text();
     })
     .then(function (return_data) {
-      
+
       // console.log("==== GET comentarios_asesor ====");
       // console.log(return_data);
 
@@ -133,4 +157,3 @@ function getComentariosAsesor(orderNo) {
 }
 
 
-  
