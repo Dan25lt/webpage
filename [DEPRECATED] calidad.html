@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Altamotriz</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
+  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/asesor.css" type="text/css" />
+</head>
+
+<body style="background-color: #F0F0F0 ;">
+    
+  <div style="background-color: black;">
+    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
+</div>
+  <nav>
+    <!--------------------------------- Menu ------------------------------------->
+    <div class="li_menu">
+      <ul style="border-radius: 8px;">
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="menuadministrador">
+              <a href="./admin_usuarios.html">Aministrar Usuarios</a>
+              <a href="./admin_vehiculos.html">Aministrar Vehículos</a>
+              <a href="./admin_clientes.html">Aministrar Clientes</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="./gerente.html">Gerente</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="menuasesor">
+              <a href="./asesor.html">Ver ordenes activas</a>
+              <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="./tecnico.html">Técnico</a></li>
+        <li><a href="./lavado.html">Lavador</a></li>
+        <li><a href="./calidad.html">Calidad</a></li>
+        <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="welcome">
+    Bienvenido <span id="username"> Nombre de usuario </span>
+  </div>
+
+  <div style="background-color:#222 ; display: block; height: 22px;
+            min-width: 950px; color: white; margin-bottom:5px; padding-top:
+            5px;">
+    Tabla de órdenes de servicio activas
+  </div>
+  <div class="contenido">
+    <div class="fila">
+      <div id="tabla_asesor"></div>
+    </div>
+
+    <div id="orden_servicio_contenido" orden_actual="0">
+
+
+      <!-------------------------------------------- Informacin de Orden Seleccionada ------------------------------------------------->
+      <div style="background-color:#222 ; display: block; height: 22px;
+                min-width: 950px; color: white; margin-bottom:5px; padding-top:
+                5px;">
+        Informacin de Órden Seleccionada
+      </div>
+      <div class="fila">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr class="info_box">
+            <td style="text-align: left; width: 20%;">
+              <fieldset style="background-color: #fff;">
+                <legend style="font-size: 120%; margin-bottom: 30px;"><strong>Órden:</strong></legend>
+                <ul style="background-color:#F2F2F2 ;">
+                  <li>Folio: <strong><span id="order_info_folio"></span></strong></li><br>
+                  <li>Vehículo: <strong><span id="order_info_vehiculo"></span></strong></li><br>
+                  <li>Placas: <strong><span id="order_info_placas"></span></strong></li><br>
+                  <li style="margin-bottom: 20px;">Vin: <strong><span id="order_info_vin"></span></strong></li><br>
+                </ul>
+              </fieldset>
+            </td>
+            <td style="text-align: left; width: 20%;">
+              <fieldset style="background-color: #fff;">
+                <legend style="font-size: 120%; margin-bottom: 30px"><strong>Cliente:</strong></legend>
+                <ul style="background-color:#F2F2F2 ;">
+                  <li>Nombre: <strong><span id="cliente_nombre"></span></strong></li><br>
+                  <li>Teléfono: <strong><span id="cliente_telefono"></span></strong></li><br>
+                  <li style="margin-bottom: 20px;">RFC: <strong><span id="cliente_rfc"></span></strong></li><br>
+                </ul>
+              </fieldset>
+            </td>
+            <td style="text-align: center; width: 20%;">
+              <form onsubmit="guardarComentariosAsesor()">
+                <legend style="text-align: left; "><strong style="font-size:120% ;">Notas</strong>:
+                </legend>
+                <textarea id="comentarios_asesor" rows="6" cols="55" style="border-radius: 5px;" readonly></textarea>
+                <!-- <button type="submit" class="button ">Guardar cambios</button> -->
+              </form>
+            </td>
+            <td style="text-align: center; width: 20%;">
+              <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
+                <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:
+                </legend>
+                <span id="operaciones"></span>
+              </fieldset>
+            </td>
+            <td style="text-align: center; width: 20%;">
+              <form onsubmit="guardarEstatus()">
+                <div>
+                  <label for="cars">Cambiar el Estatus:</label>
+                </div>
+                <div>
+                  <button type="submit" class="btnsindex ">Terminar</button>
+                </div>
+              </form>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+      <div>
+        <table>
+          <div id="table-titles">
+          </div>
+          <div id="table-body">
+          </div>
+        </table>
+      </div>
+
+      <div style="background-color:#222 ; display: block; height: 22px;
+        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+        Fotos
+      </div>
+
+      <!-- 
+        FOTOS
+       -->
+      <div id="id01" class="modal">
+        <div class="modal-content animate">
+          <form class="" onsubmit="validateCaptcha()" id="loginForm">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+              <div>
+                <img src="" id="modal_img" width="450px" height="auto">
+              </div>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img1" width="150px" height="auto">
+          </td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img2" width="150px" height="auto">
+          </td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img3" width="150px" height="auto">
+          </td>
+          <td><img src="./img/default-image_500.png" class="evidencia" id="img4" width="150px" height="auto">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_1" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile();">
+            <!-- Para borrar -->
+            <button id="btn_delete_img1" name="delete_1" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_1" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </td>
+          <td>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_2" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile2();">
+            <!-- Para borrar -->
+            <button id="btn_delete_img2" name="delete_2" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_2" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </td>
+          <td>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_3" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile3();">
+            <!-- Para borrar -->
+            <button id="btn_delete_img3" name="delete_3" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_3" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </td>
+          <td>
+            <!-- esto esta oculto pero es dode se guarda esa imagen hasta hacer el submit -->
+            <input type="file" name="file" id="img_to_upload_4" style="opacity: 0; position: absolute; z-index: -1;">
+            <!-- con este boton triggerea el updaload -->
+            <input type="button" id="btn_uploadfile" value="Cargar" onclick="uploadFile4();">
+            <!-- Para borrar -->
+            <button id="btn_delete_img4" name="delete_4" class="btnImg">Borrar</button>
+            <!-- este es la parte donde se da click -->
+            <label for="img_to_upload_4" style="cursor: pointer;">
+              <small>Seleccionar imagen</small>
+            </label>
+          </td>
+        </tr>
+
+      </table>
+
+      <div style="background-color:#222 ; display: block; height: 22px;
+        min-width: 950px; color: white; margin-bottom:5px; padding-top: 5px;">
+        Resumen
+      </div>
+      <!-------------------------------------------- Resumen ------------------------------------------------->
+      <!-------------------------------------- Checklist calidad ------------------------------------------>
+      <form onsubmit="guardarCheckListCalidad()" id="checkListCalidadForm">
+        <table border="1" cellpadding="0" cellspacing="0" width="50%" align="right" style="border: 3px solid black;">
+          <caption><strong>CheckList Control de Calidad</strong></caption>
+
+          <tbody>
+            <tr>
+              <td valign="Top" width="50%">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <!---------------------- Mantenimiento ---------------------->
+                    <th><strong>Servicio de mantenimiento&nbsp &nbsp
+                        &nbsp &nbsp &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Bayoneta instalada correctamente:
+                          <input type="radio" id="bayoneta_bueno" name="bayoneta" value="Bueno">
+                          <input type="radio" id="bayoneta_malo" name="bayoneta" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Aceite de motor a nivel y limpio:
+                          <input type="radio" id="aceite_motor_bueno" name="aceite_motor" value="Bueno">
+                          <input type="radio" id="aceite_motor_malo" name="aceite_motor" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Filtro de aceite nuevo:
+                          <input type="radio" id="filtro_aceite_bueno" name="filtro_aceite" value="Bueno">
+                          <input type="radio" id="filtro_aceite_malo" name="filtro_aceite" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Tapón de
+                          carter apretado: <input type="radio" id="tapon_carter_bueno" name="tapon_carter"
+                            value="Bueno">
+                          <input type="radio" id="tapon_carter_malo" name="tapon_carter" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Filtro de aire nuevo/ bien instalado:
+                          <input type="radio" id="filtro_aire_nuevo_bueno" name="filtro_aire_nuevo" value="Bueno">
+                          <input type="radio" id="filtro_aire_nuevo_malo" name="filtro_aire_nuevo" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Filtro de cobustible nuevo (si
+                          aplica):
+                          <input type="radio" id="filtro_combustible_bueno" name="filtro_combustible" value="Bueno">
+                          <input type="radio" id="filtro_combustible_malo" name="filtro_combustible" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Conexiones de filtro de combustible:
+                          <input type="radio" id="conexion_filtro_combustible_bueno" name="conexion_filtro_combustible"
+                            value="Bueno">
+                          <input type="radio" id="conexion_filtro_combustible_malo" name="conexion_filtro_combustible"
+                            value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Diagnóstico de bateria correcto:
+                          <input type="radio" id="diagnostico_bateria_bueno" name="diagnostico_bateria" value="Bueno">
+                          <input type="radio" id="diagnostico_bateria_malo" name="diagnostico_bateria" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Borne de bateria apretados/limpios:
+                          <input type="radio" id="borne_bateria_bueno" name="borne_bateria" value="Bueno">
+                          <input type="radio" id="borne_bateria_malo" name="borne_bateria" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Aceite de transmision:
+                          <input type="radio" id="aceite_transmision_bueno" name="aceite_transmision" value="Bueno">
+                          <input type="radio" id="aceite_transmision_malo" name="aceite_transmision" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Nivel de :
+                          <input type="radio" id="nivel_anticongelante_bueno" name="nivel_anticongelante" value="Bueno">
+                          <input type="radio" id="nivel_anticongelante_malo" name="nivel_anticongelante" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Nivel de direccion hidraulica:
+                          <input type="radio" id="nivel_direccion_bueno" name="nivel_direccion" value="Bueno">
+                          <input type="radio" id="nivel_direccion_malo" name="nivel_direccion" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Diagnóstico de banda de motor:
+                          <input type="radio" id="diagnostico_banda_bueno" name="diagnostico_banda" value="Bueno">
+                          <input type="radio" id="diagnostico_banda_malo" name="diagnostico_banda" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Diagnóstico de mangueras:
+                          <input type="radio" id="diagnostico_mangeras_bueno" name="diagnostico_mangeras" value="Bueno">
+                          <input type="radio" id="diagnostico_mangeras_malo" name="diagnostico_mangeras" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Diagnóstico de arneses:
+                          <input type="radio" id="diagnostico_arneses_bueno" name="diagnostico_arneses" value="Bueno">
+                          <input type="radio" id="diagnostico_arneses_malo" name="diagnostico_arneses" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Inspección de neumáticos:
+                          <input type="radio" id="inspeccion_neumaticos_bueno" name="inspeccion_neumaticos"
+                            value="Bueno">
+                          <input type="radio" id="inspeccion_neumaticos_malo" name="inspeccion_neumaticos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Presión de neumáticos:
+                          <input type="radio" id="presion_neumaticos_bueno" name="presion_neumaticos" value="Bueno">
+                          <input type="radio" id="presion_neumaticos_malo" name="presion_neumaticos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Presión de neumatico de refaccion:
+                          <input type="radio" id="presion_extra_bueno" name="presion_extra" value="Bueno">
+                          <input type="radio" id="presion_extra_malo" name="presion_extra" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Torque de birlos o tuercas:
+                          <input type="radio" id="torque_birlos_bueno" name="torque_birlos" value="Bueno">
+                          <input type="radio" id="torque_birlos_malo" name="torque_birlos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Operación de luces:
+                          <input type="radio" id="luces_bueno" name="luces" value="Bueno">
+                          <input type="radio" id="luces_malo" name="luces" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Operación de limpiaparabrisas:
+                          <input type="radio" id="operacion_limpiabrisas_bueno" name="operacion_limpiabrisas"
+                            value="Bueno">
+                          <input type="radio" id="operacion_limpiabrisas_malo" name="operacion_limpiabrisas"
+                            value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Vida útil de frenos adecuado:
+                          <input type="radio" id="vida_util_frenos_bueno" name="vida_util_frenos" value="Bueno">
+                          <input type="radio" id="vida_util_frenos_malo" name="vida_util_frenos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <!---------------------- Configuración del vehiculo ---------------------->
+                    <th><strong>Configuración del vehículo&nbsp &nbsp
+                        &nbsp &nbsp &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
+                    <tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Verificar
+                          y asegurar la configuración <br>
+                          inicial del vehículo despues de los
+                          trabajos<br> realizados.<br> (En
+                          caso de realizar algún cambio
+                          notificar<br> al cliente):
+                          <input type="radio" id="configuracion_fabrica_bueno" name="configuracion_fabrica"
+                            value="Bueno">
+                          <input type="radio" id="configuracion_fabrica_malo" name="configuracion_fabrica" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td valign="Top" width="50%">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <!---------------------- Revisin de calidad en la operacion del taller ---------------------->
+                    <th><strong>Revisin de calidad en la operación
+                        del taller&nbsp &nbsp &nbsp &nbsp &nbsp
+                        X &nbsp&nbspB&nbsp&nbsp</strong></th>
+                    <tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Carroceria limpia:
+                          <input type="radio" id="correceria_limpia_bueno" name="correceria_limpia" value="Bueno">
+                          <input type="radio" id="correceria_limpia_malo" name="correceria_limpia" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Daños en carroceria:
+                          <input type="radio" id="dano_carroceria_bueno" name="dano_carroceria" value="Bueno">
+                          <input type="radio" id="dano_carroceria_malo" name="dano_carroceria" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Vestiduras limpias:
+                          <input type="radio" id="vestiduras_limpias_bueno" name="vestiduras_limpias" value="Bueno">
+                          <input type="radio" id="vestiduras_limpias_malo" name="vestiduras_limpias" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Volante limpio:
+                          <input type="radio" id="volante_limpio_bueno" name="volante_limpio" value="Bueno">
+                          <input type="radio" id="volante_limpio_malo" name="volante_limpio" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Palanca y controles limpios:
+                          <input type="radio" id="palanca_limpia_bueno" name="palanca_limpia" value="Bueno">
+                          <input type="radio" id="palanca_limpia_malo" name="palanca_limpia" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Tablero limpio:
+                          <input type="radio" id="tablero_limpio_bueno" name="tablero_limpio" value="Bueno">
+                          <input type="radio" id="tablero_limpio_malo" name="tablero_limpio" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Alfombra y tapetes limpios:
+                          <input type="radio" id="alfombra_limpia_bueno" name="alfombra_limpia" value="Bueno">
+                          <input type="radio" id="alfombra_limpia_malo" name="alfombra_limpia" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Espejos
+                          retrovisores bien ajustados:
+                          <input type="radio" id="retrovisores_ajustados_bueno" name="retrovisores_ajustados"
+                            value="Bueno">
+                          <input type="radio" id="retrovisores_ajustados_malo" name="retrovisores_ajustados"
+                            value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Motor limpio:
+                          <input type="radio" id="motor_limpio_bueno" name="motor_limpio" value="Bueno">
+                          <input type="radio" id="motor_limpio_malo" name="motor_limpio" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Bastidor limpio:
+                          <input type="radio" id="bastidor_limpio_bueno" name="bastidor_limpio" value="Bueno">
+                          <input type="radio" id="bastidor_limpio_malo" name="bastidor_limpio" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Ruedas y rines limpios:
+                          <input type="radio" id="rines_limpios_bueno" name="rines_limpios" value="Bueno">
+                          <input type="radio" id="rines_limpios_malo" name="rines_limpios" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+
+                    <!---------------------- Control de calidad en la operación del taller ---------------------->
+                    <th><strong>Control de calidad en la
+                        operación del taller&nbsp &nbsp
+                        &nbsp &nbsp &nbsp X
+                        &nbsp&nbspB&nbsp&nbsp</strong></th>
+                    <tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">
+                          Se inicio la operación
+                          a tiempo conforme a <br> la
+                          programación:
+                          <input type="radio" id="a_tiempo_bueno" name="a_tiempo" value="Bueno">
+                          <input type="radio" id="a_tiempo_malo" name="a_tiempo" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Las protecciones se
+                          mantienen correctamente<br>instaladas
+                          durante la operación:
+                          <input type="radio" id="protecciones_bueno" name="protecciones" value="Bueno">
+                          <input type="radio" id="protecciones_malo" name="protecciones" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Las piezas
+                          reemplazadas se colocan en
+                          bolsa<br>y en la cajuela:
+                          <input type="radio" id="piezas_bueno" name="piezas" value="Bueno">
+                          <input type="radio" id="piezas_malo" name="piezas" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">La hoja de inspección
+                          del vehículo se encuentra
+                          <br> llena completamente:
+                          <input type="radio" id="hoja_inspeccion_bueno" name="hoja_inspeccion" value="Bueno">
+                          <input type="radio" id="hoja_inspeccion_malo" name="hoja_inspeccion" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Se concluye en el
+                          tiempo programado:
+                          <input type="radio" id="tiempo_programado_bueno" name="tiempo_programado" value="Bueno">
+                          <input type="radio" id="tiempo_programado_malo" name="tiempo_programado" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Cuidado de los objetos
+                          personales adecuado
+                          <input type="radio" id="objetos_personales_bueno" name="objetos_personales" value="Bueno">
+                          <input type="radio" id="objetos_personales_malo" name="objetos_personales" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Se reviso la función
+                          VIP del vehículo
+                          <input type="radio" id="vip_vehiculo_bueno" name="vip_vehiculo" value="Bueno">
+                          <input type="radio" id="vip_vehiculo_malo" name="vip_vehiculo" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Se aplicaron campañas
+                          reportadas
+                          <input type="radio" id="campanas_reportadas_bueno" name="campanas_reportadas" value="Bueno">
+                          <input type="radio" id="campanas_reportadas_malo" name="campanas_reportadas" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <!---------------------- Revisin de calidad en trabajo de frenos ---------------------->
+                    <th><strong>Calidad de trabajo de
+                        frenos&nbsp &nbsp &nbsp &nbsp
+                        &nbsp X &nbsp&nbspB&nbsp&nbsp</strong></th>
+                    <tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Se aplicó torque a
+                          tornillos de caliper
+                          <input type="radio" id="torque_caliper_bueno" name="torque_caliper" value="Bueno">
+                          <input type="radio" id="torque_caliper_malo" name="torque_caliper" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Nivel de líquido
+                          de frenos
+                          <input type="radio" id="liquido_frenos_bueno" name="liquido_frenos" value="Bueno">
+                          <input type="radio" id="liquido_frenos_malo" name="liquido_frenos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Asentamiento de
+                          balatas
+                          <input type="radio" id="asentamiento_balatas_bueno" name="asentamiento_balatas" value="Bueno">
+                          <input type="radio" id="asentamiento_balatas_malo" name="asentamiento_balatas" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Prueba de camino
+                          <input type="radio" id="prueba_camino_bueno" name="prueba_camino" value="Bueno">
+                          <input type="radio" id="prueba_camino_malo" name="prueba_camino" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Vibra pedal al
+                          aplicar el freno?
+                          <input type="radio" id="vibra_pedal_bueno" name="vibra_pedal" value="Bueno">
+                          <input type="radio" id="vibra_pedal_malo" name="vibra_pedal" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Viaje de pedal
+                          correcto<input type="radio" id="viaje_pedal_bueno" name="viaje_pedal" value="Bueno">
+                          <input type="radio" id="viaje_pedal_malo" name="viaje_pedal" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Pedal esponjoso
+                          <input type="radio" id="pedal_esponjoso_bueno" name="pedal_esponjoso" value="Bueno">
+                          <input type="radio" id="pedal_esponjoso_malo" name="pedal_esponjoso" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Pedal duro
+                          <input type="radio" id="pedal_duro_bueno" name="pedal_duro" value="Bueno">
+                          <input type="radio" id="pedal_duro_malo" name="pedal_duro" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Operación de
+                          frenado correcta
+                          <input type="radio" id="operacion_frenado_bueno" name="operacion_frenado" value="Bueno">
+                          <input type="radio" id="operacion_frenado_malo" name="operacion_frenado" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Frenos ruidosos
+                          <input type="radio" id="frenos_ruidosos_bueno" name="frenos_ruidosos" value="Bueno">
+                          <input type="radio" id="frenos_ruidosos_malo" name="frenos_ruidosos" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" colspan="3">
+                        <legend style="border-style: 0px;">Ajuste correcto
+                          del freno de
+                          estacionamiento
+                          <input type="radio" id="ajuste_correcto_freno_bueno" name="ajuste_correcto_freno"
+                            value="Bueno">
+                          <input type="radio" id="ajuste_correcto_freno_malo" name="ajuste_correcto_freno" value="Malo">
+                        </legend>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">X:Mal &nbsp &nbsp B:Bien &nbsp
+                &nbsp</th>
+            </tr>
+            <tr>
+              <th colspan="2" style="background-color:#F2F2F2 ;"> <button type="submit" class="btnsindex ">Guardar
+                  cambios</button></th>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
+      <!---------------------- Comentarios  ---------------------->
+
+      <div>
+        <table cellpadding="0" cellspacing="0" width="49%" align="left"
+          style="margin-top: 10px; border-color: #CCE3F6;">
+          <tbody>
+            <tr>
+              <td>
+                <form onsubmit="guardarComentariosCalidad()">
+                  <legend>Comentarios del área de Calidad</legend>
+                  <textarea id="comentarios_calidad" rows="8" cols="95"
+                    style="border-radius: 5px; margin: 5px; width: 98%;"></textarea>
+                  <button type="submit" class="btnsindex ">Guardar cambios</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+    </div>
+  </div>
+
+
+  <script src="./js/cookies_handler.js"></script>
+  <script src="./js/check_list_calidad.js"></script>
+  <script src="./js/comentarios_calidad.js"></script>
+  <script src="./js/modal_imgs.js"></script>
+
+  <!---------------------- Script para la lectura de los datos de la base de datos ---------------------->
+  <script>
+
+    function cargarOrdenes() {
+      fetch('./backend/getOrdersParaCalidad.php', {
+        method: 'POST',
+        body: {
+          info: ''
+        }
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+          // console.log(return_data);
+
+          if (return_data == "no hay ordenes de servicio") {
+            console.log("TODO: implementa algo");
+            return;
+          }
+
+          document.getElementById("tabla_asesor").innerHTML = "";
+
+          var data = JSON.parse(return_data);
+
+          var columnNames = ["idordenDeServicio",
+            "vin",
+            "modelo",
+            "placas",
+            "fechaEntrada",
+            "fechaSalida",
+            "estatus",
+            // "alertas",
+            "opciones"];
+
+          var table = document.createElement('table');
+
+          var tr = document.createElement('tr');
+          var td = document.createElement('td');
+          var text = document.createTextNode('Orden De Servicio');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Vin');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Tipo de vehiculo');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Placas');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Fecha entrada');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Fecha salida');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          /* td = document.createElement('td');
+          text = document.createTextNode('Estatus');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;"; */
+          td = document.createElement('td');
+          text = document.createTextNode('Atencion');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+          td = document.createElement('td');
+          text = document.createTextNode('Opciones');
+          td.appendChild(text);
+          tr.appendChild(td);
+                    td.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;";
+
+          table.appendChild(tr);
+
+
+          for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement('tr');
+            tr.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
+            for (var j = 0; j < columnNames.length; j++) {
+              var td = document.createElement('td');
+              td.style.cssText=" background-color: #E7E9EB; padding: 10px; text-align: center;";
+              if (columnNames[j] === 'opciones') {
+                var btn = document.createElement('input');
+                btn.style.cssText="border:#fff 1px;color: white; display: block;background-color: royalblue;padding: 10px;border-radius: 7px;text-align: center;  margin-right: 10px; ";
+                btn.type = "button";
+                btn.className = "";
+
+                /*
+                * Detalles de cada orden, la guardamos en el boton para no tener que hacer otro GET
+                */
+                btn.setAttribute("order_id", data[i]['idordenDeServicio']);
+                btn.setAttribute("vehiculo", data[i]['modelo'] + " " + data[i]['ano']);
+                btn.setAttribute("placas", data[i]['placas']);
+                btn.setAttribute("vin", data[i]['vin']);
+                btn.setAttribute("nombre_cliente", data[i]['nombre'] + " " + data[i]['apellido']);
+                btn.setAttribute("telefono", data[i]['telefono'] || "NA");
+                btn.setAttribute("rfc", data[i]['rfc'] || "NA");
+                btn.setAttribute("estatus", data[i]['estatus'] || "NA");
+
+                btn.setAttribute("img_url1", data[i]['img_url1'] || "NA");
+                btn.setAttribute("img_url2", data[i]['img_url2'] || "NA");
+                btn.setAttribute("img_url3", data[i]['img_url3'] || "NA");
+                btn.setAttribute("img_url4", data[i]['img_url4'] || "NA");
+
+                btn.value = "     Ver     ";
+                var text = btn; // text va a tener adentro un boton
+
+                btn.addEventListener('click', mostrarOrdenServicioEspecifica, false);
+
+              } else {
+                var text = document.createTextNode(data[i][columnNames[j]]);
+              }
+              td.appendChild(text);
+              tr.appendChild(td);
+            }
+            table.appendChild(tr);
+          }
+          document.getElementById("tabla_asesor").appendChild(table);
+
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+
+    /*
+    * Revisa las cookies y se encarga del login de usuarios
+    */
+    function inspeccionarMisCookies() {
+      /* var loguedIn = getCookie('loguedIn');
+      var username = getCookie('username');
+      var puesto = getCookie('puesto');
+
+      document.getElementById("username").innerHTML = username;
+
+      if (!loguedIn) {
+        location.replace("/"); // redirecciona al login si el usuario no esta autenticado.
+      }
+
+      if (puesto == 'OTRO Puesto') {
+        location.replace("/"); // redirecciona a la pagina del puesto para que no ande de metiche aqui
+      }
+
+      console.log(`Usuario: Id->${loguedIn}, username: ${username}, puesto: ${puesto}`); */
+    }
+
+    /*
+    * Todo lo referente a la UI
+    * Se mete todo en una sola funcion y se corre
+    */
+    function userInterfaseInit() {
+      // Oculata todo el menu hasta que seleccionemos una orden de servicio que ver.
+      document.getElementById('orden_servicio_contenido').style.display = 'none';
+    }
+
+    var mostrarOrdenServicioEspecifica = function () {
+      var orden_id = this.getAttribute("order_id");
+      document.getElementById('orden_servicio_contenido').style.display = 'block';
+
+      document.getElementById('orden_servicio_contenido').setAttribute("orden_actual", orden_id);
+
+      getComentariosAsesor(orden_id);
+      getComentariosCalidad(orden_id);
+      cargarCheckListCalidad(orden_id);
+
+      /*
+      * Mostrar datos de la orden
+      */
+      document.getElementById("order_info_folio").innerHTML = this.getAttribute("order_id");
+      document.getElementById("order_info_vehiculo").innerHTML = this.getAttribute("vehiculo");
+      document.getElementById("order_info_placas").innerHTML = this.getAttribute("placas");
+      document.getElementById("order_info_vin").innerHTML = this.getAttribute("vin");
+
+      document.getElementById("cliente_nombre").innerHTML = this.getAttribute("nombre_cliente");
+      document.getElementById("cliente_telefono").innerHTML = this.getAttribute("telefono");
+      document.getElementById("cliente_rfc").innerHTML = this.getAttribute("rfc");
+
+      mostrarImagenesChiquitas(this);
+
+      getOperacionesList(orden_id);
+    };
+
+    function getOperacionesList(orden_id) {
+      fetch('./backend/getOperaciones.php', {
+        method: 'POST',
+        body: JSON.stringify({ orden_id: orden_id })
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+
+          // console.log(return_data);
+
+          if (return_data === "la orden de servicio no tiene operaciones") {
+            alert("la orden de servicio no tiene operaciones");
+            return;
+          }
+
+          document.getElementById('operaciones').innerHTML = "";
+
+          let data = JSON.parse(return_data);
+          var div = document.createElement('div');
+
+          for (let i = 0; i < data.length; i++) {
+            const operacion = data[i];
+            var span = document.createElement('span');
+            var text = document.createTextNode("-" + operacion['descripcion']);
+            span.appendChild(text);
+            div.appendChild(span);
+            var br = document.createElement('br');
+            div.appendChild(br);
+          }
+          div.setAttribute("style", "background-color:#F2F2F2 ;");
+          document.getElementById('operaciones').appendChild(div);
+
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+
+    function guardarEstatus() {
+      event.preventDefault(); // Previene el evento submit (el que recarga la pagina);
+
+      // Manda los datos al backend para ser guardados ahi 
+      fetch('./backend/postEstatusAvanzarTerminado.php', {
+        method: 'POST',
+        body: JSON.stringify({
+          orderNo: document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"),
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (return_data) {
+
+          if (return_data === "Registro actualizado") {
+            alert("Registro actualizado.");
+            window.location.reload();
+          } else {
+            console.log(return_data);
+            alert("Error no se pudo guardar la informacion.");
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+
+    // Inicializar las funciones aqui despues del codigo
+    cargarOrdenes();
+    inspeccionarMisCookies();
+    userInterfaseInit();
+
+    function dropdownclickadmin() {
+      document.getElementById("menuadministrador").classList.toggle("show");
+    }
+
+    window.onclick = function (e) {
+      if (!e.target.matches('.dropbtn')) {
+        var menuadministrador = document.getElementById("menuadministrador");
+        if (menuadministrador.classList.contains('show')) {
+          menuadministrador.classList.remove('show');
+        }
+      }
+    }
+    function dropdownclickasesor() {
+      document.getElementById("menuasesor").classList.toggle("show");
+    }
+
+    window.onclick = function (e) {
+      if (!e.target.matches('.dropbtn')) {
+        var menuasesor = document.getElementById("menuasesor");
+        if (menuasesor.classList.contains('show')) {
+          menuasesor.classList.remove('show');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
