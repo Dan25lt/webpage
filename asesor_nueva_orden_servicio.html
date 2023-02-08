@@ -1,350 +1,161 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="es-MX">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="utf-8">
   <title>Altamotriz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">|
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
   <link rel="shortcut icon" type="image/x-icon" href="./img/car-service.ico" />
-  <link rel="stylesheet" href="./css/mi_hoja_de_estilos.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="./css/asesor.css" type="text/css" /> -->
-  <style>
-    .columna-3 {
-      max-width: 25%;
-    }
-  </style>
+
+  <link rel="stylesheet" href="css/html5boilerplate/main.css">
+  <link rel="stylesheet" href="css/html5boilerplate/normalize.css">
+  <link rel="stylesheet" href="css/pure/pure-min.css">
+  <link rel="stylesheet" href="css/pure/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/navbar.css">
+  <link rel="stylesheet" href="css/main/table.css">
+  <link rel="stylesheet" href="css/main/styles.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
-<body style="background-color: #F0F0F0 ;">
-    
-  <div style="background-color: black;">
-    <img src="./img/logo.png" width="1300" height="150" alt="" ;>
-</div>
-  <nav>
-    <!--------------------------------- Menu ------------------------------------->
-    <div class="li_menu">
-      <ul style="border-radius: 8px;">
-        <li>
-          <div class="dropdown">
-            <button class="dropbtn" onclick="dropdownclickadmin()">Administrador
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content" id="menuadministrador">
-              <a href="./admin_usuarios.html">Aministrar Usuarios</a>
-              <a href="./admin_vehiculos.html">Aministrar Vehículos</a>
-              <a href="./admin_clientes.html">Aministrar Clientes</a>
-            </div>
-          </div>
-        </li>
-        <li><a href="./gerente.html">Gerente</a></li>
-        <li>
-          <div class="dropdown">
-            <button class="dropbtn" onclick="dropdownclickasesor()">Asesor
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content" id="menuasesor">
-              <a href="./asesor.html">Ver órdenes activas</a>
-              <a href="./asesor_nueva_orden_servicio.html">Nueva orden de servicio</a>
-            </div>
-          </div>
-        </li>
-        <li><a href="./tecnico.html">Tecnico</a></li>
-        <li><a href="./lavado.html">Lavador</a></li>
-        <li><a href="./calidad.html">Calidad</a></li>
-        <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 25px;height:22px;"></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<body>
 
-  <div class="welcome">
-    <!-- Bienvenido <span id="username"> nombre de usuario </span> -->
+  <div class="nav">
+    <div id="logo">
+      <img src="img/logo_simple.png" alt="Altamotriz Logotipo" width="120px">
+    </div>
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+    <ul class="menu">
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-1" class="toggle">Administrador</label>
+        <a href="#">Administrador</a>
+        <input type="checkbox" id="drop-1" />
+        <ul>
+          <li><a href="./admin_usuarios.html">Usuarios</a></li>
+          <li><a href="./admin_vehiculos.html">Vehículos</a></li>
+          <li><a href="./admin_clientes.html">clientes</a></li>
+        </ul>
+      </li>
+      <li><a href="./gerente.html">Gerente</a></li>
+      <li>
+        <!-- First Tier Drop Down -->
+        <label for="drop-2" class="toggle">Asesor</label>
+        <a href="#">Asesor</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+          <li><a href="./asesor.html">Ordenes activas</a></li>
+          <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
+        </ul>
+      </li>
+      <li><a href="./tecnico.html">Técnico</a></li>
+      <li><a href="./lavado.html">Lavador</a></li>
+      <li><a href="./calidad.html">Calidad</a></li>
+      <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
+      </li>
+    </ul>
   </div>
 
-  <div style="background-color:#222 ; display: block; height: 22px;
-                min-width: 950px; color: white; margin-bottom:5px; padding-top:
-                5px;">
-    Crear orden de servicio:
+  <div class="content-wrapper">
+
+    <div class="content ribbon-white l-box-lrg">
+      <h4 class="content-sub-head black-text">Ordenes de Servicio activas.</h4>
+      <div class="pure-g">
+        <div class="l-box pure-u-1 pure-u-md-5-5 pure-u-lg-5-5">
+          <table id="table">
+            <thead>
+              <th>a</th>
+              <th>b</th>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+              <tr><td>1</td><td>2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- content -->
+  </div> <!-- container wrapper -->
+
+  <div class="footer l-box is-center">
+    <p>Autocamiones de Chihuahua S.A de C.V.</p>
   </div>
-  <div class="contenido">
-    <div class="fila">
-      <table>
-        <td>
-          <label style="font-size: 130%;" for="placas"><strong>Placas:</strong> </label><br>
-        </td>
-        <td>
-          <input id="placas" name="placas" style="border-radius: 5px; margin-top: 5px; height:35px;"></input>
-          
-        </td>
-        <td>
-          <button  style="font-size: 130%;" id="btn_buscar_placas" class="btnblue">Buscar y seleccionar</button>
-        </td>
-      </table>
-      <table>
-        <td>
-          <label style="font-size: 130%;" for="fname"><strong>Operación:</strong></label><br>
-        </td>
-        <td>
-          <input id="operacion" name="operacion" style="border-radius: 5px; width: 100%; margin-top: 5px; height:35px;"></input><br><br>
-          <label>"Ingresar <strong>código</strong> de operación"</label>
-        </td>
-        <td>
-          <button style="font-size: 130%;" id="btn_buscar_operacion" class="btnblue ">Agregar operación</button>
-        </td>
-      </table>
-    </div>
-    <div style="background-color:#222 ; display: block; height: 22px;
-        min-width: 950px; color: white; margin-bottom:5px; padding-top:
-        5px;">
-      Detalles de la orden:
-    </div>
-    <div class="fila">
-      <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr class="info_box">
-          <td style="text-align: left; width: 33.33333%;">
-            <legend style="font-size: 120%;"><strong>Vehículo:</strong></legend>
-            <table style="border: none;">
-              <tr>
-                <td style="border: none;"> Año: </td>
-                <td style="border: none;"><strong><span id="vehiculo_ano"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">VIN: </td>
-                <td style="border: none;"><strong><span id="vehiculo_vin"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Placas: </td>
-                <td style="border: none;"><strong><span id="vehiculo_placas"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Modelo: </td>
-                <td style="border: none;"><strong><span id="vehiculo_modelo"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Marca: </td>
-                <td style="border: none;"><strong><span id="vehiculo_marca"></span></strong></td>
-              </tr>
-            </table>
-          </td>
-          <td style="text-align: left; width: 33.33333%;">
-            <legend style="font-size: 120%;"><strong>Cliente:</strong></legend>
-            <table style="border: none;">
-              <tr>
-                <td style="border: none;">Nombre: </td>
-                <td style="border: none;"><strong><span id="cliente_nombre"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Teléfono: </td>
-                <td style="border: none;"><strong><span id="cliente_telefono"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">RFC: </td>
-                <td style="border: none;"><strong><span id="cliente_rfc"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Email:</td>
-                <td style="border: none;"><strong><span id="cliente_email"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">Dirección: </td>
-                <td style="border: none;"><strong><span id="cliente_direccion"></span></strong></td>
-              </tr>
-              <tr>
-                <td style="border: none;">C.P.:</td>
-                <td style="border: none;"><strong><span id="cliente_cp"></span></strong></td>
-              </tr>
-            </table>
-          </td>
 
-          <td style="text-align: center; width: 33.33333%;">
-            <fieldset style="background-color: rgb(255, 255, 255); text-align: left; float: initial;">
-              <legend style="text-align: left; font-size: 120%;"><strong>Operaciones</strong>:</legend>
-              <span id="operaciones"></span>
+  </div>
 
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3"><button id="btn_guardar_orden" class="btnsindex ">Guardar cambios</button></td>
-        </tr>
+  <!-- MODALES -->
 
-      </table>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner modal-large">
+      <label class="modal__close" for="modal-1"></label>
+      <!-- Modal content -->
+
+      <img src="" id="modal_img" width="450px" height="auto">
+
+      <!-- /Modal content -->
     </div>
   </div>
+
+
+  <!-- /MODALES -->
+
+
+  <!-- SCRIPTS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="js/pages/asesor/nuevas_ordener.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
   <script>
-
-    let vehiculo_seleccionado = false;
-    let minimo_una_numero_operacion = false;
-
-    let idvehiculos = '';
-    let lista_operaciones = [];
-
-    document.getElementById('btn_buscar_placas').onclick = function () {
-      let placas = document.getElementById('placas').value;
-      console.log(placas);
-      if (placas === '') {
-        alert("introduce un numero de placas");
-        return;
-      }
-
-      fetch('./backend/asesor/getVehiculoByPlacas.php', {
-        method: 'POST',
-        body: JSON.stringify({ placas: placas })
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          console.log(return_data);
-
-          if (return_data === "No existe un vehiculo con esas placas") {
-            alert("No existe un vehiculo con esas placas");
-            return;
-          }
-
-          // document.getElementById('operaciones').innerHTML = "";
-
-          let data = JSON.parse(return_data);
-
-          console.log(data[0].placas);
-
-          document.getElementById('vehiculo_placas').innerHTML = data[0].placas || "NA";
-          document.getElementById('vehiculo_ano').innerHTML = data[0].ano || "NA";
-          document.getElementById('vehiculo_vin').innerHTML = data[0].vin || "NA";
-          document.getElementById('vehiculo_modelo').innerHTML = data[0].modelo || "NA";
-          document.getElementById('vehiculo_marca').innerHTML = data[0].marca || "NA";
-          document.getElementById('cliente_nombre').innerHTML = data[0].nombre + " " + data[0].apellido;
-          document.getElementById('cliente_telefono').innerHTML = data[0].telefono || "NA";
-          document.getElementById('cliente_rfc').innerHTML = data[0].rfc || "NA";
-          document.getElementById('cliente_email').innerHTML = data[0].email || "NA";
-          document.getElementById('cliente_direccion').innerHTML = data[0].calle + " " + data[0].numeroext + " " + data[0].numeroint;
-          document.getElementById('cliente_cp').innerHTML = data[0].idarea_postal || "NA";
-
-          idvehiculos = data[0].idvehiculos;
-
-          vehiculo_seleccionado = true;
-          document.getElementById('placas').value = "";
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-
-    };
-
-    document.getElementById('btn_buscar_operacion').onclick = function () {
-      let operacion = document.getElementById('operacion').value;
-      console.log(operacion);
-      if (operacion === '') {
-        alert("introduce un numero de operacion");
-        return;
-      }
-
-      fetch('./backend/asesor/getOperacionesById.php', {
-        method: 'POST',
-        body: JSON.stringify({ id_operacion: operacion })
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          console.log(return_data);
-
-          if (return_data === "No existe una operacion con ese id") {
-            alert("No existe una operacion con ese id");
-            return;
-          }
-
-          let data = JSON.parse(return_data);
-
-          console.log(data)
-
-          var div = document.createElement('div');
-
-          for (let i = 0; i < data.length; i++) {
-            const operacion = data[i];
-            //se crean variables para crear un Span y el texto que luego aparecera en pantalla
-            var span = document.createElement('span');
-            var text = document.createTextNode("-" + data[0]['descripcion']);
-            span.appendChild(text);//se mete la descripcion en el Span
-            div.appendChild(span);//se mete el span dentro de un div
-            var br = document.createElement('br'); //se crea un salto de linea
-            div.appendChild(br);// se mete el salto del linea en el div
-          }
-          div.setAttribute("style", "background-color:#F2F2F2 ;");// se le da style al div
-          document.getElementById('operaciones').appendChild(div);
-
-          minimo_una_numero_operacion = true;
-          document.getElementById('operacion').value = "";
-
-          lista_operaciones.push(data[0]['idoperaciones']);
-
-          console.log(lista_operaciones);
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    };
-
-    document.getElementById('btn_guardar_orden').onclick = function () {
-      if (!vehiculo_seleccionado || !minimo_una_numero_operacion) {
-        alert("Porfavor selecciona un vehiculo y un numero de operacion");
-        return;
-      }
-
-
-      fetch('./backend/asesor/postOrder.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          idvehiculos: idvehiculos,
-          lista_operaciones: lista_operaciones.join(',')
-        })
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (return_data) {
-          console.log(return_data);
-
-          if (return_data === 'Registro insertado') {
-            alert("Registro insertado");
-            document.location.reload();
-          } else {
-            alert("Error al insertar");
-          }
-
-
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-
-
-    };
-//al presionar el elemento el menu se muestra
-    function dropdownclickadmin() {
-      document.getElementById("menuadministrador").classList.toggle("show");
-    }
-//al seleccionar algo, el menu se esconde de nuevo
-    window.onclick = function (e) {
-      if (!e.target.matches('.dropbtn')) {
-        var menuadministrador = document.getElementById("menuadministrador");
-        if (menuadministrador.classList.contains('show')) {
-          menuadministrador.classList.remove('show');
+    const dataTable = new window.simpleDatatables.DataTable("#table", {
+      perPageSelect: [5, 10, 15, ["All", -1]],
+      searchable: true,
+      columns: [
+        {
+          select: 1,
+          cellClass: "green",
+          headerClass: "red",
+          sortSequence: ["desc", "asc"],
+          paging: true,
         }
-      }
-    }
-    //al presionar el elemento el menu se muestra
-    function dropdownclickasesor() {
-      document.getElementById("menuasesor").classList.toggle("show");
-    }
-//al seleccionar algo, el menu se esconde de nuevo
-    window.onclick = function (e) {
-      if (!e.target.matches('.dropbtn')) {
-        var menuasesor = document.getElementById("menuasesor");
-        if (menuasesor.classList.contains('show')) {
-          menuasesor.classList.remove('show');
-        }
-      }
-    }
+      ]
+    });
+
   </script>
+  <!-- /SCRIPTS -->
+
 </body>
 
 </html>
