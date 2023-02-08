@@ -144,9 +144,6 @@ function cargarOrdenes() {
     });
 }
 
-
-
-
 var mostrarOrdenServicioEspecifica = function () {
   var orden_id = this.getAttribute("order_id");
   document.getElementById('orden_servicio_contenido').style.display = 'block';
