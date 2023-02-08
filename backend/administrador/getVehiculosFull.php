@@ -13,10 +13,14 @@ $query = "SELECT v.idvehiculos,
     v.vin,
     v.placas,
     m.modelo,
-    ma.marca
+    ma.marca,
+    CONCAT(c.nombre, ' ', c.apellido) AS cliente,
+    c.rfc,
+    c.telefono
     FROM vehiculos v 
     JOIN modelo m ON v.idmodelo = m.idmodelo
-    JOIN marca ma ON m.idmarca =  ma.idmarca";
+    JOIN marca ma ON m.idmarca =  ma.idmarca
+    JOIN cliente c ON c.idcliente = v.idcliente";
 
 $result = $con->query($query);
 
@@ -30,6 +34,9 @@ if ($result->num_rows > 0) {
         $rowObj->placas = $row['placas'];
         $rowObj->modelo = $row['modelo'];
         $rowObj->marca = $row['marca'];
+        $rowObj->cliente = $row['cliente'];
+        $rowObj->rfc = $row['rfc'];
+        $rowObj->telefono = $row['telefono'];
         array_push($return_data, $rowObj);
     }
 

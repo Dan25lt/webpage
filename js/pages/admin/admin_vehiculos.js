@@ -2,141 +2,145 @@ function cargarTodos() {
 
   fetch('./backend/administrador/getVehiculos.php', {
     method: 'GET',
-  })
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (return_data) {
-      if (return_data == "no hay vehiculos") {
-        alert("no hay vehiculos");
-        return;
-      }
+  }).then(function (response) {
+    return response.text();
+  }).then(function (return_data) {
+    if (return_data == "no hay vehiculos") {
+      
+      Toastify({
+        text: "No hay vehiculos",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
 
-      var data = JSON.parse(return_data);
+      return;
+    }
 
-      var columnNames = [
-        "idvehiculos",
-        "ano",
-        "vin",
-        "placas",
-        "modelo",
-        "marca",
-        "opciones"
-      ];
+    var data = JSON.parse(return_data);
 
-      var table = document.createElement('table');
-      table.className ='table';
+    var columnNames = [
+      "idvehiculos",
+      "ano",
+      "vin",
+      "placas",
+      "modelo",
+      "marca",
+      "opciones"
+    ];
 
-      var thead = document.createElement('thead');
-      // Titulos solamente
+    var table = document.createElement('table');
+    table.className = 'table';
+
+    var thead = document.createElement('thead');
+    // Titulos solamente
+    var tr = document.createElement('tr');
+
+    var th = document.createElement('th');
+    var text = document.createTextNode('Id');
+    th.appendChild(text);
+    tr.appendChild(th);
+    var th = document.createElement('th');
+    var text = document.createTextNode('Ano');
+    th.appendChild(text);
+    tr.appendChild(th);
+    var th = document.createElement('th');
+    var text = document.createTextNode('VIN');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Placas');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Modelo');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Marca');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Opciones');
+    th.appendChild(text);
+    tr.appendChild(th);
+    thead.appendChild(tr);
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    // Lenado de la tabla 
+    for (var i = 0; i < data.length; i++) {
       var tr = document.createElement('tr');
+      for (var j = 0; j < columnNames.length; j++) {
+        var td = document.createElement('td');
+        if (columnNames[j] === 'opciones') {
 
-      var th = document.createElement('th');
-      var text = document.createTextNode('Id');
-      th.appendChild(text);
-      tr.appendChild(th);
-      var th = document.createElement('th');
-      var text = document.createTextNode('Ano');
-      th.appendChild(text);
-      tr.appendChild(th);
-      var th = document.createElement('th');
-      var text = document.createTextNode('VIN');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Placas');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Modelo');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Marca');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Opciones');
-      th.appendChild(text);
-      tr.appendChild(th);
-      thead.appendChild(tr);
-      table.appendChild(thead);
+          var btn = document.createElement('label');
+          btn.className = "button-table-secondary btnVer";
+          btn.innerHTML = "Ver";
 
-      var tbody = document.createElement('tbody');
-      // Lenado de la tabla 
-      for (var i = 0; i < data.length; i++) {
-        var tr = document.createElement('tr');
-        for (var j = 0; j < columnNames.length; j++) {
-          var td = document.createElement('td');
-          if (columnNames[j] === 'opciones') {
+          btn.setAttribute("for", "modal-ver")
+          btn.setAttribute("name", data[i]['idvehiculos'])
 
-            var btn = document.createElement('label');
-            btn.className = "button-table-secondary btnVer";
-            btn.innerHTML = "Ver";
+          td.appendChild(btn);
 
-            btn.setAttribute("for", "modal-ver")
-            btn.setAttribute("name", data[i]['idvehiculos'])
+          var btn = document.createElement('label');
+          btn.className = "button-table-warning btnEdit";
+          btn.innerHTML = "Editar";
 
-            td.appendChild(btn);
+          btn.setAttribute("for", "modal-edit")
+          btn.setAttribute("name", data[i]['idvehiculos'])
 
-            var btn = document.createElement('label');
-            btn.className = "button-table-warning btnEdit";
-            btn.innerHTML = "Editar";
+          td.appendChild(btn);
 
-            btn.setAttribute("for", "modal-edit")
-            btn.setAttribute("name", data[i]['idvehiculos'])
+          td.dataset.column = "opciones";
 
-            td.appendChild(btn);
+          tr.appendChild(td);
+        } else {
+          var text = document.createTextNode(data[i][columnNames[j]]);
 
-            td.dataset.column = "opciones";
-
-            tr.appendChild(td);
-          } else {
-            var text = document.createTextNode(data[i][columnNames[j]]);
-
-            td.appendChild(text);
-            tr.appendChild(td);
-          }
-          tbody.appendChild(tr);
+          td.appendChild(text);
+          tr.appendChild(td);
         }
-        table.appendChild(tbody);
+        tbody.appendChild(tr);
       }
+      table.appendChild(tbody);
+    }
 
 
-      document.getElementById("tabla_vehiculo").appendChild(table);
+    document.getElementById("tabla_vehiculo").appendChild(table);
 
-      const editBtns = document.getElementsByClassName('btnEdit');
+    const editBtns = document.getElementsByClassName('btnEdit');
 
-      for (const btnEdit of editBtns) {
-        btnEdit.addEventListener("click", e => {
-          console.log("edit Id:", e.target.getAttribute('name'));
-          editById(e.target.getAttribute('name'));
-        })
+    for (const btnEdit of editBtns) {
+      btnEdit.addEventListener("click", e => {
+        console.log("edit Id:", e.target.getAttribute('name'));
+        editById(e.target.getAttribute('name'));
+      })
+    }
+
+    const verBtns = document.getElementsByClassName('btnVer');
+
+    for (const btnVer of verBtns) {
+      btnVer.addEventListener("click", e => {
+        console.log("ver Id: ", e.target.getAttribute('name'));
+        verById(e.target.getAttribute('name'));
+      })
+    }
+
+    const dataTable = new simpleDatatables.DataTable("table", {
+      perPageSelect: [5, 10, 15, ["Todos", -1]],
+      searchable: true,
+      labels: {
+        placeholder: "Buscar...",
+        searchTitle: "Buscar en tabla",
+        perPage: "Entradas por página",
+        noRows: "No se encontraron entradas",
+        info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+        noResults: "No se encontraron resultados",
       }
+    });
 
-      const verBtns = document.getElementsByClassName('btnVer');
-
-      for (const btnVer of verBtns) {
-        btnVer.addEventListener("click", e => {
-          console.log("ver Id: ", e.target.getAttribute('name'));
-          verById(e.target.getAttribute('name'));
-        })
-      }
-
-      const dataTable = new simpleDatatables.DataTable("table", {
-        perPageSelect: [5, 10, 15, ["Todos", -1]],
-        searchable: true,
-        labels: {
-          placeholder: "Buscar...",
-          searchTitle: "Buscar en tabla",
-          perPage: "Entradas por página",
-          noRows: "No se encontraron entradas",
-          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
-          noResults: "No se encontraron resultados",
-        }
-      });
-
-    })
+  })
     .catch(function (err) {
       console.log(err);
     });
@@ -154,24 +158,22 @@ function editById(id) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  })
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (respuesta) {
+  }).then(function (response) {
+    return response.text();
+  }).then(function (respuesta) {
 
-      console.log(respuesta);
+    console.log(respuesta);
 
-      respuesta = JSON.parse(respuesta);
+    respuesta = JSON.parse(respuesta);
 
-      document.getElementById("idvehiculos").value = respuesta[0]['idvehiculos'];
-      document.getElementById("ano").value = respuesta[0]['ano'];
-      document.getElementById("vin").value = respuesta[0]['vin'];
-      document.getElementById("placas").value = respuesta[0]['placas'];
-      /* document.getElementById("modelo").value = respuesta[0]['modelo'];
-      document.getElementById("marca").value = respuesta[0]['marca']; */
+    document.getElementById("idvehiculos").value = respuesta[0]['idvehiculos'];
+    document.getElementById("ano").value = respuesta[0]['ano'];
+    document.getElementById("vin").value = respuesta[0]['vin'];
+    document.getElementById("placas").value = respuesta[0]['placas'];
+    /* document.getElementById("modelo").value = respuesta[0]['modelo'];
+    document.getElementById("marca").value = respuesta[0]['marca']; */
 
-    });
+  });
 }
 
 var form = document.getElementById("editModalForm");
@@ -216,9 +218,6 @@ function handleEditForm(event) {
 
 function verById(id) {
 
-  console.log("here");
-  console.log(id);
-
   fetch('./backend/administrador/getVehiculoById.php', {
     method: 'POST',
     body: JSON.stringify({
@@ -228,25 +227,23 @@ function verById(id) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  })
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (respuesta) {
+  }).then(function (response) {
+    return response.text();
+  }).then(function (respuesta) {
 
-      console.log(respuesta);
+    console.log(respuesta);
 
-      respuesta = JSON.parse(respuesta);
-      console.log(respuesta);
+    respuesta = JSON.parse(respuesta);
+    console.log(respuesta);
 
-      document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
-      document.getElementById("ver_ano").innerHTML = respuesta[0]['ano'];
-      document.getElementById("ver_vin").innerHTML = respuesta[0]['vin'];
-      document.getElementById("ver_placas").innerHTML = respuesta[0]['placas'];
-      document.getElementById("ver_modelo").innerHTML = respuesta[0]['modelo'];
-      document.getElementById("ver_marca").innerHTML = respuesta[0]['marca'];
+    document.getElementById("ver_idvehiculos").innerHTML = respuesta[0]['idvehiculos'];
+    document.getElementById("ver_ano").innerHTML = respuesta[0]['ano'];
+    document.getElementById("ver_vin").innerHTML = respuesta[0]['vin'];
+    document.getElementById("ver_placas").innerHTML = respuesta[0]['placas'];
+    document.getElementById("ver_modelo").innerHTML = respuesta[0]['modelo'];
+    document.getElementById("ver_marca").innerHTML = respuesta[0]['marca'];
 
-    });
+  });
 }
 
 var insertForm = document.getElementById("addModalForm");
@@ -261,34 +258,32 @@ function handleInsertForm(event) {
   fetch('./backend/administrador/insertVehiculos.php', {
     method: 'POST',
     body: addModalForm
-  })
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (respuesta) {
-      console.log(respuesta);
-      if (respuesta === 'Registro insertado') {
+  }).then(function (response) {
+    return response.text();
+  }).then(function (respuesta) {
+    console.log(respuesta);
+    if (respuesta === 'Registro insertado') {
 
-        Toastify({
-          text: "Registro insertado",
-          duration: 3000,
-          className: "toast-success",
-        }).showToast();
+      Toastify({
+        text: "Registro insertado",
+        duration: 3000,
+        className: "toast-success",
+      }).showToast();
 
-        setTimeout(function () {
-          document.location.reload();
-        }, 3000);
+      setTimeout(function () {
+        document.location.reload();
+      }, 3000);
 
-      } else {
+    } else {
 
-        Toastify({
-          text: "Error al insertar el registro",
-          duration: 3000,
-          className: "toast-error",
-        }).showToast();
+      Toastify({
+        text: "Error al insertar el registro",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
 
-      }
-    });
+    }
+  });
 }
 
 function loadModelsAndBrands() {
