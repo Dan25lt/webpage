@@ -25,6 +25,7 @@ function cargarTodos() {
       ];
 
       var table = document.createElement('table');
+      table.className ='table';
 
       var thead = document.createElement('thead');
       // Titulos solamente
@@ -61,7 +62,7 @@ function cargarTodos() {
       thead.appendChild(tr);
       table.appendChild(thead);
 
-
+      var tbody = document.createElement('tbody');
       // Lenado de la tabla 
       for (var i = 0; i < data.length; i++) {
         var tr = document.createElement('tr');
@@ -96,9 +97,9 @@ function cargarTodos() {
             td.appendChild(text);
             tr.appendChild(td);
           }
+          tbody.appendChild(tr);
         }
-
-        table.appendChild(tr);
+        table.appendChild(tbody);
       }
 
 
@@ -121,6 +122,19 @@ function cargarTodos() {
           verById(e.target.getAttribute('name'));
         })
       }
+
+      const dataTable = new simpleDatatables.DataTable("table", {
+        perPageSelect: [5, 10, 15, ["Todos", -1]],
+        searchable: true,
+        labels: {
+          placeholder: "Buscar...",
+          searchTitle: "Buscar en tabla",
+          perPage: "Entradas por página",
+          noRows: "No se encontraron entradas",
+          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+          noResults: "No se encontraron resultados",
+        }
+      });
 
     })
     .catch(function (err) {
@@ -168,7 +182,7 @@ function handleEditForm(event) {
   let editModalForm = new FormData(document.getElementById("editModalForm"));
 
   document.getElementById("edit_submit_btn").disabled = true;
-  
+
   fetch('./backend/administrador/updateVehiculosById.php', {
     method: 'POST',
     body: editModalForm
@@ -195,7 +209,7 @@ function handleEditForm(event) {
         duration: 3000,
         className: "toast-error",
       }).showToast();
-      
+
     }
   });
 }
@@ -358,8 +372,6 @@ function refreshModelsById(id) {
 
       return;
     } else {
-
-      console.log(respuesta);
 
       respuesta = JSON.parse(respuesta);
 

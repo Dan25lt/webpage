@@ -4,11 +4,9 @@ function cargarOrdenes() {
     body: {
       info: ''
     }
-  })
-    .then(function (response) {
+  }).then(function (response) {
       return response.text();
-    })
-    .then(function (return_data) {
+    }).then(function (return_data) {
       // console.log(return_data);
 
       if (return_data == "no hay ordenes de servicio") {
@@ -37,6 +35,7 @@ function cargarOrdenes() {
         "opciones"];
 
       var table = document.createElement('table');
+      table.className = "table";
       var thead = document.createElement('thead')
 
       var tr = document.createElement('tr');
@@ -81,7 +80,7 @@ function cargarOrdenes() {
 
       table.appendChild(thead);
 
-
+      var tbody = document.createElement('tbody');
       for (var i = 0; i < data.length; i++) {
         var tr = document.createElement('tr');
         for (var j = 0; j < columnNames.length; j++) {
@@ -119,9 +118,24 @@ function cargarOrdenes() {
           td.appendChild(text);
           tr.appendChild(td);
         }
-        table.appendChild(tr);
+        tbody.appendChild(tr);
       }
+      table.appendChild(tbody);
       document.getElementById("tabla").appendChild(table);
+
+      const dataTable = new simpleDatatables.DataTable("table", {
+        perPageSelect: [5, 10, 15, ["Todos", -1]],
+        searchable: true,
+        labels: {
+          placeholder: "Buscar...",
+          searchTitle: "Buscar en tabla",
+          perPage: "Entradas por página",
+          noRows: "No se encontraron entradas",
+          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+          noResults: "No se encontraron resultados",
+        },
+        perPage:5
+      });
 
     })
     .catch(function (err) {

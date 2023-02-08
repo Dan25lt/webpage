@@ -36,6 +36,7 @@ function cargarOrdenes() {
         "opciones"];
 
       var table = document.createElement('table');
+      table.className = "table";
       var thead = document.createElement('thead');
 
       var tr = document.createElement('tr');
@@ -79,7 +80,7 @@ function cargarOrdenes() {
       thead.appendChild(tr)
       table.appendChild(thead);
 
-
+      var tbody = document.createElement('tbody');
       for (var i = 0; i < data.length; i++) {
         var tr = document.createElement('tr');
         for (var j = 0; j < columnNames.length; j++) {
@@ -117,36 +118,29 @@ function cargarOrdenes() {
           td.appendChild(text);
           tr.appendChild(td);
         }
-        table.appendChild(tr);
+        tbody.appendChild(tr);
       }
+      table.appendChild(tbody);
       document.getElementById("tabla").appendChild(table);
 
+      const dataTable = new simpleDatatables.DataTable("table", {
+        perPageSelect: [5, 10, 15, ["Todos", -1]],
+        searchable: true,
+        labels: {
+          placeholder: "Buscar...",
+          searchTitle: "Buscar en tabla",
+          perPage: "Entradas por página",
+          noRows: "No se encontraron entradas",
+          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+          noResults: "No se encontraron resultados",
+        },
+        perPage:5
+      });
     })
     .catch(function (err) {
       console.log(err);
     });
 }
-
-/*
-* Revisa las cookies y se encarga del login de usuarios
-*/
-/* function inspeccionarMisCookies() {
-  var loguedIn = getCookie('loguedIn');
-  var username = getCookie('username');
-  var puesto = getCookie('puesto');
-
-  document.getElementById("username").innerHTML = username;
-
-  if (!loguedIn) {
-    location.replace("/"); // redirecciona al login si el usuario no esta autenticado.
-  }
-
-  if (puesto == 'OTRO Puesto') {
-    location.replace("/"); // redirecciona a la pagina del puesto para que no ande de metiche aqui
-  }
-
-  console.log(`Usuario: Id->${loguedIn}, username: ${username}, puesto: ${puesto}`);
-} */
 
 var mostrarOrdenServicioEspecifica = function () {
   var orden_id = this.getAttribute("order_id");

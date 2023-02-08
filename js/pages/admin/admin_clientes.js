@@ -68,6 +68,7 @@ function cargarTodos() {
       ];
 
       var table = document.createElement('table');
+      table.className = "table";
 
       // Titulos.
       var thead = document.createElement('thead');
@@ -125,6 +126,7 @@ function cargarTodos() {
       thead.appendChild(tr);
       table.appendChild(thead);
 
+      var tbody = document.createElement('tbody');
       // Lenado de la tabla 
       for (var i = 0; i < data.length; i++) {
         var tr = document.createElement('tr');
@@ -160,8 +162,9 @@ function cargarTodos() {
             td.appendChild(text);
             tr.appendChild(td);
           }
+          tbody.appendChild(tr);
         }
-        table.appendChild(tr);
+        table.appendChild(tbody);
       }
 
       document.getElementById("tabla").appendChild(table);
@@ -181,6 +184,19 @@ function cargarTodos() {
           verById(e.target.getAttribute('name'));
         })
       }
+
+      const dataTable = new simpleDatatables.DataTable("table", {
+        perPageSelect: [5, 10, 15, ["Todos", -1]],
+        searchable: true,
+        labels: {
+          placeholder: "Buscar...",
+          searchTitle: "Buscar en tabla",
+          perPage: "Entradas por página",
+          noRows: "No se encontraron entradas",
+          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+          noResults: "No se encontraron resultados",
+        }
+      });
 
     })
     .catch(function (err) {
