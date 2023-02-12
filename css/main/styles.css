@@ -461,6 +461,7 @@ img {
     color: white;
     font-weight: bold;
 }
+
 #resultado.ok {
     background-color: blue;
 }
@@ -470,6 +471,14 @@ img {
     color: white;
     font-weight: bold;
 }
+
 #resultado_editar.ok {
     background-color: blue;
+}
+
+.search-margin-fix {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
 }

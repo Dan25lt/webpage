@@ -130,7 +130,34 @@ function cargarVehiculos() {
         if (!tr.attributes.class) { tr.attributes.class = "selected" }
         else { tr.attributes.class += " selected" }
         return tr
-      }
+      },
+      /* tableRender: (_data, table, type) => {
+        if (type === "print") {
+          return table
+        }
+        const tHead = table.childNodes[0]
+        const filterHeaders = {
+          nodeName: "TR",
+          childNodes: tHead.childNodes[0].childNodes.map(
+            (_th, index) => ({
+              nodeName: "TD",
+              childNodes: [
+                {
+                  nodeName: "INPUT",
+                  attributes: {
+                    class: "datatable-input search-margin-fix",
+                    type: "search",
+                    placeholder: "Buscar...",
+                    "data-columns": `[${index}]`
+                  }
+                }
+              ]
+            })
+          )
+        }
+        tHead.childNodes.push(filterHeaders)
+        return table
+      } */
 
     });
 

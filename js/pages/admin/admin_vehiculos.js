@@ -6,7 +6,7 @@ function cargarTodos() {
     return response.text();
   }).then(function (return_data) {
     if (return_data == "no hay vehiculos") {
-      
+
       Toastify({
         text: "No hay vehiculos",
         duration: 3000,
@@ -137,6 +137,33 @@ function cargarTodos() {
         noRows: "No se encontraron entradas",
         info: "Mostrando desde {start} hasta {end} de {rows} entradas",
         noResults: "No se encontraron resultados",
+      },
+      tableRender: (_data, table, type) => {
+        if (type === "print") {
+          return table
+        }
+        const tHead = table.childNodes[0]
+        const filterHeaders = {
+          nodeName: "TR",
+          childNodes: tHead.childNodes[0].childNodes.map(
+            (_th, index) => ({
+              nodeName: "TD",
+              childNodes: [
+                {
+                  nodeName: "INPUT",
+                  attributes: {
+                    class: "datatable-input search-margin-fix",
+                    type: "search",
+                    placeholder: "Buscar...",
+                    "data-columns": `[${index}]`
+                  }
+                }
+              ]
+            })
+          )
+        }
+        tHead.childNodes.push(filterHeaders)
+        return table
       }
     });
 

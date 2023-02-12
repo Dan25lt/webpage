@@ -5,139 +5,166 @@ function cargarOrdenes() {
       info: ''
     }
   }).then(function (response) {
-      return response.text();
-    }).then(function (return_data) {
-      // console.log(return_data);
+    return response.text();
+  }).then(function (return_data) {
+    // console.log(return_data);
 
-      if (return_data == "no hay ordenes de servicio") {
-        
-        Toastify({
-          text: "No hay ordenes de servicio",
-          duration: 3000,
-          className: "toast-error",
-        }).showToast();
+    if (return_data == "no hay ordenes de servicio") {
 
-        return;
-      }
+      Toastify({
+        text: "No hay ordenes de servicio",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
 
-      document.getElementById("tabla").innerHTML = "";
+      return;
+    }
 
-      var data = JSON.parse(return_data);
+    document.getElementById("tabla").innerHTML = "";
 
-      var columnNames = ["idordenDeServicio",
-        "vin",
-        "modelo",
-        "placas",
-        "fechaEntrada",
-        "fechaSalida",
-        "estatus",
-        // "alertas",
-        "opciones"];
+    var data = JSON.parse(return_data);
 
-      var table = document.createElement('table');
-      table.className = "table";
-      var thead = document.createElement('thead')
+    var columnNames = ["idordenDeServicio",
+      "vin",
+      "modelo",
+      "placas",
+      "fechaEntrada",
+      "fechaSalida",
+      "estatus",
+      // "alertas",
+      "opciones"];
 
+    var table = document.createElement('table');
+    table.className = "table";
+    var thead = document.createElement('thead')
+
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    var text = document.createTextNode('Orden De Servicio');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Vin');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Tipo de vehiculo');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Placas');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Fecha entrada');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Fecha salida');
+    th.appendChild(text);
+    tr.appendChild(th);
+    /* th = document.createElement('th');
+    text = document.createTextNode('Estatus');
+    th.appendChild(text);
+    tr.appendChild(th); */
+    th = document.createElement('th');
+    text = document.createTextNode('Atencion');
+    th.appendChild(text);
+    tr.appendChild(th);
+    th = document.createElement('th');
+    text = document.createTextNode('Opciones');
+    th.appendChild(text);
+    tr.appendChild(th);
+
+    thead.appendChild(tr)
+
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    for (var i = 0; i < data.length; i++) {
       var tr = document.createElement('tr');
-      var th = document.createElement('th');
-      var text = document.createTextNode('Orden De Servicio');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Vin');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Tipo de vehiculo');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Placas');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Fecha entrada');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Fecha salida');
-      th.appendChild(text);
-      tr.appendChild(th);
-      /* th = document.createElement('th');
-      text = document.createTextNode('Estatus');
-      th.appendChild(text);
-      tr.appendChild(th); */
-      th = document.createElement('th');
-      text = document.createTextNode('Atencion');
-      th.appendChild(text);
-      tr.appendChild(th);
-      th = document.createElement('th');
-      text = document.createTextNode('Opciones');
-      th.appendChild(text);
-      tr.appendChild(th);
+      for (var j = 0; j < columnNames.length; j++) {
+        var td = document.createElement('td');
+        if (columnNames[j] === 'opciones') {
+          var btn = document.createElement('input');
+          btn.type = "button";
+          btn.className = "button-table-secondary btnVer";
 
-      thead.appendChild(tr)
+          /*
+          * Detalles de cada orden, la guardamos en el boton para no tener que hacer otro GET
+          */
+          btn.setAttribute("order_id", data[i]['idordenDeServicio']);
+          btn.setAttribute("vehiculo", data[i]['modelo'] + " " + data[i]['ano']);
+          btn.setAttribute("placas", data[i]['placas']);
+          btn.setAttribute("vin", data[i]['vin']);
+          btn.setAttribute("nombre_cliente", data[i]['nombre'] + " " + data[i]['apellido']);
+          btn.setAttribute("telefono", data[i]['telefono'] || "NA");
+          btn.setAttribute("rfc", data[i]['rfc'] || "NA");
+          btn.setAttribute("estatus", data[i]['estatus'] || "NA");
 
-      table.appendChild(thead);
+          btn.setAttribute("img_url1", data[i]['img_url1'] || "NA");
+          btn.setAttribute("img_url2", data[i]['img_url2'] || "NA");
+          btn.setAttribute("img_url3", data[i]['img_url3'] || "NA");
+          btn.setAttribute("img_url4", data[i]['img_url4'] || "NA");
 
-      var tbody = document.createElement('tbody');
-      for (var i = 0; i < data.length; i++) {
-        var tr = document.createElement('tr');
-        for (var j = 0; j < columnNames.length; j++) {
-          var td = document.createElement('td');
-          if (columnNames[j] === 'opciones') {
-            var btn = document.createElement('input');
-            btn.type = "button";
-            btn.className = "button-table-secondary btnVer";
+          btn.value = "     Ver     ";
+          var text = btn; // text va a tener adentro un boton
 
-            /*
-            * Detalles de cada orden, la guardamos en el boton para no tener que hacer otro GET
-            */
-            btn.setAttribute("order_id", data[i]['idordenDeServicio']);
-            btn.setAttribute("vehiculo", data[i]['modelo'] + " " + data[i]['ano']);
-            btn.setAttribute("placas", data[i]['placas']);
-            btn.setAttribute("vin", data[i]['vin']);
-            btn.setAttribute("nombre_cliente", data[i]['nombre'] + " " + data[i]['apellido']);
-            btn.setAttribute("telefono", data[i]['telefono'] || "NA");
-            btn.setAttribute("rfc", data[i]['rfc'] || "NA");
-            btn.setAttribute("estatus", data[i]['estatus'] || "NA");
+          btn.addEventListener('click', mostrarOrdenServicioEspecifica, false);
 
-            btn.setAttribute("img_url1", data[i]['img_url1'] || "NA");
-            btn.setAttribute("img_url2", data[i]['img_url2'] || "NA");
-            btn.setAttribute("img_url3", data[i]['img_url3'] || "NA");
-            btn.setAttribute("img_url4", data[i]['img_url4'] || "NA");
-
-            btn.value = "     Ver     ";
-            var text = btn; // text va a tener adentro un boton
-
-            btn.addEventListener('click', mostrarOrdenServicioEspecifica, false);
-
-          } else {
-            var text = document.createTextNode(data[i][columnNames[j]]);
-          }
-          td.appendChild(text);
-          tr.appendChild(td);
+        } else {
+          var text = document.createTextNode(data[i][columnNames[j]]);
         }
-        tbody.appendChild(tr);
+        td.appendChild(text);
+        tr.appendChild(td);
       }
-      table.appendChild(tbody);
-      document.getElementById("tabla").appendChild(table);
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    document.getElementById("tabla").appendChild(table);
 
-      const dataTable = new simpleDatatables.DataTable("table", {
-        perPageSelect: [5, 10, 15, ["Todos", -1]],
-        searchable: true,
-        labels: {
-          placeholder: "Buscar...",
-          searchTitle: "Buscar en tabla",
-          perPage: "Entradas por página",
-          noRows: "No se encontraron entradas",
-          info: "Mostrando desde {start} hasta {end} de {rows} entradas",
-          noResults: "No se encontraron resultados",
-        },
-        perPage:5
-      });
+    const dataTable = new simpleDatatables.DataTable("table", {
+      perPageSelect: [5, 10, 15, ["Todos", -1]],
+      searchable: true,
+      perPage: 5,
+      labels: {
+        placeholder: "Buscar...",
+        searchTitle: "Buscar en tabla",
+        perPage: "Entradas por página",
+        noRows: "No se encontraron entradas",
+        info: "Mostrando desde {start} hasta {end} de {rows} entradas",
+        noResults: "No se encontraron resultados",
+      },
+      tableRender: (_data, table, type) => {
+        if (type === "print") {
+          return table
+        }
+        const tHead = table.childNodes[0]
+        const filterHeaders = {
+          nodeName: "TR",
+          childNodes: tHead.childNodes[0].childNodes.map(
+            (_th, index) => ({
+              nodeName: "TD",
+              childNodes: [
+                {
+                  nodeName: "INPUT",
+                  attributes: {
+                    class: "datatable-input search-margin-fix",
+                    type: "search",
+                    placeholder: "Buscar...",
+                    "data-columns": `[${index}]`
+                  }
+                }
+              ]
+            })
+          )
+        }
+        tHead.childNodes.push(filterHeaders)
+        return table
+      }
+    });
 
-    })
+  })
     .catch(function (err) {
       console.log(err);
     });
@@ -181,7 +208,7 @@ function getOperacionesList(orden_id) {
       // console.log(return_data);
 
       if (return_data === "la orden de servicio no tiene operaciones") {
-        
+
         Toastify({
           text: "La orden de servicio no tiene operaciones",
           duration: 3000,
@@ -233,20 +260,20 @@ function guardarEstatus() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        
+
         Toastify({
           text: "Registro actualizado",
           duration: 3000,
           className: "toast-success",
         }).showToast();
-  
+
         setTimeout(function () {
           document.location.reload();
         }, 3000);
-        
+
       } else {
         console.log(return_data);
-        
+
         Toastify({
           text: "Error no se pudo guardar la informacion",
           duration: 3000,

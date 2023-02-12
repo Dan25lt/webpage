@@ -126,6 +126,7 @@ function cargarOrdenes() {
     const dataTable = new simpleDatatables.DataTable("table", {
       perPageSelect: [5, 10, 15, ["Todos", -1]],
       searchable: true,
+      perPage: 5,
       labels: {
         placeholder: "Buscar...",
         searchTitle: "Buscar en tabla",
@@ -134,7 +135,33 @@ function cargarOrdenes() {
         info: "Mostrando desde {start} hasta {end} de {rows} entradas",
         noResults: "No se encontraron resultados",
       },
-      perPage:5
+      tableRender: (_data, table, type) => {
+        if (type === "print") {
+          return table
+        }
+        const tHead = table.childNodes[0]
+        const filterHeaders = {
+          nodeName: "TR",
+          childNodes: tHead.childNodes[0].childNodes.map(
+            (_th, index) => ({
+              nodeName: "TD",
+              childNodes: [
+                {
+                  nodeName: "INPUT",
+                  attributes: {
+                    class: "datatable-input search-margin-fix",
+                    type: "search",
+                    placeholder: "Buscar...",
+                    "data-columns": `[${index}]`
+                  }
+                }
+              ]
+            })
+          )
+        }
+        tHead.childNodes.push(filterHeaders)
+        return table
+      }
     });
 
   }).catch(function (err) {
@@ -241,13 +268,13 @@ function guardarEstatus() {
     .then(function (return_data) {
 
       if (return_data === "Registro actualizado") {
-        
+
         Toastify({
           text: "Registro actualizado",
           duration: 3000,
           className: "toast-success",
         }).showToast();
-  
+
         setTimeout(function () {
           // document.location.reload();
         }, 3000);

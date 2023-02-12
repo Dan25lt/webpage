@@ -155,7 +155,7 @@ function cargarTodos() {
             td.dataset.column = "opciones";
 
             tr.appendChild(td);
-            
+
           } else {
             var text = document.createTextNode(data[i][columnNames[j]]);
 
@@ -195,6 +195,33 @@ function cargarTodos() {
           noRows: "No se encontraron entradas",
           info: "Mostrando desde {start} hasta {end} de {rows} entradas",
           noResults: "No se encontraron resultados",
+        },
+        tableRender: (_data, table, type) => {
+          if (type === "print") {
+            return table
+          }
+          const tHead = table.childNodes[0]
+          const filterHeaders = {
+            nodeName: "TR",
+            childNodes: tHead.childNodes[0].childNodes.map(
+              (_th, index) => ({
+                nodeName: "TD",
+                childNodes: [
+                  {
+                    nodeName: "INPUT",
+                    attributes: {
+                      class: "datatable-input search-margin-fix",
+                      type: "search",
+                      placeholder: "Buscar...",
+                      "data-columns": `[${index}]`
+                    }
+                  }
+                ]
+              })
+            )
+          }
+          tHead.childNodes.push(filterHeaders)
+          return table
         }
       });
 
@@ -256,7 +283,7 @@ function handleEditForm(event) {
     .then(function (respuesta) {
       console.log(respuesta);
       if (respuesta === 'Registro actualizado') {
-        
+
         Toastify({
           text: "Registro actualizado",
           duration: 3000,
@@ -330,19 +357,19 @@ function handleInsertForm(event) {
     .then(function (respuesta) {
       console.log(respuesta);
       if (respuesta === 'Registro insertado') {
-        
+
         Toastify({
           text: "Registro insertado",
           duration: 3000,
           className: "toast-success",
         }).showToast();
-  
+
         setTimeout(function () {
           document.location.reload();
         }, 3000);
 
       } else {
-        
+
         Toastify({
           text: "Error al insertar el registro",
           duration: 3000,
@@ -358,28 +385,28 @@ function handleInsertForm(event) {
 //Función para validar un RFC
 function rfcValido(rfc) {
   var re = /^([ A-ZÑ&]?[A-ZÑ&]{3}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/,
-      validado = rfc.match(re);
+    validado = rfc.match(re);
 
   if (!validado)  //Coincide con el formato general?
     return false;
-  
+
   //Separar el dígito verificador del resto del RFC
   var digitoVerificador = validado.pop(),
-      rfcSinDigito = validado.slice(1).join('')
-      
+    rfcSinDigito = validado.slice(1).join('')
+
   //Obtener el digito esperado
-  var diccionario  = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ",
-      lngSuma      = 0.0,
-      digitoEsperado;
+  var diccionario = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ",
+    lngSuma = 0.0,
+    digitoEsperado;
 
   if (rfcSinDigito.length == 11) rfc = " " + rfc; //Ajustar a 12
-  for(var i=0; i<13; i++)
-      lngSuma = lngSuma + diccionario.indexOf(rfcSinDigito.charAt(i)) * (13 - i);
+  for (var i = 0; i < 13; i++)
+    lngSuma = lngSuma + diccionario.indexOf(rfcSinDigito.charAt(i)) * (13 - i);
   digitoEsperado = 11 - lngSuma % 11;
   if (digitoEsperado == 11) digitoEsperado = 0;
   if (digitoEsperado == 10) digitoEsperado = "A";
 
-//El dígito verificador coincide con el esperado?
+  //El dígito verificador coincide con el esperado?
   return digitoVerificador == digitoEsperado;
 }
 
@@ -388,31 +415,31 @@ function rfcValido(rfc) {
 //Lleva la RFC a mayúsculas para validarlo
 function validarInput(input) {
   var rfc = input.value.toUpperCase(),
-      resultado = document.getElementById("resultado"),
-      valido = "No válido";
-      
+    resultado = document.getElementById("resultado"),
+    valido = "No válido";
+
   if (rfcValido(rfc)) { // ⬅️ Acá se comprueba
     valido = "Válido";
-      resultado.classList.add("ok");
+    resultado.classList.add("ok");
   } else {
     resultado.classList.remove("ok");
   }
-      
+
   resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
 }
 
 function validarInputEditar(input) {
   var rfc = input.value.toUpperCase(),
-      resultado = document.getElementById("resultado_editar"),
-      valido = "No válido";
-      
+    resultado = document.getElementById("resultado_editar"),
+    valido = "No válido";
+
   if (rfcValido(rfc)) { // ⬅️ Acá se comprueba
     valido = "Válido";
-      resultado.classList.add("ok");
+    resultado.classList.add("ok");
   } else {
     resultado.classList.remove("ok");
   }
-      
+
   resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
 }
 
