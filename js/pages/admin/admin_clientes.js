@@ -355,4 +355,65 @@ function handleInsertForm(event) {
     });
 }
 
+//Función para validar un RFC
+function rfcValido(rfc) {
+  var re = /^([ A-ZÑ&]?[A-ZÑ&]{3}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/,
+      validado = rfc.match(re);
+
+  if (!validado)  //Coincide con el formato general?
+    return false;
+  
+  //Separar el dígito verificador del resto del RFC
+  var digitoVerificador = validado.pop(),
+      rfcSinDigito = validado.slice(1).join('')
+      
+  //Obtener el digito esperado
+  var diccionario  = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ",
+      lngSuma      = 0.0,
+      digitoEsperado;
+
+  if (rfcSinDigito.length == 11) rfc = " " + rfc; //Ajustar a 12
+  for(var i=0; i<13; i++)
+      lngSuma = lngSuma + diccionario.indexOf(rfcSinDigito.charAt(i)) * (13 - i);
+  digitoEsperado = 11 - lngSuma % 11;
+  if (digitoEsperado == 11) digitoEsperado = 0;
+  if (digitoEsperado == 10) digitoEsperado = "A";
+
+//El dígito verificador coincide con el esperado?
+  return digitoVerificador == digitoEsperado;
+}
+
+
+//Handler para el evento cuando cambia el input
+//Lleva la RFC a mayúsculas para validarlo
+function validarInput(input) {
+  var rfc = input.value.toUpperCase(),
+      resultado = document.getElementById("resultado"),
+      valido = "No válido";
+      
+  if (rfcValido(rfc)) { // ⬅️ Acá se comprueba
+    valido = "Válido";
+      resultado.classList.add("ok");
+  } else {
+    resultado.classList.remove("ok");
+  }
+      
+  resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
+}
+
+function validarInputEditar(input) {
+  var rfc = input.value.toUpperCase(),
+      resultado = document.getElementById("resultado_editar"),
+      valido = "No válido";
+      
+  if (rfcValido(rfc)) { // ⬅️ Acá se comprueba
+    valido = "Válido";
+      resultado.classList.add("ok");
+  } else {
+    resultado.classList.remove("ok");
+  }
+      
+  resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
+}
+
 cargarTodos();

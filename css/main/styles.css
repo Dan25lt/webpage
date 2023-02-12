@@ -455,3 +455,21 @@ img {
     vertical-align: top;
     padding: 0px 10px;
 }
+
+#resultado {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#resultado.ok {
+    background-color: blue;
+}
+
+#resultado_editar {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+#resultado_editar.ok {
+    background-color: blue;
+}

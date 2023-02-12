@@ -108,24 +108,27 @@
           <input type="hidden" placeholder="" name="add_iddireccion" id="add_iddireccion" required><br>
           <div class="pure-control-group">
             <label for="add_nombre">Nombre</label>
-            <input type="text" placeholder="" name="add_nombre" id="add_nombre" pattern="^[a-zA-Z ]{3,16}$" required>
+            <input type="text" placeholder="" name="add_nombre" id="add_nombre" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             <!-- <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required> -->
             <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
           <div class="pure-control-group">
             <label for="add_apellido">Apellido</label>
-            <input type="text" placeholder="" name="add_apellido" id="add_apellido" pattern="^[a-zA-Z ]{3,16}$" required>
+            <input type="text" placeholder="" name="add_apellido" id="add_apellido" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
           <div class="pure-control-group">
             <label for="add_rfc">RFC</label>
-            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" pattern="^[a-zA-Z0-9_-]{3,16}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> minimo 3 maximo 6 caracteres.</span>
+            <input type="text" maxlength="13" placeholder="" name="add_rfc" id="add_rfc" 
+            pattern="^([a-zA-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([a-zA-Z\d]{2})([A\d])$"
+            oninput="validarInput(this)" 
+            required>
+            <span class="pure-form-message-inline"><pre id="resultado"></pre></span>
           </div>
           <div class="pure-control-group">
             <label for="add_telefono">Telefono</label>
-            <input type="text" placeholder="" name="add_telefono" id="add_telefono" pattern="^[0-9_-]{3,16}$" required>
-            <span class="pure-form-message-inline">Telefono <br></span>
+            <input type="tel" placeholder="" name="add_telefono" id="add_telefono" pattern="^[0-9]{10}$" required>
+            <span class="pure-form-message-inline">Telefono <br> a 10 Numeros</span>
           </div>
           <div class="pure-control-group">
             <label for="add_email">Email</label>
@@ -204,24 +207,27 @@
           <input type="hidden" placeholder="" name="iddireccion" id="iddireccion" required><br>
           <div class="pure-control-group">
             <label for="nombre">Nombre</label>
-            <input type="text" placeholder="" name="nombre" id="nombre" pattern="^[a-zA-Z ]{3,16}$" required>
+            <input type="text" placeholder="" name="nombre" id="nombre" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             <!-- <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required> -->
             <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
           <div class="pure-control-group">
             <label for="apellido">Apellido</label>
-            <input type="text" placeholder="" name="apellido" id="apellido" pattern="^[a-zA-Z ]{3,16}$" required>
+            <input type="text" placeholder="" name="apellido" id="apellido" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             <span class="pure-form-message-inline">Solo letras y espacios.</span>
           </div>
           <div class="pure-control-group">
             <label for="rfc">RFC</label>
-            <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" pattern="^[a-zA-Z0-9_-]{3,16}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> minimo 3 maximo 6 caracteres.</span>
+            <input type="text" maxlength="13" placeholder="" name="rfc" id="rfc" 
+            pattern="^([a-zA-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([a-zA-Z\d]{2})([A\d])$"
+            oninput="validarInputEditar(this)" 
+            required>
+            <span class="pure-form-message-inline"><pre id="resultado_editar"></pre></span>
           </div>
           <div class="pure-control-group">
             <label for="telefono">Telefono</label>
-            <input type="text" placeholder="" name="telefono" id="telefono" pattern="^[0-9_-]{3,16}$" required>
-            <span class="pure-form-message-inline">Telefono <br></span>
+            <input type="text" placeholder="" name="telefono" id="telefono" pattern="^[0-9]{10}$" required>
+            <span class="pure-form-message-inline">Telefono <br> a 10 Numeros</span>
           </div>
           <div class="pure-control-group">
             <label for="email">Email</label>
