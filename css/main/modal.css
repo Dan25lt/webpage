@@ -116,6 +116,10 @@
     height: 90%;
 }
 
+.modal-small {
+    width: 40%;
+}
+
 .modal-wide {
     width: 90%;
 }

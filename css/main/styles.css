@@ -482,3 +482,20 @@ img {
     box-sizing: border-box;
     display: block;
 }
+
+.pure-form-aligned .pure-control-group label {
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    width: 6em;
+    margin: 0 1em 0 0;
+}
+
+.modal-input {
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.modal-submit {
+    float: right;
+}
