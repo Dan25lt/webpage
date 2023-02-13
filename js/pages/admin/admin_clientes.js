@@ -425,7 +425,7 @@ function validarInput(input) {
     resultado.classList.remove("ok");
   }
 
-  resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
+  resultado.innerText = "Formato: " + valido;
 }
 
 function validarInputEditar(input) {
@@ -440,7 +440,7 @@ function validarInputEditar(input) {
     resultado.classList.remove("ok");
   }
 
-  resultado.innerText = "RFC: " + rfc + "\nFormato: " + valido;
+  resultado.innerText = "Formato: " + valido;
 }
 
 cargarTodos();

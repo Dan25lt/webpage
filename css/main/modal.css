@@ -116,6 +116,10 @@
     height: 90%;
 }
 
+.modal-tall {
+    height: 90%;
+}
+
 .modal-small {
     width: 40%;
 }
@@ -123,3 +127,17 @@
 .modal-wide {
     width: 90%;
 }
+
+.modal-input {
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.modal-submit {
+    float: right;
+}
+
+.modal-medium-tall {
+    height: 70% !important;
+}
+

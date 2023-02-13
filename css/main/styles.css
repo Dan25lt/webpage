@@ -490,16 +490,3 @@ img {
     width: 6em;
     margin: 0 1em 0 0;
 }
-
-.modal-input {
-    width: 100%;
-    margin-bottom: 0.5em;
-}
-
-.modal-submit {
-    float: right;
-}
-
-.modal-tall {
-    height: 70% !important;
-}
