@@ -171,8 +171,8 @@
           <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required><br>
           <div class="pure-control-group">
             <label for="ano">Año</label>
-            <input type="text" placeholder="" name="ano" id="ano" pattern="^[12][0-9]{3}$" required>
-            <span class="pure-form-message-inline"> Solo admite numeros <br> 4 digitos para el año </span>
+            <input type="number" min="1990" name="ano" id="ano" max="2023" value="2023" required>
+            <span class="pure-form-message-inline"> <br> </span>
           </div>
           <div class="pure-control-group">
             <label for="vin">Vin</label>
