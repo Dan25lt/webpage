@@ -97,43 +97,95 @@
   <input class="modal-state" id="modal-add" type="checkbox" />
   <div class="modal">
     <label class="modal__bg" for="modal-add"></label>
-    <div class="modal__inner">
+    <div class="modal__inner modal-tall">
       <label class="modal__close" for="modal-add"></label>
       <!-- Modal content -->
+      <h3>Agregar</h3>
       <form class="pure-form pure-form-aligned" id="addModalForm">
         <fieldset>
-          <div class="pure-control-group">
-            <label for="add_ano">Año</label>
-            <input type="number" min="1990" name="add_ano" id="add_ano" max="2023" value="2023" required>
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_ano">Año:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="number" min="1990" name="add_ano" id="add_ano" max="2023" value="2023" required>
+            </div>
+            <div class="pure-u-10-24">
+              <p></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="add_vin">Vin</label>
-            <input type="text" placeholder="" name="add_vin" id="add_vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_vin">Vin:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="text" placeholder="" name="add_vin" id="add_vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
+            </div>
+            <div class="pure-u-10-24">
+              <p><span class="pure-form-message-inline">Solo numeros y letras sin espacios, 17 caracteres.</span></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="add_placas">Placas</label>
-            <input type="text" maxlength="7" placeholder="" name="add_placas" id="add_placas" pattern="^[a-zA-Z0-9_-]{3,9}$" required>
-            <span class="pure-form-message-inline"> Matricula<br> </span>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_placas">Placas:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="text" maxlength="7" placeholder="" name="add_placas" id="add_placas"
+              pattern="^[a-zA-Z0-9_-]{3,9}$" required>
+            </div>
+            <div class="pure-u-10-24">
+              <p><span class="pure-form-message-inline"> Matricula</span></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="add_id_marca">Marca</label>
-            <select name="add_id_marca" id="add_id_marca">
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_id_marca">Marca:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <select class="modal-input" name="add_id_marca" id="add_id_marca">
+              </select>
+            </div>
+            <div class="pure-u-10-24">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_id_modelo">Modelo:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <select class="modal-input" name="add_id_modelo" id="add_id_modelo">
+              </select>
+            </div>
+            <div class="pure-u-10-24">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="add_id_cliente">Cliente:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <select class="modal-input" name="add_id_cliente" id="add_id_cliente">
             </select>
+            </div>
+            <div class="pure-u-10-24">
+              <p></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="add_id_modelo">Modelo</label>
-            <select name="add_id_modelo" id="add_id_modelo">
-            </select>
+
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <br>
+              <button type="submit" class="pure-button pure-button-primary modal-submit" id="add_submit_btn">Guardar</button>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="add_id_cliente">Cliente</label>
-            <select name="add_id_cliente" id="add_id_cliente">
-            </select>
-          </div>
-          <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary" id="add_submit_btn">Guardar</button>
-          </div>
+
         </fieldset>
       </form>
 
@@ -144,16 +196,64 @@
   <input class="modal-state" id="modal-ver" type="checkbox" />
   <div class="modal">
     <label class="modal__bg" for="modal-ver"></label>
-    <div class="modal__inner">
+    <div class="modal__inner modal-small">
       <label class="modal__close" for="modal-ver"></label>
       <!-- Modal content -->
+      <h3>Detalles</h3>
 
-      <p class="info-text">Idvehiculos:<strong><span id="ver_idvehiculos"></span></strong></p>
-      <p class="info-text">Año:<strong><span id="ver_ano"></span></strong></p>
-      <p class="info-text">VIN:<strong><span id="ver_vin"></span></strong></p>
-      <p class="info-text">Placas:<strong><span id="ver_placas"></span></strong></p>
-      <p class="info-text">Modelo:<strong><span id="ver_modelo"></span></strong></p>
-      <p class="info-text">Marca:<strong><span id="ver_marca"></span></strong></p>
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">Idvehiculos:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_idvehiculos"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">Año:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_ano"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">VIN:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_vin"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">Placas:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_placas"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">Modelo:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_modelo"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-8-24">
+          <label for="">Marca:</label>
+        </div>
+        <div class="pure-u-16-24">
+          <span id="ver_marca"></span>
+        </div>
+      </div>
 
       <!-- /Modal content -->
     </div>
@@ -165,39 +265,56 @@
     <div class="modal__inner">
       <label class="modal__close" for="modal-edit"></label>
       <!-- Modal content -->
-
+      <h3>Editar</h3>
       <form class="pure-form pure-form-aligned" id="editModalForm">
         <fieldset>
-          <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required><br>
-          <div class="pure-control-group">
-            <label for="ano">Año</label>
-            <input type="number" min="1990" name="ano" id="ano" max="2023" value="2023" required>
-            <span class="pure-form-message-inline"> <br> </span>
+          <input type="hidden" placeholder="" name="idvehiculos" id="idvehiculos" required>
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="ano">Año:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="number" min="1990" name="ano" id="ano" max="2023" value="2023" required>
+            </div>
+            <div class="pure-u-10-24">
+              <p></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="vin">Vin</label>
-            <input type="text" placeholder="" name="vin" id="vin" pattern="^[a-zA-Z0-9_-]{17,17}$" required>
-            <span class="pure-form-message-inline">Solo numeros y letras sin espacios, <br> 17 caracteres.</span>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="vin">Vin:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="text" placeholder="" name="vin" id="vin" pattern="^[a-zA-Z0-9_-]{17,17}$"
+                required>
+            </div>
+            <div class="pure-u-10-24">
+              <p><span class="pure-form-message-inline">Solo numeros y letras sin espacios, 17 caracteres.</span></p>
+            </div>
           </div>
-          <div class="pure-control-group">
-            <label for="placas">Placas</label>
-            <input type="text" maxlength="7" placeholder="" name="placas" id="placas" pattern="^[a-zA-Z0-9_-]{3,9}$" required>
-            <span class="pure-form-message-inline"> Matricula<br> </span>
+
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+              <label for="placas">Placas:</label>
+            </div>
+            <div class="pure-u-10-24">
+              <input class="modal-input" type="text" maxlength="7" placeholder="" name="placas" id="placas"
+                pattern="^[a-zA-Z0-9_-]{3,9}$" required>
+            </div>
+            <div class="pure-u-10-24">
+              <p><span class="pure-form-message-inline"> Matricula<br> </span></p>
+            </div>
           </div>
-          <!-- <div class="pure-control-group">
-            <label for="puesto">Puesto</label>
-            <select name="puesto" id="puesto">
-              <option value="Administrador">Administrador</option>
-              <option value="Asesor">Asesor</option>
-              <option value="Tecnico">Tecnico</option>
-              <option value="Lavador">Lavador</option>
-              <option value="Calidad">Calidad</option>
-              <option value="Gerente">Gerente</option>
-            </select>
-          </div> -->
-          <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary" id="edit_submit_btn">Guardar</button>
+
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <br>
+              <button type="submit" class="pure-button pure-button-primary modal-submit"
+                id="edit_submit_btn">Guardar</button>
+            </div>
           </div>
+
         </fieldset>
       </form>
 

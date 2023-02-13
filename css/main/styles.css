@@ -499,3 +499,7 @@ img {
 .modal-submit {
     float: right;
 }
+
+.modal-tall {
+    height: 70% !important;
+}
