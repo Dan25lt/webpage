@@ -6,7 +6,7 @@
     $_post = json_decode(file_get_contents('php://input'),true);
     $id = $_post['id'];
 
-    $query = "SELECT * FROM sistema_web.modelo WHERE idmarca = '$id'"; 
+    $query = "SELECT * FROM modelo WHERE idmarca = '$id'"; 
     $result = $con->query($query);
     if ($result->num_rows > 0) {
         // output data of each row
