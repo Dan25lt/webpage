@@ -68,7 +68,7 @@ function cargarOrdenes() {
     tr.appendChild(th);
     th.style.cssText=" background-color: #222;  color: whitesmoke; padding: 15px;   font-size: 120%; text-align: center;"; */
     th = document.createElement('th');
-    text = document.createTextNode('Atencion');
+    text = document.createTextNode('Estatus');
     th.appendChild(text);
     tr.appendChild(th);
     th = document.createElement('th');

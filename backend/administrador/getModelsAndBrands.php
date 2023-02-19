@@ -5,7 +5,7 @@
     $modelosArr = array();
 
     // Get Marcas
-    $query = "SELECT * FROM sistema_web.marca";
+    $query = "SELECT * FROM marca";
     $result = $con->query($query);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -22,7 +22,7 @@
     }
 
     // Get Modelos
-    $query = "SELECT * FROM sistema_web.modelo";
+    $query = "SELECT * FROM modelo";
     $result = $con->query($query);
     if ($result->num_rows > 0) {
         // output data of each row
