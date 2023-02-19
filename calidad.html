@@ -43,7 +43,7 @@
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop" />
     <ul class="menu">
-      <li>
+      <li class="li_admin">
         <!-- First Tier Drop Down -->
         <label for="drop-1" class="toggle">Administrador</label>
         <a href="#">Administrador</a>
@@ -54,8 +54,8 @@
           <li><a href="./admin_clientes.html">clientes</a></li>
         </ul>
       </li>
-      <li><a href="./gerente.html">Gerente</a></li>
-      <li>
+      <li class="li_gerente"><a href="./gerente.html">Gerente</a></li>
+      <li class="li_asesor">
         <!-- First Tier Drop Down -->
         <label for="drop-2" class="toggle">Asesor</label>
         <a href="#">Asesor</a>
@@ -65,9 +65,9 @@
           <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
         </ul>
       </li>
-      <li><a href="./tecnico.html">Técnico</a></li>
-      <li><a href="./lavado.html">Lavador</a></li>
-      <li><a href="./calidad.html">Calidad</a></li>
+      <li class="li_tecnico"><a href="./tecnico.html">Técnico</a></li>
+      <li class="li_lavador"><a href="./lavado.html">Lavador</a></li>
+      <li class="li_calidad"><a href="./calidad.html">Calidad</a></li>
       <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
       </li>
     </ul>
@@ -127,7 +127,8 @@
             <legend><strong>Cambiar el estatus:</strong>:</legend>
             <form onsubmit="guardarEstatus()">
               <div>
-                <button type="submit" id="btn-siguiente" class="pure-button pure-button-primary button-small">Siguiente Area</button>
+                <button type="submit" id="btn-siguiente" class="pure-button pure-button-primary button-small">Siguiente
+                  Area</button>
               </div>
             </form>
           </div>
@@ -203,7 +204,7 @@
 
         <h4 class="content-sub-head black-text">Resumen.</h4>
         <div class="pure-g">
-          
+
           <div class="l-box pure-u-1-1 pure-u-md-12-24 pure-u-lg-12-24 is-center">
             <form onsubmit="guardarCheckListCalidad()" id="checkListCalidadForm">
               <table border="1" cellpadding="0" cellspacing="0" align="right" style="border: 3px solid black;">
@@ -647,7 +648,7 @@
               <button type="submit" class="pure-button pure-button-primary button-small ">Guardar</button>
             </form>
           </div>
-          
+
         </div>
 
 

@@ -41,7 +41,7 @@
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop" />
     <ul class="menu">
-      <li>
+      <li class="li_admin">
         <!-- First Tier Drop Down -->
         <label for="drop-1" class="toggle">Administrador</label>
         <a href="#">Administrador</a>
@@ -52,8 +52,8 @@
           <li><a href="./admin_clientes.html">clientes</a></li>
         </ul>
       </li>
-      <li><a href="./gerente.html">Gerente</a></li>
-      <li>
+      <li class="li_gerente"><a href="./gerente.html">Gerente</a></li>
+      <li class="li_asesor">
         <!-- First Tier Drop Down -->
         <label for="drop-2" class="toggle">Asesor</label>
         <a href="#">Asesor</a>
@@ -63,9 +63,9 @@
           <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
         </ul>
       </li>
-      <li><a href="./tecnico.html">Técnico</a></li>
-      <li><a href="./lavado.html">Lavador</a></li>
-      <li><a href="./calidad.html">Calidad</a></li>
+      <li class="li_tecnico"><a href="./tecnico.html">Técnico</a></li>
+      <li class="li_lavador"><a href="./lavado.html">Lavador</a></li>
+      <li class="li_calidad"><a href="./calidad.html">Calidad</a></li>
       <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
       </li>
     </ul>
@@ -120,12 +120,13 @@
               <label for="add_contrasena">Contraseña:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="password" name="add_contrasena" id="add_contrasena" placeholder="Contraseña"
-                pattern='(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$' required />
+              <input class="modal-input" type="password" name="add_contrasena" id="add_contrasena"
+                placeholder="Contraseña" pattern='(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$'
+                required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Al menos 1 minuscula, 1 mayuscula, 1 numero y minimo 8
-                caracteres</span></p>
+                  caracteres</span></p>
             </div>
           </div>
 
@@ -134,8 +135,8 @@
               <label for="add_nombre">Nombre:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" name="add_nombre" id="add_nombre" placeholder="Nombre" pattern="^[a-zA-ZñÑ ]{3,32}$"
-          required />
+              <input class="modal-input" type="text" name="add_nombre" id="add_nombre" placeholder="Nombre"
+                pattern="^[a-zA-ZñÑ ]{3,32}$" required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -147,8 +148,8 @@
               <label for="add_apellido">Apellido:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" name="add_apellido" id="add_apellido" placeholder="Apellido" pattern="^[a-zA-ZñÑ ]{3,32}$"
-          required />
+              <input class="modal-input" type="text" name="add_apellido" id="add_apellido" placeholder="Apellido"
+                pattern="^[a-zA-ZñÑ ]{3,32}$" required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -177,7 +178,8 @@
           <div class="pure-g">
             <div class="pure-u-1">
               <br>
-              <button type="submit" class="pure-button pure-button-primary modal-submit" id="add_user_submit_btn">Guardar</button>
+              <button type="submit" class="pure-button pure-button-primary modal-submit"
+                id="add_user_submit_btn">Guardar</button>
             </div>
           </div>
         </fieldset>
@@ -185,7 +187,7 @@
 
 
       <div class="pure-controls">
-        
+
       </div>
 
 
@@ -238,7 +240,7 @@
 
       <div class="pure-g">
         <div class="pure-u-8-24">
-        <label for="">Apellido:</label>
+          <label for="">Apellido:</label>
         </div>
         <div class="pure-u-16-24">
           <span id="ver_apellido"></span>
@@ -274,11 +276,11 @@
             </div>
             <div class="pure-u-10-24">
               <input class="modal-input" type="text" name="usuario" id="usuario" placeholder="Usuario"
-              pattern="^[a-zA-Z0-9_-]{3,16}$" required />
+                pattern="^[a-zA-Z0-9_-]{3,16}$" required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo numeros y letras sin espacios, minimo 3 maximo 6
-                caracteres.</span></p>
+                  caracteres.</span></p>
             </div>
           </div>
 
@@ -287,7 +289,8 @@
               <label for="nombre">Nombre:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" name="nombre" id="nombre" placeholder="Nombre" pattern="^[a-zA-ZñÑ ]{3,16}$" required />
+              <input class="modal-input" type="text" name="nombre" id="nombre" placeholder="Nombre"
+                pattern="^[a-zA-ZñÑ ]{3,16}$" required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -299,8 +302,8 @@
               <label for="apellido">Apellido:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" name="apellido" id="apellido" placeholder="Apellido" pattern="^[a-zA-ZñÑ ]{3,16}$"
-              required />
+              <input class="modal-input" type="text" name="apellido" id="apellido" placeholder="Apellido"
+                pattern="^[a-zA-ZñÑ ]{3,16}$" required />
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -329,7 +332,8 @@
           <div class="pure-g">
             <div class="pure-u-1">
               <br>
-              <button type="submit" class="pure-button pure-button-primary modal-submit" id="edit_user_submit_btn">Guardar</button>
+              <button type="submit" class="pure-button pure-button-primary modal-submit"
+                id="edit_user_submit_btn">Guardar</button>
             </div>
           </div>
 

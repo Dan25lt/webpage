@@ -1,3 +1,10 @@
+<?php
+# Si no entiendes el código, primero mira a login.php
+# Iniciar sesión para usar $_SESSION
+
+echo "here";
+
+?>
 <!doctype html>
 <html class="no-js" lang="es-MX">
 
@@ -55,7 +62,7 @@
           <fieldset>
             <legend>Ingresa tu numero de orden.</legend>
             <input type="text" placeholder="" style="max-width: 200px;" />
-            <button type="submit" class="pure-button pure-button-primary" style="margin-bottom: 1em;">Sign in</button>
+            <button type="submit" class="pure-button pure-button-primary">Buscar</button>
           </fieldset>
         </form>
       </div>
@@ -181,20 +188,45 @@
   <input class="modal-state" id="modal-1" type="checkbox" />
   <div class="modal">
     <label class="modal__bg" for="modal-1"></label>
-    <div class="modal__inner">
+    <div class="modal__inner modal-small">
       <label class="modal__close" for="modal-1"></label>
       <!-- Modal content -->
+      <h3>Login</h3>
       <form class="pure-form pure-form-stacked" onsubmit="login(event)" id="loginForm">
         <fieldset>
-          <label for="username">Usuario</label>
-          <input type="text" placeholder="Escribe tu Usuario" name="username" id="username" required>
-          <label for="stacked-password">Contraseña</label>
-          <input type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
+          <div class="pure-g">
+            <div class="pure-u-8-24">
+              <label for="username" style="margin: 0.5em;">Usuario:</label>
+            </div>
+            <div class="pure-u-16-24">
+              <input class="modal-input" type="text" placeholder="Nombre de Usuario" name="username" id="username" required>
+            </div>
+          </div>
 
-          <div class="g-recaptcha" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
+          <div class="pure-g">
+            <div class="pure-u-8-24">
+              <label for="stacked-password" style="margin: 0.5em;">Contraseña:</label>
+            </div>
+            <div class="pure-u-16-24">
+              <input class="modal-input" type="password" placeholder="Escribe tu contrasena" name="password" id="password" required>
+            </div>
+          </div>
 
-          <label for="stacked-password"></label>
-          <button type="submit" class="pure-button pure-button-primary">Iniciar Sesión</button>
+          <br>
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <div class="g-recaptcha modal-submit" data-sitekey="6LekeikkAAAAAHwfrd8Ijxdd2zY3yn-UITakIAXe"></div>
+              <label for="stacked-password"></label>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <br>
+              <button type="submit" class="pure-button pure-button-primary modal-submit">Iniciar Sesión</button>
+            </div>
+          </div>
+
         </fieldset>
       </form>
       <!-- /Modal content -->

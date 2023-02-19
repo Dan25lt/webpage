@@ -43,7 +43,7 @@
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop" />
     <ul class="menu">
-      <li>
+      <li class="li_admin">
         <!-- First Tier Drop Down -->
         <label for="drop-1" class="toggle">Administrador</label>
         <a href="#">Administrador</a>
@@ -54,8 +54,8 @@
           <li><a href="./admin_clientes.html">clientes</a></li>
         </ul>
       </li>
-      <li><a href="./gerente.html">Gerente</a></li>
-      <li>
+      <li class="li_gerente"><a href="./gerente.html">Gerente</a></li>
+      <li class="li_asesor">
         <!-- First Tier Drop Down -->
         <label for="drop-2" class="toggle">Asesor</label>
         <a href="#">Asesor</a>
@@ -65,9 +65,9 @@
           <li><a href="./asesor_nueva_orden_servicio.html">Nueva Orden</a></li>
         </ul>
       </li>
-      <li><a href="./tecnico.html">Técnico</a></li>
-      <li><a href="./lavado.html">Lavador</a></li>
-      <li><a href="./calidad.html">Calidad</a></li>
+      <li class="li_tecnico"><a href="./tecnico.html">Técnico</a></li>
+      <li class="li_lavador"><a href="./lavado.html">Lavador</a></li>
+      <li class="li_calidad"><a href="./calidad.html">Calidad</a></li>
       <li><a href="./logout.php"><img src="./img/cerrar_sesion.ico" alt="Salir" style="width: 18px;height:18px;"></a>
       </li>
     </ul>
@@ -179,7 +179,7 @@
             </div>
             <div class="pure-u-10-24">
               <input class="modal-input" type="text" placeholder="" name="add_calle" id="add_calle"
-                pattern="^[a-zA-Z0-9_- ]{3,32}$" required>
+                pattern="^[a-zA-Z0-9ñÑ ]{3,32}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo numeros y letras</span></p>
@@ -231,7 +231,7 @@
             </div>
             <div class="pure-u-10-24">
               <input class="modal-input" type="text" placeholder="" name="add_idarea_postal" id="add_idarea_postal"
-                pattern="^[0-9]{5,%}$" required>
+                pattern="^[0-9]{5}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline"> Solo codigos postales (5 numeros) </span></p>
@@ -381,7 +381,8 @@
               <label for="nombre">Nombre:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="nombre" id="nombre" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
+              <input class="modal-input" type="text" placeholder="" name="nombre" id="nombre"
+                pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -393,7 +394,8 @@
               <label for="apellido">Apellido:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="apellido" id="apellido" pattern="^[a-zA-ZñÑ ]{3,16}$" required>
+              <input class="modal-input" type="text" placeholder="" name="apellido" id="apellido"
+                pattern="^[a-zA-ZñÑ ]{3,16}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo letras y espacios.</span></p>
@@ -410,9 +412,9 @@
                 oninput="validarInputEditar(this)" required>
             </div>
             <div class="pure-u-10-24">
-                <span class="pure-form-message-inline">
-                  <pre id="resultado_editar"></pre>
-                </span>
+              <span class="pure-form-message-inline">
+                <pre id="resultado_editar"></pre>
+              </span>
             </div>
           </div>
 
@@ -421,7 +423,8 @@
               <label for="telefono">Telefono:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="telefono" id="telefono" pattern="^[0-9]{10}$" required>
+              <input class="modal-input" type="text" placeholder="" name="telefono" id="telefono" pattern="^[0-9]{10}$"
+                required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Telefono a 10 Numeros</span></p>
@@ -445,7 +448,8 @@
               <label for="rfc">Calle:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="calle" id="calle" pattern="^[a-zA-Z0-9_- ]{3,32}$" required>
+              <input class="modal-input" type="text" placeholder="" name="calle" id="calle"
+                pattern="^[a-zA-Z0-9ñÑ ]{3,32}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline">Solo numeros y letras</span></p>
@@ -457,7 +461,8 @@
               <label for="numeroint">Numero int:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="number" placeholder="" name="numeroint" id="numeroint" min="0" max="999999">
+              <input class="modal-input" type="number" placeholder="" name="numeroint" id="numeroint" min="0"
+                max="999999">
             </div>
             <div class="pure-u-10-24">
               <p></p>
@@ -469,7 +474,8 @@
               <label for="numeroint">Número ext:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="number" placeholder="" name="numeroext" id="numeroext" min="0" max="999999">
+              <input class="modal-input" type="number" placeholder="" name="numeroext" id="numeroext" min="0"
+                max="999999">
             </div>
             <div class="pure-u-10-24">
               <p></p>
@@ -481,7 +487,8 @@
               <label for="colonia">Colonia:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="colonia" id="colonia" pattern="^[a-zA-Z0-9 ]{3,16}$" required>
+              <input class="modal-input" type="text" placeholder="" name="colonia" id="colonia"
+                pattern="^[a-zA-Z0-9 ]{3,16}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline"> Solo letros, numeros y espacios. </span></p>
@@ -493,7 +500,8 @@
               <label for="idarea_postal">Codigo postal:</label>
             </div>
             <div class="pure-u-10-24">
-              <input class="modal-input" type="text" placeholder="" name="idarea_postal" id="idarea_postal" pattern="^[0-9]{5,%}$" required>
+              <input class="modal-input" type="text" placeholder="" name="idarea_postal" id="idarea_postal"
+                pattern="^[0-9]{5}$" required>
             </div>
             <div class="pure-u-10-24">
               <p><span class="pure-form-message-inline"> Solo codigos postales (5 numeros) </span></p>
@@ -503,7 +511,8 @@
           <div class="pure-g">
             <div class="pure-u-1">
               <br>
-              <button type="submit" class="pure-button pure-button-primary modal-submit" id="edit_submit_btn">Guardar</button>
+              <button type="submit" class="pure-button pure-button-primary modal-submit"
+                id="edit_submit_btn">Guardar</button>
             </div>
           </div>
 
