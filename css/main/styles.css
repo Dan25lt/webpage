@@ -490,3 +490,20 @@ img {
     width: 6em;
     margin: 0 1em 0 0;
 }
+
+/*
+* CUSTOM FILE
+*/
+
+.custom-file-2 {
+    cursor: pointer;
+}
+
+.custom-file-input-2 {
+    display: none;
+}
+
+.pr-10 {
+    margin: 0 10px 0 0;
+}
+

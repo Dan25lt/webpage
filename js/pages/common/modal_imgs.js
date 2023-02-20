@@ -2,25 +2,25 @@
 * modal click para mostrar las imagenes en grande
 */
 document.getElementById("img1").addEventListener('click', function () {
-  
+
   let imgUrl = document.getElementById('img1').getAttribute("src");
   document.getElementById("modal_img").src = imgUrl;
 });
 
 document.getElementById("img2").addEventListener('click', function () {
-  
+
   let imgUrl = document.getElementById('img2').getAttribute("src");
   document.getElementById("modal_img").src = imgUrl;
 })
 
 document.getElementById("img3").addEventListener('click', function () {
-  
+
   let imgUrl = document.getElementById('img3').getAttribute("src");
   document.getElementById("modal_img").src = imgUrl;
 })
 
 document.getElementById("img4").addEventListener('click', function () {
-  
+
   let imgUrl = document.getElementById('img4').getAttribute("src");
   document.getElementById("modal_img").src = imgUrl;
 })
@@ -32,7 +32,7 @@ const imgBtns = document.getElementsByClassName('btnImg'); // Borrar imagenes
 
 for (const imgBtn of imgBtns) {
   imgBtn.addEventListener("click", e => {
-    console.log( "HERE " + e.target.id + " clicked");
+    console.log("HERE " + e.target.id + " clicked");
     /* 
     * Tomamos la desicion en base al id del boton
     */
@@ -140,7 +140,250 @@ function mostrarImagenesChiquitas(element) {
   }
 }
 
+/*
+* Nueva funcion para cargar imagenes
+*/
 
+function imageUpload1() {
+
+  document.getElementById("img_to_upload_1").addEventListener('change', function (event) {
+    var files = document.getElementById("img_to_upload_1").files;
+
+    if (files.length > 0) {
+
+      var formData = new FormData();
+      formData.append("file", files[0]);
+      formData.append("orden_id", document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"));
+
+      var xhttp = new XMLHttpRequest();
+
+      // Set POST method and ajax file path
+      xhttp.open("POST", "./backend/uploadImg1.php", true);
+
+      // call on request changes state
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+          document.getElementById("img_to_upload_1").value = "";
+
+          var response = this.responseText;
+          console.log(response);
+
+          if (response === 0) {
+            Toastify({
+              text: "Error al cargar el archivo",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
+          } else {
+
+            Toastify({
+              text: "Imagen guardada",
+              duration: 3000,
+              className: "toast-success",
+            }).showToast();
+
+            document.getElementById("img1").setAttribute("src", "./img/uploads/" + response);
+            cargarOrdenes();
+          }
+        }
+      };
+
+      // Send request with data
+      xhttp.send(formData);
+
+    } else {
+      Toastify({
+        text: "Por favor selecciona una imagen",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+    }
+
+  });
+};
+
+function imageUpload2() {
+
+  document.getElementById("img_to_upload_2").addEventListener('change', function (event) {
+    var files = document.getElementById("img_to_upload_2").files;
+
+    if (files.length > 0) {
+
+      var formData = new FormData();
+      formData.append("file", files[0]);
+      formData.append("orden_id", document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"));
+
+      var xhttp = new XMLHttpRequest();
+
+      // Set POST method and ajax file path
+      xhttp.open("POST", "./backend/uploadImg2.php", true);
+
+      // call on request changes state
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+          document.getElementById("img_to_upload_2").value = "";
+
+          var response = this.responseText;
+          console.log(response);
+
+          if (response === 0) {
+
+            Toastify({
+              text: "Error al cargar el archivo.",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
+
+          } else {
+
+            Toastify({
+              text: "Imagen guardada",
+              duration: 3000,
+              className: "toast-success",
+            }).showToast();
+
+            document.getElementById("img2").setAttribute("src", "./img/uploads/" + response);
+            cargarOrdenes();
+          }
+        }
+      };
+
+      // Send request with data
+      xhttp.send(formData);
+
+    } else {
+      Toastify({
+        text: "Por favor selecciona una imagen",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+    }
+
+  });
+};
+
+function imageUpload3() {
+  document.getElementById("img_to_upload_3").addEventListener('change', function (event) {
+    var files = document.getElementById("img_to_upload_3").files;
+
+    if (files.length > 0) {
+
+      var formData = new FormData();
+      formData.append("file", files[0]);
+      formData.append("orden_id", document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"));
+
+      var xhttp = new XMLHttpRequest();
+
+      // Set POST method and ajax file path
+      xhttp.open("POST", "./backend/uploadImg3.php", true);
+
+      // call on request changes state
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+          document.getElementById("img_to_upload_3").value = "";
+
+          var response = this.responseText;
+          console.log(response);
+
+          if (response === 0) {
+
+            Toastify({
+              text: "Error al cargar el archivo.",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
+
+          } else {
+
+            Toastify({
+              text: "Imagen guardada",
+              duration: 3000,
+              className: "toast-success",
+            }).showToast();
+
+            document.getElementById("img3").setAttribute("src", "./img/uploads/" + response);
+            cargarOrdenes();
+          }
+        }
+      };
+
+      // Send request with data
+      xhttp.send(formData);
+
+    } else {
+      Toastify({
+        text: "Por favor selecciona una imagen",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+    }
+  });
+};
+
+function imageUpload4() {
+  document.getElementById("img_to_upload_4").addEventListener('change', function (event) {
+    var files = document.getElementById("img_to_upload_4").files;
+
+    if (files.length > 0) {
+
+      var formData = new FormData();
+      formData.append("file", files[0]);
+      formData.append("orden_id", document.getElementById('orden_servicio_contenido').getAttribute("orden_actual"));
+
+      var xhttp = new XMLHttpRequest();
+
+      // Set POST method and ajax file path
+      xhttp.open("POST", "./backend/uploadImg4.php", true);
+
+      // call on request changes state
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+          document.getElementById("img_to_upload_4").value = "";
+
+          var response = this.responseText;
+          console.log(response);
+
+          if (response === 0) {
+
+            Toastify({
+              text: "Error al cargar el archivo.",
+              duration: 3000,
+              className: "toast-error",
+            }).showToast();
+
+          } else {
+
+            Toastify({
+              text: "Imagen guardada",
+              duration: 3000,
+              className: "toast-success",
+            }).showToast();
+
+            document.getElementById("img4").setAttribute("src", "./img/uploads/" + response);
+            cargarOrdenes();
+          }
+        }
+      };
+
+      // Send request with data
+      xhttp.send(formData);
+
+    } else {
+      Toastify({
+        text: "Por favor selecciona una imagen",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+    }
+  });
+};
+/* 
+
+// DEPRECATED
 // Upload Img file
 function uploadFile() {
 
@@ -277,7 +520,7 @@ function uploadFile3() {
         console.log(response);
 
         if (response === 0) {
-          
+
           Toastify({
             text: "Error al cargar el archivo.",
             duration: 3000,
@@ -285,7 +528,7 @@ function uploadFile3() {
           }).showToast();
 
         } else {
-          
+
           Toastify({
             text: "Imagen guardada",
             duration: 3000,
@@ -334,15 +577,15 @@ function uploadFile4() {
         console.log(response);
 
         if (response === 0) {
-          
+
           Toastify({
             text: "Error al cargar el archivo.",
             duration: 3000,
             className: "toast-error",
           }).showToast();
-          
+
         } else {
-          
+
           Toastify({
             text: "Imagen guardada",
             duration: 3000,
@@ -366,4 +609,10 @@ function uploadFile4() {
     }).showToast();
   }
 
-}
+} */
+
+
+imageUpload1(); // cargando funcion en memoria
+imageUpload2();
+imageUpload3();
+imageUpload4();
