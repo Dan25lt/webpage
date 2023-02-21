@@ -9,6 +9,14 @@ $nombre = $_POST['add_nombre'];
 $apellido = $_POST['add_apellido'];
 $puesto = $_POST['add_puesto'];
 
+$query = "SELECT * FROM empleado WHERE usuario = '$usuario' ";
+
+$result = $con->query($query);
+
+if ($result->num_rows > 0) {
+    exit("El nombre de usuario usuario ya existe");
+}
+
 $query = "INSERT INTO empleado  (
          idempleado, 
          usuario,

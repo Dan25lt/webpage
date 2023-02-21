@@ -356,6 +356,18 @@ function handleInsertForm(event) {
     })
     .then(function (respuesta) {
       console.log(respuesta);
+
+      if (respuesta === "Ya existe un cliente con ese RFC") {
+        Toastify({
+          text: "Ya existe un cliente con ese RFC",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+
+        document.getElementById("add_submit_btn").disabled = false;
+        return;
+      }
+
       if (respuesta === 'Registro insertado') {
 
         Toastify({

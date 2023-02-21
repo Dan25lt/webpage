@@ -348,6 +348,17 @@ function handleAddForm(event) {
     .then(function (return_data) {
       console.log(return_data);
 
+      if (return_data === "El nombre de usuario usuario ya existe") {
+        Toastify({
+          text: "El nombre de usuario usuario ya existe",
+          duration: 3000,
+          className: "toast-error",
+        }).showToast();
+
+        document.getElementById("add_user_submit_btn").disabled = false;
+        return;
+      }
+
       if (return_data === 'Registro insertado') {
 
         Toastify({
@@ -367,6 +378,8 @@ function handleAddForm(event) {
           duration: 3000,
           className: "toast-error",
         }).showToast();
+
+        document.getElementById("add_user_submit_btn").disabled = false;
 
       }
     })
