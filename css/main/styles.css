@@ -511,3 +511,7 @@ img {
     background: rgb(202, 60, 60);
     color: #fff;
 }
+
+.menu {
+    margin-right: 40px !important;
+}
