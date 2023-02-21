@@ -19,7 +19,6 @@ function cargarTodos() {
       var columnNames = [
         "idempleado",
         "usuario",
-        "contrasena",
         "nombre",
         "apellido",
         "puesto",
@@ -41,10 +40,12 @@ function cargarTodos() {
       var text = document.createTextNode('Ususario');
       th.appendChild(text);
       tr.appendChild(th);
-      var th = document.createElement('th');
+
+      /* var th = document.createElement('th');
       var text = document.createTextNode('Contrasena');
       th.appendChild(text);
-      tr.appendChild(th);
+      tr.appendChild(th); */
+
       th = document.createElement('th');
       text = document.createTextNode('Nombre');
       th.appendChild(text);
