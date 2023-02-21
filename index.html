@@ -62,9 +62,12 @@ echo "here";
           <fieldset>
             <legend>Ingresa tu número de orden.</legend>
             <input type="text" placeholder="" style="max-width: 200px;" />
-            <button type="submit" class="pure-button pure-button-primary" style="margin-bottom: 1em;">Buscar</button>
+            <button type="submit" class="pure-button pure-button-primary">Buscar</button>
           </fieldset>
         </form>
+      </div>
+      <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1">
+        hdsgkjsfhdgkljhsdfgkjh
       </div>
 
     </div>
@@ -280,23 +283,7 @@ echo "here";
 
             // codigo para redireccionar,
 
-            if (response.puesto == 'Administrador') {
-              location.replace("./menu.html");
-            } else if (response.puesto == 'Asesor') {
-              location.replace("./asesor.html");
-            }
-            else if (response.puesto == 'Tecnico') {
-              location.replace("./tecnico.html");
-            }
-            else if (response.puesto == 'Lavador') {
-              location.replace("./lavado.html");
-            }
-            else if (response.puesto == 'Calidad') {
-              location.replace("./calidad.html");
-            }
-            else if (response.puesto == 'Gerente') {
-              location.replace("./gerente.html");
-            }
+            location.replace("./menu.html");
 
           } else if (response.statusCode === 403) {
             Toastify({
