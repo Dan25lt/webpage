@@ -284,7 +284,7 @@ function verById(id) {
 
     document.getElementById("ver_idempleado").innerHTML = respuesta[0]['idempleado'];
     document.getElementById("ver_usuario").innerHTML = respuesta[0]['usuario'];
-    document.getElementById("ver_contraseña").innerHTML = respuesta[0]['contrasena'];
+    /* document.getElementById("ver_contraseña").innerHTML = respuesta[0]['contrasena']; */
     document.getElementById("ver_nombre").innerHTML = respuesta[0]['nombre'];
     document.getElementById("ver_apellido").innerHTML = respuesta[0]['apellido'];
     document.getElementById("ver_puesto").innerHTML = respuesta[0]['puesto'];

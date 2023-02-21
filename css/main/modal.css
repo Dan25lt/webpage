@@ -124,6 +124,11 @@
     width: 40%;
 }
 
+.modal-small-and-thin {
+    width: 40%;
+    height: 50%;
+}
+
 .modal-wide {
     width: 90%;
 }
@@ -137,7 +142,11 @@
     float: right;
 }
 
-.modal-medium-tall {
-    height: 70% !important;
+.modal-close {
+    float: right;
+    margin: 0 5px !important;
 }
 
+.modal-medium-tall {
+    height: 75% !important;
+}

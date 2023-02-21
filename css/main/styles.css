@@ -507,3 +507,7 @@ img {
     margin: 0 10px 0 0;
 }
 
+.button-error {
+    background: rgb(202, 60, 60);
+    color: #fff;
+}

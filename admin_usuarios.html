@@ -176,21 +176,16 @@
           </div>
 
           <div class="pure-g">
+          
             <div class="pure-u-1">
               <br>
-              <button type="submit" class="pure-button pure-button-primary modal-submit"
+                <button type="submit" class="pure-button pure-button-primary modal-submit"
                 id="add_user_submit_btn">Guardar</button>
+                <label class="pure-button button-error modal-close" for="modal-add">Cancelar</label>
             </div>
           </div>
         </fieldset>
       </form>
-
-
-      <div class="pure-controls">
-
-      </div>
-
-
       <!-- /Modal content -->
     </div>
   </div>
@@ -198,7 +193,7 @@
   <input class="modal-state" id="modal-ver" type="checkbox" />
   <div class="modal">
     <label class="modal__bg" for="modal-ver"></label>
-    <div class="modal__inner modal-small">
+    <div class="modal__inner modal-small-and-thin">
       <label class="modal__close" for="modal-ver"></label>
       <!-- Modal content -->
       <h3>Detalles</h3>
@@ -253,6 +248,14 @@
         </div>
         <div class="pure-u-16-24">
           <span id="ver_puesto"></span>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <br>
+          <label class="pure-button button-error modal-submit"
+          class="modal__close" for="modal-ver">Cancelar</label>
         </div>
       </div>
 
@@ -334,6 +337,7 @@
               <br>
               <button type="submit" class="pure-button pure-button-primary modal-submit"
                 id="edit_user_submit_btn">Guardar</button>
+              <label class="pure-button button-error modal-close" for="modal-edit">Cancelar</label>
             </div>
           </div>
 
