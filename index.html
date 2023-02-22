@@ -33,6 +33,8 @@ echo "here";
 
   <link rel="stylesheet" href="css/main/styles.css">
   <link rel="stylesheet" href="css/main/modal.css">
+  <link rel="stylesheet" href="css/main/table.css">
+  <link rel="stylesheet" href="css/main/steper.css">
 
   <meta name="theme-color" content="#fafafa">
 
@@ -58,18 +60,42 @@ echo "here";
       <h2 class="content-head is-center black-text">Encuentra tu orden de servicio.</h2>
 
       <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1">
-        <form class="pure-form">
+        <form id="buscarForm" class="pure-form" onsubmit="buscarOrden(event)">
           <fieldset>
             <legend>Ingresa tu número de orden.</legend>
-            <input type="text" placeholder="" style="max-width: 200px;" />
-            <button type="submit" class="pure-button pure-button-primary">Buscar</button>
+            <input type="number" placeholder="" style="max-width: 200px;" name="orderId" min="0" max="9999999"/>
+            <button class="pure-button pure-button-primary">Buscar</button>
           </fieldset>
         </form>
       </div>
-      <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1">
-        hdsgkjsfhdgkljhsdfgkjh
-      </div>
 
+      <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1" id="orderDetails1">
+        <div class="stepper-wrapper">
+          <div id="step_espera" class="stepper-item">
+            <div class="step-counter">1</div>
+            <div class="step-name">En espera</div>
+          </div>
+          <div id="step_tecnico" class="stepper-item">
+            <div class="step-counter">2</div>
+            <div class="step-name">En servicio técnico</div>
+          </div>
+          <div id="step_lavador" class="stepper-item">
+            <div class="step-counter">3</div>
+            <div class="step-name">En servicio de lavador</div>
+          </div>
+          <div id="step_calidad" class="stepper-item">
+            <div class="step-counter">4</div>
+            <div class="step-name">En inspección de calidad</div>
+          </div>
+          <div id="step_terminado" class="stepper-item">
+            <div class="step-counter">5</div>
+            <div class="step-name">Terminado</div>
+          </div>
+        </div>
+      </div>
+      <div class="l-box pure-u-1 pure-u-md-1 pure-u-lg-1" id="orderDetails2">
+        <div id="tabla"></div>
+      </div>
     </div>
 
 
@@ -113,7 +139,6 @@ echo "here";
         </div>
       </div>
     </div>
-
 
     <div class="content ribbon-white">
       <div class="pure-g">
@@ -202,7 +227,7 @@ echo "here";
               <label for="username" style="margin: 0.5em;">Usuario:</label>
             </div>
             <div class="pure-u-16-24">
-              <input class="modal-input" type="text" placeholder="Nombre de Usuario" name="username" id="username" required>
+              <input class="modal-input" type="text" placeholder="Nombre de Usuario" name="username" id="username" pattern="^[a-zA-Z0-9_-]{3,16}$" required>
             </div>
           </div>
 
@@ -241,60 +266,8 @@ echo "here";
   <!-- SCRIPTS -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script type="text/javascript">
-    /*
-    * Login de Usuario 
-    */
-    function login(e) {
-      event.preventDefault();
-      let loginForm = new FormData(document.getElementById("loginForm"));
-
-      fetch('./backend/login.php', {
-        method: 'POST',
-        body: loginForm
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (data) {
-
-          if (data === "Debes completar el captcha") {
-            Toastify({
-              text: "Debes completar el captcha",
-              duration: 3000,
-              className: "toast-error",
-            }).showToast();
-
-            return;
-          }
-          if (data === "Lo siento, parece que eres un robot") {
-            Toastify({
-              text: "Usuario y/o contraseña incorrectos", // TODO: cambiar este mensaje a algo mas acorde
-              duration: 3000,
-              className: "toast-error",
-            }).showToast();
-
-            return;
-          }
-
-          var response = JSON.parse(data);
-
-          if (response.statusCode === 200) {
-
-            // codigo para redireccionar,
-
-            location.replace("./menu.html");
-
-          } else if (response.statusCode === 403) {
-            Toastify({
-              text: "Usuario y/o contraseña incorrectos",
-              duration: 3000,
-              className: "toast-error",
-            }).showToast();
-          }
-        });
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
+  <script type="text/javascript" src="./js/pages/invitado.js"></script>
   <!-- /SCRIPTS -->
 
 </body>
