@@ -1,3 +1,15 @@
+function textareaRegEx() {
+  const textAreas = document.querySelectorAll('textarea')
+
+  for (let i = 0; i < textAreas.length; ++i) {
+    textAreas[i].addEventListener('keyup', (e) => {
+      textAreas[i].value = textAreas[i].value.replace(/[^a-zA-Z0-9\r\n|\r|\n ]/g, "");
+    })
+  }
+};
+
+textareaRegEx();
+
 function cargarOrdenes() {
   fetch('./backend/getOrdersParaLavado.php', {
     method: 'POST',
