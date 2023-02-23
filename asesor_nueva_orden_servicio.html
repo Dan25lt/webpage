@@ -74,13 +74,151 @@
   <div class="content-wrapper">
 
     <div class="content ribbon-white l-box-lrg">
-      <h4 class="content-sub-head black-text">Crear orden de servicio:</h4>
+      <h1 class="content-subhead">Crear orden de servicio:</h1>
       <div class="pure-g">
         <div class="l-box pure-u-1 pure-u-md-16-24 pure-u-lg-16-24">
           <div id="tabla_vehiculos"></div>
         </div>
         <div class="l-box pure-u-1 pure-u-md-8-24 pure-u-lg-8-24">
           <div id="tabla_operaciones"></div>
+        </div>
+      </div>
+      <h1 class="content-subhead">Detalles de la orden:</h1>
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h4>Vehículo:</h4>
+
+          <input type="hidden" id="vehiculo_id">
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Año:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_ano" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>VIN:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_vin" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Placas:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_placas" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Modelo:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_modelo" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Placas:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_placas" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Marca:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="vehiculo_marca" readonly>
+            </div>
+          </div>
+
+        </div>
+        <div class="pure-u-1-3">
+          <h4>Cliente:</h4>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Nombre:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_nombre" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Teléfono:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_telefono" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>RFC:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_rfc" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Email:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_email" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>Dirección:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_direccion" readonly>
+            </div>
+          </div>
+
+          <div class="pure-g">
+            <div class="pure-u-6-24">
+              <label>C.P.:</label>
+            </div>
+            <div class="pure-u-18-24">
+              <input class="input-details" type="text" id="cliente_cp" readonly>
+            </div>
+          </div>
+
+        </div>
+        <div class="pure-u-1-3">
+          <h4>Operaciones:</h4>
+
+          <div class="pure-g">
+            <select id="operacionesCombobox" size="7" style="width: 100%"></select>
+          </div>
+          <div class="pure-g" style="float: right; margin-top: 4px;">
+            <button class="pure-button button-table-warning" onclick="deleteFromOperationList()">Limpiar</button>
+          </div>
+
+        </div>
+      </div>
+      <div class="pure-g">
+        <div class="l-box pure-u-1">
+          <button id="btn_guardar_orden" class="pure-button button-table-success" id="btn_guardar_orden"
+            style="float: right;">Guardar cambios</button>
         </div>
       </div>
     </div> <!-- content -->

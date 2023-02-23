@@ -107,12 +107,11 @@ function cargarVehiculos() {
 
 
     document.getElementById("tabla_vehiculos").appendChild(table);
-
     var selectedRows = [];
 
-    const dataTable = new simpleDatatables.DataTable("table", {
+    const dataTable = new simpleDatatables.DataTable("#tabla_vehiculos .table", {
       paging: false,
-      scrollY: "30vh",
+      scrollY: "20vh",
       /* rowNavigation: true, */
       tabIndex: 1,
       labels: {
@@ -130,35 +129,7 @@ function cargarVehiculos() {
         if (!tr.attributes.class) { tr.attributes.class = "selected" }
         else { tr.attributes.class += " selected" }
         return tr
-      },
-      /* tableRender: (_data, table, type) => {
-        if (type === "print") {
-          return table
-        }
-        const tHead = table.childNodes[0]
-        const filterHeaders = {
-          nodeName: "TR",
-          childNodes: tHead.childNodes[0].childNodes.map(
-            (_th, index) => ({
-              nodeName: "TD",
-              childNodes: [
-                {
-                  nodeName: "INPUT",
-                  attributes: {
-                    class: "datatable-input search-margin-fix",
-                    type: "search",
-                    placeholder: "Buscar...",
-                    "data-columns": `[${index}]`
-                  }
-                }
-              ]
-            })
-          )
-        }
-        tHead.childNodes.push(filterHeaders)
-        return table
-      } */
-
+      }
     });
 
     dataTable.on('datatable.selectrow', function (row, event) {
@@ -179,6 +150,22 @@ function cargarVehiculos() {
       var nombre_cliente = rows.dt.data.data[row][6].text; // Cliente del vehiculo seleccionado
       var rfc = rows.dt.data.data[row][7].text; // RFC del vehiculo seleccionado
       var telefono = rows.dt.data.data[row][8].text; // Telefono del vehiculo seleccionado
+
+      document.getElementById("vehiculo_id").value = id_vehiculo;
+
+      document.getElementById("vehiculo_ano").value = ano;
+      document.getElementById("vehiculo_vin").value = vin;
+      document.getElementById("vehiculo_placas").value = placas;
+      document.getElementById("vehiculo_modelo").value = modelo;
+      document.getElementById("vehiculo_marca").value = marca;
+
+      document.getElementById("cliente_nombre").value = nombre_cliente;
+      document.getElementById("cliente_telefono").value = telefono;
+      document.getElementById("cliente_rfc").value = rfc;
+
+      /* document.getElementById("cliente_email").innerHTML = email;
+      document.getElementById("cliente_direccion").innerHTML = direccion;
+      document.getElementById("cliente_cp").innerHTML = cp; */
 
       console.log(nombre_cliente);
 
@@ -216,7 +203,8 @@ function cargarOperaciones() {
 
     var columnNames = [
       "idoperaciones",
-      "descripcion"
+      "descripcion",
+      "opciones"
     ];
 
     var table = document.createElement('table');
@@ -236,6 +224,11 @@ function cargarOperaciones() {
     th.appendChild(text);
     tr.appendChild(th);
 
+    th = document.createElement('th');
+    text = document.createTextNode('opciones');
+    th.appendChild(text);
+    tr.appendChild(th);
+
     thead.appendChild(tr);
     table.appendChild(thead);
 
@@ -244,8 +237,32 @@ function cargarOperaciones() {
     for (var i = 0; i < data.length; i++) {
       var tr = document.createElement('tr');
       for (var j = 0; j < columnNames.length; j++) {
+
         var td = document.createElement('td');
-        var text = document.createTextNode(data[i][columnNames[j]]);
+
+        if (columnNames[j] === 'opciones') {
+
+          var btn = document.createElement('input');
+          btn.type = "button";
+          btn.className = "button-table-success btnVer";
+
+          /*
+          * Detalles de cada orden, la guardamos en el boton para no tener que hacer otro GET
+          */
+          btn.setAttribute("idoperaciones", data[i]['idoperaciones']);
+          btn.setAttribute("descripcion", data[i]['descripcion']);
+
+          btn.value = "  Agregar  ";
+          var text = btn; // text va a tener adentro un boton
+
+          btn.addEventListener('click', e => {
+
+            addToOperationsList(e.target.getAttribute('idoperaciones'), e.target.getAttribute('descripcion'));
+          }, false);
+
+        } else {
+          var text = document.createTextNode(data[i][columnNames[j]]);
+        }
 
         td.appendChild(text);
         tr.appendChild(td);
@@ -259,9 +276,9 @@ function cargarOperaciones() {
 
     var selectedRows = [];
 
-    const dataTableOperaciones = new simpleDatatables.DataTable("table", {
+    const dataTableOperaciones = new simpleDatatables.DataTable("#tabla_operaciones .table", {
       paging: false,
-      scrollY: "30vh",
+      scrollY: "20vh",
       /* rowNavigation: true, */
       tabIndex: 1,
       labels: {
@@ -273,13 +290,7 @@ function cargarOperaciones() {
         noResults: "No se encontraron resultados",
         searchTitle: "sdfasdgasgasdgasdg"
       },
-      rowRender: (_row, tr, index) => {
-        if (!selectedRows.includes(index)) { return }
-        if (!tr.attributes) { tr.attributes = {} }
-        if (!tr.attributes.class) { tr.attributes.class = "selected" }
-        else { tr.attributes.class += " selected" }
-        return tr
-      }
+
 
     });
 
@@ -302,8 +313,118 @@ function cargarOperaciones() {
   }).catch(function (err) {
     console.log(err);
   });
-}
+};
 
+function addToOperationsList(idoperaciones, descripcion) {
+  var select = document.getElementById("operacionesCombobox");
+
+  var operacionesArr = [];
+  for (let i = 0; i < select.length; i++) {
+    const el = select[i];
+    operacionesArr.push(el.value);
+  }
+
+  if (operacionesArr.indexOf(idoperaciones) === -1) {
+    var opt = document.createElement('option');
+    opt.value = idoperaciones;
+    opt.innerHTML = descripcion;
+    select.appendChild(opt);
+  }
+
+};
+
+function deleteFromOperationList() {
+  var select = document.getElementById("operacionesCombobox");
+  var length = select.options.length;
+  for (i = length - 1; i >= 0; i--) {
+    select.options[i] = null;
+  }
+};
+
+function guardarOrdenDeServicio() {
+  document.getElementById('btn_guardar_orden').onclick = function () {
+
+    document.getElementById("btn_guardar_orden").disabled = true;
+
+    // Obtener el Id del vehiculo seleccionado.
+    var idvehiculos = document.getElementById("vehiculo_id").value
+
+    if (idvehiculos === '') {
+      Toastify({
+        text: "Sin vehiculo seleccionado.",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+
+      document.getElementById("btn_guardar_orden").disabled = false;
+
+      return;
+    }
+
+    // Obtener la lista de las operaciones.
+    var select = document.getElementById("operacionesCombobox");
+    var operacionesArr = [];
+    for (let i = 0; i < select.length; i++) {
+      const el = select[i];
+      operacionesArr.push(el.value);
+    }
+
+    if (operacionesArr.length === 0) {
+
+      Toastify({
+        text: "Sin operaciones seleccionadas.",
+        duration: 3000,
+        className: "toast-error",
+      }).showToast();
+
+      document.getElementById("btn_guardar_orden").disabled = false;
+      return;
+    }
+
+    fetch('./backend/asesor/postOrder.php', {
+      method: 'POST',
+      body: JSON.stringify({
+        idvehiculos: idvehiculos,
+        lista_operaciones: operacionesArr.join(',')
+      })
+    })
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (return_data) {
+        console.log(return_data);
+
+        if (return_data === 'Registro insertado') {
+          Toastify({
+            text: "Registro insertado.",
+            duration: 3000,
+            className: "toast-success",
+          }).showToast();
+
+          setTimeout(function () {
+            document.location.reload();
+          }, 3000);
+
+        } else {
+          Toastify({
+            text: "Error al insertar.",
+            duration: 3000,
+            className: "toast-error",
+          }).showToast();
+
+          document.getElementById("btn_guardar_orden").disabled = false;
+        }
+
+
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+
+  };
+};
 
 cargarVehiculos();
 cargarOperaciones();
+guardarOrdenDeServicio();

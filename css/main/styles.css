@@ -373,6 +373,11 @@ p {
     /* this is a green */
 }
 
+.button-table-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
 .button-table-error {
     background: rgb(202, 60, 60);
     /* this is a maroon */
@@ -382,6 +387,7 @@ p {
     background: rgb(223, 117, 20);
     /* this is an orange */
 }
+
 
 .button-table-secondary {
     background: rgb(66, 184, 221);
@@ -514,4 +520,18 @@ img {
 
 .menu {
     margin-right: 40px !important;
+}
+
+.content-subhead {
+    text-transform: uppercase;
+    color: #aaa;
+    border-bottom: 1px solid #eee;
+    padding: 0.4em 0 0 2em;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+input-details { 
+    text-align: right !important; 
 }
